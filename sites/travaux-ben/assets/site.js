@@ -280,7 +280,7 @@ form.addEventListener('submit', (e) => {
     '',
     d.message,
   ].filter((l, i) => l !== '' || i === 5).join('\n');
-  window.location.href = `mailto:commercial@travauxben-dz.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+  window.location.href = `mailto:${form.dataset.email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
   form.classList.add('done');
   done.hidden = false;
 });
