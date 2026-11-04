@@ -1,0 +1,563 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SOTRAMO — Travaux Maritimes de l'Ouest</title>
+<meta name="description" content="SOTRAMO, Société des Travaux Maritimes de l'Ouest — travaux maritimes, hydrauliques et génie civil depuis 1980. Filiale du Groupe GITRAMA.">
+<link rel="stylesheet" href="fonts/fonts.css">
+<style>
+:root{
+  --abyss:#04121f;
+  --deep:#082338;
+  --tide:#0d3a57;
+  --foam:#7fe0d3;
+  --foam-dim:#4fb3a6;
+  --signal:#ff5a36;
+  --sand:#f3efe6;
+  --paper:#fbf9f4;
+  --ink:#0a1824;
+  --muted:#5b6b78;
+  --line:rgba(255,255,255,.12);
+  --line-dark:rgba(10,24,36,.12);
+  --img:"https://sotramo.dz/wp-content/uploads";
+  --r:18px;
+  --ease:cubic-bezier(.2,.7,.1,1);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;overflow-x:clip}
+body{font-family:Inter,system-ui,sans-serif;background:var(--paper);color:var(--ink);line-height:1.6;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+img{display:block;max-width:100%}
+a{color:inherit;text-decoration:none}
+.mono{font-family:"IBM Plex Mono",monospace;font-size:.75rem;letter-spacing:.08em;text-transform:uppercase}
+.wrap{width:min(1240px,100% - 32px);margin-inline:auto}
+h1,h2,h3{font-family:"Inter Tight",Inter,sans-serif;line-height:1.02;letter-spacing:-.035em}
+.eyebrow{display:inline-flex;align-items:center;gap:.6rem;color:var(--signal)}
+.eyebrow::before{content:"";width:28px;height:1px;background:currentColor}
+.reveal{opacity:0;transform:translateY(40px);transition:opacity 1s var(--ease),transform 1s var(--ease)}
+.reveal.in{opacity:1;transform:none}
+
+/* ---------- NAV ---------- */
+.nav{position:fixed;inset:0 0 auto;z-index:50;padding:18px 0;transition:background .4s,padding .4s,backdrop-filter .4s}
+.nav.solid{background:rgba(4,18,31,.78);backdrop-filter:blur(14px);padding:10px 0;border-bottom:1px solid var(--line)}
+.nav .wrap{display:flex;align-items:center;justify-content:space-between;gap:24px}
+.brand{display:flex;align-items:center;gap:12px;color:#fff}
+.brand img{width:44px;height:44px;border-radius:50%;background:#fff;padding:3px}
+.brand b{font-family:"Inter Tight";font-weight:600;font-size:1.15rem;letter-spacing:.04em;display:block}
+.brand small{font-size:.65rem;opacity:.6;letter-spacing:.12em;text-transform:uppercase}
+.links{display:flex;gap:4px;list-style:none}
+.links a{color:rgba(255,255,255,.78);font-size:.86rem;font-weight:600;padding:9px 14px;border-radius:99px;transition:.25s}
+.links a:hover{color:#fff;background:rgba(255,255,255,.08)}
+.cta{background:var(--signal);color:#fff!important;padding:11px 20px!important}
+.cta:hover{background:#ff7350!important}
+.burger{display:none;background:none;border:1px solid var(--line);color:#fff;width:46px;height:46px;border-radius:50%;cursor:pointer}
+.burger span{display:block;width:18px;height:2px;background:#fff;margin:4px auto;transition:.3s}
+
+/* ---------- HERO ---------- */
+.hero{position:relative;min-height:100svh;background:var(--abyss);color:#fff;overflow:hidden;display:flex;align-items:flex-end;padding:140px 0 60px}
+.hero-bg{position:absolute;inset:0;background:url(https://sotramo.dz/wp-content/uploads/2024/09/Centrale-a-Beton-flottante-1024x768.jpg) center/cover;opacity:.32;transform:scale(1.1);filter:saturate(.6) contrast(1.1)}
+.hero::after{content:"";position:absolute;inset:0;background:radial-gradient(80% 60% at 70% 30%,transparent,var(--abyss) 85%),linear-gradient(180deg,rgba(4,18,31,.3),var(--abyss))}
+.grid-lines{position:absolute;inset:0;z-index:1;background-image:linear-gradient(var(--line) 1px,transparent 1px),linear-gradient(90deg,var(--line) 1px,transparent 1px);background-size:120px 120px;mask-image:radial-gradient(70% 70% at 50% 40%,#000,transparent);opacity:.35}
+.waves{position:absolute;left:0;bottom:0;z-index:2;width:100%;height:42%;pointer-events:none}
+.waves path{fill:none;stroke:var(--foam);stroke-width:1;opacity:.35}
+.hero .wrap{position:relative;z-index:3}
+.coords{display:flex;gap:28px;flex-wrap:wrap;color:var(--foam);margin-bottom:28px}
+.coords span{display:flex;align-items:center;gap:8px}
+.dot{width:8px;height:8px;border-radius:50%;background:var(--signal);box-shadow:0 0 0 0 rgba(255,90,54,.7);animation:ping 2s infinite}
+@keyframes ping{70%{box-shadow:0 0 0 12px rgba(255,90,54,0)}100%{box-shadow:0 0 0 0 rgba(255,90,54,0)}}
+.hero h1{font-size:clamp(3rem,9vw,8.5rem);font-weight:600;letter-spacing:-.045em;line-height:.92}
+.hero h1 .line{display:block;overflow:hidden}
+.hero h1 .line>span{display:inline-block;transform:translateY(105%);animation:rise 1.2s var(--ease) forwards}
+.hero h1 .line:nth-child(2)>span{animation-delay:.12s}
+.hero h1 .line:nth-child(3)>span{animation-delay:.24s}
+@keyframes rise{to{transform:none}}
+.hero h1 em{font-style:normal;color:var(--foam)}
+.hero h1 .accent{color:var(--signal)}
+.hero-foot{display:grid;grid-template-columns:1.3fr 1fr;gap:40px;align-items:end;margin-top:48px;padding-top:32px;border-top:1px solid var(--line)}
+.hero-foot p{max-width:520px;color:rgba(255,255,255,.75);font-size:1.08rem}
+.hero-foot p strong{color:#fff}
+.btns{display:flex;gap:12px;justify-content:flex-end;flex-wrap:wrap}
+.btn{display:inline-flex;align-items:center;gap:10px;padding:16px 26px;border-radius:99px;font-weight:700;font-size:.92rem;transition:.3s var(--ease)}
+.btn svg{transition:transform .3s var(--ease)}
+.btn:hover svg{transform:translateX(4px)}
+.btn-fill{background:var(--foam);color:var(--abyss)}
+.btn-fill:hover{background:#fff}
+.btn-ghost{border:1px solid rgba(255,255,255,.3);color:#fff}
+.btn-ghost:hover{border-color:#fff}
+.scroll-cue{position:absolute;right:32px;top:50%;z-index:3;writing-mode:vertical-rl;color:rgba(255,255,255,.5);display:flex;align-items:center;gap:14px}
+.scroll-cue i{width:1px;height:70px;background:linear-gradient(var(--foam),transparent);animation:drip 2s infinite}
+@keyframes drip{0%{transform:scaleY(0);transform-origin:top}50%{transform:scaleY(1);transform-origin:top}51%{transform-origin:bottom}100%{transform:scaleY(0);transform-origin:bottom}}
+
+/* ---------- MARQUEE ---------- */
+.marquee{background:var(--signal);color:#fff;overflow:hidden;padding:18px 0;white-space:nowrap}
+.marquee div{display:inline-flex;gap:48px;animation:slide 40s linear infinite;font-family:"Inter Tight";font-weight:700;font-size:1.3rem;letter-spacing:-.01em}
+.marquee span::after{content:"✦";margin-left:48px;opacity:.6}
+@keyframes slide{to{transform:translateX(-50%)}}
+
+/* ---------- STATS ---------- */
+.stats{background:var(--abyss);color:#fff;padding:90px 0}
+.stats-grid{display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid var(--line)}
+.stat{padding:36px 28px 0;border-right:1px solid var(--line)}
+.stat:last-child{border-right:0}
+.stat .num{font-family:"Inter Tight";letter-spacing:-.04em;font-weight:600;font-size:clamp(2.6rem,5vw,4.4rem);line-height:1;color:var(--foam)}
+.stat .num sup{font-size:.4em;color:#fff;margin-left:4px}
+.stat p{margin-top:12px;color:rgba(255,255,255,.6);font-size:.92rem}
+
+/* ---------- SECTION ---------- */
+section{position:relative}
+.sec{padding:130px 0}
+.sec-head{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:end;margin-bottom:70px}
+.sec-head h2{font-size:clamp(2.4rem,5.4vw,4.8rem);font-weight:600}
+.sec-head h2 span{color:var(--signal)}
+.sec-head p{color:var(--muted);font-size:1.05rem;max-width:480px;justify-self:end}
+
+/* ---------- DOMAINS ---------- */
+.domains{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.dom{position:relative;border-radius:var(--r);overflow:hidden;min-height:480px;color:#fff;background:var(--deep);display:flex;flex-direction:column;justify-content:flex-end;padding:28px;isolation:isolate;transition:transform .5s var(--ease)}
+.dom img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:-2;transition:transform 1.2s var(--ease),filter .6s;filter:grayscale(.5) brightness(.75)}
+.dom::before{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(180deg,rgba(4,18,31,.1) 20%,rgba(4,18,31,.95))}
+.dom:hover{transform:translateY(-8px)}
+.dom:hover img{transform:scale(1.08);filter:grayscale(0) brightness(.8)}
+.dom .idx{position:absolute;top:24px;left:28px;color:var(--foam)}
+.dom .ico{position:absolute;top:18px;right:20px;width:52px;height:52px;border-radius:50%;background:rgba(255,255,255,.1);backdrop-filter:blur(6px);display:grid;place-items:center;transition:.4s}
+.dom:hover .ico{background:var(--signal);transform:rotate(-45deg)}
+.dom h3{font-size:1.75rem;font-weight:600;letter-spacing:-.025em}
+.dom p{color:rgba(255,255,255,.72);font-size:.92rem;margin-top:10px}
+.dom ul{list-style:none;margin-top:18px;display:flex;flex-wrap:wrap;gap:6px;max-height:0;opacity:0;overflow:hidden;transition:.6s var(--ease)}
+.dom:hover ul{max-height:200px;opacity:1}
+.dom li{font-size:.72rem;border:1px solid rgba(255,255,255,.25);padding:5px 10px;border-radius:99px}
+
+/* ---------- ABOUT / CEO ---------- */
+.about{background:var(--sand)}
+.about-grid{display:grid;grid-template-columns:5fr 6fr;gap:80px;align-items:center}
+.about-img{position:relative}
+.about-img img{border-radius:var(--r);aspect-ratio:4/5;object-fit:cover;width:100%}
+.badge{position:absolute;right:-30px;bottom:40px;width:170px;height:170px;border-radius:50%;background:var(--abyss);color:#fff;display:grid;place-items:center;text-align:center}
+.badge svg{position:absolute;inset:0;animation:spin 18s linear infinite}
+.badge text{fill:var(--foam);font-family:"IBM Plex Mono";font-size:9.5px;letter-spacing:3px}
+.badge b{font-family:"Inter Tight";font-size:2.6rem;line-height:1}
+@keyframes spin{to{transform:rotate(360deg)}}
+.quote{font-family:"Inter Tight";font-weight:700;font-size:clamp(1.6rem,2.8vw,2.4rem);line-height:1.18;margin:22px 0 28px;letter-spacing:-.01em}
+.quote::before{content:"“";display:block;font-size:5rem;line-height:.6;color:var(--signal);margin-bottom:8px}
+.about-text p{color:#3b4a56;margin-bottom:16px}
+.sign{display:flex;align-items:center;gap:16px;margin-top:30px;padding-top:24px;border-top:1px solid var(--line-dark)}
+.sign .av{width:54px;height:54px;border-radius:50%;background:var(--abyss);color:var(--foam);display:grid;place-items:center;font-family:"Inter Tight";font-weight:600}
+.sign b{display:block;font-family:"Inter Tight";font-size:1.05rem}
+.sign small{color:var(--muted)}
+
+/* ---------- TIMELINE ---------- */
+.timeline-sec{background:var(--abyss);color:#fff;overflow:hidden}
+.timeline-sec .sec-head p{color:rgba(255,255,255,.6)}
+.track{display:grid;grid-template-columns:repeat(4,1fr);position:relative}
+.track::before{content:"";position:absolute;left:0;right:0;top:9px;height:1px;background:linear-gradient(90deg,var(--foam),var(--signal))}
+.step{padding-right:32px;position:relative}
+.step::before{content:"";display:block;width:19px;height:19px;border-radius:50%;background:var(--abyss);border:2px solid var(--foam);margin-bottom:30px}
+.step .yr{font-family:"Inter Tight";font-weight:600;font-size:3rem;color:var(--foam);line-height:1}
+.step h4{font-family:"Inter Tight";font-size:1.15rem;margin:12px 0 8px}
+.step p{color:rgba(255,255,255,.6);font-size:.92rem}
+
+/* ---------- PROJECTS ---------- */
+.projects{background:var(--paper)}
+.tabs{display:flex;gap:8px;margin-bottom:34px;flex-wrap:wrap}
+.tab{border:1px solid var(--line-dark);background:none;padding:10px 20px;border-radius:99px;font:600 .86rem Inter;cursor:pointer;transition:.25s;color:var(--ink)}
+.tab.on,.tab:hover{background:var(--ink);color:#fff;border-color:var(--ink)}
+.proj-list{border-top:1px solid var(--line-dark)}
+.proj{display:grid;grid-template-columns:70px 1.6fr 1fr 1fr 110px;gap:24px;align-items:center;padding:30px 0;border-bottom:1px solid var(--line-dark);position:relative;cursor:pointer;transition:padding .4s var(--ease)}
+.proj:hover{padding-left:16px}
+.proj .n{color:var(--muted)}
+.proj h3{font-size:1.4rem;font-weight:700;letter-spacing:-.01em}
+.proj .meta{color:var(--muted);font-size:.9rem}
+.proj .meta b{display:block;color:var(--ink);font-weight:600}
+.proj .dur{justify-self:end;font-family:"Inter Tight";font-weight:600;font-size:1.6rem}
+.proj .dur small{font-family:"IBM Plex Mono";font-size:.65rem;color:var(--muted);display:block;text-align:right;font-weight:400}
+.proj.hide{display:none}
+.flag{display:inline-block;font-size:.65rem;background:var(--signal);color:#fff;padding:3px 8px;border-radius:4px;margin-left:8px;vertical-align:middle;font-family:"IBM Plex Mono";letter-spacing:.06em}
+.peek{position:fixed;width:340px;aspect-ratio:4/3;border-radius:14px;overflow:hidden;pointer-events:none;z-index:40;opacity:0;transform:translate(-50%,-50%) scale(.7) rotate(-4deg);transition:opacity .3s,transform .4s var(--ease);box-shadow:0 30px 60px rgba(0,0,0,.3)}
+.peek.on{opacity:1;transform:translate(-50%,-50%) scale(1) rotate(-2deg)}
+.peek img{width:100%;height:100%;object-fit:cover}
+
+/* ---------- SERVICES / FLEET ---------- */
+.fleet{background:var(--deep);color:#fff}
+.fleet .sec-head p{color:rgba(255,255,255,.6)}
+.fleet-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.card{background:rgba(255,255,255,.04);border:1px solid var(--line);border-radius:var(--r);overflow:hidden;transition:.5s var(--ease)}
+.card:hover{border-color:var(--foam);transform:translateY(-6px)}
+.card .ph{aspect-ratio:16/10;overflow:hidden}
+.card .ph img{width:100%;height:100%;object-fit:cover;transition:transform 1s var(--ease)}
+.card:hover .ph img{transform:scale(1.06)}
+.card .body{padding:26px}
+.card h3{font-size:1.35rem;font-weight:700;margin:8px 0 12px}
+.card p{color:rgba(255,255,255,.65);font-size:.9rem}
+.specs{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--line);margin-top:22px;border-radius:10px;overflow:hidden}
+.specs div{background:var(--deep);padding:14px}
+.specs b{display:block;font-family:"Inter Tight";font-size:1.35rem;color:var(--foam)}
+.specs span{font-size:.7rem;color:rgba(255,255,255,.5)}
+.fleet-note{margin-top:40px;display:grid;grid-template-columns:auto 1fr;gap:30px;align-items:center;padding:30px;border:1px dashed rgba(127,224,211,.35);border-radius:var(--r)}
+.fleet-note .mono{color:var(--foam)}
+.fleet-note p{color:rgba(255,255,255,.75)}
+
+/* ---------- PEOPLE ---------- */
+.people-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.ptile{border-radius:var(--r);padding:44px;min-height:300px;display:flex;flex-direction:column;justify-content:space-between}
+.ptile.dark{background:var(--abyss);color:#fff}
+.ptile.foam{background:var(--foam);color:var(--abyss)}
+.ptile.img{padding:0;overflow:hidden;grid-row:span 2}
+.ptile.img img{width:100%;height:100%;object-fit:cover}
+.ptile .big{font-family:"Inter Tight";font-weight:600;font-size:clamp(3.4rem,6vw,5.6rem);line-height:1}
+.ptile p{max-width:420px}
+.ptile.dark p{color:rgba(255,255,255,.7)}
+
+/* ---------- CONTACT ---------- */
+.contact{background:var(--abyss);color:#fff;overflow:hidden}
+.contact h2{font-size:clamp(3rem,8vw,7rem);font-weight:600;letter-spacing:-.045em;line-height:.95}
+.contact h2 em{font-style:normal;color:var(--foam)}
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px;margin-top:70px}
+.info{display:grid;gap:0}
+.info a,.info div{display:grid;grid-template-columns:140px 1fr;gap:20px;padding:22px 0;border-top:1px solid var(--line);transition:.3s}
+.info a:hover{color:var(--foam);padding-left:10px}
+.info .mono{color:rgba(255,255,255,.45);padding-top:4px}
+.info span:last-child{font-size:1.1rem;font-weight:600}
+form{display:grid;gap:14px;background:rgba(255,255,255,.04);border:1px solid var(--line);border-radius:var(--r);padding:30px}
+.row{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+label{display:grid;gap:6px;font-size:.78rem;color:rgba(255,255,255,.55)}
+input,select,textarea{background:transparent;border:0;border-bottom:1px solid rgba(255,255,255,.2);color:#fff;font:500 1rem Inter;padding:10px 0;outline:none;transition:border-color .3s}
+input:focus,select:focus,textarea:focus{border-color:var(--foam)}
+select option{background:var(--abyss)}
+textarea{resize:vertical;min-height:110px}
+form .btn{justify-self:start;border:0;cursor:pointer;margin-top:8px}
+
+footer{background:#020b14;color:rgba(255,255,255,.55);padding:50px 0 34px;font-size:.85rem}
+.foot{display:flex;justify-content:space-between;gap:30px;flex-wrap:wrap;align-items:center}
+.foot nav{display:flex;gap:22px;flex-wrap:wrap}
+.foot nav a:hover{color:#fff}
+
+/* depth gauge */
+.gauge{position:fixed;left:22px;top:50%;transform:translateY(-50%);z-index:45;display:flex;flex-direction:column;align-items:center;gap:10px;mix-blend-mode:difference;color:#fff}
+.gauge .bar{width:2px;height:160px;background:rgba(255,255,255,.25);position:relative}
+.gauge .fill{position:absolute;top:0;left:0;width:100%;background:#fff;height:0}
+.gauge .mono{font-size:.62rem;writing-mode:vertical-rl;transform:rotate(180deg)}
+
+/* ---------- RESPONSIVE ---------- */
+@media (max-width:1340px){.gauge{display:none}}
+@media (max-width:1020px){
+  .domains{grid-template-columns:1fr 1fr}
+  .dom{min-height:380px}
+  .dom ul{max-height:200px;opacity:1}
+  .fleet-grid{grid-template-columns:1fr 1fr}
+  .proj{grid-template-columns:50px 1fr 110px}
+  .proj .meta{display:none}
+  .gauge,.scroll-cue{display:none}
+  .about-grid{gap:50px}
+}
+@media (max-width:820px){
+  .links{position:fixed;top:0;left:0;width:100vw;height:100dvh;background:var(--abyss);visibility:hidden;flex-direction:column;justify-content:center;align-items:center;gap:10px;transform:translateY(-100%);transition:transform .6s var(--ease)}
+  .links.open{transform:none;visibility:visible}
+  .nav.solid{backdrop-filter:none;background:rgba(4,18,31,.96)}
+  .links a{font-size:1.5rem;font-family:"Inter Tight"}
+  .burger{display:block;position:relative;z-index:2}
+  .burger.x span:first-child{transform:translateY(3px) rotate(45deg)}
+  .burger.x span:last-child{transform:translateY(-3px) rotate(-45deg)}
+  .hero-foot,.sec-head,.about-grid,.contact-grid,.people-grid{grid-template-columns:1fr}
+  .sec-head{gap:20px}.sec-head p{justify-self:start}
+  .btns{justify-content:flex-start}
+  .stats-grid{grid-template-columns:1fr 1fr}
+  .stat{border-bottom:1px solid var(--line);padding-bottom:30px}
+  .stat:nth-child(2){border-right:0}
+  .track{grid-template-columns:1fr;gap:40px}
+  .track::before{display:none}
+  .step{padding-left:40px}
+  .step::before{position:absolute;left:0;top:6px;margin:0}
+  .badge{right:12px;width:130px;height:130px}
+  .badge b{font-size:2rem}
+  .ptile.img{grid-row:auto;height:280px}
+  .sec{padding:90px 0}
+}
+@media (max-width:560px){
+  .domains,.fleet-grid,.row{grid-template-columns:1fr}
+  .proj{grid-template-columns:1fr auto;gap:8px}
+  .proj .n{display:none}
+  .info a,.info div{grid-template-columns:1fr;gap:4px}
+  .ptile{padding:30px}
+  .coords{gap:14px}
+}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.reveal{opacity:1;transform:none}.hero h1 .line>span{transform:none}}
+</style>
+</head>
+<body>
+
+<div class="gauge" aria-hidden="true"><span class="mono" id="depth">0 m</span><div class="bar"><div class="fill" id="fill"></div></div><span class="mono">Profondeur</span></div>
+
+<header class="nav" id="nav">
+  <div class="wrap">
+    <a href="#top" class="brand"><img src="https://sotramo.dz/wp-content/uploads/2024/09/SOT-W-Logo-300x300.png" alt="Logo SOTRAMO"><span><b>SOTRAMO</b><small>Groupe GITRAMA</small></span></a>
+    <ul class="links" id="links">
+      <li><a href="#activites">Activités</a></li>
+      <li><a href="#entreprise">L'entreprise</a></li>
+      <li><a href="#realisations">Réalisations</a></li>
+      <li><a href="#moyens">Moyens & Services</a></li>
+      <li><a href="#contact" class="cta">Nous contacter</a></li>
+    </ul>
+    <button class="burger" id="burger" aria-label="Menu"><span></span><span></span></button>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero" id="top">
+  <div class="hero-bg" id="heroBg"></div>
+  <div class="grid-lines"></div>
+  <svg class="waves" viewBox="0 0 1440 400" preserveAspectRatio="none" id="waves"></svg>
+  <div class="scroll-cue mono">Défiler <i></i></div>
+  <div class="wrap">
+    <div class="coords mono">
+      <span><i class="dot"></i>Oran, Algérie</span>
+      <span>35°41′N · 0°38′W</span>
+      <span>Depuis 1980</span>
+    </div>
+    <h1>
+      <span class="line"><span>Bâtir</span></span>
+      <span class="line"><span><em>face à</em> la</span></span>
+      <span class="line"><span class="accent">mer.</span></span>
+    </h1>
+    <div class="hero-foot">
+      <p><strong>Société des Travaux Maritimes de l'Ouest.</strong> Ports, digues, réseaux hydrauliques et grands ouvrages de génie civil — près d'un demi-siècle d'ingénierie au service de l'Algérie.</p>
+      <div class="btns">
+        <a href="#realisations" class="btn btn-fill">Nos réalisations <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M1 8h13m-5-5 5 5-5 5" stroke="currentColor" stroke-width="2"/></svg></a>
+        <a href="#activites" class="btn btn-ghost">Nos métiers</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="marquee" aria-hidden="true"><div>
+  <span>Travaux maritimes</span><span>Hydraulique</span><span>Génie civil</span><span>Travaux sous-marins</span><span>Digues & jetées</span><span>Fondations spéciales</span>
+  <span>Travaux maritimes</span><span>Hydraulique</span><span>Génie civil</span><span>Travaux sous-marins</span><span>Digues & jetées</span><span>Fondations spéciales</span>
+</div></div>
+
+<!-- STATS -->
+<section class="stats">
+  <div class="wrap stats-grid">
+    <div class="stat reveal"><div class="num" data-count="1980">0</div><p>Année de création — héritière de la SONATRAM</p></div>
+    <div class="stat reveal"><div class="num" data-count="280">0<sup>M DA</sup></div><p>Capital social de l'entreprise</p></div>
+    <div class="stat reveal"><div class="num" data-count="150">0<sup>t/h</sup></div><p>Capacité de la station de concassage de Gdyel</p></div>
+    <div class="stat reveal"><div class="num" data-count="1200">0<sup>CV</sup></div><p>Puissance du remorqueur Ahmed Ben Bella</p></div>
+  </div>
+</section>
+
+<!-- DOMAINS -->
+<section class="sec" id="activites">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div><span class="eyebrow mono">Domaines d'activités</span><h2>Quatre métiers,<br>une seule <span>exigence.</span></h2></div>
+      <p>De la sauvegarde des ouvrages portuaires à l'assainissement urbain, nos équipes conçoivent et réalisent les infrastructures qui relient la terre, l'eau et les hommes.</p>
+    </div>
+    <div class="domains">
+      <article class="dom reveal">
+        <img src="https://sotramo.dz/wp-content/uploads/2024/08/REMORQUEUR-1024x757.png" alt="Remorqueur SOTRAMO" loading="lazy">
+        <span class="idx mono">01</span><span class="ico"><svg width="20" height="20" viewBox="0 0 16 16" fill="none"><path d="M1 8h13m-5-5 5 5-5 5" stroke="#fff" stroke-width="2"/></svg></span>
+        <h3>Maritime</h3><p>Ouvrages portuaires, côtiers et sous-marins.</p>
+        <ul><li>Sauvegarde portuaire</li><li>Digues & jetées</li><li>Travaux sous-marins</li><li>Réfection d'ouvrages</li></ul>
+      </article>
+      <article class="dom reveal">
+        <img src="https://sotramo.dz/wp-content/uploads/2024/09/Projet02-1024x528.jpg" alt="Chantier hydraulique" loading="lazy">
+        <span class="idx mono">02</span><span class="ico"><svg width="20" height="20" viewBox="0 0 16 16" fill="none"><path d="M1 8h13m-5-5 5 5-5 5" stroke="#fff" stroke-width="2"/></svg></span>
+        <h3>Hydraulique</h3><p>Gestion, distribution et assainissement de l'eau.</p>
+        <ul><li>Barrages & canaux</li><li>Réservoirs</li><li>Assainissement urbain</li><li>Irrigation</li></ul>
+      </article>
+      <article class="dom reveal">
+        <img src="https://sotramo.dz/wp-content/uploads/2024/08/projet08-1024x768.jpg" alt="Chantier de génie civil" loading="lazy">
+        <span class="idx mono">03</span><span class="ico"><svg width="20" height="20" viewBox="0 0 16 16" fill="none"><path d="M1 8h13m-5-5 5 5-5 5" stroke="#fff" stroke-width="2"/></svg></span>
+        <h3>Génie civil</h3><p>Conception et construction d'infrastructures publiques.</p>
+        <ul><li>Grands ouvrages</li><li>Infrastructures publiques</li><li>Terrassement</li></ul>
+      </article>
+      <article class="dom reveal">
+        <img src="https://sotramo.dz/wp-content/uploads/2024/09/d1.jpeg" alt="Travaux divers" loading="lazy">
+        <span class="idx mono">04</span><span class="ico"><svg width="20" height="20" viewBox="0 0 16 16" fill="none"><path d="M1 8h13m-5-5 5 5-5 5" stroke="#fff" stroke-width="2"/></svg></span>
+        <h3>Divers</h3><p>Expertises complémentaires du maritime et des TP.</p>
+        <ul><li>Fondations spéciales</li><li>Soutènement</li><li>Enlèvement d'épaves</li><li>Injection des sols</li><li>Ouverture de pistes</li></ul>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT / CEO -->
+<section class="sec about" id="entreprise">
+  <div class="wrap about-grid">
+    <div class="about-img reveal">
+      <img src="https://sotramo.dz/wp-content/uploads/2024/08/SOT-Banner-1024x768.jpg" alt="Siège social de SOTRAMO à Oran" loading="lazy">
+      <div class="badge">
+        <svg viewBox="0 0 170 170"><defs><path id="c" d="M85,85 m-68,0 a68,68 0 1,1 136,0 a68,68 0 1,1 -136,0"/></defs><text><textPath href="#c">EXCELLENCE · ENGAGEMENT · SAVOIR-FAIRE · </textPath></text></svg>
+        <div><b id="years">45</b><span class="mono" style="font-size:.6rem;display:block">ans</span></div>
+      </div>
+    </div>
+    <div class="about-text reveal">
+      <span class="eyebrow mono">Mot du Président-Directeur Général</span>
+      <p class="quote">Une entreprise historique, engagée dans la modernité.</p>
+      <p>Entreprise Publique Économique, SOTRAMO est la digne héritière de la SONATRAM, qui a participé à la construction de l'Algérie indépendante dès la fin des années 60. Elle se considère d'abord comme un outil économique national, créateur d'emplois et de richesses.</p>
+      <p>Pour nous, la qualité dépasse la satisfaction du client : elle vise des ouvrages bâtis selon les règles de l'art, qui font la fierté de la nation. Des ressources humaines solides, des investissements étudiés et des partenariats bien orientés ont fait de SOTRAMO un partenaire sérieux et fiable.</p>
+      <div class="sign"><div class="av">KMK</div><div><b>Kalouli Mustapha Kamel</b><small>Président-Directeur Général</small></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- TIMELINE -->
+<section class="sec timeline-sec">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div><span class="eyebrow mono">Notre histoire</span><h2>Un héritage<br>gravé dans la <span>roche.</span></h2></div>
+      <p>Issue de la restructuration organique de la Société Nationale des Travaux Maritimes, SOTRAMO a redéfini les activités maritimes de la région Ouest.</p>
+    </div>
+    <div class="track">
+      <div class="step reveal"><div class="yr">60's</div><h4>La SONATRAM</h4><p>L'entreprise publique pionnière participe à la construction de l'Algérie indépendante et souveraine.</p></div>
+      <div class="step reveal"><div class="yr">1980</div><h4>Naissance de SOTRAMO</h4><p>Créée le 23 février 1980, elle reprend les activités maritimes de la région Ouest.</p></div>
+      <div class="step reveal"><div class="yr">GITRAMA</div><h4>Un groupe solide</h4><p>Filiale du Groupe d'Infrastructures de Travaux Maritimes, au capital de 280 000 000 DA.</p></div>
+      <div class="step reveal"><div class="yr">Auj.</div><h4>Ouverture internationale</h4><p>Des ports algériens jusqu'au port pétrolier de Nouadhibou, en Mauritanie.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section class="sec projects" id="realisations">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div><span class="eyebrow mono">Réalisations</span><h2>Le carnet de<br><span>bord.</span></h2></div>
+      <p>Une sélection de chantiers menés pour les entreprises portuaires d'Oran, d'Arzew et de Mostaganem — et au-delà des frontières.</p>
+    </div>
+    <div class="tabs reveal">
+      <button class="tab on" data-f="all">Tous</button>
+      <button class="tab" data-f="nat">National</button>
+      <button class="tab" data-f="int">Étranger</button>
+    </div>
+    <div class="proj-list" id="projList">
+      <div class="proj reveal" data-t="nat" data-img="https://sotramo.dz/wp-content/uploads/2024/09/Projet01-1024x573.png"><span class="n mono">01</span><h3>Réalisation d'un quai de servitude</h3><div class="meta"><b>Port de Bethioua</b>Entreprise Portuaire d'Arzew</div><div class="meta"><b>Maître d'œuvre</b>Laboratoire d'Études Maritimes</div><div class="dur">16<small>mois</small></div></div>
+      <div class="proj reveal" data-t="nat" data-img="https://sotramo.dz/wp-content/uploads/2024/09/Projet02-1024x528.jpg"><span class="n mono">02</span><h3>Reconstruction du duc d'Albe d'accostage n°01 — Poste B3</h3><div class="meta"><b>Port d'Arzew</b>Entreprise Portuaire d'Arzew</div><div class="meta"><b>Maître d'œuvre</b>Laboratoire d'Études Maritimes</div><div class="dur">07<small>mois</small></div></div>
+      <div class="proj reveal" data-t="nat" data-img="https://sotramo.dz/wp-content/uploads/2024/09/projet03-1024x771.jpg"><span class="n mono">03</span><h3>Protection des zones de rivage de Mostaganem</h3><div class="meta"><b>Côte Est du port</b>DTP Mostaganem</div><div class="meta"><b>Maître d'œuvre</b>Laboratoire d'Études Maritimes</div><div class="dur">15<small>mois</small></div></div>
+      <div class="proj reveal" data-t="nat" data-img="https://sotramo.dz/wp-content/uploads/2024/09/projet04-1024x768.jpg"><span class="n mono">04</span><h3>Réparation des quais « Gênes Est » & « Gabès Nord »</h3><div class="meta"><b>Port d'Oran</b>Entreprise Portuaire d'Oran</div><div class="meta"><b>Maître d'œuvre</b>Laboratoire d'Études Maritimes</div><div class="dur">06<small>mois</small></div></div>
+      <div class="proj reveal" data-t="nat" data-img="https://sotramo.dz/wp-content/uploads/2024/09/projet05-1024x683.png"><span class="n mono">05</span><h3>Élargissement de la digue de torche — passage grue 600 t</h3><div class="meta"><b>Tronçon 50 × 10 m</b>Enrochements 3–6 t</div><div class="meta"><b>Mise à niveau</b>Arrosage & compactage</div><div class="dur">—<small>maintenance</small></div></div>
+      <div class="proj reveal" data-t="int" data-img="https://sotramo.dz/wp-content/uploads/2024/09/MAURITANIE-1024x687.jpg"><span class="n mono">06</span><h3>Rénovation de l'appontement pétrolier de six ducs <span class="flag">Mauritanie</span></h3><div class="meta"><b>Port pétrolier</b>Nouadhibou</div><div class="meta"><b>Type</b>Rénovation / modification</div><div class="dur">16<small>mois</small></div></div>
+    </div>
+  </div>
+  <div class="peek" id="peek"><img alt="" id="peekImg"></div>
+</section>
+
+<!-- FLEET / SERVICES -->
+<section class="sec fleet" id="moyens">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div><span class="eyebrow mono">Services & parc matériel</span><h2>Des moyens<br>à la <span>hauteur.</span></h2></div>
+      <p>Béton, remorquage maritime, concassage : nos installations industrielles sont aussi à votre service. Un parc récent, contrôlé et renouvelé régulièrement.</p>
+    </div>
+    <div class="fleet-grid">
+      <article class="card reveal">
+        <div class="ph"><img src="https://sotramo.dz/wp-content/uploads/2024/09/centrale-a-beton2-1024x768.jpg" alt="Centrale à béton" loading="lazy"></div>
+        <div class="body"><span class="mono" style="color:var(--foam)">ELBA EMS 1000</span><h3>Centrale à béton</h3><p>Malaxeur à arbre horizontal, structure en partie galvanisée, deux silos de stockage.</p>
+          <div class="specs"><div><b>60 m³/h</b><span>Production</span></div><div><b>2 × 100 t</b><span>Silos</span></div><div><b>40 kW</b><span>Puissance</span></div><div><b>57 m³/h</b><span>Béton compacté</span></div></div></div>
+      </article>
+      <article class="card reveal">
+        <div class="ph"><img src="https://sotramo.dz/wp-content/uploads/2024/08/REMORQUEUR-1024x757.png" alt="Remorqueur Ahmed Ben Bella" loading="lazy"></div>
+        <div class="body"><span class="mono" style="color:var(--foam)">Ahmed Ben Bella</span><h3>Remorqueur</h3><p>Coque acier, double motorisation : remorquage, accostage et transport en eaux portuaires.</p>
+          <div class="specs"><div><b>1200 CV</b><span>Puissance</span></div><div><b>12 nœuds</b><span>Vitesse</span></div><div><b>25 m</b><span>Longueur</span></div><div><b>7,50 m</b><span>Largeur</span></div></div></div>
+      </article>
+      <article class="card reveal">
+        <div class="ph"><img src="https://sotramo.dz/wp-content/uploads/2024/09/station-de-concassage.jpg" alt="Station de concassage" loading="lazy"></div>
+        <div class="body"><span class="mono" style="color:var(--foam)">COMEC Dinder · Italie</span><h3>Station de concassage</h3><p>Station fixe à Gdyel-Oran, alimentée par la carrière de Tazdoute.</p>
+          <div class="specs"><div><b>150 t/h</b><span>Capacité</span></div><div><b>0–3 mm</b><span>Granulat min.</span></div><div><b>40–70 mm</b><span>Granulat max.</span></div><div><b>Gdyel</b><span>Implantation</span></div></div></div>
+      </article>
+    </div>
+    <div class="fleet-note reveal">
+      <span class="mono">Parc matériel</span>
+      <p>Pelles, bulls, chargeurs, dumpers, concasseurs mobiles, draguelines, grues à treillis, poids lourds — et tout le matériel spécifique à la démolition, aux travaux maritimes et fluviaux, à la foration et au génie civil.</p>
+    </div>
+  </div>
+</section>
+
+<!-- PEOPLE -->
+<section class="sec">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div><span class="eyebrow mono">Les moyens humains</span><h2>La force d'un<br><span>équipage.</span></h2></div>
+      <p>Cadres comme personnel d'exécution, nos collaborateurs sont reconnus pour leur expertise et leur engagement — une fidélité qui garantit la continuité de notre savoir-faire.</p>
+    </div>
+    <div class="people-grid">
+      <div class="ptile img reveal"><img src="https://sotramo.dz/wp-content/uploads/2024/09/hr1.jpg" alt="Équipes SOTRAMO" loading="lazy"></div>
+      <div class="ptile dark reveal"><span class="mono" style="color:var(--foam)">Ancienneté</span><div><div class="big">20+ ans</div><p>Une grande partie de notre personnel compte plus de vingt ans au sein de l'entreprise.</p></div></div>
+      <div class="ptile foam reveal"><span class="mono">Transmission</span><div><div class="big">30+ ans</div><p>Certains collaborateurs sont avec nous depuis plus de trente ans, garants de notre savoir-faire.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="sec contact" id="contact">
+  <div class="wrap">
+    <span class="eyebrow mono reveal">Contact</span>
+    <h2 class="reveal" style="margin-top:18px">Parlons de<br><em>votre</em> projet.</h2>
+    <div class="contact-grid">
+      <div class="info reveal">
+        <div><span class="mono">Siège social</span><span>Îlot N°27 — ZHUN USTO<br>BP 1004 El Menaouer, Oran</span></div>
+        <a href="tel:+21341822567"><span class="mono">Téléphone</span><span>041 82 25 67 / 68</span></a>
+        <div><span class="mono">Fax</span><span>041 82 25 73 / 72</span></div>
+        <a href="mailto:contact@sotramo.dz"><span class="mono">Email</span><span>contact@sotramo.dz</span></a>
+      </div>
+      <form class="reveal" id="form">
+        <div class="row"><label>Nom complet<input required></label><label>Entreprise<input></label></div>
+        <div class="row"><label>Email<input type="email" required></label><label>Domaine<select><option>Maritime</option><option>Hydraulique</option><option>Génie civil</option><option>Services (béton, remorquage, concassage)</option><option>Autre</option></select></label></div>
+        <label>Votre message<textarea required></textarea></label>
+        <button class="btn btn-fill" type="submit">Envoyer <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M1 8h13m-5-5 5 5-5 5" stroke="currentColor" stroke-width="2"/></svg></button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap foot">
+    <span>© <span id="yr"></span> SOTRAMO — Société des Travaux Maritimes de l'Ouest · Filiale GITRAMA</span>
+    <nav><a href="#activites">Activités</a><a href="#entreprise">Entreprise</a><a href="#realisations">Réalisations</a><a href="#moyens">Moyens</a><a href="#contact">Contact</a></nav>
+  </div>
+</footer>
+
+<script>
+const $=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)];
+$('#yr').textContent=new Date().getFullYear();
+$('#years').textContent=new Date().getFullYear()-1980;
+
+// nav
+const nav=$('#nav'),links=$('#links'),burger=$('#burger');
+burger.onclick=()=>{links.classList.toggle('open');burger.classList.toggle('x')};
+links.querySelectorAll('a').forEach(a=>a.onclick=()=>{links.classList.remove('open');burger.classList.remove('x')});
+
+// waves
+const svg=$('#waves');const N=9;let paths='';for(let i=0;i<N;i++)paths+='<path/>';svg.innerHTML=paths;
+const ps=svg.querySelectorAll('path');
+function waves(t){ps.forEach((p,i)=>{let d='M0 '+(200+i*22);for(let x=0;x<=1440;x+=40){const y=200+i*22+Math.sin(x*.004+t*.0006+i*.6)*(18+i*3)+Math.sin(x*.011-t*.0009)*6;d+=' L'+x+' '+y.toFixed(1)}p.setAttribute('d',d);p.style.opacity=(.08+i*.05).toFixed(2)});requestAnimationFrame(waves)}
+if(!matchMedia('(prefers-reduced-motion:reduce)').matches)requestAnimationFrame(waves);else waves(0);
+
+// scroll: nav, parallax, depth gauge
+const heroBg=$('#heroBg'),fill=$('#fill'),depth=$('#depth');
+addEventListener('scroll',()=>{const y=scrollY,h=document.body.scrollHeight-innerHeight;
+  nav.classList.toggle('solid',y>40);
+  heroBg.style.transform=`scale(1.1) translateY(${y*.25}px)`;
+  const p=Math.min(y/h,1);fill.style.height=p*100+'%';depth.textContent=Math.round(p*42)+' m';
+},{passive:true});
+
+// reveal + counters
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(!e.isIntersecting)return;e.target.classList.add('in');
+  const n=e.target.querySelector('[data-count]');if(n){const end=+n.dataset.count,sup=n.querySelector('sup');const t0=performance.now();
+    (function tick(t){const k=Math.min((t-t0)/1800,1),v=Math.round(end*(1-Math.pow(1-k,4)));n.firstChild.nodeValue=v;if(k<1)requestAnimationFrame(tick)})(t0);}
+  io.unobserve(e.target)}),{threshold:.15});
+$$('.reveal').forEach((el,i)=>{el.style.transitionDelay=(i%4)*80+'ms';io.observe(el)});
+
+// project filter
+$$('.tab').forEach(b=>b.onclick=()=>{$$('.tab').forEach(x=>x.classList.remove('on'));b.classList.add('on');
+  $$('.proj').forEach(p=>p.classList.toggle('hide',b.dataset.f!=='all'&&p.dataset.t!==b.dataset.f))});
+
+// project image peek (pointer devices only)
+const peek=$('#peek'),peekImg=$('#peekImg');
+if(matchMedia('(hover:hover)').matches){
+  $$('.proj').forEach(p=>{p.onmouseenter=()=>{peekImg.src=p.dataset.img;peek.classList.add('on')};p.onmouseleave=()=>peek.classList.remove('on')});
+  addEventListener('mousemove',e=>{peek.style.left=e.clientX+'px';peek.style.top=e.clientY+'px'});
+}
+
+// form (demo)
+$('#form').onsubmit=e=>{e.preventDefault();const b=e.target.querySelector('button');b.textContent='Message envoyé ✓';b.style.background='#fff'};
+</script>
+</body>
+</html>

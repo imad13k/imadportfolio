@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Produit — Fertial</title>
+<meta name="description" content="Fiche produit Fertial : composition, usage et demande de devis.">
+<link rel="stylesheet" href="fonts/fonts.css">
+<link rel="stylesheet" href="assets/site.css">
+<link rel="stylesheet" href="assets/pages.css">
+</head>
+<body>
+
+<header class="hdr" id="hdr">
+  <div class="wrap">
+    <a class="logo" href="index.html"><img src="assets/logo.png" alt="Fertial — accueil" width="340" height="80"></a>
+    <nav class="nav" id="nav">
+      <a href="index.html#societe">La société</a>
+      <a href="index.html#sites">Nos sites</a>
+      <a href="index.html#produits">Produits</a>
+      <a href="devis.html">Demande de devis</a>
+      <a href="index.html#contact">Contact</a>
+    </nav>
+    <a class="cart-link" href="devis.html" aria-label="Ma demande de devis"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 5h10l-1 13H6L5 5h2M9 5a3 3 0 0 1 6 0"/></svg><span id="cartCount" hidden>0</span></a>
+    <button class="burger" id="burger" aria-label="Menu" aria-expanded="false"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
+  </div>
+</header>
+
+<main>
+  <div class="wrap">
+    <div class="crumbs" style="color:var(--muted);margin:28px 0 0"><a href="index.html" style="color:var(--green)">Accueil</a> / <a href="index.html#produits" style="color:var(--green)">Produits</a> / <span id="crumb"></span></div>
+    <section class="pd" id="pd"></section>
+  </div>
+  <section class="wrap related">
+    <h2>Autres produits de la gamme</h2>
+    <div class="grid" id="related"></div>
+    <div class="prev-next" id="pn"></div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="ft-b" style="margin-top:0;border-top:0;padding-top:0"><span>© <span id="yr"></span> EPE Fertial SPA</span><span><a href="index.html">Accueil</a> · <a href="devis.html">Demande de devis</a> · Concept de refonte · projet non officiel</span></div>
+  </div>
+</footer>
+
+<script src="assets/products.js"></script>
+<script src="assets/common.js"></script>
+<script>
+(() => {
+  const $ = s => document.querySelector(s);
+  const P = window.FERTIAL_PRODUCTS, CATS = window.FERTIAL_CATS;
+  const id = new URLSearchParams(location.search).get('id');
+  const i = Math.max(0, P.findIndex(p => p.id === id)), p = P[i];
+  document.title = `${p.n} — ${p.full} | Fertial`;
+  $('#crumb').textContent = p.n;
+  const visual = p.img ? `<img src="assets/${p.img}" alt="Sac ${p.full} Fertial">` : `<span class="drop">${p.f === 'liquide' ? 'UAN' : p.n.split(' ')[0]}</span>`;
+  const nut = p.npk ? [['Azote (N)', p.npk[0], '#139a3c'], ['Phosphore (P₂O₅)', p.npk[1], '#e0a020'], ['Potasse (K₂O)', p.npk[2], '#2f63c9'], ...(p.s ? [['Soufre (S)', p.s, '#b5762c']] : [])] : null;
+  $('#pd').style.setProperty('--c', p.c);
+  $('#pd').innerHTML = `
+    <div class="pd-visual reveal">${visual}</div>
+    <div class="reveal">
+      <span class="cat">${CATS[p.f]}</span>
+      <h1>${p.n}</h1>
+      <div class="fullname">${p.full}</div>
+      <p class="lead">${p.long}</p>
+      ${nut ? `<div class="npk">${nut.map(([l, v, c]) => `<div class="npk-row"><span>${l}</span><span class="t"><i data-w="${v / 35 * 100}" style="background:${c}"></i></span><span class="v">${v} %</span></div>`).join('')}</div>`
+            : `<div class="npk-note">Composition détaillée disponible sur la fiche technique du produit, sur demande.</div>`}
+      <div class="add-row">
+        <div class="qty"><button type="button" id="minus" aria-label="Moins">−</button><input id="qty" type="number" min="1" value="10" aria-label="Quantité en tonnes"><small>t</small><button type="button" id="plus" aria-label="Plus">+</button></div>
+        <button class="btn" id="add">Ajouter au devis</button>
+        <a class="btn ghost" href="devis.html" style="color:var(--forest)">Voir ma demande</a>
+      </div>
+    </div>`;
+  requestAnimationFrame(() => setTimeout(() => document.querySelectorAll('.npk-row i').forEach(el => el.style.width = el.dataset.w + '%'), 300));
+  const q = $('#qty');
+  $('#minus').onclick = () => q.value = Math.max(1, (+q.value || 1) - 1);
+  $('#plus').onclick = () => q.value = (+q.value || 0) + 1;
+  $('#add').onclick = () => { FertialCart.add(p.id, Math.max(1, +q.value || 1), 't'); fertialToast(`${p.n} ajouté à votre demande de devis`); };
+
+  const rel = P.filter(x => x.id !== p.id && x.f === p.f).concat(P.filter(x => x.id !== p.id && x.f !== p.f)).slice(0, 4);
+  $('#related').innerHTML = rel.map(x => `<a class="prod reveal" href="produit.html?id=${x.id}" style="--c:${x.c}">
+      <div class="bag">${x.img ? `<img src="assets/${x.img}" alt="" loading="lazy">` : `<span class="drop">${x.f === 'liquide' ? 'UAN' : x.n.split(' ')[0]}</span>`}</div>
+      <span class="cat">${CATS[x.f]}</span><h3>${x.n}</h3><p>${x.d}</p><span class="formula">${x.fx}</span></a>`).join('');
+  const prev = P[(i - 1 + P.length) % P.length], next = P[(i + 1) % P.length];
+  $('#pn').innerHTML = `<a href="produit.html?id=${prev.id}">← ${prev.n}</a><a href="produit.html?id=${next.id}">${next.n} →</a>`;
+  const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } }));
+  document.querySelectorAll('.reveal:not(.in)').forEach(el => io.observe(el));
+})();
+</script>
+</body>
+</html>

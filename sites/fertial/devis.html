@@ -1,0 +1,169 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Demande de devis — Fertial</title>
+<meta name="description" content="Composez votre demande de devis Fertial : choisissez vos engrais, calculez vos quantités et envoyez votre demande.">
+<link rel="stylesheet" href="fonts/fonts.css">
+<link rel="stylesheet" href="assets/site.css">
+<link rel="stylesheet" href="assets/pages.css">
+</head>
+<body>
+
+<header class="hdr" id="hdr">
+  <div class="wrap">
+    <a class="logo" href="index.html"><img src="assets/logo.png" alt="Fertial — accueil" width="340" height="80"></a>
+    <nav class="nav" id="nav">
+      <a href="index.html#societe">La société</a>
+      <a href="index.html#sites">Nos sites</a>
+      <a href="index.html#produits">Produits</a>
+      <a href="devis.html" aria-current="page">Demande de devis</a>
+      <a href="index.html#contact">Contact</a>
+    </nav>
+    <a class="cart-link" href="devis.html" aria-label="Ma demande de devis"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 5h10l-1 13H6L5 5h2M9 5a3 3 0 0 1 6 0"/></svg><span id="cartCount" hidden>0</span></a>
+    <button class="burger" id="burger" aria-label="Menu" aria-expanded="false"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
+  </div>
+</header>
+
+<main>
+  <section class="phero">
+    <div class="wrap">
+      <div class="crumbs"><a href="index.html">Accueil</a> / Demande de devis</div>
+      <span class="kicker">Espace professionnel</span>
+      <h1>Votre demande de devis.</h1>
+      <p>Agriculteurs, coopératives, distributeurs ou acheteurs à l'export&nbsp;: composez votre commande, estimez vos besoins et envoyez-nous votre demande.</p>
+    </div>
+  </section>
+
+  <div class="wrap quote" id="quote">
+    <div>
+      <div class="box">
+        <h2>1. Mes produits</h2>
+        <p class="sub">Ajustez les quantités ou ajoutez d'autres engrais.</p>
+        <div class="lines" id="lines"></div>
+        <div class="add-more">
+          <select id="pick" aria-label="Ajouter un produit"></select>
+          <button class="btn" id="addPick" type="button">Ajouter</button>
+        </div>
+      </div>
+
+      <div class="box calc-box">
+        <h2>2. Estimer mes besoins</h2>
+        <p class="sub">Indiquez votre surface et la dose recommandée par votre conseiller agronomique.</p>
+        <div class="calc">
+          <label>Surface (hectares)<input type="number" id="ha" min="0" step="0.5" value="10"></label>
+          <label>Dose (kg / ha)<input type="number" id="dose" min="0" step="10" value="200"></label>
+          <label>Conditionnement<select id="bag"><option value="50">Sac de 50 kg</option><option value="25">Sac de 25 kg</option></select></label>
+          <div class="calc-out"><div><b id="tons">2 t</b><br><small id="bags">soit 40 sacs</small></div><button class="btn light" type="button" id="useCalc">Appliquer à…</button></div>
+        </div>
+      </div>
+
+      <div class="box">
+        <h2>3. Mes coordonnées</h2>
+        <p class="sub">Un conseiller commercial vous recontacte avec une offre.</p>
+        <div class="ff" id="ff">
+          <label>Nom et prénom<input id="nom" required autocomplete="name"></label>
+          <label>Société / exploitation<input id="soc" autocomplete="organization"></label>
+          <label>Profil<select id="profil"><option>Agriculteur</option><option>Coopérative agricole</option><option>Distributeur</option><option>Acheteur à l'export</option><option>Industriel</option></select></label>
+          <label>Wilaya<input id="wilaya" required placeholder="Ex. Oran"></label>
+          <label>E-mail<input id="email" type="email" required autocomplete="email"></label>
+          <label>Téléphone<input id="tel" type="tel" required autocomplete="tel"></label>
+          <label class="full">Précisions (livraison, échéance…)<textarea id="notes" rows="3"></textarea></label>
+        </div>
+      </div>
+    </div>
+
+    <aside class="summary" id="summary" aria-live="polite"></aside>
+  </div>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="ft-b" style="margin-top:0;border-top:0;padding-top:0"><span>© <span id="yr"></span> EPE Fertial SPA</span><span><a href="index.html">Accueil</a> · <a href="index.html#produits">Produits</a> · Concept de refonte · projet non officiel</span></div>
+  </div>
+</footer>
+
+<script src="assets/products.js"></script>
+<script src="assets/common.js"></script>
+<script>
+(() => {
+  const $ = s => document.querySelector(s);
+  const P = window.FERTIAL_PRODUCTS, byId = id => P.find(p => p.id === id);
+  const fmt = n => n.toLocaleString('fr-FR', { maximumFractionDigits: 1 }).replace(/ /g, ' ');
+  const mini = p => p.img ? `<img src="assets/${p.img}" alt="">` : `<span>${p.f === 'liquide' ? 'UAN' : p.n.split(' ')[0]}</span>`;
+
+  function renderLines() {
+    const list = FertialCart.get();
+    $('#lines').innerHTML = list.length ? list.map((l, k) => {
+      const p = byId(l.id); if (!p) return '';
+      return `<div class="line" data-k="${k}"><span class="mini">${mini(p)}</span><div><b>${p.n}</b><small>${p.full}</small></div>
+        <div class="ctl"><div class="qty"><button type="button" data-d="-1" aria-label="Moins">−</button><input type="number" min="1" value="${l.qty}" aria-label="Quantité"><button type="button" data-d="1" aria-label="Plus">+</button></div></div>
+        <div class="ctl"><select aria-label="Unité"><option value="t" ${l.unit === 't' ? 'selected' : ''}>tonnes</option><option value="sacs" ${l.unit === 'sacs' ? 'selected' : ''}>sacs</option></select><button class="rm" type="button" aria-label="Retirer">✕</button></div></div>`;
+    }).join('') : '<div class="empty-cart">Votre demande est vide. Ajoutez un produit ci-dessous ou depuis le <a href="index.html#produits" style="color:var(--green);font-weight:700">catalogue</a>.</div>';
+    const inCart = new Set(list.map(l => l.id));
+    $('#pick').innerHTML = P.filter(p => !inCart.has(p.id)).map(p => `<option value="${p.id}">${p.n} — ${p.full}</option>`).join('') || '<option value="">Tous les produits sont ajoutés</option>';
+    $('#useCalc').textContent = list.length ? `Appliquer à ${byId(list[list.length - 1].id).n}` : 'Ajoutez d\'abord un produit';
+    renderSummary();
+  }
+  function update(k, fn) { const list = FertialCart.get(); fn(list[k], list); FertialCart.set(list.filter(Boolean)); renderLines(); }
+  $('#lines').addEventListener('click', e => {
+    const line = e.target.closest('.line'); if (!line) return; const k = +line.dataset.k;
+    if (e.target.closest('.rm')) return update(k, (l, list) => { list[k] = null; });
+    const d = e.target.closest('[data-d]'); if (d) update(k, l => { l.qty = Math.max(1, l.qty + +d.dataset.d); });
+  });
+  $('#lines').addEventListener('change', e => {
+    const line = e.target.closest('.line'); if (!line) return; const k = +line.dataset.k;
+    if (e.target.matches('input')) update(k, l => { l.qty = Math.max(1, +e.target.value || 1); });
+    if (e.target.matches('select')) update(k, l => { l.unit = e.target.value; });
+  });
+  $('#addPick').onclick = () => { const id = $('#pick').value; if (!id) return; FertialCart.add(id, 10, 't'); renderLines(); fertialToast('Produit ajouté'); };
+
+  // needs estimator
+  function calc() {
+    const kg = (+$('#ha').value || 0) * (+$('#dose').value || 0), bag = +$('#bag').value;
+    $('#tons').textContent = `${fmt(kg / 1000)} t`;
+    $('#bags').textContent = `soit ${fmt(Math.ceil(kg / bag))} sacs de ${bag} kg`;
+    return { tons: kg / 1000, bags: Math.ceil(kg / bag) };
+  }
+  ['#ha', '#dose', '#bag'].forEach(s => $(s).addEventListener('input', calc)); calc();
+  $('#useCalc').onclick = () => {
+    const list = FertialCart.get(); if (!list.length) return fertialToast('Ajoutez d\'abord un produit');
+    const { tons, bags } = calc(), last = list[list.length - 1];
+    if (last.unit === 'sacs') last.qty = Math.max(1, bags); else last.qty = Math.max(1, Math.ceil(tons));
+    FertialCart.set(list); renderLines(); fertialToast('Quantité mise à jour');
+  };
+
+  function renderSummary(done) {
+    const s = $('#summary');
+    if (done) {
+      s.innerHTML = `<div class="done"><h2>Demande envoyée</h2><p>Votre référence&nbsp;:</p><span class="ref">${done}</span><p style="color:#cfe0d4">Un conseiller commercial vous recontactera. (Démonstration — aucun envoi réel.)</p><button class="btn light" id="print" type="button">Imprimer le récapitulatif</button><br><br><button class="btn ghost" id="newQ" type="button" style="color:#fff">Nouvelle demande</button></div>`;
+      $('#print').onclick = () => print();
+      $('#newQ').onclick = () => { FertialCart.set([]); renderLines(); };
+      return;
+    }
+    const list = FertialCart.get();
+    const tons = list.reduce((a, l) => a + (l.unit === 't' ? l.qty : l.qty * (+$('#bag').value) / 1000), 0);
+    s.innerHTML = `<h2>Récapitulatif</h2>
+      <div class="sum-rows">${list.length ? list.map(l => `<div><span>${byId(l.id)?.n}</span><b>${fmt(l.qty)} ${l.unit === 't' ? 't' : 'sacs'}</b></div>`).join('') : '<div><span>Aucun produit</span><b>—</b></div>'}</div>
+      <div class="sum-total"><span>Volume estimé</span><b>${fmt(tons)} t</b></div>
+      <button class="btn light" id="send" type="button">Envoyer ma demande</button>
+      <p class="err" id="err" role="alert"></p>
+      <small>Les prix et délais vous sont communiqués dans l'offre commerciale.</small>`;
+    $('#send').onclick = send;
+  }
+  function send() {
+    document.querySelectorAll('.bad').forEach(x => x.classList.remove('bad'));
+    if (!FertialCart.count()) return $('#err').textContent = 'Ajoutez au moins un produit.';
+    const req = ['#nom', '#wilaya', '#email', '#tel'].filter(s => !$(s).value.trim() || (s === '#email' && !/^\S+@\S+\.\S+$/.test($(s).value)));
+    req.forEach(s => $(s).classList.add('bad'));
+    if (req.length) { $('#err').textContent = 'Complétez vos coordonnées (nom, wilaya, e-mail valide, téléphone).'; $(req[0]).focus(); return; }
+    const d = new Date();
+    renderSummary(`DV-${d.getFullYear()}-${String(Math.floor(Math.random() * 1e5)).padStart(5, '0')}`);
+  }
+  document.addEventListener('cart', () => {});
+  renderLines();
+})();
+</script>
+</body>
+</html>

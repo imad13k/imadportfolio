@@ -1,0 +1,493 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Kahrama — Dessalement d'eau de mer et production d'électricité · Arzew</title>
+<meta name="description" content="Kahrama, filiale d'AEC (groupe Sonatrach), exploite à Arzew un complexe de cogénération qui produit chaque jour de l'eau dessalée et de l'électricité pour l'Ouest algérien.">
+<link rel="icon" href="assets/img/logo1.png">
+<link rel="stylesheet" href="fonts/fonts.css">
+<link rel="stylesheet" href="assets/site.css">
+<link rel="stylesheet" href="assets/fx.css">
+<style>
+/* hero */
+.hero{position:relative;min-height:min(90vh,820px);display:flex;align-items:flex-end;color:#fff;overflow:hidden}
+.hero-bg{position:absolute;inset:0}
+.hero-bg img{width:100%;height:100%;object-fit:cover;transform:scale(1.1);animation:kb 22s ease-out forwards}
+@keyframes kb{to{transform:scale(1)}}
+.hero::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(10,37,64,.95) 0%,rgba(10,37,64,.75) 45%,rgba(10,37,64,.25) 100%),linear-gradient(0deg,rgba(10,37,64,.7),transparent 50%)}
+.hero-in{position:relative;z-index:1;width:100%;padding-block:clamp(56px,8vw,100px);display:grid;grid-template-columns:1.2fr .8fr;gap:clamp(24px,4vw,56px);align-items:end}
+.hero .tag{color:var(--cyan)}
+.rise{animation:rise 1s var(--ease) both}
+@keyframes rise{from{opacity:0;transform:translateY(28px)}}
+.hero h1{font-size:clamp(42px,6.4vw,96px);margin:18px 0 20px;max-width:13ch}
+.hero h1 em{font-style:normal;background:linear-gradient(90deg,var(--cyan),#8fe0f5);-webkit-background-clip:text;background-clip:text;color:transparent}
+.hero p{color:#c9d8e6;font-size:clamp(17px,1.5vw,20px);max-width:48ch;margin:0 0 28px}
+.hero-ctas{display:flex;flex-wrap:wrap;gap:12px}
+.hero .btn.ghost{color:#fff}
+.live{display:grid;gap:12px}
+.live-card{background:rgba(255,255,255,.08);backdrop-filter:blur(10px);border:1px solid rgba(255,255,255,.14);border-radius:16px;padding:20px 22px;display:flex;align-items:center;gap:18px}
+.live-card .ic{width:52px;height:52px;border-radius:14px;display:grid;place-items:center;flex:none}
+.live-card.w .ic{background:rgba(60,195,230,.18);color:var(--cyan)}
+.live-card.e .ic{background:rgba(242,169,0,.18);color:var(--amber)}
+.live-card b{display:block;font:700 clamp(28px,3vw,40px)/1 var(--display);letter-spacing:-.03em}
+.live-card div > span{color:#9fb6cc;font-size:14px}
+@media (max-width:900px){ .hero-in{grid-template-columns:1fr} .hero{min-height:0} }
+
+/* stats */
+.stats{display:grid;grid-template-columns:repeat(4,1fr);background:var(--paper);border-bottom:1px solid var(--line)}
+.st{padding:clamp(22px,3vw,36px) clamp(14px,2vw,28px);border-left:1px solid var(--line)}
+.st:first-child{border-left:0}
+.st b{display:block;font:700 clamp(30px,3.6vw,48px)/1 var(--display);color:var(--navy);letter-spacing:-.03em}
+.st b small{font-size:.42em;color:var(--sea);margin-left:4px}
+.st > span{color:var(--muted);font-size:14px}
+@media (max-width:820px){ .stats{grid-template-columns:1fr 1fr} .st:nth-child(3){border-left:0} .st{border-top:1px solid var(--line)} }
+
+/* company */
+.company{display:grid;grid-template-columns:1fr 1fr;gap:clamp(28px,5vw,80px);align-items:center}
+.company-img{position:relative;border-radius:22px;overflow:hidden;aspect-ratio:4/3}
+.company-img img{width:100%;height:100%;object-fit:cover}
+.company h2{font-size:clamp(32px,4.2vw,56px);color:var(--navy);margin:14px 0 18px}
+.company p{color:var(--muted);font-size:17px}
+.chain{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-top:24px}
+.chain .n{background:var(--paper);border:1px solid var(--line);border-radius:12px;padding:10px 14px;font-weight:700;color:var(--navy)}
+.chain .n small{display:block;font:500 12px var(--sans);color:var(--muted)}
+.chain .n.k{background:var(--navy);color:#fff;border-color:var(--navy)}
+.chain .n.k small{color:var(--cyan)}
+.chain .ar{color:var(--sea);font-weight:700;font-size:13px;display:flex;flex-direction:column;align-items:center}
+@media (max-width:900px){ .company{grid-template-columns:1fr} }
+
+/* cogeneration diagram */
+.cogen{display:grid;grid-template-columns:1.35fr .65fr;gap:clamp(18px,3vw,36px);align-items:stretch}
+.diagram{background:var(--navy-2);border:1px solid rgba(255,255,255,.08);border-radius:22px;padding:14px;position:relative}
+.diagram svg{width:100%;height:auto;display:block}
+.flow{fill:none;stroke-width:4;stroke-linecap:round;stroke-dasharray:10 12;animation:flow 1.2s linear infinite}
+.flow.e{stroke:var(--amber)}.flow.h{stroke:#ff7a59}.flow.w{stroke:var(--cyan)}.flow.g{stroke:#9fb6cc}
+@keyframes flow{to{stroke-dashoffset:-44}}
+.node{cursor:pointer}
+.node rect{fill:#13406b;stroke:rgba(255,255,255,.18);stroke-width:1.5;transition:fill .3s,stroke .3s}
+.node text{fill:#fff;font:600 13px var(--sans);pointer-events:none}
+.node text.s{fill:#9fb6cc;font:500 11px var(--sans)}
+.node:hover rect,.node.on rect{fill:#1b5a91;stroke:var(--cyan)}
+.node:focus-visible rect{stroke:var(--amber);stroke-width:3}
+.dim .flow,.dim .node{opacity:.18}
+.dim .flow.keep,.dim .node.keep{opacity:1}
+.d-tools{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:12px}
+.d-tools button{all:unset;cursor:pointer;font:600 13px var(--sans);padding:8px 13px;border-radius:8px;color:#9fb6cc;border:1px solid rgba(255,255,255,.12)}
+.d-tools button[aria-pressed="true"]{background:var(--cyan);color:var(--navy);border-color:var(--cyan)}
+.d-tools button:focus-visible{outline:2px solid var(--amber)}
+.d-info{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);border-radius:22px;padding:26px;display:flex;flex-direction:column}
+.d-info .k{font:700 clamp(30px,3vw,42px)/1 var(--display);color:var(--cyan);letter-spacing:-.03em}
+.d-info .kl{color:#9fb6cc;font-size:13px;margin:6px 0 16px}
+.d-info h3{font-size:22px;margin-bottom:8px}
+.d-info p{color:#c9d8e6;margin:0}
+.d-info .hint{margin-top:auto;padding-top:20px;color:#9fb6cc;font-size:13px}
+.fade{animation:fade .5s var(--ease)}
+@keyframes fade{from{opacity:0;transform:translateY(10px)}}
+@media (max-width:980px){ .cogen{grid-template-columns:1fr} }
+
+/* timeline */
+.tl{display:grid;grid-template-columns:repeat(5,1fr);position:relative;gap:14px}
+.tl::before{content:"";position:absolute;left:0;right:0;top:28px;height:3px;background:var(--line)}
+.tl-bar{position:absolute;left:0;top:28px;height:3px;width:0;background:linear-gradient(90deg,var(--sea),var(--cyan));transition:width 2.4s var(--ease)}
+.timeline.in .tl-bar{width:100%}
+.ev{position:relative;padding-top:58px}
+.ev::before{content:"";position:absolute;left:0;top:18px;width:22px;height:22px;border-radius:50%;background:#fff;border:4px solid var(--sea)}
+.ev b{font:700 22px var(--display);color:var(--navy)}
+.ev h3{font-size:17px;margin:6px 0 6px}
+.ev p{margin:0;color:var(--muted);font-size:14px}
+@media (max-width:900px){
+  .tl{grid-template-columns:1fr;padding-left:34px}
+  .tl::before,.tl-bar{left:10px;right:auto;top:0;bottom:0;width:3px;height:auto}
+  .tl-bar{height:0;bottom:auto;transition:height 2.4s var(--ease)}
+  .timeline.in .tl-bar{width:3px;height:100%}
+  .ev{padding:0 0 26px}.ev::before{left:-34px;top:2px}
+}
+
+/* QHSE */
+.qhse{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.q-list{background:var(--paper);border:1px solid var(--line);border-radius:22px;padding:clamp(22px,3vw,34px)}
+.q-list li{display:flex;gap:14px;padding:12px 0;border-bottom:1px solid var(--line)}
+.q-list li:last-child{border-bottom:0}
+.q-list .ic{width:38px;height:38px;border-radius:10px;background:var(--foam);color:var(--sea);display:grid;place-items:center;flex:none}
+.q-list ul{list-style:none;padding:0;margin:0}
+.iso{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;align-content:start}
+.iso div{background:var(--navy);color:#fff;border-radius:18px;padding:22px;text-align:center;transition:transform .4s var(--ease)}
+.iso div:hover{transform:translateY(-6px)}
+.iso b{display:block;font:700 26px var(--display);color:var(--cyan)}
+.iso span{color:#9fb6cc;font-size:13px}
+.iso p{grid-column:1/-1;color:var(--muted);margin:6px 0 0;font-size:14px}
+@media (max-width:900px){ .qhse{grid-template-columns:minmax(0,1fr)} }
+@media (max-width:520px){ .iso{grid-template-columns:1fr} .iso div{display:flex;align-items:center;gap:16px;text-align:left;padding:16px 20px} .iso br{display:none} }
+
+/* gallery */
+.gal{display:grid;grid-template-columns:repeat(4,1fr);grid-auto-rows:200px;gap:12px}
+.g{all:unset;cursor:zoom-in;border-radius:16px;overflow:hidden;position:relative;background:#cfdbe6}
+.g img{width:100%;height:100%;object-fit:cover;transition:transform 1s var(--ease)}
+.g:hover img{transform:scale(1.07)}
+.g.t{grid-row:span 2}.g.w{grid-column:span 2}
+.g:focus-visible{outline:3px solid var(--amber)}
+@media (max-width:900px){ .gal{grid-template-columns:1fr 1fr;grid-auto-rows:160px} }
+.lb{position:fixed;inset:0;z-index:200;background:rgba(10,37,64,.94);display:grid;place-items:center;padding:24px;opacity:0;pointer-events:none;transition:opacity .35s}
+.lb.open{opacity:1;pointer-events:auto}
+.lb img{max-width:min(1100px,100%);max-height:80vh;border-radius:14px}
+.lb button{position:absolute;width:48px;height:48px;border-radius:50%;border:0;background:#fff;color:var(--navy);font-size:20px;cursor:pointer}
+.lb .x{top:18px;right:18px}.lb .p{left:18px;top:50%}.lb .nx{right:18px;top:50%}
+.lb figcaption{color:#c9d8e6;text-align:center;margin-top:12px;font-size:14px}
+
+/* contact */
+.contact{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+.cc{background:var(--paper);border:1px solid var(--line);border-radius:18px;padding:22px}
+.cc span{display:block;font:600 12px var(--sans);letter-spacing:.12em;text-transform:uppercase;color:var(--sea);margin-bottom:8px}
+.cc b,.cc a{font-weight:600;color:var(--navy)}
+@media (max-width:900px){ .contact{grid-template-columns:1fr 1fr} }
+@media (max-width:520px){ .contact{grid-template-columns:1fr} }
+
+/* opening intro */
+.intro{position:fixed;inset:0;z-index:500;background:radial-gradient(70% 60% at 50% 45%,#13406b,var(--navy) 70%);display:grid;place-items:center;align-content:center;gap:10px;color:#fff;cursor:pointer;transition:transform 1s cubic-bezier(.76,0,.24,1)}
+.intro.out{transform:translateY(-118%)}
+.intro-wave{position:absolute;left:0;top:100%;width:100%;height:110px;fill:var(--navy);margin-top:-1px}
+.intro-art{width:min(60vw,300px);overflow:visible}
+.intro .drop{fill:url(#kDrop);transform-box:fill-box;transform-origin:50% 100%;animation:kDrop .75s cubic-bezier(.55,0,1,.45) both,kSplat .3s ease-in .75s forwards}
+@keyframes kDrop{from{transform:translateY(-190px) scaleY(1.15);opacity:0}25%{opacity:1}to{transform:none}}
+@keyframes kSplat{to{transform:scale(1.5,.2);opacity:0}}
+.intro .rip{fill:none;stroke:var(--cyan);stroke-width:2;opacity:0;transform-box:fill-box;transform-origin:center;animation:kRip 1.3s var(--ease) forwards}
+.intro .r1{animation-delay:.8s}.intro .r2{animation-delay:.98s}.intro .r3{animation-delay:1.16s}
+@keyframes kRip{0%{opacity:1;transform:scale(.2)}100%{opacity:0;transform:scale(3.2)}}
+.intro .bolt{fill:var(--amber);fill-opacity:0;stroke:var(--amber);stroke-width:3;stroke-linejoin:round;stroke-dasharray:420;stroke-dashoffset:420;animation:kBolt .55s ease-out 1.05s forwards,kFill .4s ease-out 1.5s forwards}
+@keyframes kBolt{to{stroke-dashoffset:0}}
+@keyframes kFill{to{fill-opacity:1;filter:drop-shadow(0 0 18px rgba(242,169,0,.85))}}
+.intro .flash{fill:url(#kGlow);opacity:0;animation:kFlash .5s ease-out 1.45s}
+@keyframes kFlash{25%{opacity:1}}
+.intro-logo{height:64px;width:auto;border-radius:8px;opacity:0;transform:translateY(16px);animation:kUp .8s var(--ease) 1.7s forwards}
+.intro-t{margin:0;display:flex;gap:12px;font:600 13px var(--sans);letter-spacing:.3em;text-transform:uppercase;color:#9fb6cc}
+.intro-t span{opacity:0;transform:translateY(10px);animation:kUp .6s var(--ease) forwards}
+.intro-t span:nth-child(1){animation-delay:1.9s}.intro-t span:nth-child(2){animation-delay:2s}.intro-t span:nth-child(3){animation-delay:2.1s}.intro-t span:nth-child(4){animation-delay:2.2s}.intro-t span:nth-child(5){animation-delay:2.3s}
+@keyframes kUp{to{opacity:1;transform:none}}
+.intro-skip{position:absolute;bottom:26px;font-size:12px;color:#6f89a3;letter-spacing:.1em}
+
+/* hero motion */
+.hero-fx{position:absolute;inset:0;z-index:1;pointer-events:none;width:100%;height:100%}
+.hero-in{z-index:2}
+.hero h1 em{background:none}
+.hero h1 em .w > span{background:linear-gradient(90deg,var(--cyan),#8fe0f5);-webkit-background-clip:text;background-clip:text;color:transparent}
+.hero-waves{position:absolute;left:0;right:0;bottom:-1px;height:70px;z-index:2;pointer-events:none;overflow:hidden}
+.hero-waves svg{position:absolute;bottom:0;left:0;width:200%;height:100%;animation:kWave 14s linear infinite}
+.hero-waves svg:nth-child(1){opacity:.45;animation-duration:9s;animation-direction:reverse}
+@keyframes kWave{to{transform:translateX(-50%)}}
+.live-card .ic{animation:kPulse 2.6s ease-in-out infinite}
+.live-card.e .ic{animation-delay:1.3s}
+@keyframes kPulse{0%{box-shadow:0 0 0 0 rgba(60,195,230,.4)}60%,100%{box-shadow:0 0 0 12px rgba(60,195,230,0)}}
+
+
+/* minimal activity grid */
+.mgrid-sec{padding:clamp(72px,9vw,120px) 0 0}
+.mg-head{display:flex;justify-content:space-between;align-items:baseline;padding-bottom:16px;border-bottom:1px solid var(--navy)}
+.mg-head h2{font-size:clamp(26px,3vw,38px);color:var(--navy)}
+.mg-head span{font:500 14px var(--sans);color:var(--muted)}
+.mgrid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr))}
+.mc{position:relative;padding:28px 28px 34px;border-bottom:1px solid var(--line);border-right:1px solid var(--line);display:grid;grid-template-rows:auto 1fr auto;gap:22px;min-height:250px;transition:background .4s}
+.mc:nth-child(3n){border-right:0}
+.mc:nth-child(3n+1){padding-left:0}
+.mc .top{display:flex;justify-content:space-between;font:500 13px var(--sans);color:var(--muted)}
+.mc .top b{font-weight:600;color:var(--sea)}
+.mc h3{font:600 clamp(22px,2.2vw,30px)/1.1 var(--display);color:var(--navy);align-self:end}
+.mc p{margin:0;color:var(--muted);font-size:15px;max-width:34ch}
+.mc:after{content:"";position:absolute;left:0;bottom:-1px;height:2px;width:0;background:var(--sea);transition:width .6s var(--ease)}
+.mc:hover:after{width:100%}
+.mc:hover h3{color:var(--sea)}
+@media (max-width:900px){ .mgrid{grid-template-columns:repeat(2,minmax(0,1fr))} .mc:nth-child(3n){border-right:1px solid var(--line)} .mc:nth-child(2n){border-right:0} .mc:nth-child(3n+1){padding-left:28px} .mc:nth-child(2n+1){padding-left:0} }
+@media (max-width:560px){ .mgrid{grid-template-columns:1fr} .mc{border-right:0!important;padding:22px 0 26px!important;min-height:0} }
+</style>
+</head>
+<body data-tilt=".live-card,.st,.iso div,.cc,.q-list" data-clip=".company-img,.g" data-glow=".dark">
+<div class="intro" id="intro" aria-hidden="true">
+  <svg class="intro-art" viewBox="0 0 240 240">
+    <defs><linearGradient id="kDrop" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#8fe0f5"/><stop offset="1" stop-color="#1b74b8"/></linearGradient><radialGradient id="kGlow"><stop offset="0" stop-color="#ffe08a" stop-opacity=".55"/><stop offset="1" stop-color="#ffe08a" stop-opacity="0"/></radialGradient></defs>
+    <circle class="flash" cx="120" cy="120" r="120"/>
+    <ellipse class="rip r1" cx="120" cy="178" rx="22" ry="6"/><ellipse class="rip r2" cx="120" cy="178" rx="22" ry="6"/><ellipse class="rip r3" cx="120" cy="178" rx="22" ry="6"/>
+    <path class="drop" d="M120 112 C120 112 98 140 98 154 a22 22 0 0 0 44 0 C142 140 120 112 120 112Z"/>
+    <path class="bolt" d="M134 30 L96 116 H122 L104 196 L152 98 H126 L146 30Z"/>
+  </svg>
+  <img class="intro-logo" src="assets/img/logo1.png" alt="">
+  <p class="intro-t"><span>Eau</span><span>·</span><span>Énergie</span><span>·</span><span>Arzew</span></p>
+  <span class="intro-skip">Cliquer pour passer</span>
+  <svg class="intro-wave" viewBox="0 0 1440 110" preserveAspectRatio="none"><path d="M0 0H1440V40C1200 110 960 110 720 60S240 0 0 50Z"/></svg>
+</div>
+<script>
+(() => {
+  const el = document.getElementById('intro');
+  let seen = null; try { seen = sessionStorage.getItem('k-intro'); } catch (e) {}
+  if (seen || matchMedia('(prefers-reduced-motion: reduce)').matches) { el.remove(); return; }
+  document.documentElement.classList.add('fx-hold');
+  const done = () => {
+    if (el.classList.contains('out')) return;
+    el.classList.add('out');
+    document.documentElement.classList.remove('fx-hold');
+    try { sessionStorage.setItem('k-intro', '1'); } catch (e) {}
+    setTimeout(() => el.remove(), 1100);
+  };
+  setTimeout(done, 3100);
+  el.addEventListener('click', done);
+  addEventListener('keydown', e => { if (e.key === 'Escape') done(); });
+})();
+</script>
+
+<header class="hdr" id="hdr">
+  <div class="wrap">
+    <a class="logo" href="index.html"><img src="assets/img/logo1.png" alt="Kahrama" width="160" height="70"><span>Kahrama<small>Dessalement &amp; électricité · Arzew</small></span></a>
+    <nav class="nav" id="nav">
+      <a href="#entreprise">L'entreprise</a>
+      <a href="#cogeneration">Cogénération</a>
+      <a href="procede.html">Le procédé</a>
+      <a href="#qhse">QHSE</a>
+      <a href="#galerie">Galerie</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <a class="btn" href="#contact">Nous contacter</a>
+    <button class="burger" id="burger" aria-label="Menu" aria-expanded="false"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
+  </div>
+</header>
+
+<main>
+  <section class="hero">
+    <div class="hero-bg" data-parallax=".3"><img src="assets/img/g7.jpg" alt="Le complexe Kahrama à Arzew"></div>
+    <canvas class="hero-fx" id="heroFx" aria-hidden="true"></canvas>
+    <div class="hero-waves" aria-hidden="true">
+      <svg viewBox="0 0 2880 70" preserveAspectRatio="none"><path fill="#3cc3e6" d="M0 34C240 12 480 12 720 34S1200 56 1440 34 1920 12 2160 34 2640 56 2880 34V70H0Z"/></svg>
+      <svg viewBox="0 0 2880 70" preserveAspectRatio="none"><path fill="#ffffff" d="M0 44C240 22 480 22 720 44S1200 66 1440 44 1920 22 2160 44 2640 66 2880 44V70H0Z"/></svg>
+    </div>
+    <div class="wrap hero-in">
+      <div class="rise">
+        <span class="tag">Filiale d'AEC · Groupe Sonatrach</span>
+        <h1 data-split="150">L'eau et l'énergie de l'Ouest, <em>produites ensemble.</em></h1>
+        <p>Depuis 2006, le complexe de cogénération Kahrama transforme le gaz naturel en électricité et utilise sa chaleur pour dessaler l'eau de mer, à Arzew, à 40 km d'Oran.</p>
+        <div class="hero-ctas"><a class="btn amber" href="#cogeneration">Comprendre la cogénération</a><a class="btn ghost" href="procede.html">Visiter le procédé</a></div>
+      </div>
+      <div class="live rise" style="animation-delay:.25s">
+        <div class="live-card w"><span class="ic"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3s-6 7-6 11a6 6 0 0 0 12 0c0-4-6-11-6-11z"/></svg></span><div><b><span data-n="78634" >78 634</span> m³</b><span>d'eau produite par jour</span></div></div>
+        <div class="live-card e"><span class="ic"><svg width="26" height="26" viewBox="0 0 24 24" fill="currentColor"><path d="M13 2L4 14h7l-1 8 9-12h-7z"/></svg></span><div><b><span data-n="7433">7 433</span> MWh</b><span>d'électricité produite par jour</span></div></div>
+      </div>
+    </div>
+  </section>
+
+  <div class="stats">
+    <div class="st reveal"><b><span data-n="343">343</span><small>MW</small></b><span>capacité électrique nominale</span></div>
+    <div class="st reveal"><b><span data-n="88880">88 880</span><small>m³/j</small></b><span>capacité nominale en eau</span></div>
+    <div class="st reveal"><b>3 × <span data-n="114">114</span><small>MW</small></b><span>turbines à gaz</span></div>
+    <div class="st reveal"><b><span data-n="200">200</span></b><span>collaborateurs</span></div>
+  </div>
+
+
+  <section class="mgrid-sec" aria-labelledby="mgTitle">
+    <div class="wrap">
+      <div class="mg-head"><h2 id="mgTitle">Nos activités</h2><span>(06)</span></div>
+      <div class="mgrid">
+        <article class="mc reveal"><div class="top"><span>01</span><b>3 × 1 200 m³/h</b></div><h3>Dessalement</h3><p>Trois dessaleurs MSF à 17 étages transforment l'eau de mer en eau douce.</p></article>
+        <article class="mc reveal"><div class="top"><span>02</span><b>3 × 114 MW</b></div><h3>Électricité</h3><p>Trois turbines à gaz alimentent le réseau national 220 kV.</p></article>
+        <article class="mc reveal"><div class="top"><span>03</span><b>1 combustible</b></div><h3>Cogénération</h3><p>La chaleur des turbines produit la vapeur qui sert au dessalement.</p></article>
+        <article class="mc reveal"><div class="top"><span>04</span><b>68 880 m³/j</b></div><h3>Eau potable</h3><p>Eau traitée livrée aux bacs de stockage de la SEOR pour la région d'Oran.</p></article>
+        <article class="mc reveal"><div class="top"><span>05</span><b>20 000 m³/j</b></div><h3>Eau industrielle</h3><p>Eau distillée distribuée par le réseau DRIZ à la zone industrielle d'Arzew.</p></article>
+        <article class="mc reveal"><div class="top"><span>06</span><b>3 normes</b></div><h3>QHSE</h3><p>Système de management intégré aligné sur ISO 9001, 14001 et 45001.</p></article>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec" id="entreprise">
+    <div class="wrap company">
+      <figure class="company-img reveal" style="margin:0"><img src="assets/img/siege.jpg" alt="Siège de la Direction générale de Kahrama à Béthioua"></figure>
+      <div class="reveal">
+        <span class="tag">L'entreprise</span>
+        <h2>Un complexe au service de l'eau et de l'énergie.</h2>
+        <p>Kahrama est une société par actions dont l'objet est la réalisation, l'exploitation et la gestion d'une usine de dessalement d'eau de mer combinée à une centrale de conversion du gaz naturel en électricité, ainsi que la commercialisation de l'eau et de l'électricité produites.</p>
+        <p>Le complexe, réalisé par le groupement japonais IHI / Itochu, se trouve dans la zone industrielle d'Arzew, entre les complexes GL2 et GL3, à proximité du port industriel de Béthioua.</p>
+        <div class="chain" aria-label="Actionnariat">
+          <span class="n">Sonatrach<small>Groupe</small></span><span class="ar">100 %<span>→</span></span>
+          <span class="n">AEC<small>Algerian Energy Company</small></span><span class="ar">100 %<span>→</span></span>
+          <span class="n k">Kahrama<small>Capital 20,66 Mds DA</small></span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec dark" id="cogeneration">
+    <div class="wrap">
+      <div class="head reveal">
+        <div><span class="tag">Cogénération</span><h2 data-split>Un seul combustible, <span>deux productions.</span></h2></div>
+        <p>Le gaz naturel fait tourner les turbines qui produisent l'électricité&nbsp;; la chaleur des gaz d'échappement produit la vapeur qui dessale l'eau de mer. Cliquez sur une étape.</p>
+      </div>
+      <div class="cogen reveal">
+        <div class="diagram">
+          <div class="d-tools" role="group" aria-label="Afficher">
+            <button aria-pressed="true" data-v="all">Tout le complexe</button><button aria-pressed="false" data-v="e">Électricité</button><button aria-pressed="false" data-v="w">Eau</button>
+          </div>
+          <svg id="dg" viewBox="0 0 780 420" role="img" aria-label="Schéma de cogénération du complexe Kahrama">
+            <path class="flow g" data-k="e w" d="M140 70 H200"/>
+            <path class="flow e" data-k="e" d="M330 70 H420"/>
+            <path class="flow e" data-k="e" d="M550 70 H640"/>
+            <path class="flow h" data-k="w" d="M265 100 V180"/>
+            <path class="flow h" data-k="w" d="M330 215 H420"/>
+            <path class="flow w" data-k="w" d="M500 245 V320 H560"/>
+            <path class="flow w" data-k="w" d="M470 245 V380 H420"/>
+            <path class="flow w" data-k="w" d="M75 290 V215 H200" style="stroke-dasharray:4 10"/>
+          </svg>
+        </div>
+        <aside class="d-info" id="dInfo" aria-live="polite"></aside>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec">
+    <div class="wrap">
+      <div class="head reveal">
+        <div><span class="tag">Historique</span><h2 data-split>Vingt ans <span>d'exploitation.</span></h2></div>
+        <p>De la création de la société à la reprise de l'exploitation du complexe par ses propres équipes.</p>
+      </div>
+      <div class="timeline reveal" id="timeline">
+        <div class="tl">
+          <span class="tl-bar"></span>
+          <div class="ev"><b>2002</b><h3>Création</h3><p>Naissance de Kahrama le 29 janvier 2002.</p></div>
+          <div class="ev"><b>2004</b><h3>Premiers essais</h3><p>Premiers essais de mise en service le 30 août 2004.</p></div>
+          <div class="ev"><b>2006</b><h3>Entrée en production</h3><p>Réception provisoire et démarrage de la production le 19 février 2006.</p></div>
+          <div class="ev"><b>2006–2018</b><h3>Exploitation confiée</h3><p>Le complexe est exploité par la société omanaise SOGEX pendant douze ans.</p></div>
+          <div class="ev"><b>2019</b><h3>Reprise</h3><p>Kahrama reprend l'exploitation du complexe le 1<sup>er</sup> juin 2019.</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec" id="qhse" style="padding-top:0">
+    <div class="wrap">
+      <div class="head reveal">
+        <div><span class="tag">Qualité, santé, sécurité, environnement</span><h2 data-split>Produire de façon <span>responsable.</span></h2></div>
+        <p>Kahrama inscrit son développement dans une démarche QHSE intégrée, au service de ses clients et de son environnement.</p>
+      </div>
+      <div class="qhse">
+        <div class="q-list reveal"><ul>
+          <li><span class="ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg></span><span>Accroître la satisfaction des clients et assurer la conformité des produits.</span></li>
+          <li><span class="ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16v16H4zM8 9h8M8 13h8M8 17h5"/></svg></span><span>Se conformer aux exigences légales et réglementaires applicables.</span></li>
+          <li><span class="ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-11V5l-8-3-8 3v6c0 7 8 11 8 11z"/></svg></span><span>Préserver l'environnement&nbsp;: prévention des pollutions, sobriété en ressources et maîtrise des déchets.</span></li>
+          <li><span class="ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="7" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/></svg></span><span>Protéger la santé et la sécurité du personnel et des tiers.</span></li>
+        </ul></div>
+        <div class="iso reveal">
+          <div><b>9001</b><span>ISO 9001:2015<br>Qualité</span></div>
+          <div><b>14001</b><span>ISO 14001:2015<br>Environnement</span></div>
+          <div><b>45001</b><span>ISO 45001:2018<br>Santé &amp; sécurité</span></div>
+          <p>Les trois référentiels du système de management intégré adopté par Kahrama.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec" id="galerie" style="padding-top:0">
+    <div class="wrap">
+      <div class="head reveal"><div><span class="tag">Galerie</span><h2 data-split>Au cœur du <span>complexe.</span></h2></div></div>
+      <div class="gal reveal" id="gal"></div>
+    </div>
+  </section>
+
+  <section id="contact">
+    <div class="wrap">
+      <div class="head reveal"><div><span class="tag">Contact</span><h2 data-split>Nous <span>joindre.</span></h2></div><a class="btn" href="https://www.google.com/maps/search/Kahrama%20Bethioua%20Oran" target="_blank" rel="noopener">Itinéraire ↗</a></div>
+      <div class="contact">
+        <div class="cc reveal"><span>Adresse</span><b>Rue Aizi Benyebka, BP 68<br>31210 Béthioua, Oran</b></div>
+        <div class="cc reveal"><span>Téléphone</span><a href="tel:+21341698641">+213 41 69 86 41</a></div>
+        <div class="cc reveal"><span>Fax</span><b>+213 41 69 86 44</b></div>
+        <div class="cc reveal"><span>E-mail</span><a href="mailto:contact@kahrama.dz">contact@kahrama.dz</a></div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<div class="lb" id="lb" role="dialog" aria-modal="true" aria-label="Photo"><button class="x" id="lbX" aria-label="Fermer">✕</button><button class="p" id="lbP" aria-label="Photo précédente">‹</button><figure style="margin:0"><img id="lbImg" alt=""><figcaption id="lbCap"></figcaption></figure><button class="nx" id="lbN" aria-label="Photo suivante">›</button></div>
+
+<footer>
+  <div class="wrap">
+    <div class="ft">
+      <a class="logo" href="index.html"><img src="assets/img/logo1.png" alt="Kahrama" width="160" height="70"></a>
+      <nav><a href="#entreprise">L'entreprise</a><a href="#cogeneration">Cogénération</a><a href="procede.html">Le procédé</a><a href="#qhse">QHSE</a><a href="#contact">Contact</a></nav>
+    </div>
+    <div class="ft-b"><span>© <span id="yr"></span> Kahrama SPA — Filiale d'AEC, groupe Sonatrach</span><span>Concept de refonte · projet non officiel</span></div>
+  </div>
+</footer>
+
+<script src="assets/common.js"></script>
+<script>
+(() => {
+  const $ = s => document.querySelector(s);
+  // ---------- cogeneration diagram ----------
+  const N = [
+    { id: 'gaz', x: 10, y: 40, t: 'Gaz naturel', s: 'réseau GRTG', k: 'e w', big: 'GRTG', kl: 'réseau de transport du gaz', d: 'Le gaz arrive du réseau de transport, puis passe au poste gaz : filtration, préchauffage, détente et comptage.' },
+    { id: 'turb', x: 200, y: 40, t: '3 turbines à gaz', s: '114 MW chacune', k: 'e w', big: '3 × 114 MW', kl: 'turbines à gaz', d: 'Un compresseur axial à 17 étages comprime l\'air, le mélange air-gaz brûle, et les gaz détendus font tourner la turbine accouplée à l\'alternateur.' },
+    { id: 'transfo', x: 420, y: 40, t: 'Transformateur', s: '14,5 / 220 kV', k: 'e', big: '220 kV', kl: 'tension de raccordement', d: 'Le courant produit est élevé à 220 kV avant de rejoindre le poste blindé du complexe.' },
+    { id: 'reseau', x: 640, y: 40, t: 'Réseau', s: 'national', k: 'e', big: '7 433 MWh', kl: 'd\'électricité produite par jour', d: 'L\'électricité transite par le réseau 220 kV géré par le centre national de conduite de Sonelgaz.' },
+    { id: 'chaud', x: 200, y: 185, t: 'Chaudières', s: 'de récupération', k: 'w', big: 'Chaleur', kl: 'récupérée des gaz d\'échappement', d: 'La chaleur des gaz d\'échappement des turbines produit la vapeur qui alimente l\'usine de dessalement : c\'est le principe de la cogénération.' },
+    { id: 'msf', x: 420, y: 185, t: '3 dessaleurs MSF', s: '17 étages · 1 200 m³/h', k: 'w', big: '3 × 1 200 m³/h', kl: 'capacité nominale des dessaleurs', d: 'L\'eau de mer s\'évapore instantanément (« flash ») d\'étage en étage sous pression décroissante, puis se condense en eau distillée.' },
+    { id: 'mer', x: 10, y: 290, t: 'Eau de mer', s: 'prise & filtration', k: 'w', big: 'Prise d\'eau', kl: 'filtration et chloration', d: 'Un canal d\'amenée conduit l\'eau de mer vers la station de pompage, équipée de filtres et d\'une chloration par électrolyseur.' },
+    { id: 'seor', x: 560, y: 290, t: 'SEOR', s: '68 880 m³/j · usage domestique', k: 'w', big: '68 880 m³/j', kl: 'vers le réseau de SEOR', d: 'La plus grande partie de l\'eau est traitée puis envoyée vers les bacs de stockage de SEOR, pour les habitants de la région d\'Oran.' },
+    { id: 'indus', x: 230, y: 350, t: 'Industrie', s: '20 000 m³/j · eau distillée', k: 'w', big: '20 000 m³/j', kl: 'vers les complexes industriels', d: 'Une partie de l\'eau distillée part par le réseau DRIZ vers les complexes de la zone industrielle d\'Arzew.' },
+  ];
+  const svg = $('#dg');
+  svg.insertAdjacentHTML('beforeend', N.map(n => `<g class="node" data-id="${n.id}" data-k="${n.k}" tabindex="0" role="button" aria-label="${n.t}">
+    <rect x="${n.x}" y="${n.y}" width="${n.id === 'seor' || n.id === 'indus' ? 190 : n.id === 'msf' ? 160 : 130}" height="60" rx="12"/>
+    <text x="${n.x + 14}" y="${n.y + 26}">${n.t}</text><text class="s" x="${n.x + 14}" y="${n.y + 44}">${n.s}</text></g>`).join(''));
+  function info(id) {
+    const n = N.find(x => x.id === id);
+    svg.querySelectorAll('.node').forEach(g => g.classList.toggle('on', g.dataset.id === id));
+    $('#dInfo').innerHTML = `<div class="fade"><div class="k">${n.big}</div><div class="kl">${n.kl}</div><h3>${n.t}</h3><p>${n.d}</p></div><p class="hint">Tout le procédé est piloté depuis la salle de contrôle par un système de contrôle distribué (DCS). <a href="procede.html" style="color:var(--cyan);font-weight:600">Voir le procédé en détail →</a></p>`;
+  }
+  svg.addEventListener('click', e => { const g = e.target.closest('.node'); if (g) info(g.dataset.id); });
+  svg.addEventListener('keydown', e => { const g = e.target.closest('.node'); if (g && (e.key === 'Enter' || e.key === ' ')) { e.preventDefault(); info(g.dataset.id); } });
+  document.querySelector('.d-tools').onclick = e => {
+    const b = e.target.closest('button'); if (!b) return;
+    document.querySelectorAll('.d-tools button').forEach(x => x.setAttribute('aria-pressed', x === b));
+    const v = b.dataset.v;
+    svg.classList.toggle('dim', v !== 'all');
+    svg.querySelectorAll('[data-k]').forEach(el => el.classList.toggle('keep', v === 'all' || el.dataset.k.split(' ').includes(v)));
+    info(v === 'e' ? 'reseau' : v === 'w' ? 'msf' : 'turb');
+  };
+  info('turb');
+
+  // ---------- gallery + lightbox ----------
+  const G = [['g7.jpg', 'Turbines et cheminées du complexe', 't'], ['dessalement.jpg', 'Unité de dessalement', 'w'], ['g6.jpg', 'Bac de stockage d\'eau', ''], ['g2.jpg', 'Laboratoire d\'analyses', ''], ['g5.jpg', 'Structures du complexe', 't'], ['electricite.jpg', 'Centrale électrique', ''], ['g4.jpg', 'Équipes en intervention', ''], ['g3.jpg', 'Laboratoire', 'w'], ['slide2.jpg', 'Le complexe face au port', '']];
+  $('#gal').innerHTML = G.map(([f, c, cls], i) => `<button class="g ${cls}" data-i="${i}" aria-label="Agrandir : ${c}"><img src="assets/img/${f}" alt="${c}" loading="lazy"></button>`).join('');
+  let cur = 0;
+  const lb = $('#lb');
+  const show = i => { cur = (i + G.length) % G.length; $('#lbImg').src = 'assets/img/' + G[cur][0]; $('#lbImg').alt = G[cur][1]; $('#lbCap').textContent = G[cur][1]; };
+  $('#gal').onclick = e => { const b = e.target.closest('.g'); if (!b) return; show(+b.dataset.i); lb.classList.add('open'); $('#lbX').focus(); };
+  const close = () => lb.classList.remove('open');
+  $('#lbX').onclick = close; $('#lbP').onclick = () => show(cur - 1); $('#lbN').onclick = () => show(cur + 1);
+  lb.onclick = e => { if (e.target === lb) close(); };
+  addEventListener('keydown', e => { if (!lb.classList.contains('open')) return; if (e.key === 'Escape') close(); if (e.key === 'ArrowLeft') show(cur - 1); if (e.key === 'ArrowRight') show(cur + 1); });
+  // ---------- hero: rising bubbles and energy sparks ----------
+  const cv = $('#heroFx'), cx = cv.getContext('2d');
+  if (!matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    let W, H, run = true;
+    const dpr = Math.min(devicePixelRatio || 1, 2);
+    const size = () => { W = cv.offsetWidth; H = cv.offsetHeight; cv.width = W * dpr; cv.height = H * dpr; cx.setTransform(dpr, 0, 0, dpr, 0, 0); };
+    const spawn = y => { const spark = Math.random() < .18; return { x: Math.random() * W, y: y === undefined ? H + 10 : y, r: 1.5 + Math.random() * 4, v: spark ? 1.6 + Math.random() : .3 + Math.random() * .8, a: Math.random() * 6.28, spark }; };
+    size();
+    const parts = Array.from({ length: Math.round(W / 22) }, () => spawn(Math.random() * H));
+    addEventListener('resize', size);
+    const draw = () => {
+      if (!run || document.hidden) return;
+      cx.clearRect(0, 0, W, H);
+      for (const p of parts) {
+        p.y -= p.v; p.a += .02;
+        const x = p.x + Math.sin(p.a) * (p.spark ? 0 : 8);
+        if (p.spark) { p.x += p.v * 1.4; cx.strokeStyle = 'rgba(242,169,0,.6)'; cx.lineWidth = 1.4; cx.beginPath(); cx.moveTo(x, p.y); cx.lineTo(x - 14, p.y + 10); cx.stroke(); }
+        else { cx.strokeStyle = 'rgba(143,224,245,.5)'; cx.lineWidth = 1; cx.beginPath(); cx.arc(x, p.y, p.r, 0, 6.28); cx.stroke(); }
+        if (p.y < -20 || p.x > W + 20) Object.assign(p, spawn());
+      }
+      requestAnimationFrame(draw);
+    };
+    new IntersectionObserver(([e]) => { const was = run; run = e.isIntersecting; if (run && !was) requestAnimationFrame(draw); }).observe(cv);
+    document.addEventListener('visibilitychange', () => { if (!document.hidden && run) requestAnimationFrame(draw); });
+    requestAnimationFrame(draw);
+  }
+  kReveal();
+})();
+</script>
+<script src="assets/fx.js"></script>
+</body>
+</html>

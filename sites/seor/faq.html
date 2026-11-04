@@ -1,0 +1,143 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Questions fréquentes — SEOR</title>
+<meta name="description" content="Factures, compteur, coupures, raccordement : les réponses aux questions les plus fréquentes des abonnés SEOR.">
+<link rel="stylesheet" href="fonts/fonts.css">
+<link rel="stylesheet" href="assets/site.css">
+<link rel="stylesheet" href="assets/pages.css">
+</head>
+<body>
+
+<header class="hdr" id="hdr">
+  <div class="wrap">
+    <a class="brand" href="index.html">
+      <span class="logo-badge"><img src="assets/logo-seor.png" alt="SEOR — accueil" width="180" height="72"></span>
+      <small class="brand-sub">Eau &amp; Assainissement<br>d'Oran</small>
+    </a>
+    <nav class="nav" id="nav">
+      <a href="index.html#cycle">Le cycle de l'eau</a>
+      <a href="index.html#chiffres">Chiffres</a>
+      <a href="signaler.html">Signaler</a>
+      <a href="faq.html" aria-current="page">FAQ</a>
+      <a href="index.html#contact">Contact</a>
+    </nav>
+    <a class="btn dark" href="index.html#espace">Espace client</a>
+    <button class="burger" id="burger" aria-label="Menu" aria-expanded="false"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
+  </div>
+</header>
+
+<main>
+  <section class="page-hero">
+    <div class="wrap">
+      <div class="crumbs"><a href="index.html">Accueil</a> / Questions fréquentes</div>
+      <span class="eyebrow">Centre d'aide</span>
+      <h1>Comment pouvons-nous vous aider&nbsp;?</h1>
+      <div class="search">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M21 21l-5-5"/></svg>
+        <input id="q" type="search" placeholder="Ex. facture, fuite, compteur, raccordement…" aria-label="Rechercher dans la FAQ" autocomplete="off">
+      </div>
+    </div>
+  </section>
+
+  <div class="wrap faq-wrap">
+    <div class="cats" id="cats"></div>
+    <div>
+      <div class="qa-list" id="list" aria-live="polite"></div>
+      <p class="demo">Réponses indicatives, rédigées pour ce concept de refonte. Pour un cas précis, contactez votre agence.</p>
+    </div>
+  </div>
+
+  <section class="wrap">
+    <div class="quiz reveal">
+      <div>
+        <span class="eyebrow">Éco-quiz</span>
+        <h2>Connaissez-vous l'eau d'Oran&nbsp;?</h2>
+        <p>Cinq questions, avec les vrais chiffres de SEOR. Testez-vous en 1 minute.</p>
+      </div>
+      <div class="q-box" id="quiz"></div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="ft-bottom" style="margin-top:0;border-top:0;padding-top:0"><span>© <span id="yr"></span> SEOR — Oran</span><span><a href="index.html">Accueil</a> · <a href="signaler.html">Signaler</a> · Concept de refonte · projet non officiel</span></div>
+  </div>
+</footer>
+
+<script src="assets/common.js"></script>
+<script>
+(() => {
+  const $ = s => document.querySelector(s);
+  const esc = s => s.replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
+  const FAQ = [
+    ['Facture & paiement', 'Comment payer ma facture en ligne ?', 'Depuis l\'espace e-paiement ou l\'application SEOR, munissez-vous de votre référence client (indiquée sur votre facture) et réglez par carte bancaire. Un reçu de paiement vous est délivré à la fin de l\'opération.'],
+    ['Facture & paiement', 'Ma facture me semble anormalement élevée, que faire ?', 'Vérifiez d\'abord l\'index de votre compteur et comparez-le à celui de la facture. Une hausse soudaine signale souvent une fuite après compteur : fermez tous les robinets et regardez si le compteur continue de tourner. Si le doute persiste, contactez votre agence avec votre facture.'],
+    ['Facture & paiement', 'Où trouver ma référence client ?', 'Votre référence client figure en haut de chacune de vos factures. Elle vous est demandée pour le paiement en ligne et pour toute réclamation.'],
+    ['Compteur', 'Comment détecter une fuite chez moi ?', 'Fermez tous les points d\'eau, relevez l\'index du compteur, puis attendez une heure sans utiliser d\'eau. Si l\'index a changé, il y a probablement une fuite sur votre installation intérieure.'],
+    ['Compteur', 'Qui est responsable de mon compteur ?', 'Le compteur est un équipement du réseau. Vous devez toutefois le garder accessible et le protéger du gel et des chocs. En cas de dégât, signalez-le pour qu\'il soit contrôlé.'],
+    ['Compteur', 'Mon compteur est cassé ou illisible', 'Utilisez le formulaire « Signaler un incident » en choisissant « Compteur endommagé ». Une équipe viendra le vérifier et, si besoin, le remplacer.'],
+    ['Coupures & qualité', 'Je n\'ai plus d\'eau, que faire ?', 'Vérifiez d\'abord si vos voisins sont touchés et si une coupure programmée a été annoncée. Si ce n\'est pas le cas, signalez la coupure en ligne en précisant votre adresse.'],
+    ['Coupures & qualité', 'Mon eau est trouble après une coupure', 'Après une remise en eau, l\'eau peut être légèrement trouble. Laissez couler le robinet d\'eau froide quelques minutes. Si le problème persiste ou s\'accompagne d\'une odeur, signalez-le.'],
+    ['Coupures & qualité', 'L\'eau du robinet est-elle contrôlée ?', 'Oui. L\'eau produite et distribuée fait l\'objet de contrôles réguliers tout au long du réseau, du point de production jusqu\'aux réservoirs.'],
+    ['Abonnement', 'Comment demander un nouveau branchement ?', 'Rendez-vous dans votre agence commerciale avec une pièce d\'identité et un justificatif d\'occupation du logement. Une étude technique précède la réalisation du branchement.'],
+    ['Abonnement', 'Je déménage, comment résilier ou transférer mon abonnement ?', 'Prévenez votre agence avant votre départ pour qu\'un relevé de compteur soit effectué. La facture de clôture sera établie à partir de cet index.'],
+    ['Assainissement', 'Un regard d\'égout déborde dans ma rue', 'Signalez-le en choisissant « Débordement d\'égout ». N\'ouvrez jamais un regard vous-même : les gaz et les eaux usées présentent un danger.'],
+    ['Assainissement', 'Que deviennent les eaux usées ?', 'Elles sont collectées par le réseau d\'assainissement puis traitées dans les stations d\'épuration d\'El Karma et de Cap Falcon avant leur retour au milieu naturel.'],
+  ];
+  const cats = ['Toutes', ...new Set(FAQ.map(f => f[0]))];
+  let cat = 'Toutes';
+  function renderCats() {
+    $('#cats').innerHTML = cats.map(c => `<button class="cat" aria-pressed="${c === cat}" data-c="${c}">${c}<span>${c === 'Toutes' ? FAQ.length : FAQ.filter(f => f[0] === c).length}</span></button>`).join('');
+  }
+  function render() {
+    const q = $('#q').value.trim().toLowerCase();
+    const norm = s => s.toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '');
+    const nq = norm(q);
+    const hits = FAQ.filter(([c, t, a]) => (cat === 'Toutes' || c === cat) && (!nq || norm(t + ' ' + a).includes(nq)));
+    const hl = s => { if (!q) return esc(s); const i = norm(s).indexOf(nq); return i < 0 ? esc(s) : esc(s.slice(0, i)) + '<mark>' + esc(s.slice(i, i + q.length)) + '</mark>' + esc(s.slice(i + q.length)); };
+    $('#list').innerHTML = hits.length ? hits.map(([c, t, a], i) => `<details${q && i === 0 ? ' open' : ''}><summary><span><span class="tagc">${c}</span>${hl(t)}</span><i>+</i></summary><div class="a">${hl(a)}</div></details>`).join('')
+      : `<div class="none">Aucune réponse pour « ${esc(q)} ». <a href="signaler.html" style="color:var(--sea);font-weight:600">Signaler un problème</a> ou <a href="index.html#contact" style="color:var(--sea);font-weight:600">nous écrire</a>.</div>`;
+  }
+  $('#cats').onclick = e => { const b = e.target.closest('.cat'); if (!b) return; cat = b.dataset.c; renderCats(); render(); };
+  $('#q').oninput = render;
+  renderCats(); render();
+
+  // quiz based on SEOR's published figures
+  const Q = [
+    ['D\'où vient l\'essentiel de l\'eau distribuée à Oran ?', ['Des barrages', 'Du dessalement de l\'eau de mer', 'Des puits'], 1, 'Les grandes stations de dessalement du littoral fournissent l\'essentiel de l\'eau d\'Oran.'],
+    ['Combien de communes SEOR dessert-elle ?', ['12', '26', '48'], 1, 'SEOR couvre les 26 communes et 9 daïras de la wilaya d\'Oran.'],
+    ['Quelle longueur fait le réseau d\'eau potable ?', ['Environ 400 km', 'Environ 1 200 km', 'Près de 4 000 km'], 2, 'Le réseau d\'eau potable mesure 3 948 km.'],
+    ['Combien de réservoirs stockent l\'eau de la wilaya ?', ['18', '181', '1 810'], 1, '181 réservoirs offrent plus d\'un million de m³ de stockage.'],
+    ['Quelle station d\'épuration traite le plus d\'eaux usées ?', ['El Karma', 'Cap Falcon', 'Brédéah'], 0, 'La STEP d\'El Karma traite jusqu\'à 270 000 m³ par jour.'],
+  ];
+  let qi = 0, score = 0;
+  function showQ() {
+    const box = $('#quiz');
+    if (qi >= Q.length) {
+      const msg = score === 5 ? 'Parfait, vous êtes incollable !' : score >= 3 ? 'Bravo, belle connaissance de l\'eau d\'Oran.' : 'Vous en savez maintenant un peu plus !';
+      box.innerHTML = `<div class="fade"><p class="q-meta"><span>Résultat</span></p><p class="q-text">${score} / ${Q.length} — ${msg}</p><button class="btn" id="restart">Rejouer</button></div>`;
+      $('#restart').onclick = () => { qi = 0; score = 0; showQ(); };
+      return;
+    }
+    const [t, opts] = Q[qi];
+    box.innerHTML = `<div class="fade"><p class="q-meta"><span>Question ${qi + 1} / ${Q.length}</span><span>Score : ${score}</span></p><p class="q-text">${t}</p><div class="opts">${opts.map((o, i) => `<button class="opt" data-i="${i}">${o}</button>`).join('')}</div><p class="q-exp" id="exp"></p></div>`;
+    box.querySelector('.opts').onclick = e => {
+      const b = e.target.closest('.opt'); if (!b || box.querySelector('.right')) return;
+      const [, , ok, exp] = Q[qi], pick = +b.dataset.i;
+      box.querySelectorAll('.opt')[ok].classList.add('right');
+      if (pick === ok) score++; else b.classList.add('wrong');
+      $('#exp').textContent = (pick === ok ? 'Bonne réponse ! ' : 'Pas tout à fait. ') + exp;
+      const next = document.createElement('button'); next.className = 'btn q-next'; next.textContent = qi < Q.length - 1 ? 'Question suivante →' : 'Voir mon score';
+      next.onclick = () => { qi++; showQ(); };
+      box.firstElementChild.append(next);
+    };
+  }
+  showQ();
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,134 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Nos 11 aéroports — EGSA Oran</title>
+<meta name="description" content="Recherchez, filtrez et comparez les onze aéroports gérés par EGSA Oran, avec leur trafic passagers 2024.">
+<link rel="stylesheet" href="fonts/fonts.css">
+<link rel="stylesheet" href="assets/site.css">
+<link rel="stylesheet" href="assets/pages.css">
+</head>
+<body>
+
+<header class="hdr" id="hdr">
+  <div class="wrap">
+    <a class="logo" href="index.html">
+      <span class="logo-badge"><img src="assets/logo-egsa.jpg" alt="EGSA Oran — accueil" width="401" height="191"></span>
+      <span class="logo-txt"><b>EGSA Oran</b><small>Aéroport Ahmed Ben Bella</small></span>
+    </a>
+    <nav class="nav" id="nav">
+      <a href="planifier.html">Planifier</a>
+      <a href="aeroports.html" aria-current="page">Nos aéroports</a>
+      <a href="index.html#services">Services</a>
+      <a href="index.html#guide">Guide</a>
+      <a href="index.html#contact">Contact</a>
+    </nav>
+    <div class="lang"><a class="on" href="#">FR</a><a href="#">EN</a><a href="#" lang="ar">ع</a></div>
+    <button class="burger" id="burger" aria-label="Menu" aria-expanded="false"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
+  </div>
+</header>
+
+<main>
+  <section class="phero">
+    <div class="wrap">
+      <div class="crumbs"><a href="index.html">Accueil</a> / Nos aéroports</div>
+      <span class="tag">Réseau EGSA Oran</span>
+      <h1>Onze aéroports, <em>un réseau.</em></h1>
+      <p>Recherchez un aéroport, filtrez par type de trafic et comparez-en deux côte à côte. Données de trafic passagers janvier – décembre 2024.</p>
+    </div>
+  </section>
+
+  <div class="wrap body">
+    <div class="tools">
+      <div class="searchbox"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M21 21l-5-5"/></svg><input id="q" type="search" placeholder="Ville ou code (ex. TLM)" aria-label="Rechercher un aéroport"></div>
+      <div class="seg" id="filter" role="group" aria-label="Filtrer">
+        <button aria-pressed="true" data-f="all">Tous</button><button aria-pressed="false" data-f="int">Vols internationaux</button><button aria-pressed="false" data-f="nat">National uniquement</button>
+      </div>
+      <select id="sort" aria-label="Trier"><option value="t">Trier : trafic</option><option value="n">Trier : nom</option><option value="i">Trier : international</option></select>
+    </div>
+    <p class="count" id="count"></p>
+    <div class="aps" id="aps"></div>
+
+    <div class="compare" id="compare" aria-live="polite"></div>
+  </div>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="ft-b" style="margin-top:0;border-top:0;padding-top:0"><span>© <span id="yr"></span> EGSA Oran</span><span><a href="index.html">Accueil</a> · <a href="planifier.html">Planifier</a> · Concept de refonte · projet non officiel</span></div>
+  </div>
+</footer>
+
+<script src="assets/common.js"></script>
+<script>
+(() => {
+  const $ = s => document.querySelector(s);
+  const fmt = n => n.toLocaleString('fr-FR').replace(/ /g, ' ');
+  const TOTAL = 3268295;
+  const A = [
+    { c: 'ORN', n: 'Oran', full: 'Oran Ahmed Ben Bella', i: 1470228, d: 732836 },
+    { c: 'AZR', n: 'Adrar', full: 'Adrar Touat Cheikh Sidi Mohamed Belkebir', i: 13296, d: 274649 },
+    { c: 'TLM', n: 'Tlemcen', full: 'Tlemcen Messali El Hadj', i: 211092, d: 43836 },
+    { c: 'TIN', n: 'Tindouf', full: 'Tindouf Commandant Ferradj', i: 4414, d: 206589 },
+    { c: 'CBH', n: 'Béchar', full: 'Béchar Boudghene Ben Ali Lotfi', i: 2384, d: 139733 },
+    { c: 'BMW', n: 'Bordj Badji Mokhtar', full: 'Bordj Badji Mokhtar', i: 0, d: 88092 },
+    { c: 'TMX', n: 'Timimoun', full: 'Timimoun', i: 0, d: 63493 },
+    { c: 'EBH', n: 'El Bayadh', full: 'El Bayadh', i: 0, d: 9948 },
+    { c: 'MZW', n: 'Mécheria', full: 'Mécheria (Naâma)', i: 0, d: 7347 },
+    { c: 'TID', n: 'Tiaret', full: 'Tiaret Abdelhafid Boussouf', i: 0, d: 355 },
+    { c: 'MUW', n: 'Mascara', full: 'Mascara Ghriss', i: 0, d: 0 },
+  ].map(a => ({ ...a, t: a.i + a.d }));
+  let filter = 'all', picked = [];
+  const norm = s => s.toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '');
+
+  function render() {
+    const q = norm($('#q').value.trim()), sort = $('#sort').value;
+    let list = A.filter(a => (!q || norm(a.c + ' ' + a.n + ' ' + a.full).includes(q))
+      && (filter === 'all' || (filter === 'int' ? a.i > 0 : a.i === 0)));
+    list.sort((a, b) => sort === 'n' ? a.n.localeCompare(b.n, 'fr') : sort === 'i' ? b.i - a.i : b.t - a.t);
+    $('#count').textContent = `${list.length} aéroport${list.length > 1 ? 's' : ''}`;
+    $('#aps').innerHTML = list.length ? list.map((a, k) => {
+      const badge = a.t === 0 ? '<span class="ap-badge none">Sans trafic 2024</span>' : a.i > 0 ? '<span class="ap-badge int">International</span>' : '<span class="ap-badge nat">National</span>';
+      const pi = a.t ? a.i / a.t * 100 : 0;
+      return `<article class="ap-card" style="animation-delay:${k * 40}ms">
+        <div class="ap-top"><span class="ap-code">${a.c}</span>${badge}</div>
+        <div><h3>${a.n}</h3><div class="full">${a.full}</div></div>
+        <div class="split-bar" title="International ${pi.toFixed(0)} %"><i style="width:${pi}%;background:#2f6bff"></i><i style="width:${a.t ? 100 - pi : 0}%;background:#ffd23f"></i></div>
+        <div class="ap-nums"><div><b>${fmt(a.t)}</b><span>passagers</span></div><div><b>${fmt(a.i)}</b><span>international</span></div><div><b>${(a.t / TOTAL * 100).toFixed(1).replace('.', ',')} %</b><span>du réseau</span></div></div>
+        <div class="ap-actions">
+          <button data-cmp="${a.c}" class="${picked.includes(a.c) ? 'on' : ''}">${picked.includes(a.c) ? '✓ Comparé' : '+ Comparer'}</button>
+          <a href="https://www.google.com/maps/search/${encodeURIComponent('Aéroport ' + a.full)}" target="_blank" rel="noopener">Itinéraire ↗</a>
+        </div></article>`;
+    }).join('') : '<div class="empty">Aucun aéroport ne correspond à votre recherche.</div>';
+  }
+
+  function renderCompare() {
+    const box = $('#compare');
+    box.classList.toggle('show', picked.length > 0);
+    if (!picked.length) return;
+    const [a, b] = picked.map(c => A.find(x => x.c === c));
+    const row = (l, f, fmtv = fmt) => {
+      const va = f(a), vb = b ? f(b) : null;
+      return `<span class="l">${l}</span><span class="${b && va > vb ? 'w' : ''}">${fmtv(va)}</span><span class="${b && vb > va ? 'w' : ''}">${b ? fmtv(vb) : '—'}</span>`;
+    };
+    box.innerHTML = `<div class="cmp-top"><span>Comparateur ${b ? '' : '· choisissez un 2e aéroport'}</span><button id="clr">Effacer ✕</button></div>
+      <div class="cmp-grid"><span></span><span class="h">${a.c}</span><span class="h">${b ? b.c : '···'}</span>
+      ${row('Passagers', x => x.t)}${row('International', x => x.i)}${row('National', x => x.d)}${row('Part du réseau', x => x.t / TOTAL * 100, v => v.toFixed(1).replace('.', ',') + ' %')}</div>`;
+    $('#clr').onclick = () => { picked = []; render(); renderCompare(); };
+  }
+
+  $('#aps').onclick = e => {
+    const b = e.target.closest('[data-cmp]'); if (!b) return;
+    const c = b.dataset.cmp;
+    picked = picked.includes(c) ? picked.filter(x => x !== c) : [...picked, c].slice(-2);
+    render(); renderCompare();
+  };
+  $('#q').oninput = render; $('#sort').onchange = render;
+  $('#filter').onclick = e => { const b = e.target.closest('button'); if (!b) return; filter = b.dataset.f; document.querySelectorAll('#filter button').forEach(x => x.setAttribute('aria-pressed', x === b)); render(); };
+  const pre = new URLSearchParams(location.search).get('q'); if (pre) $('#q').value = pre;
+  render();
+})();
+</script>
+</body>
+</html>

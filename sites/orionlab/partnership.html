@@ -1,0 +1,306 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>CMO / CDMO partnership — Orion Lab</title>
+<meta name="description" content="Contract manufacturing and development with Orion Lab: oral solids, sterile injectables and quality control in Oran, Algeria. Build your partnership request in four steps.">
+<link rel="icon" href="assets/img/cropped-O.png">
+<link rel="stylesheet" href="fonts/fonts.css">
+<link rel="stylesheet" href="assets/site.css">
+<link rel="stylesheet" href="assets/fx.css">
+<link rel="stylesheet" href="assets/extras.css">
+<style>
+.offer{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+.of{background:var(--paper);border:1px solid var(--line);border-radius:22px;overflow:hidden;transition:transform .4s var(--ease),box-shadow .4s}
+.of:hover{transform:translateY(-6px);box-shadow:0 26px 44px -30px rgba(30,33,97,.55)}
+.of img{width:100%;aspect-ratio:16/10;object-fit:cover}
+.of div{padding:22px}
+.of h3{font-size:21px;color:var(--indigo);margin-bottom:8px}
+.of p{color:var(--muted);margin:0;font-size:15px}
+@media (max-width:900px){ .offer{grid-template-columns:1fr} }
+
+.wiz{display:grid;grid-template-columns:280px 1fr;gap:clamp(18px,3vw,36px);align-items:start}
+.prog{list-style:none;margin:0;padding:0;display:grid;gap:6px;position:sticky;top:100px}
+.prog li{display:flex;align-items:center;gap:12px;padding:12px 14px;border-radius:14px;color:var(--muted);font-weight:600}
+.prog li b{width:32px;height:32px;border-radius:50%;display:grid;place-items:center;background:var(--lilac);color:var(--indigo);font:700 14px var(--display);flex:none;transition:.3s}
+.prog li.on{background:var(--paper);color:var(--indigo);box-shadow:0 10px 30px -22px rgba(30,33,97,.6)}
+.prog li.on b{background:var(--mag);color:#fff}
+.prog li.done b{background:var(--indigo);color:#fff}
+.card{background:var(--paper);border:1px solid var(--line);border-radius:24px;padding:clamp(22px,3.4vw,40px)}
+.card h2{font-size:clamp(26px,3vw,36px);color:var(--indigo);margin-bottom:6px}
+.card > p{color:var(--muted);margin:0 0 22px}
+.opts{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.opt{position:relative}
+.opt input{position:absolute;opacity:0;inset:0}
+.opt label{display:block;cursor:pointer;border:1.5px solid var(--line);border-radius:16px;padding:16px 18px;transition:border-color .25s,background .25s}
+.opt label b{display:block;color:var(--indigo)}
+.opt label span{color:var(--muted);font-size:14px}
+.opt input:checked + label{border-color:var(--mag);background:var(--blush)}
+.opt input:focus-visible + label{outline:3px solid var(--mag-2);outline-offset:2px}
+.fields{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.fields label{display:grid;gap:6px;font-weight:600;color:var(--indigo);font-size:14px}
+.fields .full{grid-column:1/-1}
+.fields input,.fields select,.fields textarea{font:inherit;font-weight:400;padding:13px 14px;border-radius:12px;border:1.5px solid var(--line);background:var(--bg);color:var(--ink)}
+.fields input:focus,.fields select:focus,.fields textarea:focus{outline:none;border-color:var(--mag)}
+.fields textarea{min-height:110px;resize:vertical}
+.err{color:#c0123c;font-weight:600;font-size:14px;min-height:22px;margin:14px 0 0}
+.acts{display:flex;justify-content:space-between;gap:10px;margin-top:10px}
+.acts .back{all:unset;cursor:pointer;font-weight:600;color:var(--indigo);padding:14px 4px}
+.sum{display:grid;gap:8px;margin:0 0 22px}
+.sum div{display:grid;grid-template-columns:170px 1fr;gap:12px;padding:12px 0;border-bottom:1px solid var(--line)}
+.sum dt{color:var(--muted);font-size:14px}
+.sum dd{margin:0;font-weight:600;color:var(--indigo);overflow-wrap:anywhere}
+.note{background:var(--lilac);border-radius:14px;padding:14px 16px;color:var(--muted);font-size:14px;margin-bottom:18px}
+.fade{animation:fade .5s var(--ease)}
+@keyframes fade{from{opacity:0;transform:translateY(10px)}}
+@media (max-width:900px){ .wiz{grid-template-columns:1fr} .prog{position:static;grid-template-columns:repeat(4,1fr)} .prog li{justify-content:center;padding:8px} .prog li span{display:none} }
+@media (max-width:560px){ .opts,.fields{grid-template-columns:1fr} .sum div{grid-template-columns:1fr;gap:2px} }
+</style>
+</head>
+<body data-tilt=".of,.card .opt label" data-clip=".of img">
+
+<header class="hdr" id="hdr">
+  <div class="wrap">
+    <a class="logo" href="index.html"><img src="assets/img/cropped-Logo1.png" alt="Orion Lab — our commitment to a better life" width="190" height="52"></a>
+    <nav class="nav" id="nav">
+      <a href="index.html#about">About</a>
+      <a href="index.html#facility">Facility</a>
+      <a href="index.html#journey">Journey</a>
+      <a href="index.html#products">Products</a>
+      <a href="partnership.html" aria-current="page">CMO / CDMO</a>
+      <a href="index.html#contact">Contact</a>
+    </nav>
+    <button class="k-btn" type="button" aria-label="Search the site" aria-keyshortcuts="Control+K Meta+K /"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-4-4"/></svg><span>Search</span><kbd>Ctrl K</kbd></button>
+    <a class="btn" href="#request">Start a request</a>
+    <button class="burger" id="burger" aria-label="Menu" aria-expanded="false"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
+  </div>
+</header>
+
+<main>
+  <section class="phero">
+    <div class="wrap">
+      <div class="crumbs"><a href="index.html">Home</a> / CMO / CDMO</div>
+      <span class="tag">Contract manufacturing &amp; development</span>
+      <h1 data-split>Your molecule, <span>our cleanrooms.</span></h1>
+      <p>Orion Lab is opening its oral solid, sterile injectable and quality control capabilities to pharmaceutical partners looking for a manufacturing base in North Africa.</p>
+    </div>
+  </section>
+
+  <section class="sec" id="offer">
+    <div class="wrap">
+      <div class="head reveal"><div><span class="tag">What we offer</span><h2 data-split>Capabilities <span>for partners.</span></h2></div></div>
+      <div class="offer">
+        <article class="of reveal"><img src="assets/img/IMG_3056.jpg" alt="Oral solid dosage production"><div><h3>Oral solids</h3><p>High-containment granulation, compaction, compression and encapsulation for potent APIs, from development batches to commercial scale.</p></div></article>
+        <article class="of reveal"><img src="assets/img/IMG_3049.jpg" alt="Isolator for aseptic filling"><div><h3>Fill-finish</h3><p>Aseptic filling of vials, prefilled syringes and cartridges under isolators, with lyophilisation and serialisation.</p></div></article>
+        <article class="of reveal"><img src="assets/img/Image-HD-scaled.jpg" alt="Quality control laboratory"><div><h3>Analytical services</h3><p>Method validation, release testing, microbiology and ICH stability studies in our accredited laboratory.</p></div></article>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec" id="planner" style="padding-top:0">
+    <div class="wrap">
+      <div class="head reveal"><div><span class="tag">Capacity planner</span><h2 data-split>How much of the line <span>would you use?</span></h2></div><p>Pick a dosage form and your yearly volume to see it against the site's stated capacity, then carry the figures into your request.</p></div>
+      <div class="plan reveal">
+        <div class="plan-ctl">
+          <div>
+            <h3 id="pfLbl">Dosage form</h3>
+            <div class="seg" id="pForm" role="group" aria-labelledby="pfLbl"></div>
+          </div>
+          <div class="vol">
+            <h3 id="pvLbl">Yearly volume</h3>
+            <div class="vol-row">
+              <input type="range" id="pRange" min="0" max="1000" step="1" aria-labelledby="pvLbl">
+              <label class="vol-num"><input id="pNum" type="text" inputmode="numeric" aria-label="Yearly volume in units"><span id="pUnit">units</span></label>
+            </div>
+            <div class="presets" id="pPresets"></div>
+          </div>
+        </div>
+        <div class="plan-out" aria-live="polite">
+          <div class="gauge" id="pGauge">
+            <svg viewBox="0 0 200 200" aria-hidden="true">
+              <defs><linearGradient id="gGrad" x1="0" x2="1"><stop offset="0" stop-color="#f59ccb"/><stop offset="1" stop-color="#d43d93"/></linearGradient></defs>
+              <circle class="g-bg" cx="100" cy="100" r="84"/>
+              <circle class="g-fg" id="pArc" cx="100" cy="100" r="84" stroke-dasharray="527.8" stroke-dashoffset="527.8"/>
+              <circle class="g-over" cx="100" cy="100" r="98"/>
+            </svg>
+            <div class="gauge-txt"><b id="pPct">0%</b><span id="pPctLbl">of one shift's yearly capacity</span></div>
+          </div>
+          <div class="shifts" id="pShifts" aria-hidden="true"></div>
+          <dl>
+            <div><dt id="pNeedLbl">Shifts needed</dt><dd id="pNeed">–</dd></div>
+            <div><dt>Per month</dt><dd id="pMonth">–</dd></div>
+            <div><dt>Reference capacity</dt><dd id="pCap">–</dd></div>
+            <div><dt>Unit</dt><dd id="pUnitName">–</dd></div>
+          </dl>
+          <p class="plan-msg" id="pMsg"></p>
+          <button class="btn light" type="button" id="pUse">Use these figures in my request →</button>
+        </div>
+      </div>
+      <p class="plan-note">Indicative only: based on the capacities Orion Lab publishes for one shift. Actual capacity depends on the product, batch size and schedule.</p>
+    </div>
+  </section>
+
+  <section class="sec" id="request" style="padding-top:0">
+    <div class="wrap">
+      <div class="head reveal"><div><span class="tag">Partnership request</span><h2 data-split>Tell us about <span>your project.</span></h2></div><p>Four short steps. At the end, your request is prepared as an e-mail you can review before sending.</p></div>
+      <div class="wiz reveal">
+        <ol class="prog" id="prog">
+          <li><b>1</b><span>Service</span></li><li><b>2</b><span>Dosage form</span></li><li><b>3</b><span>Project</span></li><li><b>4</b><span>Contact</span></li>
+        </ol>
+        <form class="card" id="wiz" novalidate></form>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="ft">
+      <a class="logo" href="index.html"><img src="assets/img/cropped-Logo1.png" alt="Orion Lab" width="160" height="44"></a>
+      <nav><a href="index.html#about">About</a><a href="index.html#facility">Facility</a><a href="index.html#journey">Journey</a><a href="index.html#products">Products</a><a href="partnership.html">CMO / CDMO</a></nav>
+    </div>
+    <div class="ft-b"><span>© <span id="yr"></span> Orion Lab — Hassi Ameur industrial zone, Oran, Algeria</span><span>Redesign concept · unofficial project</span></div>
+  </div>
+</footer>
+
+<script src="assets/common.js"></script>
+<script>
+(() => {
+  const $ = s => document.querySelector(s);
+  const esc = s => String(s).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+  const data = { service: '', form: '', stage: '', volume: '', start: '', notes: '', name: '', company: '', email: '', country: '' };
+  const radios = (name, list) => `<div class="opts">${list.map(([v, d], i) => `<div class="opt"><input type="radio" name="${name}" id="${name}${i}" value="${v}" ${data[name] === v ? 'checked' : ''}><label for="${name}${i}"><b>${v}</b><span>${d}</span></label></div>`).join('')}</div>`;
+  const STEPS = [
+    { t: 'Which service do you need?', p: 'Choose the type of collaboration you are considering.', body: () => radios('service', [
+      ['Contract manufacturing (CMO)', 'Commercial production of an existing product'],
+      ['Development (CDMO)', 'Formulation, scale-up and technology transfer'],
+      ['Fill-finish only', 'Aseptic filling of your bulk drug substance'],
+      ['Analytical services', 'Testing, validation and stability studies'],
+    ]), ok: () => data.service ? true : 'Please choose a service.' },
+    { t: 'What dosage form?', p: 'This helps us route your request to the right unit.', body: () => radios('form', [
+      ['Tablets', 'Including high-potency molecules'],
+      ['Capsules', 'Hard capsules'],
+      ['Injectable — vials', 'Liquid or lyophilised'],
+      ['Injectable — prefilled', 'Syringes or cartridges'],
+    ]), ok: () => data.form ? true : 'Please choose a dosage form.' },
+    { t: 'About the project', p: 'Rough figures are fine at this stage.', body: () => `<div class="fields">
+      <label>Development stage<select name="stage">${['', 'Marketed product', 'Late-stage development', 'Early development', 'Biosimilar'].map(o => `<option ${data.stage === o ? 'selected' : ''} value="${o}">${o || 'Select…'}</option>`).join('')}</select></label>
+      <label>Estimated yearly volume<input name="volume" placeholder="e.g. 500,000 units" value="${esc(data.volume)}"></label>
+      <label class="full">Desired start<select name="start">${['', 'Within 6 months', '6–12 months', 'More than 12 months'].map(o => `<option ${data.start === o ? 'selected' : ''} value="${o}">${o || 'Select…'}</option>`).join('')}</select></label>
+      <label class="full">Notes (molecule, therapeutic area, constraints)<textarea name="notes" maxlength="1500">${esc(data.notes)}</textarea></label></div>`,
+      ok: () => data.stage && data.start ? true : 'Please choose a stage and a desired start.' },
+    { t: 'Your contact details', p: 'We only use them to answer this request.', body: () => `<div class="fields">
+      <label>Full name<input name="name" autocomplete="name" value="${esc(data.name)}"></label>
+      <label>Company<input name="company" autocomplete="organization" value="${esc(data.company)}"></label>
+      <label>Business e-mail<input name="email" type="email" autocomplete="email" value="${esc(data.email)}"></label>
+      <label>Country<input name="country" autocomplete="country-name" value="${esc(data.country)}"></label></div>`,
+      ok: () => !data.name || !data.company ? 'Please enter your name and company.' : !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(data.email) ? 'Please enter a valid e-mail address.' : true },
+  ];
+  let cur = 0;
+  const form = $('#wiz');
+  const LABELS = { service: 'Service', form: 'Dosage form', stage: 'Stage', volume: 'Yearly volume', start: 'Desired start', notes: 'Notes', name: 'Name', company: 'Company', email: 'E-mail', country: 'Country' };
+  function render() {
+    document.querySelectorAll('#prog li').forEach((li, i) => { li.className = i === cur ? 'on' : i < cur ? 'done' : ''; li.toggleAttribute('aria-current', i === cur); });
+    if (cur === STEPS.length) {
+      const rows = Object.keys(LABELS).filter(k => data[k]).map(k => `<div><dt>${LABELS[k]}</dt><dd>${esc(data[k])}</dd></div>`).join('');
+      form.innerHTML = `<div class="fade"><h2>Review your request</h2><p style="color:var(--muted);margin:0 0 18px">Check the details below, then open your e-mail application to send them.</p><dl class="sum">${rows}</dl>
+        <p class="note">Nothing is sent from this page: the button opens a pre-filled e-mail to contact@orionlab.com that you can edit before sending.</p>
+        <div class="acts"><button type="button" class="back" id="back">← Edit</button><a class="btn" id="send">Open e-mail</a></div></div>`;
+      const body = Object.keys(LABELS).filter(k => data[k]).map(k => `${LABELS[k]}: ${data[k]}`).join('\n');
+      $('#send').href = 'mailto:contact@orionlab.com?subject=' + encodeURIComponent('Partnership request — ' + data.company) + '&body=' + encodeURIComponent(body);
+      $('#back').onclick = () => { cur = STEPS.length - 1; render(); };
+      return;
+    }
+    const s = STEPS[cur];
+    form.innerHTML = `<div class="fade"><h2>${s.t}</h2><p>${s.p}</p>${s.body()}<p class="err" id="err" role="alert"></p>
+      <div class="acts">${cur ? '<button type="button" class="back" id="back">← Back</button>' : '<span></span>'}<button class="btn" type="submit">${cur === STEPS.length - 1 ? 'Review request' : 'Continue'} →</button></div></div>`;
+    if (cur) $('#back').onclick = () => { cur--; render(); };
+  }
+  form.addEventListener('input', e => { if (e.target.name in data) data[e.target.name] = e.target.value.trim(); });
+  form.addEventListener('change', e => { if (e.target.name in data) data[e.target.name] = e.target.value.trim(); });
+  form.addEventListener('submit', e => {
+    e.preventDefault();
+    const r = STEPS[cur].ok();
+    if (r !== true && typeof r === 'string') { $('#err').textContent = r; return; }
+    cur++; render();
+    if (innerWidth < 900) form.scrollIntoView({ block: 'start' });
+  });
+  render();
+
+  // Prefill from the capacity planner (same page) or from a link: ?form=Tablets&volume=500000
+  const prefill = ({ form: f, volume }) => {
+    if (f) data.form = f;
+    if (volume) data.volume = volume;
+    cur = data.service ? 2 : 0;
+    render();
+  };
+  window.oWizard = { prefill };
+  const qs = new URLSearchParams(location.search);
+  if (qs.get('form') || qs.get('volume')) prefill({ form: qs.get('form') || '', volume: qs.get('volume') || '' });
+
+  // ---------- capacity planner (figures published by Orion Lab, per year) ----------
+  const CAP = [
+    { form: 'Tablets', label: 'Tablets', sub: '100 M / year / shift', cap: 100e6, perShift: true, unit: 'tablets', where: 'Oral solid dosage unit' },
+    { form: 'Capsules', label: 'Capsules', sub: '40 M / year / shift', cap: 40e6, perShift: true, unit: 'capsules', where: 'Oral solid dosage unit' },
+    { form: 'Injectable — vials', label: 'Vials', sub: '2 M / year / shift', cap: 2e6, perShift: true, unit: 'vials', where: 'Isolator filling line' },
+    { form: 'Injectable — prefilled', label: 'Prefilled', sub: '5 M units / year', cap: 5e6, perShift: false, unit: 'units', where: 'Syringes, cartridges & vials' },
+  ];
+  const pForm = $('#pForm'), pRange = $('#pRange'), pNum = $('#pNum');
+  if (pForm) {
+    let ci = 0, vol = 20e6;
+    const fmt = n => n >= 1e6 ? (n / 1e6).toLocaleString('en-US', { maximumFractionDigits: 1 }) + ' M' : n >= 1e3 ? Math.round(n / 1e3).toLocaleString('en-US') + ' k' : Math.round(n).toLocaleString('en-US');
+    const MIN = 1e4;
+    const maxFor = c => c.cap * 3;
+    // log scale so small and large programmes are both easy to set
+    const toRange = v => Math.round(1000 * Math.log(v / MIN) / Math.log(maxFor(CAP[ci]) / MIN));
+    const fromRange = r => { const v = MIN * Math.pow(maxFor(CAP[ci]) / MIN, r / 1000); const p = Math.pow(10, Math.floor(Math.log10(v)) - 1); return Math.round(v / p) * p; };
+    pForm.innerHTML = CAP.map((c, i) => `<button type="button" data-i="${i}" aria-pressed="false"><b>${c.label}</b><span>${c.sub}</span></button>`).join('');
+    const arc = $('#pArc'), C = 2 * Math.PI * 84;
+    const draw = (fromInput) => {
+      const c = CAP[ci];
+      const share = vol / c.cap;
+      pForm.querySelectorAll('button').forEach((b, i) => b.setAttribute('aria-pressed', i === ci));
+      if (!fromInput) pNum.value = Math.round(vol).toLocaleString('en-US');
+      pRange.value = Math.max(0, Math.min(1000, toRange(vol)));
+      $('#pUnit').textContent = c.unit;
+      arc.style.strokeDashoffset = C * (1 - Math.min(1, share));
+      $('#pGauge').classList.toggle('over', share > 1);
+      $('#pPct').textContent = (share < 0.01 ? '<1' : Math.round(share * 100)) + '%';
+      $('#pPctLbl').textContent = c.perShift ? "of one shift's yearly capacity" : 'of stated yearly capacity';
+      const shifts = Math.ceil(share);
+      $('#pNeedLbl').textContent = c.perShift ? 'Shifts needed' : 'Capacity used';
+      $('#pNeed').textContent = c.perShift ? (shifts <= 1 ? '1 shift' : `${shifts} shifts`) : `${Math.round(share * 100)}%`;
+      $('#pMonth').textContent = `${fmt(vol / 12)} ${c.unit}`;
+      $('#pCap').textContent = `${fmt(c.cap)} ${c.unit}${c.perShift ? ' / shift' : ''}`;
+      $('#pUnitName').textContent = c.where;
+      const n = c.perShift ? Math.max(1, Math.min(6, shifts)) : 1;
+      $('#pShifts').innerHTML = Array.from({ length: n }, (_, k) => `<span class="shift"><i style="transform:scaleX(${Math.max(0, Math.min(1, share - k))})"></i></span>`).join('');
+      $('#pMsg').textContent = !c.perShift && share > 1
+        ? 'Above the stated yearly capacity for prefilled formats — worth discussing scheduling and phasing with the team.'
+        : share <= 0.25 ? 'A small programme: it would fit alongside other products on a single shift.'
+        : share <= 1 ? 'Fits within one shift of the line, at the published capacity.'
+        : `Would need about ${shifts} shifts at the published capacity per shift.`;
+      pRange.setAttribute('aria-valuetext', `${Math.round(vol).toLocaleString('en-US')} ${c.unit} per year`);
+    };
+    const presets = () => { const c = CAP[ci]; $('#pPresets').innerHTML = [0.05, 0.25, 0.5, 1, 2].map(f => `<button type="button" data-v="${c.cap * f}">${fmt(c.cap * f)}</button>`).join(''); };
+    pForm.addEventListener('click', e => { const b = e.target.closest('button'); if (!b) return; const old = CAP[ci]; ci = +b.dataset.i; vol = Math.max(MIN, Math.round(vol / old.cap * CAP[ci].cap)); presets(); draw(); });
+    pRange.addEventListener('input', () => { vol = fromRange(+pRange.value); draw(); });
+    pNum.addEventListener('input', () => { const v = +pNum.value.replace(/[^\d]/g, ''); if (v > 0) { vol = Math.min(v, 1e10); draw(true); } });
+    pNum.addEventListener('blur', () => draw());
+    $('#pPresets').addEventListener('click', e => { const b = e.target.closest('button'); if (b) { vol = +b.dataset.v; draw(); } });
+    $('#pUse').addEventListener('click', () => {
+      const c = CAP[ci];
+      prefill({ form: c.form, volume: `${Math.round(vol).toLocaleString('en-US')} ${c.unit} / year` });
+      $('#request').scrollIntoView({ behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth' });
+      window.oToast?.(`Added to your request: ${c.label}, ${fmt(vol)} ${c.unit} / year`);
+    });
+    presets(); draw();
+  }
+  oReveal();
+})();
+</script>
+<script src="assets/fx.js"></script>
+<script src="assets/extras.js"></script>
+</body>
+</html>

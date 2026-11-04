@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 578 610" fill="currentColor" role="img" aria-label="Logo">
+  <g fill="none" stroke="currentColor" stroke-width="7" stroke-linecap="square">
+    <path d="M135 15H8V595H352"/>
+    <path d="M207 15H572V595H415"/>
+  </g>
+  <rect x="175" y="0" width="32" height="32"/>
+  <rect x="352" y="578" width="34" height="32"/>
+  <rect x="137" y="140" width="13" height="330"/>
+  <path d="M137 140H191L311 470H284Z"/>
+  <path d="M396 140H409L311 470H298Z"/>
+  <rect x="400" y="140" width="40" height="330"/>
+</svg>

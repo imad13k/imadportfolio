@@ -1,0 +1,350 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Université Abou Bekr Belkaïd — Tlemcen</title>
+<meta name="description" content="Université de Tlemcen : 8 facultés et un institut sur 5 pôles universitaires, formations de la licence au doctorat, recherche et vie étudiante.">
+<link rel="stylesheet" href="fonts/fonts.css">
+<link rel="stylesheet" href="assets/site.css">
+<style>
+/* hero */
+.hero{position:relative;min-height:min(88vh,820px);display:flex;align-items:flex-end;color:#fff;overflow:hidden}
+.hero-bg{position:absolute;inset:0}
+.hero-bg img{width:100%;height:100%;object-fit:cover;object-position:50% 40%;transform:scale(1.12);animation:kb 20s ease-out forwards}
+@keyframes kb{to{transform:scale(1)}}
+.hero::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(10,58,43,.94) 0%,rgba(10,58,43,.7) 45%,rgba(10,58,43,.15) 100%),linear-gradient(0deg,rgba(10,58,43,.6),transparent 40%)}
+.hero-in{position:relative;z-index:1;width:100%;display:grid;grid-template-columns:1.15fr .85fr;gap:clamp(24px,4vw,64px);align-items:end;padding-block:clamp(56px,8vw,100px)}
+.hero .kicker{color:var(--gold-2)}
+.hero h1{font-size:clamp(52px,7.6vw,118px);margin:18px 0 20px;max-width:11ch}
+.hero h1 em{color:var(--gold-2)}
+.hero p{font-size:clamp(17px,1.5vw,20px);color:#d6e5dc;max-width:46ch;margin:0 0 30px}
+.hero-ctas{display:flex;flex-wrap:wrap;gap:12px}
+.hero .btn.ghost{color:#fff}
+.who{background:rgba(255,253,248,.97);color:var(--ink);border-radius:26px;padding:22px;box-shadow:0 40px 80px -40px rgba(0,0,0,.6)}
+.who-h{display:flex;justify-content:space-between;align-items:center;margin-bottom:14px}
+.who-h b{font:400 30px var(--serif);color:var(--emerald)}
+.who-tabs{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:14px}
+.who-tabs button{all:unset;cursor:pointer;font:600 13px var(--sans);padding:8px 12px;border-radius:99px;background:var(--sand);transition:.25s}
+.who-tabs button[aria-selected="true"]{background:var(--emerald);color:#fff}
+.who-tabs button:focus-visible{outline:2px solid var(--gold)}
+.who-list{display:grid;gap:6px}
+.who-list a{display:flex;align-items:center;gap:12px;padding:10px 12px;border-radius:14px;transition:background .25s;animation:wIn .4s var(--ease) both}
+@keyframes wIn{from{opacity:0;transform:translateY(6px)}}
+.who-list a:hover{background:var(--sand)}
+.who-list .ic{width:36px;height:36px;border-radius:10px;background:var(--cream);display:grid;place-items:center;flex:none}
+.who-list b{display:block;font-size:15px}
+.who-list small{color:var(--muted);font-size:13px}
+.who-list .go{margin-left:auto;color:var(--muted)}
+@media (max-width:980px){ .hero-in{grid-template-columns:1fr} .hero{min-height:0} }
+
+/* stats band */
+.band{background:var(--emerald);color:#fff}
+.band .wrap{display:grid;grid-template-columns:repeat(4,1fr)}
+.st{padding:clamp(24px,3vw,40px) clamp(14px,2vw,28px);border-left:1px solid rgba(255,255,255,.12)}
+.st:first-child{border-left:0}
+.st b{display:block;font:400 clamp(44px,5vw,72px)/1 var(--serif);color:var(--gold-2)}
+.st > span{color:#cfe0d6;font-size:15px}
+@media (max-width:820px){ .band .wrap{grid-template-columns:1fr 1fr} .st:nth-child(3){border-left:0} .st{border-top:1px solid rgba(255,255,255,.12)} }
+
+/* history */
+.story{display:grid;grid-template-columns:.9fr 1.1fr;gap:clamp(28px,5vw,80px);align-items:start}
+.story-img{position:sticky;top:110px;border-radius:28px;overflow:hidden;aspect-ratio:4/5}
+.story-img img{width:100%;height:100%;object-fit:cover}
+.story-img figcaption{position:absolute;left:16px;right:16px;bottom:16px;background:rgba(255,253,248,.94);border-radius:16px;padding:14px 16px;font-size:14px;color:var(--muted)}
+.story-img figcaption b{color:var(--emerald)}
+.tl{list-style:none;padding:0;margin:28px 0 0;position:relative}
+.tl::before{content:"";position:absolute;left:58px;top:8px;bottom:8px;width:2px;background:var(--line)}
+.tl li{display:grid;grid-template-columns:48px 22px 1fr;gap:12px;padding:14px 0}
+.tl .y{font:400 24px var(--serif);color:var(--gold);text-align:right;line-height:1.1}
+.tl .d{width:14px;height:14px;border-radius:50%;background:var(--paper);border:3px solid var(--leaf);margin:5px 0 0 3px;position:relative;z-index:1}
+.tl b{display:block;font-size:17px}
+.tl p{margin:4px 0 0;color:var(--muted)}
+.poles{display:flex;flex-wrap:wrap;gap:8px;margin-top:26px}
+.poles span{background:var(--paper);border:1px solid var(--line);border-radius:99px;padding:8px 14px;font-weight:600;font-size:14px}
+.poles span.annex{border-style:dashed}
+@media (max-width:900px){ .story{grid-template-columns:1fr} .story-img{position:relative;top:0;aspect-ratio:16/10} }
+
+/* faculties */
+.facs{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.fac{position:relative;display:flex;flex-direction:column;gap:10px;background:var(--paper);border:1px solid var(--line);border-radius:22px;padding:24px;min-height:200px;overflow:hidden;transition:transform .4s var(--ease),box-shadow .4s,border-color .3s}
+.fac::after{content:"";position:absolute;right:-40px;bottom:-40px;width:140px;height:140px;border-radius:50%;background:var(--gold);opacity:0;transition:opacity .4s,transform .6s var(--ease);transform:scale(.6)}
+.fac:hover{transform:translateY(-6px);border-color:var(--leaf);box-shadow:0 30px 60px -40px rgba(13,74,55,.6)}
+.fac:hover::after{opacity:.12;transform:scale(1)}
+.fac .sh{font:500 12px var(--mono);color:var(--leaf);text-transform:uppercase;letter-spacing:.08em}
+.fac h3{font-size:19px;color:var(--emerald)}
+.fac p{margin:0;color:var(--muted);font-size:14px}
+.fac .go{margin-top:auto;font-weight:600;font-size:14px;color:var(--emerald)}
+@media (max-width:900px){ .facs{grid-template-columns:1fr 1fr} }
+@media (max-width:560px){ .facs{grid-template-columns:1fr} }
+
+/* news */
+.news{display:grid;grid-template-columns:1.3fr 1fr;gap:16px}
+.n-main{position:relative;border-radius:26px;overflow:hidden;min-height:460px;display:flex;align-items:flex-end;color:#fff}
+.n-main img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform 1.2s var(--ease)}
+.n-main:hover img{transform:scale(1.05)}
+.n-main::after{content:"";position:absolute;inset:0;background:linear-gradient(0deg,rgba(10,58,43,.95),rgba(10,58,43,.1) 70%)}
+.n-main div{position:relative;z-index:1;padding:clamp(22px,3vw,36px)}
+.n-main h3{font:400 clamp(28px,3vw,42px)/1.05 var(--serif);margin:10px 0}
+.n-main p{margin:0;color:#d6e5dc}
+.tag{display:inline-block;font:500 11px var(--mono);text-transform:uppercase;letter-spacing:.08em;background:var(--gold);color:var(--emerald-2);padding:5px 9px;border-radius:6px}
+.n-side{display:grid;gap:12px}
+.n-item{display:grid;grid-template-columns:120px 1fr;gap:16px;align-items:center;background:var(--paper);border:1px solid var(--line);border-radius:20px;padding:12px;transition:border-color .3s,transform .4s var(--ease)}
+.n-item:hover{border-color:var(--leaf);transform:translateX(4px)}
+.n-item img{width:120px;height:90px;object-fit:cover;border-radius:14px}
+.n-item .tag{background:var(--sand);color:var(--leaf)}
+.n-item b{display:block;margin-top:6px;font-size:15px;line-height:1.35}
+.news-cta{margin-top:24px}
+@media (max-width:900px){ .news{grid-template-columns:1fr} .n-main{min-height:340px} }
+
+/* research */
+.research{background:var(--emerald-2);color:#fff;border-radius:36px;overflow:hidden;display:grid;grid-template-columns:1fr 1fr}
+.r-img{position:relative;min-height:520px}
+.r-img img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.r-c{padding:clamp(28px,5vw,64px)}
+.r-c .kicker{color:var(--gold-2)}
+.r-c h2{font-size:clamp(38px,4.6vw,64px);margin:16px 0 18px}
+.r-c h2 em{color:var(--gold-2)}
+.r-c > p{color:#cfe0d6;font-size:17px}
+.r-cards{display:grid;gap:12px;margin-top:26px}
+.r-card{display:grid;grid-template-columns:88px 1fr;gap:16px;align-items:center;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);border-radius:18px;padding:12px;transition:background .3s}
+.r-card:hover{background:rgba(255,255,255,.1)}
+.r-card .lg{height:64px;border-radius:12px;background:#fff;display:grid;place-items:center;overflow:hidden}
+.r-card .lg img{max-height:100%;max-width:100%;object-fit:contain}
+.r-card b{display:block}
+.r-card small{color:#cfe0d6}
+@media (max-width:960px){ .research{grid-template-columns:1fr} .r-img{min-height:280px} }
+
+/* city */
+.city{display:grid;grid-template-columns:1fr 1fr;gap:clamp(24px,4vw,64px);align-items:center}
+.city h2{font-size:clamp(40px,5vw,72px);color:var(--emerald);margin:14px 0 18px}
+.city h2 em{color:var(--gold)}
+.city p{color:var(--muted);font-size:17px}
+.city ul{list-style:none;padding:0;margin:22px 0 28px;display:grid;gap:10px}
+.city li{display:flex;gap:12px;align-items:center;font-weight:600}
+.city li::before{content:"";width:10px;height:10px;transform:rotate(45deg);background:var(--gold);flex:none}
+.city-img{border-radius:28px;overflow:hidden;position:relative}
+.city-img img{width:100%;height:100%;object-fit:cover;aspect-ratio:4/3}
+@media (max-width:900px){ .city{grid-template-columns:1fr} }
+
+/* academic additions */
+.hero h1{font-size:clamp(56px,8vw,124px);font-weight:600}
+.hero-seal{margin-top:30px;width:118px;height:118px}
+.hero-ctas{align-items:center}
+.who{border-radius:10px;border-top:5px solid var(--gold)}
+.who-h b{font:600 32px var(--serif)}
+.who-tabs button{border-radius:6px}
+.band{border-top:1px solid rgba(226,195,90,.3);border-bottom:6px solid var(--gold)}
+.st b{font-weight:600}
+.st{position:relative}
+.st::before{content:"";position:absolute;left:clamp(14px,2vw,28px);top:0;width:36px;height:3px;background:var(--gold)}
+.tl .y{font-weight:600}
+.story-img,.research,.n-main,.city-img,.r-img{border-radius:10px}
+.fac{border-radius:10px;border-top:4px solid var(--dc,var(--emerald))}
+.fac-top{display:flex;align-items:center;gap:12px}
+.fac .sh{color:var(--dc,var(--leaf));font:700 12px/1.3 var(--sans);letter-spacing:.12em}
+.fac .sh small{font-weight:600;letter-spacing:.04em;text-transform:none;color:var(--muted);font-size:12px}
+.fac h3{font:600 24px/1.1 var(--serif);color:var(--ink)}
+.fac::after{background:var(--dc,var(--gold))}
+.n-main h3{font-weight:600}
+.n-item{border-radius:10px}
+.n-item img{border-radius:6px}
+.tag{border-radius:3px}
+/* LMD */
+.lmd{display:grid;grid-template-columns:.9fr 1.1fr;gap:clamp(20px,3vw,40px);align-items:stretch}
+.lmd-steps{list-style:none;padding:0;margin:0;display:grid;gap:10px;position:relative}
+.lmd-steps::before{content:"";position:absolute;left:33px;top:20px;bottom:20px;width:2px;background:var(--line)}
+.lmd-steps li{position:relative}
+.lmd-steps button{all:unset;box-sizing:border-box;cursor:pointer;width:100%;display:flex;align-items:center;gap:18px;padding:12px 16px 12px 8px;border-radius:10px;transition:background .3s}
+.lmd-steps button:hover{background:var(--sand)}
+.lmd-steps button:focus-visible{outline:2px solid var(--gold)}
+.lmd-steps .lt{position:relative;z-index:1;width:52px;height:52px;border-radius:50%;display:grid;place-items:center;font:600 22px var(--serif);background:var(--paper);border:2px solid var(--line);color:var(--emerald);transition:.35s;flex:none}
+.lmd-steps li.done .lt{background:var(--emerald);color:var(--gold-2);border-color:var(--emerald)}
+.lmd-steps button[aria-selected="true"]{background:var(--paper);box-shadow:0 20px 40px -30px rgba(13,74,55,.5)}
+.lmd-steps button[aria-selected="true"] .lt{background:var(--gold);border-color:var(--gold);color:var(--emerald-2);transform:scale(1.08)}
+.lmd-steps b{display:block;font:600 24px/1.1 var(--serif);color:var(--emerald)}
+.lmd-steps small{color:var(--muted);font-weight:600;letter-spacing:.04em}
+.lmd-panel{background:var(--emerald);color:#fff;border-radius:10px;padding:clamp(24px,3.4vw,44px);position:relative;overflow:hidden;border-bottom:6px solid var(--gold)}
+.lmd-in{display:flex;gap:clamp(18px,3vw,36px);align-items:flex-start;animation:wIn .5s var(--ease)}
+.lmd-big{font:600 clamp(90px,11vw,150px)/.8 var(--serif);color:var(--gold-2);opacity:.9}
+.lmd-panel h3{font:600 clamp(32px,3.6vw,48px)/1 var(--serif);margin:10px 0 12px}
+.lmd-panel p{color:#d6e5dc;font-size:17px;margin:0 0 20px}
+.lmd-links{display:flex;flex-wrap:wrap;gap:10px}
+.lmd-links a{font-weight:700;color:var(--emerald-2);background:var(--gold);padding:10px 14px;border-radius:6px;transition:background .25s}
+.lmd-links a:hover{background:var(--gold-2)}
+@media (max-width:900px){ .lmd{grid-template-columns:1fr} .lmd-in{flex-direction:column;gap:0} .lmd-big{font-size:80px} }
+</style>
+</head>
+<body data-page="home">
+<div id="site-header"></div>
+
+<main id="main">
+  <section class="hero">
+    <div class="hero-bg"><img src="assets/img/univ-tlemcen.png" alt="Bâtiment de l'Université Abou Bekr Belkaïd à Tlemcen"></div>
+    <div class="wrap hero-in">
+      <div class="reveal">
+        <span class="kicker">Université Abou Bekr Belkaïd · Tlemcen</span>
+        <h1>Le savoir, <em>au cœur</em> de Tlemcen.</h1>
+        <p>Huit facultés et un institut, cinq pôles universitaires et des formations de la licence au doctorat, dans l'une des villes les plus riches d'histoire du Maghreb.</p>
+        <div class="hero-ctas">
+          <a class="btn gold" href="facultes.html#orientation">Trouver ma formation</a>
+          <button class="btn ghost" type="button" onclick="UTSearch.open()">Rechercher sur le site</button>
+        </div>
+        <div class="seal hero-seal" aria-hidden="true">
+          <svg viewBox="0 0 132 132"><defs><path id="sealPath" d="M66 66m-50 0a50 50 0 1 1 100 0a50 50 0 1 1-100 0"/></defs>
+            <circle cx="66" cy="66" r="62" fill="none" stroke="#e2c35a" stroke-opacity=".5"/><circle cx="66" cy="66" r="38" fill="none" stroke="#e2c35a" stroke-opacity=".5"/>
+            <text font-family="Source Sans 3" font-weight="700" font-size="10" letter-spacing="3.2" fill="#e2c35a"><textPath href="#sealPath">UNIVERSITÉ ABOU BEKR BELKAÏD · TLEMCEN ·</textPath></text></svg>
+          <b>1989<small>FONDATION</small></b>
+        </div>
+      </div>
+      <aside class="who reveal" aria-label="Accès selon votre profil">
+        <div class="who-h"><b>Je suis…</b><a href="services.html" style="font-weight:600;font-size:14px;color:var(--leaf)">Tous les services →</a></div>
+        <div class="who-tabs" id="whoTabs" role="tablist"></div>
+        <div class="who-list" id="whoList"></div>
+      </aside>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="wrap">
+      <div class="st reveal"><b data-n="1974">1974</b><span>premiers enseignements universitaires</span></div>
+      <div class="st reveal"><b data-n="1989">1989</b><span>création de l'université</span></div>
+      <div class="st reveal"><b><span data-n="8">8</span> + 1</b><span>facultés et un institut</span></div>
+      <div class="st reveal"><b data-n="5">5</b><span>pôles universitaires et une annexe</span></div>
+    </div>
+  </section>
+
+  <section class="sec" id="universite">
+    <div class="wrap story">
+      <figure class="story-img reveal" style="margin:0">
+        <img src="assets/img/RDST.png" alt="Exposition scientifique à l'université" loading="lazy">
+        <figcaption><b>Une université, cinq pôles</b> — Imama, Chetouane, Kiffane, Rocade et Caserne Miloud, avec l'annexe de Maghnia.</figcaption>
+      </figure>
+      <div class="reveal">
+        <span class="kicker"><span class="rn">I.</span> L'université</span>
+        <div class="head" style="margin-bottom:0"><h2>Un demi-siècle de <em>savoir</em> à Tlemcen.</h2></div>
+        <p style="color:var(--muted);font-size:17px;margin-top:20px">L'Université Abou Bekr Belkaïd est le fruit d'une longue évolution, d'un centre universitaire aux premiers troncs communs jusqu'à une université complète, ouverte à de nouveaux défis.</p>
+        <ol class="tl">
+          <li><span class="y">1974</span><span class="d"></span><div><b>Le centre universitaire</b><p>Les premiers enseignements, avec les troncs communs de sciences exactes et de biologie.</p></div></li>
+          <li><span class="y">1984</span><span class="d"></span><div><b>Les instituts nationaux</b><p>La nouvelle carte universitaire crée des instituts et ouvre de nouvelles filières, puis la post-graduation.</p></div></li>
+          <li><span class="y">1989</span><span class="d"></span><div><b>Naissance de l'université</b><p>Décret n° 89-138 du 1<sup>er</sup> août 1989, modifié en 1995 et en 1998.</p></div></li>
+          <li><span class="y">Auj.</span><span class="d"></span><div><b>Huit facultés et un institut</b><p>Répartis sur cinq pôles universitaires, avec une annexe à Maghnia.</p></div></li>
+        </ol>
+        <div class="poles"><span>Pôle Imama</span><span>Pôle Chetouane</span><span>Pôle Kiffane</span><span>Pôle Rocade</span><span>Pôle Caserne Miloud</span><span class="annex">Annexe Maghnia</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec lmd-sec" id="formations" style="padding-top:0">
+    <div class="wrap">
+      <div class="head reveal">
+        <div><span class="kicker"><span class="rn">II.</span> Formations</span><h2>Le parcours <em>LMD.</em></h2></div>
+        <p>Licence, Master, Doctorat : un cursus progressif, de l'obtention du baccalauréat jusqu'à la recherche. Sélectionnez une étape.</p>
+      </div>
+      <div class="lmd reveal">
+        <ol class="lmd-steps" id="lmdSteps" role="tablist"></ol>
+        <div class="lmd-panel" id="lmdPanel" aria-live="polite"></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec" style="padding-top:0">
+    <div class="wrap">
+      <div class="head reveal">
+        <div><span class="kicker"><span class="rn">III.</span> Facultés et instituts</span><h2>Choisissez votre <em>voie.</em></h2></div>
+        <a class="btn" href="facultes.html">Toutes les facultés →</a>
+      </div>
+      <div class="facs" id="facs"></div>
+    </div>
+  </section>
+
+  <section class="sec" style="padding-top:0">
+    <div class="wrap">
+      <div class="head reveal">
+        <div><span class="kicker"><span class="rn">IV.</span> Actualités</span><h2>La vie de <em>l'université.</em></h2></div>
+        <p>Conférences, journées portes ouvertes, colloques et avis : l'actualité de nos facultés et laboratoires.</p>
+      </div>
+      <div class="news" id="news"></div>
+      <div class="news-cta"><a class="btn" href="actualites.html">Toutes les actualités et l'agenda →</a></div>
+    </div>
+  </section>
+
+  <section class="sec" id="recherche" style="padding-top:0">
+    <div class="wrap">
+      <div class="research reveal">
+        <div class="r-img"><img src="assets/img/url_3.jpg" alt="Laboratoire de recherche"></div>
+        <div class="r-c">
+          <span class="kicker"><span class="rn">V.</span> Recherche</span>
+          <h2>Des laboratoires tournés vers <em>demain.</em></h2>
+          <p>Équipes de recherche, conférences internationales et accès libre aux publications : la recherche à Tlemcen s'ouvre au monde.</p>
+          <div class="r-cards">
+            <a class="r-card" href="http://dspace.univ-tlemcen.dz/" target="_blank" rel="noopener"><span class="lg"><img src="assets/img/ADP.png" alt="Sceau FAO AGRIS Data Provider 2025"></span><span><b>FAO AGRIS Data Provider 2025</b><small>Un sceau de la FAO qui reconnaît le rôle de l'université dans le partage de la connaissance agricole.</small></span></a>
+            <a class="r-card" href="https://www.univ-tlemcen.dz/fr" target="_blank" rel="noopener"><span class="lg"><img src="assets/img/PAU.jpg" alt="Pan African University — Institute for Water and Energy Sciences"></span><span><b>Programme PAUWES</b><small>L'Institut de l'Université panafricaine pour les sciences de l'eau et de l'énergie, y compris le changement climatique.</small></span></a>
+            <a class="r-card" href="actualites.html#ictwep-1"><span class="lg"><img src="assets/img/cravat.png" alt="Conférence à l'auditorium" style="width:100%;height:100%;object-fit:cover"></span><span><b>Conférence IC-TWEP 2026</b><small>Une conférence internationale sur la protection des cours d'eau transfrontaliers.</small></span></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec" style="padding-top:0">
+    <div class="wrap city">
+      <div class="reveal">
+        <span class="kicker"><span class="rn">VI.</span> Étudier à Tlemcen</span>
+        <h2>Une ville d'histoire, un cadre pour <em>apprendre.</em></h2>
+        <p>Patrimoine architectural, culture vivante, médina et Grande Mosquée : Tlemcen offre aux étudiants algériens et internationaux un environnement où l'histoire et le savoir se rencontrent.</p>
+        <ul><li>Programmes de licence, master et doctorat</li><li>Accueil des étudiants internationaux</li><li>Résidences universitaires et activités sportives</li></ul>
+        <a class="btn" href="services.html?pour=international">Services aux étudiants internationaux</a>
+      </div>
+      <div class="city-img reveal"><img src="assets/img/banniere1.jpg" alt="Étudier en Algérie, à Tlemcen" loading="lazy"></div>
+    </div>
+  </section>
+</main>
+
+<div id="site-footer"></div>
+<script src="assets/data.js"></script>
+<script src="assets/common.js"></script>
+<script>
+(() => {
+  const $ = s => document.querySelector(s);
+  const D = window.UT;
+  // audience switcher
+  const order = ['futur', 'etudiant', 'enseignant', 'international'];
+  $('#whoTabs').innerHTML = order.map((k, i) => `<button role="tab" aria-selected="${i === 0}" data-a="${k}">${D.audiences[k]}</button>`).join('');
+  function who(a) {
+    document.querySelectorAll('#whoTabs button').forEach(b => b.setAttribute('aria-selected', b.dataset.a === a));
+    $('#whoList').innerHTML = D.platforms.filter(p => p.a.includes(a)).slice(0, 5).map((p, i) => `<a href="${p.url}" target="_blank" rel="noopener" style="animation-delay:${i * 50}ms"><span class="ic">${p.ic}</span><span><b>${p.n}</b><small>${p.d}</small></span><span class="go">↗</span></a>`).join('');
+  }
+  $('#whoTabs').onclick = e => { const b = e.target.closest('button'); if (b) who(b.dataset.a); };
+  who('futur');
+
+  // faculties preview
+  $('#facs').innerHTML = D.faculties.map((f, i) => { const dc = utDisc(f.domain); return `<a class="fac reveal ${dc.cls}" href="facultes.html#${f.id}" style="transition-delay:${(i % 3) * 70}ms"><span class="fac-top">${dc.icon}<span class="sh">${f.short}<br><small>${f.domain}</small></span></span><h3>${f.n}</h3><p>${f.d}</p><span class="go">Découvrir →</span></a>`; }).join('');
+
+  // LMD pathway
+  const LMD = [
+    { k: 'Bac', t: 'Baccalauréat', dur: 'Accès', d: "Le baccalauréat ouvre l'accès à l'université. L'orientation se fait selon la série et les vœux exprimés.", links: [['Carte de formation', 'https://cf.univ-tlemcen.dz/offreFormation/'], ['Journées portes ouvertes', 'https://jpo.univ-tlemcen.dz/JPO/']] },
+    { k: 'L', t: 'Licence', dur: '3 ans · 6 semestres', d: 'Un premier cycle qui associe un socle commun puis une spécialisation progressive, académique ou professionnelle.', links: [['Carte de formation', 'https://cf.univ-tlemcen.dz/offreFormation/'], ['Choisir une faculté', 'facultes.html#orientation']] },
+    { k: 'M', t: 'Master', dur: '2 ans · 4 semestres', d: "Un deuxième cycle d'approfondissement, orienté recherche ou professionnel, qui se conclut par un mémoire.", links: [['Carte de formation', 'https://cf.univ-tlemcen.dz/offreFormation/'], ['Vice-rectorat pédagogie', 'https://vrp.univ-tlemcen.dz/fr']] },
+    { k: 'D', t: 'Doctorat', dur: '3 ans', d: 'Le troisième cycle, adossé aux laboratoires de recherche, mène à la soutenance d\'une thèse.', links: [['Vice-rectorat recherche', 'https://vrpgrs.univ-tlemcen.dz/'], ['Dépôt des thèses (DSpace)', 'http://dspace.univ-tlemcen.dz/']] },
+  ];
+  $('#lmdSteps').innerHTML = LMD.map((x, i) => `<li><button role="tab" aria-selected="${i === 1}" data-i="${i}"><span class="lt">${x.k}</span><span><b>${x.t}</b><small>${x.dur}</small></span></button></li>`).join('');
+  function lmd(i) {
+    const x = LMD[i];
+    document.querySelectorAll('#lmdSteps button').forEach((b, j) => { b.setAttribute('aria-selected', j === i); b.closest('li').classList.toggle('done', j < i); });
+    $('#lmdPanel').innerHTML = `<div class="lmd-in"><span class="lmd-big">${x.k}</span><div><span class="kicker" style="color:var(--gold-2)">${x.dur}</span><h3>${x.t}</h3><p>${x.d}</p><div class="lmd-links">${x.links.map(([l, u]) => `<a href="${u}"${u.startsWith('http') ? ' target="_blank" rel="noopener"' : ''}>${l} →</a>`).join('')}</div></div></div>`;
+  }
+  $('#lmdSteps').onclick = e => { const b = e.target.closest('button'); if (b) lmd(+b.dataset.i); };
+  lmd(1);
+
+  // news preview
+  const withImg = D.news.filter(n => n.img);
+  const [main, ...rest] = withImg;
+  const date = n => n.date ? new Date(n.date + 'T12:00').toLocaleDateString('fr-FR', { day: 'numeric', month: 'long' }) : 'Récemment';
+  $('#news').innerHTML = `<a class="n-main reveal" href="actualites.html#${main.id}"><img src="assets/img/${main.img}" alt=""><div><span class="tag">${main.cat} · ${date(main)}</span><h3>${main.t}</h3><p>${main.d}</p></div></a>
+    <div class="n-side">${rest.slice(0, 4).map(n => `<a class="n-item reveal" href="actualites.html#${n.id}"><img src="assets/img/${n.img}" alt="" loading="lazy"><span><span class="tag">${n.cat}</span><b>${n.t}</b></span></a>`).join('')}</div>`;
+  utReveal();
+})();
+</script>
+</body>
+</html>

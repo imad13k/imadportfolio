@@ -1,0 +1,216 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Le procédé — Kahrama · Arzew</title>
+<meta name="description" content="Du gaz naturel à l'eau potable : les étapes du procédé de cogénération et de dessalement MSF du complexe Kahrama.">
+<link rel="icon" href="assets/img/logo1.png">
+<link rel="stylesheet" href="fonts/fonts.css">
+<link rel="stylesheet" href="assets/site.css">
+<link rel="stylesheet" href="assets/fx.css">
+<style>
+.tabs{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:28px}
+.tabs button{all:unset;cursor:pointer;font:600 15px var(--sans);padding:12px 18px;border-radius:10px;background:var(--paper);border:1px solid var(--line);color:var(--navy)}
+.tabs button[aria-selected="true"]{background:var(--navy);color:#fff;border-color:var(--navy)}
+.tabs button:focus-visible{outline:3px solid var(--amber)}
+.stepper{display:grid;grid-template-columns:320px 1fr;gap:clamp(18px,3vw,36px)}
+.steps{list-style:none;margin:0;padding:0;display:grid;gap:8px;align-content:start}
+.steps button{all:unset;box-sizing:border-box;width:100%;cursor:pointer;display:flex;gap:14px;align-items:center;padding:14px 16px;border-radius:14px;border:1px solid var(--line);background:var(--paper);transition:.3s var(--ease)}
+.steps button b{width:34px;height:34px;flex:none;border-radius:50%;display:grid;place-items:center;background:var(--foam);color:var(--sea);font:700 14px var(--display)}
+.steps button span{font-weight:600;color:var(--navy)}
+.steps button[aria-current="step"]{border-color:var(--sea);box-shadow:0 10px 30px -18px rgba(27,116,184,.6)}
+.steps button[aria-current="step"] b{background:var(--sea);color:#fff}
+.steps button:focus-visible{outline:3px solid var(--amber)}
+.panel{background:var(--paper);border:1px solid var(--line);border-radius:22px;overflow:hidden;display:grid;grid-template-rows:auto 1fr}
+.panel figure{margin:0;aspect-ratio:16/7;overflow:hidden;background:#cfdbe6}
+.panel img{width:100%;height:100%;object-fit:cover}
+.pbody{padding:clamp(22px,3vw,36px)}
+.pbody .num{font:600 12px var(--sans);letter-spacing:.14em;text-transform:uppercase;color:var(--sea)}
+.pbody h2{font-size:clamp(26px,3vw,38px);color:var(--navy);margin:8px 0 12px}
+.pbody p{color:var(--muted);margin:0 0 16px;font-size:17px}
+.facts{display:flex;flex-wrap:wrap;gap:10px}
+.facts span{background:var(--foam);color:var(--navy);font-weight:600;font-size:14px;padding:8px 12px;border-radius:8px}
+.pnav{display:flex;justify-content:space-between;gap:10px;margin-top:22px}
+.pnav button{all:unset;cursor:pointer;font-weight:600;color:var(--sea);padding:8px 0}
+.pnav button:disabled{opacity:.3;cursor:default}
+.fade{animation:fade .5s var(--ease)}
+@keyframes fade{from{opacity:0;transform:translateY(10px)}}
+@media (max-width:900px){ .stepper{grid-template-columns:1fr} .steps{grid-template-columns:repeat(auto-fill,minmax(150px,1fr))} }
+
+/* MSF simulator */
+.sim{display:grid;grid-template-columns:1fr 340px;gap:clamp(18px,3vw,36px);align-items:start}
+.stages{display:flex;gap:4px;height:260px;align-items:flex-end;background:var(--navy-2);border-radius:22px;padding:22px}
+.stg{flex:1;border-radius:6px 6px 3px 3px;position:relative;background:linear-gradient(0deg,#1b74b8,#3cc3e6);transition:height .6s var(--ease),opacity .4s}
+.stg::after{content:"";position:absolute;left:50%;top:-14px;width:6px;height:6px;margin-left:-3px;border-radius:50%;background:#e8f6fc;opacity:0;animation:vap 2s infinite}
+.stg.v::after{opacity:1}
+@keyframes vap{0%{transform:translateY(0);opacity:.9}100%{transform:translateY(-40px);opacity:0}}
+.ctrl{background:var(--paper);border:1px solid var(--line);border-radius:22px;padding:26px}
+.ctrl label{display:block;font-weight:600;color:var(--navy);margin-bottom:8px}
+.ctrl input[type=range]{width:100%;accent-color:var(--sea)}
+.ctrl .out{font:700 40px/1 var(--display);color:var(--navy);margin:20px 0 4px;letter-spacing:-.03em}
+.ctrl .out small{font-size:16px;color:var(--sea)}
+.ctrl p{color:var(--muted);font-size:14px;margin:0}
+.legend{display:flex;justify-content:space-between;color:#9fb6cc;font-size:12px;margin-top:8px}
+@media (max-width:900px){ .sim{grid-template-columns:1fr} .stages{height:200px;padding:14px} }
+
+/* distribution split */
+.split{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.sp{border-radius:22px;padding:clamp(22px,3vw,34px);color:#fff;position:relative;overflow:hidden}
+.sp.a{background:linear-gradient(135deg,#0f3157,#1b74b8)}
+.sp.b{background:linear-gradient(135deg,#0a2540,#13406b)}
+.sp b{display:block;font:700 clamp(38px,4.4vw,58px)/1 var(--display);letter-spacing:-.03em;margin-bottom:8px}
+.sp h3{font-size:20px;margin-bottom:8px;color:var(--cyan)}
+.sp p{margin:0;color:#c9d8e6}
+.bar{height:14px;border-radius:99px;background:var(--line);overflow:hidden;display:flex;margin-top:18px}
+.bar i{display:block;height:100%;width:0;transition:width 1.6s var(--ease)}
+.in .bar i:nth-child(1){width:77.5%}.in .bar i:nth-child(2){width:22.5%}
+.bar i:nth-child(1){background:var(--sea)}.bar i:nth-child(2){background:var(--amber)}
+.bar-l{display:flex;justify-content:space-between;color:var(--muted);font-size:14px;margin-top:8px}
+@media (max-width:760px){ .split{grid-template-columns:1fr} }
+</style>
+</head>
+<body data-tilt=".sp,.ctrl,.of" data-clip=".panel figure" data-glow=".dark">
+
+<header class="hdr" id="hdr">
+  <div class="wrap">
+    <a class="logo" href="index.html"><img src="assets/img/logo1.png" alt="Kahrama" width="160" height="70"><span>Kahrama<small>Dessalement &amp; électricité · Arzew</small></span></a>
+    <nav class="nav" id="nav">
+      <a href="index.html#entreprise">L'entreprise</a>
+      <a href="index.html#cogeneration">Cogénération</a>
+      <a href="procede.html" aria-current="page">Le procédé</a>
+      <a href="index.html#qhse">QHSE</a>
+      <a href="index.html#galerie">Galerie</a>
+      <a href="index.html#contact">Contact</a>
+    </nav>
+    <a class="btn" href="index.html#contact">Nous contacter</a>
+    <button class="burger" id="burger" aria-label="Menu" aria-expanded="false"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
+  </div>
+</header>
+
+<main>
+  <section class="phero">
+    <div class="wrap">
+      <div class="crumbs"><a href="index.html">Accueil</a> / Le procédé</div>
+      <span class="tag">Visite guidée</span>
+      <h1 data-split>Du gaz naturel <span>à l'eau du robinet.</span></h1>
+      <p>Suivez, étape par étape, le parcours de l'énergie et de l'eau à travers le complexe de cogénération d'Arzew.</p>
+    </div>
+  </section>
+
+  <section class="sec">
+    <div class="wrap">
+      <div class="tabs" role="tablist" aria-label="Filière">
+        <button role="tab" aria-selected="true" data-f="w">Filière eau</button>
+        <button role="tab" aria-selected="false" data-f="e">Filière électricité</button>
+      </div>
+      <div class="stepper">
+        <ol class="steps" id="steps"></ol>
+        <article class="panel" id="panel" aria-live="polite"></article>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec dark">
+    <div class="wrap">
+      <div class="head reveal">
+        <div><span class="tag">Le principe MSF</span><h2 data-split>Dix-sept étages <span>de « flash ».</span></h2></div>
+        <p>Dans un dessaleur à détentes étagées (Multi-Stage Flash), l'eau de mer chauffée entre dans des chambres où la pression baisse d'étage en étage&nbsp;: elle s'y vaporise instantanément, puis la vapeur se condense en eau distillée.</p>
+      </div>
+      <div class="sim reveal">
+        <div>
+          <div class="stages" id="stages" aria-hidden="true"></div>
+          <div class="legend"><span>Étage 1 · pression la plus élevée</span><span>Étage 17 · pression la plus basse</span></div>
+        </div>
+        <div class="ctrl">
+          <label for="units">Dessaleurs en service</label>
+          <input type="range" id="units" min="0" max="3" step="1" value="3">
+          <div class="out"><span id="flow">3 600</span> <small>m³/h</small></div>
+          <p id="flowTxt">Capacité nominale de dessalement, soit environ 86 400 m³ par jour.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec">
+    <div class="wrap">
+      <div class="head reveal">
+        <div><span class="tag">Distribution</span><h2 data-split>Où va <span>l'eau produite&nbsp;?</span></h2></div>
+        <p>Répartition de la capacité nominale de 88 880 m³ par jour entre les foyers de la région et les complexes industriels d'Arzew.</p>
+      </div>
+      <div class="reveal" id="distrib">
+        <div class="split">
+          <div class="sp a"><b>68 880 m³/j</b><h3>Eau traitée · SEOR</h3><p>Reminéralisée puis acheminée vers les bacs de stockage de la SEOR pour l'alimentation domestique de la région d'Oran.</p></div>
+          <div class="sp b"><b>20 000 m³/j</b><h3>Eau distillée · industrie</h3><p>Distribuée par le réseau DRIZ aux complexes de la zone industrielle d'Arzew.</p></div>
+        </div>
+        <div class="bar"><i></i><i></i></div>
+        <div class="bar-l"><span>Usage domestique · 77,5 %</span><span>Industrie · 22,5 %</span></div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="ft">
+      <a class="logo" href="index.html"><img src="assets/img/logo1.png" alt="Kahrama" width="160" height="70"></a>
+      <nav><a href="index.html#entreprise">L'entreprise</a><a href="index.html#cogeneration">Cogénération</a><a href="procede.html">Le procédé</a><a href="index.html#qhse">QHSE</a><a href="index.html#contact">Contact</a></nav>
+    </div>
+    <div class="ft-b"><span>© <span id="yr"></span> Kahrama SPA — Filiale d'AEC, groupe Sonatrach</span><span>Concept de refonte · projet non officiel</span></div>
+  </div>
+</footer>
+
+<script src="assets/common.js"></script>
+<script>
+(() => {
+  const $ = s => document.querySelector(s);
+  const F = {
+    w: [
+      { t: 'Prise d\'eau de mer', img: 'slide2.jpg', d: 'Un canal d\'amenée conduit l\'eau de mer jusqu\'à la station de pompage. Elle y est filtrée et chlorée par électrolyseur pour protéger les installations.', f: ['Canal d\'amenée', '4 pompes d\'alimentation', 'Chloration par électrolyseur'] },
+      { t: 'Production de vapeur', img: 'g5.jpg', d: 'Les chaudières de récupération captent la chaleur des gaz d\'échappement des turbines à gaz. La vapeur produite sert à chauffer l\'eau de mer.', f: ['Cogénération', 'Chaleur récupérée'] },
+      { t: 'Dessalement MSF', img: 'dessalement.jpg', d: 'Trois dessaleurs à détentes étagées de 17 étages transforment l\'eau de mer chaude en vapeur puis en eau distillée, d\'étage en étage.', f: ['3 dessaleurs', '1 200 m³/h chacun', '17 étages'] },
+      { t: 'Traitement & contrôle', img: 'g2.jpg', d: 'L\'eau distillée est traitée et contrôlée en laboratoire avant d\'être distribuée, selon l\'usage auquel elle est destinée.', f: ['Laboratoire', 'Contrôle qualité'] },
+      { t: 'Distribution', img: 'g6.jpg', d: '68 880 m³/j d\'eau traitée rejoignent les bacs de stockage de la SEOR, et 20 000 m³/j d\'eau distillée partent vers les complexes industriels par le réseau DRIZ.', f: ['68 880 m³/j vers SEOR', '20 000 m³/j vers l\'industrie'] },
+    ],
+    e: [
+      { t: 'Poste gaz', img: 'g5.jpg', d: 'Le gaz naturel provient du réseau de transport GRTG. Il est filtré, préchauffé, détendu et comptabilisé avant d\'alimenter les turbines.', f: ['Réseau GRTG', 'Filtration', 'Comptage'] },
+      { t: 'Compression & combustion', img: 'g7.jpg', d: 'Le compresseur axial à 17 étages aspire et comprime l\'air ; mélangé au gaz, il brûle dans des chambres de combustion à faibles émissions de NOx (DLN1).', f: ['Compresseur 17 étages', 'Combustion DLN1 bas NOx'] },
+      { t: 'Turbines & alternateurs', img: 'electricite.jpg', d: 'Les gaz chauds se détendent dans la turbine, qui entraîne l\'alternateur. Trois groupes de 114 MW forment une capacité nominale de 343 MW.', f: ['3 × 114 MW', 'Contrôle commande GE'] },
+      { t: 'Transformation', img: 'g4.jpg', d: 'Un transformateur élève la tension de 14,5 kV à 220 kV, puis le courant passe par le poste blindé du complexe.', f: ['14,5 / 220 kV', 'Poste blindé'] },
+      { t: 'Réseau national', img: 'slide1.jpg', d: 'L\'électricité rejoint le réseau 220 kV géré par le centre national de conduite de Sonelgaz. L\'ensemble du complexe est piloté depuis une salle de contrôle DCS.', f: ['Réseau 220 kV', 'Salle de contrôle DCS'] },
+    ],
+  };
+  let fil = 'w', idx = 0;
+  function render() {
+    const S = F[fil];
+    $('#steps').innerHTML = S.map((s, i) => `<li><button data-i="${i}" ${i === idx ? 'aria-current="step"' : ''}><b>${i + 1}</b><span>${s.t}</span></button></li>`).join('');
+    const s = S[idx];
+    $('#panel').innerHTML = `<figure><img src="assets/img/${s.img}" alt="${s.t}"></figure><div class="pbody fade"><div class="num">Étape ${idx + 1} sur ${S.length}</div><h2>${s.t}</h2><p>${s.d}</p><div class="facts">${s.f.map(x => `<span>${x}</span>`).join('')}</div>
+      <div class="pnav"><button id="prev" ${idx === 0 ? 'disabled' : ''}>← Étape précédente</button><button id="next" ${idx === S.length - 1 ? 'disabled' : ''}>Étape suivante →</button></div></div>`;
+    $('#prev').onclick = () => { idx--; render(); };
+    $('#next').onclick = () => { idx++; render(); };
+  }
+  $('#steps').onclick = e => { const b = e.target.closest('button'); if (b) { idx = +b.dataset.i; render(); } };
+  document.querySelector('.tabs').onclick = e => {
+    const b = e.target.closest('button'); if (!b) return;
+    document.querySelectorAll('.tabs button').forEach(x => x.setAttribute('aria-selected', x === b));
+    fil = b.dataset.f; idx = 0; render();
+  };
+  render();
+
+  // MSF stages: liquid level drops as pressure falls
+  $('#stages').innerHTML = Array.from({ length: 17 }, (_, i) => `<div class="stg v" style="height:${92 - i * 4}%;animation-delay:${i * .1}s"></div>`).join('');
+  [...document.querySelectorAll('.stg')].forEach((el, i) => el.style.setProperty('animation-delay', (i * 0.12) + 's'));
+  const units = $('#units');
+  units.oninput = () => {
+    const u = +units.value, q = u * 1200;
+    $('#flow').textContent = q.toLocaleString('fr-FR').replace(/ /g, ' ');
+    $('#flowTxt').textContent = u === 0 ? 'Aucun dessaleur en service : arrêt pour maintenance.' : `${u} dessaleur${u > 1 ? 's' : ''} sur 3, soit environ ${(q * 24).toLocaleString('fr-FR').replace(/ /g, ' ')} m³ par jour.`;
+    document.querySelectorAll('.stg').forEach(el => { el.style.opacity = u ? .35 + u * .22 : .15; el.classList.toggle('v', u > 0); });
+  };
+  kReveal();
+})();
+</script>
+<script src="assets/fx.js"></script>
+</body>
+</html>

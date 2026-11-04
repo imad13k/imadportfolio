@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Nos filiales — Groupe des Sociétés Hasnaoui</title>
+<meta name="description" content="Annuaire des filiales du Groupe des Sociétés Hasnaoui : construction, industrie, services, santé, pierre et agriculture.">
+<link rel="stylesheet" href="fonts/fonts.css">
+<link rel="stylesheet" href="assets/site.css">
+<link rel="stylesheet" href="assets/pages.css">
+</head>
+<body>
+
+<header class="hdr" id="hdr">
+  <div class="wrap">
+    <a class="logo" href="index.html"><img src="assets/gsh-removebg-preview.png" alt="Groupe des Sociétés Hasnaoui — accueil" width="300" height="150"></a>
+    <nav class="nav" id="nav">
+      <a href="index.html#parcours">Le groupe</a>
+      <a href="index.html#poles">Nos pôles</a>
+      <a href="filiales.html" aria-current="page">Filiales</a>
+      <a href="index.html#realisations">Réalisations</a>
+      <a href="carrieres.html">Carrières</a>
+      <a href="index.html#contact">Contact</a>
+    </nav>
+    <a class="btn navy" href="carrieres.html">Postuler</a>
+    <button class="burger" id="burger" aria-label="Menu" aria-expanded="false"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
+  </div>
+</header>
+
+<main>
+  <section class="phero">
+    <div class="wrap">
+      <div class="crumbs"><a href="index.html">Accueil</a> / Nos filiales</div>
+      <span class="eyebrow"><i></i>Annuaire</span>
+      <h1>Les entreprises du <span>groupe.</span></h1>
+      <p>Recherchez une filiale, filtrez par pôle et ouvrez sa fiche pour découvrir son activité, sa date de création et ses capacités.</p>
+    </div>
+  </section>
+
+  <div class="wrap body">
+    <div class="dir-tools">
+      <div class="sbox"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M21 21l-5-5"/></svg><input id="q" type="search" placeholder="Nom ou activité (ex. aluminium, béton, sécurité)" aria-label="Rechercher une filiale"></div>
+    </div>
+    <div class="chips" id="chips" role="group" aria-label="Filtrer par pôle"></div>
+    <p class="dcount" id="count"></p>
+    <div class="dgrid" id="grid"></div>
+  </div>
+</main>
+
+<div class="drawer-bg" id="bg"></div>
+<aside class="drawer" id="drawer" role="dialog" aria-modal="true" aria-labelledby="dTitle" aria-hidden="true"></aside>
+
+<footer>
+  <div class="wrap">
+    <div class="ft-b" style="margin-top:0;border-top:0;padding-top:0"><span>© <span id="yr"></span> Groupe des Sociétés Hasnaoui</span><span><a href="index.html">Accueil</a> · <a href="carrieres.html">Carrières</a> · Concept de refonte · projet non officiel</span></div>
+  </div>
+</footer>
+
+<script src="assets/filiales.js"></script>
+<script src="assets/common.js"></script>
+<script>
+(() => {
+  const $ = s => document.querySelector(s);
+  const F = window.GSH_FILIALES;
+  const fmt = n => n.toLocaleString('fr-FR').replace(/ /g, ' ');
+  const norm = s => s.toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '');
+  const poles = ['Tous', ...new Set(F.map(f => f.pole))];
+  let pole = new URLSearchParams(location.search).get('pole') || 'Tous';
+  if (!poles.includes(pole)) pole = 'Tous';
+
+  function chips() {
+    $('#chips').innerHTML = poles.map(p => `<button class="chip" aria-pressed="${p === pole}" data-p="${p}">${p}<span>${p === 'Tous' ? F.length : F.filter(f => f.pole === p).length}</span></button>`).join('');
+  }
+  function render() {
+    const q = norm($('#q').value.trim());
+    const list = F.filter(f => (pole === 'Tous' || f.pole === pole) && (!q || norm(f.n + ' ' + f.d + ' ' + f.pole).includes(q)));
+    $('#count').textContent = `${list.length} filiale${list.length > 1 ? 's' : ''}`;
+    $('#grid').innerHTML = list.length ? list.map((f, i) => `<button class="fcard" data-id="${f.id}" style="animation-delay:${i * 35}ms">
+        <span class="lg"><img src="assets/subs/${f.logo}" alt="${f.n}" loading="lazy"></span>
+        <span class="pole">Pôle ${f.pole}</span>
+        <h3>${f.n}</h3><p>${f.d}</p>
+        <span class="meta">${f.y ? `<span>Depuis <b>${f.y}</b></span>` : ''}${f.emp ? `<span><b>${fmt(f.emp)}</b> collaborateurs</span>` : ''}${!f.y && !f.emp ? '<span>Voir la fiche →</span>' : ''}</span>
+      </button>`).join('') : '<div class="none">Aucune filiale ne correspond à votre recherche.</div>';
+  }
+  const drawer = $('#drawer'), bg = $('#bg');
+  let lastFocus;
+  function open(id) {
+    const f = F.find(x => x.id === id); if (!f) return;
+    lastFocus = document.activeElement;
+    const facts = [['Pôle', 'Pôle ' + f.pole], f.y && ['Création', f.y], f.emp && ['Collaborateurs', fmt(f.emp)], f.sup && ['Superficie', f.sup], f.cap && ['Capacité', f.cap, 'w']].filter(Boolean);
+    drawer.innerHTML = `<button class="x" id="x" aria-label="Fermer">✕</button>
+      <div class="lg"><img src="assets/subs/${f.logo}" alt=""></div>
+      <span class="eyebrow"><i></i>Pôle ${f.pole}</span>
+      <h2 id="dTitle">${f.n}</h2><p>${f.d}</p>
+      <div class="facts">${facts.map(([l, v, w]) => `<div class="${w || ''}"><span>${l}</span><b>${v}</b></div>`).join('')}</div>
+      <a class="btn navy" href="carrieres.html?filiale=${encodeURIComponent(f.n)}" style="align-self:flex-start">Postuler chez ${f.n}</a>
+      <p class="src">Informations issues de la fiche officielle de la filiale.</p>`;
+    drawer.classList.add('open'); bg.classList.add('open'); drawer.setAttribute('aria-hidden', 'false');
+    document.body.style.overflow = 'hidden';
+    $('#x').onclick = close; $('#x').focus();
+    history.replaceState(null, '', '#' + f.id);
+  }
+  function close() {
+    drawer.classList.remove('open'); bg.classList.remove('open'); drawer.setAttribute('aria-hidden', 'true');
+    document.body.style.overflow = '';
+    history.replaceState(null, '', location.pathname + location.search);
+    lastFocus?.focus();
+  }
+  bg.onclick = close;
+  addEventListener('keydown', e => { if (e.key === 'Escape' && drawer.classList.contains('open')) close(); });
+  $('#grid').onclick = e => { const c = e.target.closest('.fcard'); if (c) open(c.dataset.id); };
+  $('#chips').onclick = e => { const b = e.target.closest('.chip'); if (!b) return; pole = b.dataset.p; chips(); render(); };
+  $('#q').oninput = render;
+  chips(); render();
+  if (location.hash) open(location.hash.slice(1));
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,198 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Carrières — Groupe des Sociétés Hasnaoui</title>
+<meta name="description" content="Rejoignez le Groupe des Sociétés Hasnaoui : candidature spontanée, demande de stage ou réponse à une offre.">
+<link rel="stylesheet" href="fonts/fonts.css">
+<link rel="stylesheet" href="assets/site.css">
+<link rel="stylesheet" href="assets/pages.css">
+</head>
+<body>
+
+<header class="hdr" id="hdr">
+  <div class="wrap">
+    <a class="logo" href="index.html"><img src="assets/gsh-removebg-preview.png" alt="Groupe des Sociétés Hasnaoui — accueil" width="300" height="150"></a>
+    <nav class="nav" id="nav">
+      <a href="index.html#parcours">Le groupe</a>
+      <a href="index.html#poles">Nos pôles</a>
+      <a href="filiales.html">Filiales</a>
+      <a href="index.html#realisations">Réalisations</a>
+      <a href="carrieres.html" aria-current="page">Carrières</a>
+      <a href="index.html#contact">Contact</a>
+    </nav>
+    <a class="btn navy" href="filiales.html">Nos filiales</a>
+    <button class="burger" id="burger" aria-label="Menu" aria-expanded="false"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
+  </div>
+</header>
+
+<main>
+  <section class="phero">
+    <div class="wrap">
+      <div class="crumbs"><a href="index.html">Accueil</a> / Carrières</div>
+      <span class="eyebrow"><i></i>Carrières</span>
+      <h1>Construisez votre carrière <span>avec nous.</span></h1>
+      <p>Chantiers, usines, laboratoires, bureaux d'études, santé&nbsp;: des métiers variés dans plus de vingt entreprises, avec un centre de formation propre au groupe.</p>
+    </div>
+  </section>
+
+  <div class="wrap body">
+    <div class="why">
+      <div class="reveal"><span class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 21h18M5 21V8l7-5 7 5v13"/></svg></span><b>22 filiales, 5 pôles</b><p>De la construction à la santé, évoluez d'un métier à l'autre au sein du même groupe.</p></div>
+      <div class="reveal"><span class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 10L12 5 2 10l10 5 10-5zM6 12v5c3 2 9 2 12 0v-5"/></svg></span><b>Formation continue</b><p>Le Phare, centre de formation agréé du groupe, accompagne la montée en compétences des équipes.</p></div>
+      <div class="reveal"><span class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg></span><b>50 ans de stabilité</b><p>Une entreprise familiale fondée en 1974, qui bâtit sur le long terme avec ses collaborateurs.</p></div>
+    </div>
+
+    <div class="apply">
+      <div class="apply-side">
+        <span class="eyebrow"><i></i>Postuler</span>
+        <h2>Votre candidature en 4 étapes.</h2>
+        <p>Comptez environ 3 minutes. Préparez votre CV au format PDF.</p>
+        <ol class="stepper" id="stepper">
+          <li class="on"><i>1</i>Type de candidature</li>
+          <li><i>2</i>Vos informations</li>
+          <li><i>3</i>CV et motivation</li>
+          <li><i>4</i>Vérification</li>
+        </ol>
+      </div>
+
+      <form class="aform" id="form" novalidate>
+        <div class="astep on" data-s="1">
+          <h3>Que souhaitez-vous faire&nbsp;?</h3>
+          <div class="opts" id="kind">
+            <button type="button" class="opt" aria-pressed="false" data-v="Candidature spontanée"><b>Candidature spontanée</b><small>Proposer votre profil</small></button>
+            <button type="button" class="opt" aria-pressed="false" data-v="Demande de stage"><b>Demande de stage</b><small>Stage pratique ou de fin d'études</small></button>
+            <button type="button" class="opt" aria-pressed="false" data-v="Réponse à une offre"><b>Réponse à une offre</b><small>Avec la référence de l'annonce</small></button>
+          </div>
+          <div class="ag" style="margin-top:16px">
+            <label>Filiale souhaitée<select id="filiale"><option value="">Indifférent — tout le groupe</option></select></label>
+            <label id="refWrap" hidden>Référence de l'offre<input id="ref" placeholder="Ex. GSH-2026-014"></label>
+          </div>
+        </div>
+
+        <div class="astep" data-s="2">
+          <h3>Vos informations</h3>
+          <div class="ag">
+            <label>Prénom<input id="prenom" required autocomplete="given-name"></label>
+            <label>Nom<input id="nom" required autocomplete="family-name"></label>
+            <label>E-mail<input id="email" type="email" required autocomplete="email"></label>
+            <label>Téléphone<input id="tel" type="tel" required autocomplete="tel"></label>
+            <label>Wilaya de résidence<input id="wilaya" placeholder="Ex. Sidi Bel Abbès"></label>
+            <label>Niveau d'études<select id="niveau"><option>Formation professionnelle</option><option>Licence</option><option>Master / Ingénieur</option><option>Doctorat</option><option>Autre</option></select></label>
+            <label class="full">Domaine<select id="domaine"><option>BTP et génie civil</option><option>Production industrielle</option><option>Maintenance</option><option>Qualité, hygiène, sécurité, environnement</option><option>Commercial et marketing</option><option>Finance et comptabilité</option><option>Ressources humaines</option><option>Informatique et télécoms</option><option>Logistique et transport</option><option>Santé</option><option>Agriculture</option></select></label>
+          </div>
+        </div>
+
+        <div class="astep" data-s="3">
+          <h3>CV et motivation</h3>
+          <div class="ag">
+            <div class="full">
+              <div class="drop" id="drop" tabindex="0" role="button" aria-label="Déposer votre CV"><b>Déposez votre CV ici</b><br>ou cliquez pour le choisir — PDF, 5 Mo maximum</div>
+              <input type="file" id="cv" accept="application/pdf" hidden>
+            </div>
+            <label class="full">Lettre de motivation <span class="hint">Quelques lignes suffisent</span><textarea id="motiv" rows="5" maxlength="1500"></textarea><span class="count-c" id="cc">0 / 1500</span></label>
+          </div>
+        </div>
+
+        <div class="astep" data-s="4">
+          <div id="reviewBox">
+            <h3>Vérifiez votre candidature</h3>
+            <div class="review" id="review"></div>
+            <label style="display:flex;gap:10px;align-items:center;margin-top:16px;font-size:14px;color:var(--muted)"><input type="checkbox" id="consent" style="width:18px;height:18px;accent-color:var(--navy)"> J'accepte que mes données soient utilisées pour le traitement de ma candidature.</label>
+          </div>
+        </div>
+
+        <p class="a-err" id="err" role="alert"></p>
+        <div class="a-nav" id="aNav">
+          <button type="button" class="btn ghost" id="back" style="visibility:hidden;color:var(--navy)">← Retour</button>
+          <button type="button" class="btn navy" id="next">Continuer →</button>
+        </div>
+        <p class="demo">Démonstration&nbsp;: aucune donnée n'est envoyée.</p>
+      </form>
+    </div>
+  </div>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="ft-b" style="margin-top:0;border-top:0;padding-top:0"><span>© <span id="yr"></span> Groupe des Sociétés Hasnaoui</span><span><a href="index.html">Accueil</a> · <a href="filiales.html">Filiales</a> · Concept de refonte · projet non officiel</span></div>
+  </div>
+</footer>
+
+<script src="assets/filiales.js"></script>
+<script src="assets/common.js"></script>
+<script>
+(() => {
+  const $ = s => document.querySelector(s);
+  const esc = s => String(s).replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
+  $('#filiale').innerHTML += GSH_FILIALES.map(f => `<option>${f.n}</option>`).join('');
+  const pre = new URLSearchParams(location.search).get('filiale'); if (pre) $('#filiale').value = pre;
+  let step = 1, kind = '', file = null;
+  const steps = [...document.querySelectorAll('.astep')], marks = [...document.querySelectorAll('#stepper li')];
+
+  function go(n) {
+    step = n;
+    steps.forEach(s => s.classList.toggle('on', +s.dataset.s === n));
+    marks.forEach((m, i) => { m.classList.toggle('on', i + 1 === n); m.classList.toggle('ok', i + 1 < n); });
+    $('#back').style.visibility = n > 1 ? 'visible' : 'hidden';
+    $('#next').textContent = n === 4 ? 'Envoyer ma candidature' : 'Continuer →';
+    $('#err').textContent = '';
+    if (n === 4) review();
+    $('#form').scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
+  function check() {
+    document.querySelectorAll('.bad').forEach(x => x.classList.remove('bad'));
+    if (step === 1) { if (!kind) return 'Choisissez un type de candidature.'; if (kind === 'Réponse à une offre' && !$('#ref').value.trim()) { $('#ref').classList.add('bad'); return 'Indiquez la référence de l\'offre.'; } }
+    if (step === 2) {
+      const bad = ['#prenom', '#nom', '#email', '#tel'].filter(s => !$(s).value.trim() || (s === '#email' && !/^\S+@\S+\.\S+$/.test($(s).value)) || (s === '#tel' && $(s).value.replace(/\D/g, '').length < 9));
+      bad.forEach(s => $(s).classList.add('bad'));
+      if (bad.length) { $(bad[0]).focus(); return 'Vérifiez les champs en rouge (e-mail valide, téléphone à 9 chiffres minimum).'; }
+    }
+    if (step === 3 && !file) return 'Ajoutez votre CV au format PDF.';
+    if (step === 4 && !$('#consent').checked) return 'Merci d\'accepter le traitement de vos données.';
+    return '';
+  }
+  function review() {
+    const rows = [['Type', kind + (kind === 'Réponse à une offre' ? ` (${$('#ref').value})` : '')], ['Filiale', $('#filiale').value || 'Tout le groupe'],
+      ['Candidat', `${$('#prenom').value} ${$('#nom').value}`], ['Contact', `${$('#email').value} · ${$('#tel').value}`],
+      ['Profil', `${$('#niveau').value} · ${$('#domaine').value}`], ['CV', file ? `${file.name} (${(file.size / 1024 / 1024).toFixed(1).replace('.', ',')} Mo)` : '—']];
+    $('#review').innerHTML = rows.map(([l, v]) => `<div><span>${l}</span><b>${esc(v)}</b></div>`).join('');
+  }
+  $('#kind').onclick = e => {
+    const b = e.target.closest('.opt'); if (!b) return;
+    document.querySelectorAll('#kind .opt').forEach(o => o.setAttribute('aria-pressed', o === b));
+    kind = b.dataset.v; $('#refWrap').hidden = kind !== 'Réponse à une offre';
+  };
+  // CV drop zone
+  const drop = $('#drop'), input = $('#cv');
+  function setFile(f) {
+    if (!f) return;
+    if (f.type !== 'application/pdf') { $('#err').textContent = 'Le CV doit être un fichier PDF.'; return; }
+    if (f.size > 5 * 1024 * 1024) { $('#err').textContent = 'Le fichier dépasse 5 Mo.'; return; }
+    file = f; $('#err').textContent = '';
+    drop.classList.add('has'); drop.innerHTML = `<b>✓ ${esc(f.name)}</b><br>${(f.size / 1024).toFixed(0)} Ko — cliquez pour remplacer`;
+  }
+  drop.onclick = () => input.click();
+  drop.onkeydown = e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); input.click(); } };
+  input.onchange = () => setFile(input.files[0]);
+  ['dragenter', 'dragover'].forEach(ev => drop.addEventListener(ev, e => { e.preventDefault(); drop.classList.add('over'); }));
+  ['dragleave', 'drop'].forEach(ev => drop.addEventListener(ev, e => { e.preventDefault(); drop.classList.remove('over'); }));
+  drop.addEventListener('drop', e => setFile(e.dataTransfer.files[0]));
+  $('#motiv').oninput = e => $('#cc').textContent = `${e.target.value.length} / 1500`;
+
+  $('#next').onclick = () => {
+    const err = check(); if (err) { $('#err').textContent = err; return; }
+    if (step < 4) return go(step + 1);
+    const ref = `CAND-${new Date().getFullYear()}-${String(Math.floor(Math.random() * 1e5)).padStart(5, '0')}`;
+    marks.forEach(m => { m.classList.remove('on'); m.classList.add('ok'); });
+    $('#aNav').hidden = true; $('#err').textContent = '';
+    steps.forEach(s => s.classList.remove('on'));
+    const s4 = steps[3]; s4.classList.add('on');
+    s4.innerHTML = `<div class="ok-box"><h3>Merci ${esc($('#prenom').value)}&nbsp;!</h3><p style="color:var(--muted)">Votre candidature a bien été enregistrée. Votre référence&nbsp;:</p><span class="ref">${ref}</span><p style="color:var(--muted)">Notre service des ressources humaines étudiera votre profil et vous contactera si une opportunité correspond.</p><a class="btn" href="filiales.html">Découvrir nos filiales</a></div>`;
+  };
+  $('#back').onclick = () => go(step - 1);
+})();
+</script>
+</body>
+</html>

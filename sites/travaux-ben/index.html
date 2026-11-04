@@ -1,0 +1,392 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Travaux BEN — Maintenance industrielle & Travaux TCE</title>
+<meta name="description" content="EURL Travaux BEN, Bethioua (Oran) : maintenance industrielle et travaux tous corps d'état. Un interlocuteur unique pour la gestion, la maintenance et la réalisation de vos projets industriels.">
+<meta name="theme-color" content="#1B405A">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="fonts/fonts.css">
+<link rel="stylesheet" href="assets/site.css">
+</head>
+<body>
+<script>
+  // Intro plays once per visit, and never for visitors who reduce motion
+  (function () {
+    var seen = false;
+    try { seen = sessionStorage.getItem('tb-intro') === '1'; sessionStorage.setItem('tb-intro', '1'); } catch (e) {}
+    if (!seen && !matchMedia('(prefers-reduced-motion: reduce)').matches) document.documentElement.classList.add('intro');
+  })();
+</script>
+<div class="intro-screen" id="intro" aria-hidden="true">
+  <div class="intro-panel intro-panel-a"></div>
+  <div class="intro-panel intro-panel-b"></div>
+  <div class="intro-inner">
+    <svg class="intro-mark" viewBox="0 0 560 480">
+      <path class="im-t" d="M303.19 10.13 259.58 90.34 185.4 90.34 185.4 327.4 105.19 475.58 105.19 90.34 0 90.34 43.61 10.13 303.19 10.13Z"/>
+      <path class="im-b" d="M549.9 128.96C549.9 66.59 501.86 15.45 440.74 10.52 437.56 10.25 434.32 10.12 431.07 10.12L343.25 10.12 299.88 90.33 431.06 90.33C432.1 90.33 433.16 90.38 434.21 90.46 436.44 90.64 438.630 91 440.74 91.56 457.39 95.86 469.69 110.98 469.69 128.96 469.69 138.17 466.47 146.63 461.1 153.27 459.37 155.39 457.41 157.33 455.27 159.06 451.06 162.46 446.12 164.98 440.74 166.36 438.64 166.92 436.44 167.3 434.21 167.47 433.17 167.54 432.11 167.6 431.06 167.6L280.62 167.6 246.4 234.31 420.88 234.31 420.88 234.62C422.59 234.4 424.33 234.31 426.09 234.31 428.16 234.31 430.21 234.44 432.2 234.71 435.13 235.11 437.99 235.77 440.72 236.69 446.37 238.54 451.53 241.46 455.97 245.19 458.51 247.29 460.81 249.69 462.84 252.29 468.97 260.17 472.62 270.07 472.62 280.84 472.62 301.45 459.26 318.92 440.72 325.04 437.99 325.96 435.13 326.62 432.2 327 430.2 327.27 428.15 327.4 426.09 327.4 424.33 327.4 422.58 327.31 420.88 327.11L420.88 327.4 406.68 327.4 405.62 328.62C403.52 331.03 402.89 334.41 403.97 337.43 405.07 340.52 407.71 342.73 410.87 343.27L422.9 345.28 423.44 348.93C424.38 355.08 424.59 361.5 424.11 369.14L423.88 372.93 411.87 375.68C408.74 376.4 406.24 378.74 405.34 381.81 404.4 384.97 405.23 388.3 407.46 390.6L416 399.34 414.29 402.61C413.61 403.940 412.87 405.24 412.11 406.51L424.23 406.51C429.82 406.51 435.34 406.15 440.74 405.43 502.34 397.34 549.9 344.64 549.9 280.83 549.9 251.76 540.03 225 523.45 203.71 539.99 183.28 549.9 157.27 549.9 128.95Z"/>
+      <path class="im-b2" d="M266.84 394.58 258.78 403.71 260.49 406.53 182.68 406.53 225.52 327.4 260.19 327.4 265.22 332.58C267.45 334.88 268.28 338.21 267.36 341.34 266.45 344.41 263.950 346.77 260.83 347.47L248.86 350.21 248.57 353.95C248.01 360.84 248.18 367.24 249.06 374.11L249.55 377.850 261.68 379.95C264.85 380.49 267.47 382.7 268.55 385.77 269.62 388.8 268.96 392.17 266.85 394.59Z"/>
+      <g class="im-gear">
+        <path d="M336.29 316.56C311.35 316.56 291.12 336.79 291.12 361.73 291.12 386.67 311.35 406.88 336.29 406.88 361.230 406.88 381.44 386.67 381.44 361.73 381.44 336.79 361.23 316.56 336.29 316.56ZM336.31 394.81C318.02 394.81 303.19 379.99 303.19 361.71 303.19 343.43 318.02 328.61 336.31 328.61 354.6 328.61 369.41 343.44 369.41 361.71 369.41 379.98 354.58 394.81 336.31 394.81Z"/>
+        <path d="M350.69 280.06 346.7 287.61C344.34 292.09 339.76 294.93 334.71 295.05L334.64 295.05C334.52 295.05 334.41 295.05 334.29 295.05 329.35 295.05 324.78 292.46 322.27 288.21L317.94 280.89C311.56 282.29 305.73 284.4 299.83 287.24L301.03 295.67C301.75 300.67 299.7 305.69 295.67 308.76L295.6 308.81C293.13 310.69 290.15 311.66 287.15 311.66 285.3 311.66 283.43 311.29 281.67 310.54L273.79 307.18C269.49 312.21 266.04 317.18 262.97 322.95L268.87 329.01C272.39 332.62 273.69 337.86 272.27 342.69L272.25 342.76C270.81 347.6 266.89 351.3 261.97 352.42L253.66 354.33C253.14 360.77 253.28 366.88 254.11 373.44L262.56 374.9C267.54 375.76 271.66 379.23 273.33 384L273.35 384.05C275.04 388.82 274.02 394.12 270.67 397.93L265.1 404.26C268.44 409.8 272.29 414.83 276.82 419.51L284.44 415.73C286.4 414.77 288.52 414.29 290.63 414.29 293.4 414.29 296.15 415.11 298.52 416.72L298.61 416.79C302.76 419.63 305.07 424.5 304.62 429.52L303.88 438.02C309.9 440.52 315.75 442.37 322.24 443.36L326.18 435.86C328.52 431.38 333.12 428.52 338.17 428.4L338.28 428.4C338.41 428.4 338.55 428.4 338.68 428.4 343.58 428.4 348.11 430.97 350.63 435.18L355.04 442.53C361.48 440.91 367.41 438.9 373.06 435.98L371.82 427.64C371.08 422.66 373.1 417.64 377.09 414.57L377.2 414.5C379.69 412.58 382.7 411.58 385.74 411.58 387.56 411.58 389.4 411.94 391.13 412.66L399.04 416C403.3 410.98 406.77 406.02 409.79 400.25L403.84 394.14C400.3 390.53 399 385.29 400.44 380.44L400.46 380.35C401.9 375.51 405.82 371.83 410.75 370.69L419.04 368.78C419.45 362.24 419.4 356.07 418.43 349.67L410.05 348.27C405.05 347.42 400.92 343.95 399.21 339.19L399.19 339.12C397.48 334.36 398.49 329.05 401.81 325.24L407.37 318.88C404.01 313.34 400.2 308.45 395.65 303.72L388.04 307.53C386.07 308.51 383.94 308.99 381.81 308.99 379.06 308.99 376.32 308.18 373.96 306.59L373.89 306.54C369.7 303.7 367.36 298.81 367.81 293.77L368.53 285.34C362.69 282.84 357.15 281.26 350.71 280.04Z"/>
+      </g>
+    </svg>
+    <div class="intro-word">
+      <span class="intro-l1">TRAVAUX</span>
+      <span class="intro-l2">BEN</span>
+    </div>
+    <div class="intro-bar"><span></span></div>
+    <p class="intro-tag">Maintenance industrielle &amp; Travaux TCE</p>
+  </div>
+</div>
+<div class="progress" id="progress" aria-hidden="true"></div>
+
+<header class="hdr" id="hdr">
+  <div class="wrap">
+    <a class="logo" href="#top" aria-label="Travaux BEN — accueil">
+      <img class="logo-light" src="assets/logo-light.png" alt="Travaux BEN" width="640" height="167">
+      <img class="logo-dark" src="assets/logo.png" alt="" width="640" height="167">
+    </a>
+    <nav class="nav" id="nav" aria-label="Navigation principale">
+      <a href="#entreprise">L'entreprise</a>
+      <a href="#expertises">Expertises</a>
+      <a href="#engagements">Engagements</a>
+      <a href="#moyens">Moyens</a>
+      <a href="#realisations">Réalisations</a>
+      <a href="#contact" class="nav-cta">Demander un devis</a>
+    </nav>
+    <button class="burger" id="burger" aria-label="Ouvrir le menu" aria-expanded="false" aria-controls="nav"><span></span><span></span><span></span></button>
+  </div>
+</header>
+
+<main id="top">
+
+  <!-- Hero -->
+  <section class="hero">
+    <img class="hero-bg" src="assets/hero.jpg" alt="" width="2000" height="1334" fetchpriority="high">
+    <div class="wrap hero-in">
+      <p class="eyebrow">Maintenance industrielle &amp; Travaux TCE · Depuis 2020</p>
+      <h1>Une solution globale pour vos projets <em>industriels.</em></h1>
+      <p class="lead">Gestion, maintenance et réalisation : TRAVAUX BEN combine expertise technique et approche intégrée pour répondre à vos besoins les plus complexes.</p>
+      <div class="hero-ctas">
+        <a class="btn btn-accent" href="#contact">Étudier votre projet</a>
+        <a class="btn btn-ghost" href="#expertises">Nos expertises</a>
+      </div>
+    </div>
+    <div class="hero-strip">
+      <div class="wrap">
+        <div><strong data-count="1">1</strong><span>interlocuteur unique, une responsabilité centralisée</span></div>
+        <div><strong data-count="6">6</strong><span>métiers réunis, du génie civil à la chaudronnerie</span></div>
+        <div><strong data-count="2020" data-from="2000">2020</strong><span>année de création, à Bethioua (Oran)</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Défis -->
+  <section class="sec defis" id="entreprise">
+    <div class="wrap split">
+      <figure class="defis-img reveal"><img src="assets/hall.jpg" alt="Équipes au travail dans un hall industriel" width="1100" height="2021" loading="lazy"></figure>
+      <div class="reveal">
+        <p class="kicker">Défis industriels</p>
+        <h2>Plusieurs corps d'état, un seul responsable.</h2>
+        <div class="problem">
+          <span class="tag">Le constat</span>
+          <p>La gestion d'un site industriel implique la coordination de plusieurs corps d'état et expose à des risques d'arrêts imprévus qui pèsent sur la production.</p>
+        </div>
+        <div class="solution">
+          <span class="tag tag-accent">Notre réponse</span>
+          <p>TRAVAUX BEN combine travaux TCE et maintenance industrielle pour une gestion simplifiée, avec <strong>un interlocuteur unique</strong> et <strong>une responsabilité centralisée</strong>.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Qui sommes-nous -->
+  <section class="sec about">
+    <div class="wrap">
+      <div class="about-head reveal">
+        <p class="kicker">Qui sommes-nous ?</p>
+        <h2>Une équipe expérimentée, un réseau de partenaires fiable.</h2>
+        <p class="lead-dark">Créée en 2020, l'entreprise TRAVAUX BEN, active dans la maintenance industrielle et les travaux TCE, est née de la volonté d'une équipe déjà riche d'une solide expérience, qui met aujourd'hui ses compétences à votre service.</p>
+      </div>
+      <figure class="about-img reveal"><img src="assets/chantier.jpg" alt="Deux chefs de chantier observant une grue au coucher du soleil" width="1600" height="900" loading="lazy"></figure>
+
+      <div class="mission">
+        <div class="mission-intro reveal">
+          <p class="kicker">Notre mission</p>
+          <h3>Chaque projet réalisé dans le respect des règles de l'art et des normes de sécurité les plus strictes.</h3>
+          <img src="assets/casque.jpg" alt="Technicien tenant un casque de chantier" width="900" height="746" loading="lazy">
+        </div>
+        <ol class="mission-list">
+          <li class="reveal"><h4>La satisfaction client au cœur</h4><p>Des services de haute qualité, avec la satisfaction de nos clients au centre de chacune de nos interventions.</p></li>
+          <li class="reveal"><h4>Un niveau d'exigence permanent</h4><p>Un niveau d'exigence élevé, maintenu en continu, pour des prestations conformes aux standards les plus stricts.</p></li>
+          <li class="reveal"><h4>La sécurité, priorité absolue</h4><p>Collaborateurs et partenaires évoluent dans un environnement sécurisé, pour regagner leur domicile en toute sécurité, chaque jour.</p></li>
+          <li class="reveal"><h4>Proactifs et durables</h4><p>Nous anticipons les besoins croissants de nos clients et contribuons au développement durable de notre secteur.</p></li>
+        </ol>
+      </div>
+    </div>
+  </section>
+
+  <!-- Valeurs -->
+  <section class="sec values">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <p class="kicker">Nos principes</p>
+        <h2>Des valeurs qui guident chacune de nos actions.</h2>
+        <p>Elles sont essentielles pour bâtir une confiance durable avec nos clients et assurer l'excellence de nos services.</p>
+      </div>
+      <div class="values-grid">
+        <article class="value reveal">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 20h16M6 20V9l6-5 6 5v11M10 20v-6h4v6"/></svg>
+          <h3>Rigueur</h3><p>Exigence constante et qualité sans compromis dans chaque intervention.</p>
+        </article>
+        <article class="value reveal">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7S2 12 2 12Z"/><circle cx="12" cy="12" r="3"/></svg>
+          <h3>Transparence</h3><p>Communication claire, directe et honnête à chaque étape du projet.</p>
+        </article>
+        <article class="value reveal">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3 4 6v6c0 5 3.5 8 8 9 4.5-1 8-4 8-9V6l-8-3Z"/><path d="m9 12 2 2 4-4"/></svg>
+          <h3>Sécurité</h3><p>Respect strict des normes pour garantir un environnement de travail sûr.</p>
+        </article>
+        <article class="value reveal">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M2 9l10-5 10 5-10 5L2 9Z"/><path d="M6 11v5c0 1.5 3 3 6 3s6-1.5 6-3v-5M22 9v6"/></svg>
+          <h3>Formation continue</h3><p>Développement continu des compétences pour gagner en performance et en expertise.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- Expertises -->
+  <section class="sec services" id="expertises">
+    <div class="wrap">
+      <div class="sec-head sec-head-row reveal">
+        <div>
+          <p class="kicker">Nos expertises</p>
+          <h2>Six métiers pour vos besoins industriels et tertiaires.</h2>
+        </div>
+        <a class="btn btn-outline" href="#contact">Parler de votre projet</a>
+      </div>
+      <div class="svc-grid">
+        <article class="svc reveal">
+          <div class="svc-img"><img src="assets/svc-assistance.jpg" alt="Ingénieurs consultant un ordinateur portable dans un atelier" width="1000" height="666" loading="lazy"></div>
+          <div class="svc-body"><span class="num">01</span><h3>Assistance technique</h3><p>Support technique spécialisé pour vos opérations industrielles.</p></div>
+        </article>
+        <article class="svc reveal">
+          <div class="svc-img"><img src="assets/svc-genie-civil.jpg" alt="Ingénieur et chef de chantier étudiant des plans" width="1000" height="668" loading="lazy"></div>
+          <div class="svc-body"><span class="num">02</span><h3>Génie civil TCE</h3><p>Réalisation complète de projets tous corps d'état.</p></div>
+        </article>
+        <article class="svc reveal">
+          <div class="svc-img"><img src="assets/svc-chaudronnerie.jpg" alt="Installation de tuyauterie industrielle" width="1000" height="667" loading="lazy"></div>
+          <div class="svc-body"><span class="num">03</span><h3>Chaudronnerie &amp; tuyauterie</h3><p>Fabrication et installation d'équipements industriels métalliques.</p></div>
+        </article>
+        <article class="svc reveal">
+          <div class="svc-img"><img src="assets/svc-peinture.jpg" alt="Peintre sur nacelle traitant une façade" width="1000" height="561" loading="lazy"></div>
+          <div class="svc-body"><span class="num">04</span><h3>Peinture &amp; traitement de surfaces</h3><p>Protection et finition durables des surfaces industrielles.</p></div>
+        </article>
+        <article class="svc reveal">
+          <div class="svc-img"><img src="assets/svc-epoxy.jpg" alt="Application d'un revêtement de sol époxy" width="1000" height="843" loading="lazy"></div>
+          <div class="svc-body"><span class="num">05</span><h3>Revêtements de sols époxy / polyuréthane</h3><p>Sols industriels résistants aux contraintes mécaniques.</p></div>
+        </article>
+        <article class="svc reveal">
+          <div class="svc-img"><img src="assets/svc-location.jpg" alt="Engins de chantier stationnés sur un parc" width="1000" height="667" loading="lazy"></div>
+          <div class="svc-body"><span class="num">06</span><h3>Location de matériel &amp; engins</h3><p>Mise à disposition d'engins et de matériel adaptés à vos chantiers.</p></div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- Bandeau métiers -->
+  <div class="ticker" aria-hidden="true">
+    <div class="ticker-track">
+      <span>Assistance technique</span><span>Génie civil TCE</span><span>Chaudronnerie &amp; tuyauterie</span><span>Peinture &amp; traitement de surfaces</span><span>Sols époxy / polyuréthane</span><span>Location de matériel &amp; engins</span><span>Maintenance industrielle</span>
+    </div>
+  </div>
+
+  <!-- Objectifs -->
+  <section class="sec goals">
+    <div class="wrap split">
+      <div class="reveal">
+        <p class="kicker kicker-light">Nos objectifs</p>
+        <h2>Devenir une organisation de services hautement compétitive.</h2>
+        <p>Reconnue pour la qualité et la fiabilité de ses prestations, TRAVAUX BEN améliore continuellement ses compétences, renforce son expertise technique et optimise ses méthodes de travail.</p>
+        <p>Nous choisissons nos marchés de manière stratégique pour offrir à nos clients des solutions efficaces et à forte valeur ajoutée.</p>
+      </div>
+      <div class="results reveal">
+        <p class="kicker kicker-light">Résultats pour nos clients</p>
+        <div class="result"><span>01</span><p><strong>Coordination optimisée</strong> entre tous les corps de métier.</p></div>
+        <div class="result"><span>02</span><p><strong>Moins de risques</strong> de délais non maîtrisés et d'arrêts de production.</p></div>
+        <div class="result"><span>03</span><p><strong>Performance opérationnelle</strong> et budgets maîtrisés, pour une meilleure rentabilité.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Engagements -->
+  <section class="sec commit" id="engagements">
+    <div class="wrap">
+      <div class="commit-top">
+        <div class="sec-head reveal">
+          <p class="kicker">Nos engagements</p>
+          <h2>Des engagements fermes, sur chaque chantier.</h2>
+        </div>
+        <figure class="commit-img reveal"><img src="assets/engagements.jpg" alt="Équipe d'ingénieurs examinant un plan devant un bâtiment" width="1200" height="608" loading="lazy"></figure>
+      </div>
+      <div class="commit-grid">
+        <article class="reveal"><h3>Conformité</h3><p>Des prestations conformes aux exigences techniques et aux attentes de nos clients.</p></article>
+        <article class="reveal"><h3>Ponctualité</h3><p>Des délais maîtrisés grâce à une gestion simplifiée et une coordination centralisée.</p></article>
+        <article class="reveal"><h3>Qualité</h3><p>Un haut niveau de qualité garanti à chaque étape de nos projets, sur tous les chantiers.</p></article>
+      </div>
+    </div>
+  </section>
+
+  <!-- Moyens -->
+  <section class="sec means" id="moyens">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <p class="kicker">Moyens &amp; compétences</p>
+        <h2>Une équipe qualifiée, un parc matériel performant.</h2>
+        <p>Ces ressources nous permettent d'assurer une exécution rigoureuse et de répondre aux exigences les plus complexes de vos projets industriels et tertiaires.</p>
+      </div>
+      <div class="means-grid">
+        <article class="mean reveal"><img src="assets/moyen-equipe.jpg" alt="Technicien en casque consultant une tablette" width="700" height="584" loading="lazy"><h3>Équipe qualifiée</h3><p>Personnel qualifié et expérimenté.</p></article>
+        <article class="mean reveal"><img src="assets/moyen-parc.jpg" alt="Technicien réglant un équipement de précision" width="700" height="584" loading="lazy"><h3>Parc matériel</h3><p>Matériel à la pointe de la technologie.</p></article>
+        <article class="mean reveal"><img src="assets/moyen-formation.jpg" alt="Responsable technique devant un poste de travail" width="700" height="584" loading="lazy"><h3>Formation continue</h3><p>Encadrement technique rigoureux.</p></article>
+        <article class="mean reveal"><img src="assets/moyen-logistique.jpg" alt="Équipe sur un échafaudage de chantier" width="700" height="584" loading="lazy"><h3>Logistique</h3><p>Réactivité et adaptabilité garanties.</p></article>
+      </div>
+    </div>
+  </section>
+
+  <!-- Réalisations
+       Photos provisoires : remplacez les fichiers assets/realisations/projet-1.jpg … projet-6.jpg
+       (format 4:3, 1200×900 conseillé) par les vraies photos de chantier, puis mettez à jour
+       data-title / data-client et le texte de chaque carte. -->
+  <section class="sec works" id="realisations">
+    <div class="wrap">
+      <div class="sec-head sec-head-row reveal">
+        <div>
+          <p class="kicker">Expertise &amp; réalisations</p>
+          <h2>Nos chantiers en images.</h2>
+        </div>
+        <p class="works-intro">Nos réalisations en maintenance et rénovation industrielle témoignent de notre rigueur et de notre capacité à mener des projets de grande envergure dans le respect des règles de l'art.</p>
+      </div>
+      <div class="works-grid">
+        <button class="work reveal" type="button" data-full="assets/realisations/projet-1.jpg" data-title="Maintenance industrielle" data-client="">
+          <img src="assets/realisations/projet-1.jpg" alt="Site pétrochimique éclairé au crépuscule" width="1200" height="900" loading="lazy">
+          <span class="work-cap"><span class="work-tag">01</span><strong>Maintenance industrielle</strong></span>
+        </button>
+        <button class="work reveal" type="button" data-full="assets/realisations/projet-2.jpg" data-title="Peinture &amp; traitement de surfaces" data-client="">
+          <img src="assets/realisations/projet-2.jpg" alt="Façade enduite en terre cuite aux volumes décalés" width="1200" height="900" loading="lazy">
+          <span class="work-cap"><span class="work-tag">02</span><strong>Peinture &amp; traitement de surfaces</strong></span>
+        </button>
+        <button class="work reveal" type="button" data-full="assets/realisations/projet-3.jpg" data-title="Chaudronnerie &amp; tuyauterie" data-client="">
+          <img src="assets/realisations/projet-3.jpg" alt="Gaine de ventilation et passerelles métalliques dans une usine" width="1200" height="900" loading="lazy">
+          <span class="work-cap"><span class="work-tag">03</span><strong>Chaudronnerie &amp; tuyauterie</strong></span>
+        </button>
+        <button class="work reveal" type="button" data-full="assets/realisations/projet-4.jpg" data-title="Revêtement de sol époxy" data-client="">
+          <img src="assets/realisations/projet-4.jpg" alt="Application d'une résine époxy au sol" width="1200" height="900" loading="lazy">
+          <span class="work-cap"><span class="work-tag">04</span><strong>Revêtement de sol époxy</strong></span>
+        </button>
+        <button class="work reveal" type="button" data-full="assets/realisations/projet-5.jpg" data-title="Location de matériel &amp; engins" data-client="">
+          <img src="assets/realisations/projet-5.jpg" alt="Bulldozer et pelles mécaniques alignés sur un parc" width="1200" height="900" loading="lazy">
+          <span class="work-cap"><span class="work-tag">05</span><strong>Location de matériel &amp; engins</strong></span>
+        </button>
+        <button class="work reveal" type="button" data-full="assets/realisations/projet-6.jpg" data-title="Génie civil TCE" data-client="">
+          <img src="assets/realisations/projet-6.jpg" alt="Chef de chantier consultant un plan sur site" width="1200" height="900" loading="lazy">
+          <span class="work-cap"><span class="work-tag">06</span><strong>Génie civil TCE</strong></span>
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <dialog class="lightbox" id="lightbox" aria-label="Visionneuse de photos">
+    <figure>
+      <img id="lbImg" alt="">
+      <figcaption><span id="lbCount"></span><strong id="lbTitle"></strong><span id="lbClient"></span></figcaption>
+    </figure>
+    <button class="lb-btn lb-close" type="button" data-lb="close" aria-label="Fermer"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg></button>
+    <button class="lb-btn lb-prev" type="button" data-lb="prev" aria-label="Photo précédente"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m15 6-6 6 6 6"/></svg></button>
+    <button class="lb-btn lb-next" type="button" data-lb="next" aria-label="Photo suivante"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9 6 6 6-6 6"/></svg></button>
+  </dialog>
+
+  <!-- Amélioration continue -->
+  <section class="sec improve">
+    <div class="wrap split split-rev">
+      <figure class="improve-img reveal"><img src="assets/amelioration.jpg" alt="Équipe en réunion devant un plan affiché à l'écran" width="1400" height="632" loading="lazy"></figure>
+      <div class="reveal">
+        <p class="kicker">Amélioration continue</p>
+        <h2>Être plus performants, chaque jour.</h2>
+        <p>Nous renforçons nos compétences techniques et intégrons de nouvelles technologies pour répondre à des défis industriels en constante évolution.</p>
+        <ul class="improve-list">
+          <li><strong>Compétences</strong> Formation et certification continues du personnel.</li>
+          <li><strong>Innovation</strong> Intégrer de nouvelles technologies et explorer de nouveaux marchés.</li>
+          <li><strong>Croissance</strong> Devenir une référence en maintenance industrielle, au service d'une croissance durable pour nos clients.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section class="sec contact" id="contact">
+    <div class="wrap contact-in">
+      <div class="contact-info reveal">
+        <p class="kicker kicker-light">Contactez-nous</p>
+        <h2>Une solution sur mesure pour votre site.</h2>
+        <p>Nous restons à votre entière disposition pour étudier vos projets et vous accompagner vers le succès de vos opérations industrielles.</p>
+        <ul class="coords">
+          <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2"/></svg><span><a href="tel:+213661224894">+213 (0) 661 22 48 94</a><button class="copy" type="button" data-copy="+213661224894" aria-label="Copier le numéro">Copier</button></span></li>
+          <li><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg><span><a href="mailto:contact@travauxben-dz.com">contact@travauxben-dz.com</a><button class="copy" type="button" data-copy="contact@travauxben-dz.com" aria-label="Copier l'adresse contact">Copier</button><br><a href="mailto:commercial@travauxben-dz.com">commercial@travauxben-dz.com</a><button class="copy" type="button" data-copy="commercial@travauxben-dz.com" aria-label="Copier l'adresse commerciale">Copier</button></span></li>
+          <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-7-6.2-7-11a7 7 0 0 1 14 0c0 4.8-7 11-7 11Z"/><circle cx="12" cy="10" r="2.5"/></svg><span>Rue 13, Camp 5, Aïn Biya<br>Bethioua, Oran — Algérie</span></li>
+        </ul>
+      </div>
+      <form class="form reveal" id="form" novalidate>
+        <h3>Demande de devis</h3>
+        <div class="row">
+          <label>Nom et prénom<input name="nom" autocomplete="name" required></label>
+          <label>Société<input name="societe" autocomplete="organization"></label>
+        </div>
+        <div class="row">
+          <label>Téléphone<input name="tel" type="tel" autocomplete="tel" required></label>
+          <label>E-mail<input name="email" type="email" autocomplete="email" required></label>
+        </div>
+        <label>Prestation
+          <select name="prestation">
+            <option>Assistance technique</option>
+            <option>Génie civil TCE</option>
+            <option>Chaudronnerie &amp; tuyauterie</option>
+            <option>Peinture &amp; traitement de surfaces</option>
+            <option>Revêtements de sols époxy / polyuréthane</option>
+            <option>Location de matériel &amp; engins</option>
+            <option>Maintenance industrielle (plusieurs métiers)</option>
+          </select>
+        </label>
+        <label>Votre projet<textarea name="message" rows="5" required placeholder="Site, nature des travaux, délais souhaités…"></textarea></label>
+        <p class="form-error" id="formError" role="alert" hidden>Merci de remplir les champs nom, téléphone, e-mail et projet.</p>
+        <button class="btn btn-accent" type="submit">Envoyer la demande</button>
+        <p class="form-note">L'envoi ouvre votre messagerie avec la demande pré-remplie, adressée à commercial@travauxben-dz.com.</p>
+        <div class="form-done" id="formDone" hidden>
+          <svg viewBox="0 0 52 52" aria-hidden="true"><circle cx="26" cy="26" r="24"/><path d="m15 27 7 7 15-15"/></svg>
+          <h3>Votre demande est prête</h3>
+          <p>Votre messagerie vient de s'ouvrir avec la demande pré-remplie : il ne reste qu'à l'envoyer. Rien ne s'est ouvert ? Écrivez-nous à <a href="mailto:commercial@travauxben-dz.com">commercial@travauxben-dz.com</a>.</p>
+          <button class="btn btn-outline" type="button" id="formReset">Nouvelle demande</button>
+        </div>
+      </form>
+    </div>
+  </section>
+
+</main>
+
+<footer class="ftr">
+  <div class="wrap">
+    <img src="assets/logo-light.png" alt="Travaux BEN" width="640" height="167">
+    <p>EURL TRAVAUX BEN — Maintenance industrielle &amp; Travaux TCE</p>
+    <p class="ftr-copy">© <span id="year">2026</span> Travaux BEN. Tous droits réservés.</p>
+  </div>
+</footer>
+
+<a class="fab-call" href="tel:+213661224894" aria-label="Appeler Travaux BEN"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2"/></svg></a>
+<button class="to-top" id="toTop" type="button" aria-label="Revenir en haut de la page"><svg viewBox="0 0 48 48" aria-hidden="true"><circle class="ring-bg" cx="24" cy="24" r="21"/><circle class="ring" id="ring" cx="24" cy="24" r="21"/><path d="M24 31V17m-6 6 6-6 6 6"/></svg></button>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script src="assets/site.js" defer></script>
+</body>
+</html>

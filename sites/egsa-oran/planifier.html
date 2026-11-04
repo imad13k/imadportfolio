@@ -1,0 +1,187 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Planifier mon voyage — EGSA Oran</title>
+<meta name="description" content="Calculez à quelle heure partir pour l'aéroport d'Oran, suivez le compte à rebours de votre vol et cochez votre checklist avant le départ.">
+<link rel="stylesheet" href="fonts/fonts.css">
+<link rel="stylesheet" href="assets/site.css">
+<link rel="stylesheet" href="assets/pages.css">
+</head>
+<body>
+
+<header class="hdr" id="hdr">
+  <div class="wrap">
+    <a class="logo" href="index.html">
+      <span class="logo-badge"><img src="assets/logo-egsa.jpg" alt="EGSA Oran — accueil" width="401" height="191"></span>
+      <span class="logo-txt"><b>EGSA Oran</b><small>Aéroport Ahmed Ben Bella</small></span>
+    </a>
+    <nav class="nav" id="nav">
+      <a href="planifier.html" aria-current="page">Planifier</a>
+      <a href="aeroports.html">Nos aéroports</a>
+      <a href="index.html#services">Services</a>
+      <a href="index.html#guide">Guide</a>
+      <a href="index.html#contact">Contact</a>
+    </nav>
+    <div class="lang"><a class="on" href="#">FR</a><a href="#">EN</a><a href="#" lang="ar">ع</a></div>
+    <button class="burger" id="burger" aria-label="Menu" aria-expanded="false"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
+  </div>
+</header>
+
+<main>
+  <section class="phero">
+    <div class="wrap">
+      <div class="crumbs"><a href="index.html">Accueil</a> / Planifier mon voyage</div>
+      <span class="tag">Assistant voyageur</span>
+      <h1>Partez <em>serein.</em></h1>
+      <p>Indiquez l'heure de votre vol&nbsp;: nous calculons votre horaire de départ, lançons le compte à rebours et vous aidons à ne rien oublier.</p>
+    </div>
+  </section>
+
+  <div class="wrap body plan">
+    <div>
+      <div class="panel">
+        <h2>Mon vol</h2>
+        <p class="sub">Les informations restent sur votre appareil.</p>
+        <div class="f-grid">
+          <div class="full"><span style="font:600 13px var(--sans);display:block;margin-bottom:6px">Type de vol</span>
+            <div class="seg" id="type"><button aria-pressed="true" data-v="int">International</button><button aria-pressed="false" data-v="nat">National</button></div>
+          </div>
+          <label>Date du vol<input type="date" id="date"></label>
+          <label>Heure de départ<input type="time" id="time" value="14:30"></label>
+          <label>Trajet jusqu'à l'aéroport<select id="drive"><option value="20">Oran centre · ~20 min</option><option value="35" selected>Wilaya d'Oran · ~35 min</option><option value="60">Wilaya voisine · ~1 h</option><option value="120">Plus loin · ~2 h</option></select></label>
+          <label>Marge de sécurité<select id="buffer"><option value="0">Aucune</option><option value="15" selected>15 minutes</option><option value="30">30 minutes</option></select></label>
+          <div class="full toggles">
+            <label><input type="checkbox" id="bags" checked> <span>Bagage en soute</span></label>
+            <label><input type="checkbox" id="park"> <span>Je me gare au parking à étage</span></label>
+          </div>
+        </div>
+      </div>
+      <div class="panel" style="margin-top:18px">
+        <h2>Ma journée de voyage</h2>
+        <p class="sub" id="summary"></p>
+        <ol class="steps" id="steps"></ol>
+        <p class="disclaimer">Recommandations générales. Les heures limites d'enregistrement varient selon les compagnies&nbsp;: vérifiez toujours auprès de la vôtre.</p>
+      </div>
+    </div>
+
+    <div>
+      <div class="countdown" aria-live="polite">
+        <div class="cd-h"><span>✈ Décollage dans</span><span id="cdDate"></span></div>
+        <div class="cd"><div><b id="cdD">0</b><span>jours</span></div><div><b id="cdH">0</b><span>heures</span></div><div><b id="cdM">0</b><span>min</span></div><div><b id="cdS">0</b><span>sec</span></div></div>
+        <p class="cd-note" id="cdNote"></p>
+      </div>
+      <div class="panel">
+        <div class="check-h">
+          <svg class="ring" viewBox="0 0 64 64"><circle cx="32" cy="32" r="27" stroke="#eef0f6"/><circle id="ring" cx="32" cy="32" r="27" stroke="#2f6bff" stroke-linecap="round" stroke-dasharray="0 170" transform="rotate(-90 32 32)" style="transition:stroke-dasharray .5s"/><text id="ringTxt" x="32" y="37" text-anchor="middle" font-family="JetBrains Mono" font-weight="700" font-size="14" fill="#0a0f1e">0%</text></svg>
+          <div><h2 style="margin:0">Ma checklist</h2><p class="sub" style="margin:0">Cochez au fur et à mesure.</p></div>
+        </div>
+        <ul class="checks" id="checks"></ul>
+        <div class="liq">
+          <b>Liquides en cabine&nbsp;: mon flacon passe-t-il&nbsp;?</b>
+          <div class="f-grid" style="margin-top:10px"><label>Contenance du flacon (ml)<input type="number" id="ml" min="0" placeholder="Ex. 150"></label></div>
+          <p class="liq-out" id="liqOut"></p>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="ft-b" style="margin-top:0;border-top:0;padding-top:0"><span>© <span id="yr"></span> EGSA Oran</span><span><a href="index.html">Accueil</a> · <a href="aeroports.html">Nos aéroports</a> · Concept de refonte · projet non officiel</span></div>
+  </div>
+</footer>
+
+<script src="assets/common.js"></script>
+<script>
+(() => {
+  const $ = s => document.querySelector(s);
+  const KEY = 'egsa-plan';
+  let state = { type: 'int', checks: {} };
+  try { state = { ...state, ...JSON.parse(localStorage.getItem(KEY)) }; } catch {}
+  const persist = () => { try { localStorage.setItem(KEY, JSON.stringify(state)); } catch {} };
+
+  // default date: tomorrow
+  const tmr = new Date(Date.now() + 864e5);
+  $('#date').value = state.date || tmr.toISOString().slice(0, 10);
+  if (state.time) $('#time').value = state.time;
+  ['drive', 'buffer'].forEach(k => { if (state[k]) $('#' + k).value = state[k]; });
+  ['bags', 'park'].forEach(k => { if (k in state) $('#' + k).checked = state[k]; });
+  document.querySelectorAll('#type button').forEach(b => b.setAttribute('aria-pressed', b.dataset.v === state.type));
+
+  const fmt = d => d.toLocaleTimeString('fr-FR', { hour: '2-digit', minute: '2-digit' });
+  const minus = (d, m) => new Date(d.getTime() - m * 60000);
+  function departure() { return new Date(`${$('#date').value}T${$('#time').value || '00:00'}`); }
+
+  function plan() {
+    const intl = state.type === 'int';
+    const dep = departure();
+    if (isNaN(dep)) return;
+    const arriveBefore = intl ? 180 : 120;           // common guidance: 3 h international, 2 h national
+    const drive = +$('#drive').value, buffer = +$('#buffer').value, park = $('#park').checked ? 15 : 0;
+    const arrive = minus(dep, arriveBefore);
+    const leave = minus(arrive, drive + buffer + park);
+    const steps = [
+      [leave, 'Départ de chez vous', `${drive} min de trajet${buffer ? ` + ${buffer} min de marge` : ''}${park ? ' + 15 min pour se garer' : ''}`, true],
+      park ? [minus(arrive, 15), 'Parking à étage', 'Garez-vous puis rejoignez le terminal à pied'] : null,
+      [arrive, 'Arrivée au terminal', intl ? 'Vol international : 3 h avant le départ' : 'Vol national : 2 h avant le départ', true],
+      [minus(dep, intl ? 150 : 100), $('#bags').checked ? 'Enregistrement et dépôt des bagages' : 'Enregistrement au comptoir', 'Présentez votre billet et votre pièce d\'identité'],
+      [minus(dep, intl ? 100 : 60), intl ? 'Sûreté et police aux frontières' : 'Contrôle de sûreté', 'Liquides et appareils électroniques à part'],
+      [minus(dep, 40), 'Embarquement', 'Rejoignez votre porte, la carte d\'embarquement à la main', true],
+      [dep, 'Décollage', 'Bon voyage !', true],
+    ].filter(Boolean);
+    $('#steps').innerHTML = steps.map(([t, h, s, key], i) => `<li class="${key ? 'key' : ''}" style="animation-delay:${i * 60}ms"><span class="t">${fmt(t)}</span><span class="dot"></span><span><b>${h}</b><small>${s}</small></span></li>`).join('');
+    $('#summary').innerHTML = `Quittez votre domicile à <b>${fmt(leave)}</b> pour un vol à ${fmt(dep)}.`;
+    $('#cdDate').textContent = dep.toLocaleDateString('fr-FR', { weekday: 'short', day: 'numeric', month: 'short' }) + ' · ' + fmt(dep);
+    Object.assign(state, { date: $('#date').value, time: $('#time').value, drive: $('#drive').value, buffer: $('#buffer').value, bags: $('#bags').checked, park: $('#park').checked });
+    persist();
+  }
+  document.querySelectorAll('#date,#time,#drive,#buffer,#bags,#park').forEach(el => el.addEventListener('input', plan));
+  $('#type').onclick = e => { const b = e.target.closest('button'); if (!b) return; state.type = b.dataset.v; document.querySelectorAll('#type button').forEach(x => x.setAttribute('aria-pressed', x === b)); plan(); renderChecks(); };
+
+  function tick() {
+    const dep = departure(), ms = dep - Date.now();
+    const v = Math.max(0, ms);
+    $('#cdD').textContent = Math.floor(v / 864e5);
+    $('#cdH').textContent = String(Math.floor(v / 36e5) % 24).padStart(2, '0');
+    $('#cdM').textContent = String(Math.floor(v / 6e4) % 60).padStart(2, '0');
+    $('#cdS').textContent = String(Math.floor(v / 1e3) % 60).padStart(2, '0');
+    $('#cdNote').textContent = isNaN(ms) ? '' : ms <= 0 ? 'Ce vol est déjà parti — choisissez une nouvelle date.' : ms < 6 * 36e5 ? 'C\'est bientôt l\'heure : vérifiez votre checklist !' : 'Tout est prêt ? Votre checklist est juste en dessous.';
+  }
+
+  const ITEMS = [
+    ['id', 'Passeport ou pièce d\'identité valide'],
+    ['visa', 'Visa ou autorisation d\'entrée', 'int'],
+    ['billet', 'Billet ou carte d\'embarquement'],
+    ['liquides', 'Liquides en flacons de 100 ml max., dans un sachet transparent'],
+    ['batteries', 'Batteries externes et chargeurs en cabine'],
+    ['medic', 'Médicaments et ordonnances dans le bagage à main'],
+    ['devises', 'Devises ou carte de paiement internationale', 'int'],
+    ['etiquette', 'Étiquette nominative sur le bagage en soute'],
+  ];
+  function renderChecks() {
+    const items = ITEMS.filter(i => !i[2] || state.type === i[2]);
+    $('#checks').innerHTML = items.map(([k, t]) => `<li><label><input type="checkbox" data-k="${k}" ${state.checks[k] ? 'checked' : ''}><span>${t}</span></label></li>`).join('');
+    ring(items);
+  }
+  function ring(items = ITEMS.filter(i => !i[2] || state.type === i[2])) {
+    const done = items.filter(i => state.checks[i[0]]).length, pct = Math.round(done / items.length * 100);
+    $('#ring').setAttribute('stroke-dasharray', `${pct / 100 * 170} 170`);
+    $('#ringTxt').textContent = pct + '%';
+  }
+  $('#checks').onchange = e => { const k = e.target.dataset.k; if (!k) return; state.checks[k] = e.target.checked; persist(); ring(); };
+
+  $('#ml').oninput = e => {
+    const v = parseFloat(e.target.value), out = $('#liqOut');
+    if (!v) { out.textContent = ''; out.className = 'liq-out'; return; }
+    out.className = 'liq-out ' + (v <= 100 ? 'ok' : 'no');
+    out.textContent = v <= 100 ? '✓ Accepté en cabine, dans un sachet transparent refermable.' : '✕ Trop grand pour la cabine : placez-le dans le bagage en soute.';
+  };
+
+  plan(); renderChecks(); tick(); setInterval(tick, 1000);
+})();
+</script>
+</body>
+</html>

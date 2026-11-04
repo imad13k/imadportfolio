@@ -1,0 +1,412 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Island Petroleum — Construction industrielle et énergétique en Algérie</title>
+<meta name="description" content="Island Petroleum, SARL algérienne fondée en 2011 : pipelines, préfabrication et montage de tuyauterie, bacs de stockage, montage d'équipements pour le pétrole et le gaz, l'industrie, l'énergie et l'hydraulique. Certifiée ISO 9001, 14001 et 45001.">
+<meta name="theme-color" content="#1C2B27">
+<link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="fonts/fonts.css">
+<link rel="stylesheet" href="assets/site.css">
+<script>
+  // The intro plays once per visit and never for visitors who reduce motion
+  (function () {
+    var seen = false;
+    try { seen = sessionStorage.getItem('ip-intro') === '1'; sessionStorage.setItem('ip-intro', '1'); } catch (e) {}
+    if (!seen && !matchMedia('(prefers-reduced-motion: reduce)').matches) document.documentElement.classList.add('intro');
+  })();
+</script>
+</head>
+<body>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="ipMark" viewBox="0 0 120 100">
+    <ellipse cx="60" cy="50" rx="57" ry="47" fill="#263833"/>
+    <ellipse cx="60" cy="50" rx="52" ry="42" fill="#fff"/>
+    <ellipse cx="60" cy="50" rx="49" ry="39" fill="#EC830B"/>
+    <text x="60" y="68" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-weight="700" font-size="54" fill="#263833" letter-spacing="-4">IP</text>
+  </symbol>
+</svg>
+
+<!-- Intro -->
+<div class="intro-screen" id="intro" aria-hidden="true">
+  <div class="intro-half top"></div>
+  <div class="intro-half bottom"></div>
+  <div class="intro-in">
+    <svg class="i-mark" viewBox="0 0 120 100">
+      <ellipse class="i-ring" cx="60" cy="50" rx="55" ry="45"/>
+      <ellipse class="i-fill" cx="60" cy="50" rx="49" ry="39"/>
+      <text class="i-ip" x="60" y="68" text-anchor="middle">IP</text>
+    </svg>
+    <p class="i-word"><span>ISLAND</span> <span>PETROLEUM</span></p>
+    <div class="i-pipe"><span class="i-weld"></span></div>
+    <p class="i-tag">Pétrole · Gaz · Industrie · Énergie · Hydraulique</p>
+  </div>
+</div>
+
+<div class="progress" id="progress" aria-hidden="true"></div>
+
+<header class="hdr" id="hdr">
+  <div class="wrap">
+    <a class="logo" href="#top" aria-label="Island Petroleum — accueil">
+      <svg class="logo-mark" aria-hidden="true"><use href="#ipMark"/></svg>
+      <span class="logo-txt"><b>Island Petroleum</b><small>SARL · depuis 2011</small></span>
+    </a>
+    <nav class="nav" id="nav" aria-label="Navigation principale">
+      <a href="#entreprise">Entreprise</a>
+      <a href="#expertises">Expertises</a>
+      <a href="#projets">Projets</a>
+      <a href="#moyens">Moyens</a>
+      <a href="#references">Références</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <a class="btn btn-orange hdr-cta" href="#contact">Demander un devis</a>
+    <button class="burger" id="burger" type="button" aria-label="Ouvrir le menu" aria-expanded="false" aria-controls="nav"><span></span><span></span><span></span></button>
+  </div>
+</header>
+
+<main id="top">
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="hero-media" aria-hidden="true"><img src="assets/img/hero.jpg" alt="" width="1280" height="720" fetchpriority="high"></div>
+    <canvas class="embers" id="embers" aria-hidden="true"></canvas>
+    <div class="wrap hero-in">
+      <p class="eyebrow"><span class="pulse"></span>Island Petroleum · SARL algérienne · Kouba, Alger</p>
+      <h1>Nous construisons les infrastructures de <em>l'énergie</em>.</h1>
+      <p class="lead">Pipelines, tuyauteries, bacs de stockage et montage d'équipements pour le pétrole et le gaz, l'industrie, l'énergie et l'hydraulique — de l'atelier au chantier, depuis 2011.</p>
+      <div class="hero-ctas">
+        <a class="btn btn-orange" href="#projets">Voir nos projets</a>
+        <a class="btn btn-ghost" href="https://island-petroleum.dz/wp-content/uploads/2026/07/PROFIL-IP_FR_2025.pdf" target="_blank" rel="noopener">Télécharger le catalogue <span aria-hidden="true">↗</span></a>
+      </div>
+    </div>
+    <div class="hero-stats">
+      <div class="wrap">
+        <div><b><span data-count="2011" data-from="1990">2011</span></b><span>année de création</span></div>
+        <div><b><span data-count="48500" data-sep>48 500</span><small> m²</small></b><span>d'ateliers et de base de vie</span></div>
+        <div><b><span data-count="3">3</span><small> normes ISO</small></b><span>9001 · 14001 · 45001</span></div>
+        <div><b><span data-count="7">7</span></b><span>préqualifications, dont Sonatrach</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Entreprise -->
+  <section class="sec about" id="entreprise">
+    <div class="wrap about-in">
+      <div class="about-media reveal">
+        <img class="am-main" src="assets/img/about-aerial.jpg" alt="Vue aérienne d'un complexe industriel et de ses conduites" width="960" height="713" loading="lazy">
+        <img class="am-a" src="assets/img/about-weld.jpg" alt="Soudeurs au travail sur une bride" width="1080" height="721" loading="lazy">
+        <div class="am-badge"><b data-years>15</b><span>ans<br>d'expérience</span></div>
+      </div>
+      <div class="reveal">
+        <p class="kicker">Qui sommes-nous</p>
+        <h2>Un partenaire solide, du pétrole à l'hydraulique.</h2>
+        <p>Island Petroleum est une SARL algérienne fondée en 2011, active dans le pétrole et le gaz, les industries énergétiques et hydrauliques, et l'industrie en général. Depuis plus d'une décennie, elle s'est imposée comme un partenaire de construction fiable, attaché aux normes les plus élevées de qualité et de sécurité.</p>
+        <p>Notre succès repose sur l'expertise accumulée, des partenariats avec des entreprises nationales et internationales, et des équipes techniques et administratives qualifiées.</p>
+        <ul class="values">
+          <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3 4 6v6c0 5 3.5 8 8 9 4.5-1 8-4 8-9V6l-8-3Z"/><path d="m9 12 2 2 4-4"/></svg>Qualité, sécurité et amélioration continue</li>
+          <li><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>Respect rigoureux des délais contractuels</li>
+          <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M16 11a4 4 0 1 0-8 0M4 20a8 8 0 0 1 16 0"/></svg>Équipes qualifiées, encadrement expérimenté</li>
+          <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12h16M12 4v16"/></svg>Solutions fiables et transparentes</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- Expertises -->
+  <section class="sec sectors" id="expertises">
+    <div class="wrap">
+      <div class="sec-head sec-head-row reveal">
+        <div>
+          <p class="kicker kicker-light">Nos expertises</p>
+          <h2>Quatre secteurs, un même niveau d'exigence.</h2>
+        </div>
+        <p class="sec-side">Des services techniques multisectoriels, conformes aux normes internationales, de la préfabrication en atelier au montage sur site.</p>
+      </div>
+      <div class="sx reveal">
+        <div class="sx-tabs" role="tablist" aria-label="Secteurs">
+          <button role="tab" aria-selected="true" aria-controls="sxPanel" data-s="0"><span>01</span>Oil &amp; Gas</button>
+          <button role="tab" aria-selected="false" aria-controls="sxPanel" data-s="1"><span>02</span>Industrie</button>
+          <button role="tab" aria-selected="false" aria-controls="sxPanel" data-s="2"><span>03</span>Énergie</button>
+          <button role="tab" aria-selected="false" aria-controls="sxPanel" data-s="3"><span>04</span>Hydraulique</button>
+        </div>
+        <div class="sx-panel" id="sxPanel" role="tabpanel" aria-live="polite">
+          <figure class="sx-fig"><img id="sxImg" src="assets/img/sec-oil.jpg" alt="" width="1200" height="675"><span class="sx-bar" id="sxBar"></span></figure>
+          <div class="sx-body">
+            <h3 id="sxTitle"></h3>
+            <p id="sxText"></p>
+            <ul class="sx-list" id="sxList"></ul>
+            <a class="link" href="#projets" id="sxLink">Voir les projets du secteur <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14m-6-6 6 6-6 6"/></svg></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Chiffres -->
+  <section class="figures" aria-label="Chiffres des projets présentés">
+    <div class="wrap">
+      <div class="fig reveal"><b><span data-count="94">94</span> km</b><span>de pipelines et conduites posés</span></div>
+      <div class="fig reveal"><b><span data-count="160000" data-sep>160 000</span> ID</b><span>de tuyauterie préfabriqués en atelier</span></div>
+      <div class="fig reveal"><b><span data-count="3900" data-sep>3 900</span> t</b><span>d'équipements, modules et charpente montés</span></div>
+      <div class="fig reveal"><b><span data-count="26000" data-sep>26 000</span> m²</b><span>de peinture industrielle</span></div>
+      <p class="fig-note reveal">Total des six projets détaillés ci-dessous.</p>
+    </div>
+  </section>
+
+  <!-- Projets -->
+  <section class="sec projects" id="projets">
+    <div class="wrap">
+      <div class="sec-head sec-head-row reveal">
+        <div>
+          <p class="kicker">Nos projets</p>
+          <h2>Des références qui parlent pour nous.</h2>
+        </div>
+        <div class="filters" role="group" aria-label="Filtrer les projets">
+          <button type="button" data-f="all" aria-pressed="true">Tous</button>
+          <button type="button" data-f="en-cours" aria-pressed="false">En cours</button>
+          <button type="button" data-f="realise" aria-pressed="false">Réalisés</button>
+          <span class="f-sep" aria-hidden="true"></span>
+          <button type="button" data-f="Oil &amp; Gas" aria-pressed="false">Oil &amp; Gas</button>
+          <button type="button" data-f="Industrie" aria-pressed="false">Industrie</button>
+          <button type="button" data-f="Hydraulique" aria-pressed="false">Hydraulique</button>
+        </div>
+      </div>
+
+      <div class="explorer">
+        <div class="map-card reveal">
+          <svg class="dz" id="dzMap" viewBox="0 0 540 470" role="img" aria-labelledby="mapTitle">
+            <title id="mapTitle">Carte de l'Algérie avec les sites et les projets d'Island Petroleum</title>
+            <defs>
+              <pattern id="dots" width="8" height="8" patternUnits="userSpaceOnUse"><circle cx="1.5" cy="1.5" r="1.1" fill="rgba(38,56,51,.14)"/></pattern>
+            </defs>
+            <path class="dz-land" id="dzLand"/>
+            <path class="dz-dots" id="dzDots" fill="url(#dots)"/>
+            <g id="dzRoutes"></g>
+            <g id="dzPins"></g>
+          </svg>
+          <div class="map-legend">
+            <span><i class="lg-site"></i>Siège, ateliers et base</span>
+            <span><i class="lg-run"></i>Projet en cours</span>
+            <span><i class="lg-done"></i>Projet réalisé</span>
+          </div>
+          <div class="map-tip" id="mapTip" role="status"></div>
+        </div>
+        <div class="cards" id="cards" aria-live="polite"></div>
+      </div>
+
+      <div class="more reveal">
+        <h3>Autres chantiers et références</h3>
+        <div class="more-grid">
+          <div>
+            <p class="more-lbl"><span class="dot run"></span>En cours</p>
+            <ul>
+              <li><b>Tosyali</b> — étude et réalisation d'une conduite en acier DN1000 sur 14 km, montage des équipements <em>(hydraulique)</em></li>
+              <li><b>SOMIZ</b> — montage de 2 bacs de stockage de kérosène (12 000 m³ et 9 000 m³)</li>
+              <li><b>ENGTP</b> — montage de 2 sphères GPL de 2 000 m³ chacune</li>
+              <li><b>ENGTP</b> — préfabrication</li>
+            </ul>
+          </div>
+          <div>
+            <p class="more-lbl"><span class="dot done"></span>Réalisés</p>
+            <ul>
+              <li><b>AQS</b> — maintenance industrielle</li>
+              <li><b>ECDE</b> (cimenterie de Chlef) — préfabrication et montage de tuyauterie</li>
+              <li><b>Metalsider</b> — préfabrication et montage de tuyauterie</li>
+              <li><b>Sonelgaz</b>, <b>CTCO</b> — ouvrages concentrés</li>
+              <li><b>ENGTP</b> — bacs de stockage (Hassi Messaoud) · <b>Sonatrach</b> — bacs de stockage (Arzew) · <b>Huynson</b> — bacs de stockage (El Meniaa)</li>
+              <li><b>Knauf</b>, <b>Brandt</b>, <b>Sinosteel</b>, <b>ETRHB Haddad</b></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Moyens -->
+  <section class="sec means" id="moyens">
+    <div class="wrap">
+      <div class="sec-head sec-head-row reveal">
+        <div>
+          <p class="kicker kicker-light">Nos moyens</p>
+          <h2>Des ateliers taillés pour les grands chantiers.</h2>
+        </div>
+        <p class="sec-side">Un staff dirigeant compétent, des équipes expérimentées et des moyens matériels importants, au plus près des bassins industriels et pétroliers.</p>
+      </div>
+      <div class="sites">
+        <div class="scale reveal" aria-hidden="true">
+          <div class="sq sq-a" style="--s:1"><span>Arzew</span></div>
+          <div class="sq sq-h" style="--s:.894"><span>Hassi Messaoud</span></div>
+          <div class="sq sq-b" style="--s:.374"><span>Béthioua</span></div>
+          <p class="scale-note">Surfaces à l'échelle</p>
+        </div>
+        <div class="site-list">
+          <article class="site reveal"><b><span data-count="25000" data-sep>25 000</span> m²</b><h3>Ateliers d'Arzew</h3><p>Préfabrication et assemblage de tuyauterie, près du pôle pétrochimique d'Oran.</p></article>
+          <article class="site reveal"><b><span data-count="20000" data-sep>20 000</span> m²</b><h3>Ateliers de Hassi Messaoud</h3><p>Au cœur des champs du Sud, pour les chantiers pétroliers et gaziers.</p></article>
+          <article class="site reveal"><b><span data-count="3500" data-sep>3 500</span> m²</b><h3>Base de vie de Béthioua</h3><p>Hébergement des équipes, avec une capacité de 250 personnes.</p></article>
+        </div>
+      </div>
+      <div class="team reveal">
+        <img src="assets/img/about-team.jpg" alt="Les équipes d'Island Petroleum en tenue de travail dans un atelier" width="960" height="751" loading="lazy">
+        <img src="assets/img/about-transport.jpg" alt="Transport d'un module industriel par convoi exceptionnel" width="1400" height="654" loading="lazy">
+        <img src="assets/img/cob-6.jpg" alt="Grue sur un chantier de pose de conduites" width="1280" height="605" loading="lazy">
+      </div>
+    </div>
+  </section>
+
+  <!-- Certifications -->
+  <section class="sec certs">
+    <div class="wrap certs-in">
+      <div class="reveal">
+        <p class="kicker">Certifications &amp; qualifications</p>
+        <h2>Reconnue par les grands donneurs d'ordre.</h2>
+        <div class="iso">
+          <div class="iso-b"><b>ISO 9001</b><span>Qualité</span></div>
+          <div class="iso-b"><b>ISO 14001</b><span>Environnement</span></div>
+          <div class="iso-b"><b>ISO 45001</b><span>Santé &amp; sécurité</span></div>
+        </div>
+        <div class="qualif">
+          <b>Catégorie 8</b>
+          <p>Attestation de qualification et de classification professionnelle en hydraulique, de novembre 2024 à novembre 2029.</p>
+          <div class="q-bar" aria-hidden="true"><i id="qBar"></i></div>
+          <small id="qLeft"></small>
+        </div>
+      </div>
+      <div class="preq reveal">
+        <h3>Préqualifiée auprès de</h3>
+        <ul>
+          <li><b>Sonatrach</b><span>Transport d'hydrocarbures</span></li>
+          <li><b>Sonelgaz</b><span>Transport de gaz naturel haute pression</span></li>
+          <li><b>Naftal</b><span>Transport de GPL</span></li>
+          <li><b>ENGTP</b><span>Montage mécanique, piping, pipeline, bacs de stockage, peinture, calorifugeage, instrumentation et électricité</span></li>
+          <li><b>Etterkib</b><span>Piping, bacs de stockage</span></li>
+          <li><b>AQS</b><span>Maintenance industrielle</span></li>
+          <li><b>Huynson</b><span>Charpente métallique, travaux électromécaniques, maintenance TG mobile</span></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- Références -->
+  <section class="refs" id="references" aria-labelledby="refsTitle">
+    <div class="wrap"><p class="kicker" id="refsTitle">Ils nous ont fait confiance</p></div>
+    <div class="marquee" aria-hidden="true"><div class="m-track" id="mTrack"></div></div>
+    <ul class="sr-only" id="refsList"></ul>
+  </section>
+
+  <!-- Galerie -->
+  <section class="sec gallery">
+    <div class="wrap">
+      <div class="sec-head sec-head-row reveal">
+        <div>
+          <p class="kicker">Sur nos chantiers</p>
+          <h2>Le terrain, en images.</h2>
+        </div>
+        <div class="g-nav"><button type="button" id="gPrev" aria-label="Photos précédentes">←</button><button type="button" id="gNext" aria-label="Photos suivantes">→</button></div>
+      </div>
+    </div>
+    <div class="g-strip" id="gStrip"></div>
+  </section>
+
+  <!-- Contact -->
+  <section class="sec contact" id="contact">
+    <div class="wrap contact-in">
+      <div class="reveal">
+        <p class="kicker kicker-light">Devis &amp; contact</p>
+        <h2>Parlons de votre prochain chantier.</h2>
+        <p>Une question, un projet à chiffrer ou une demande spécifique : notre équipe vous répond avec professionnalisme et réactivité.</p>
+        <ul class="coords">
+          <li><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg><span><small>E-mail</small><a href="mailto:contact@island-petroleum.dz">contact@island-petroleum.dz</a><button class="copy" type="button" data-copy="contact@island-petroleum.dz">Copier</button></span></li>
+          <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2"/></svg><span><small>Téléphone</small><a href="tel:+213661226666">+213 661 22 66 66</a> · <a href="tel:+213661296666">+213 661 29 66 66</a><br><a href="tel:+21328256290">+213 28 25 62 90</a> (fixe) · fax +213 28 25 68 10</span></li>
+          <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-7-6.2-7-11a7 7 0 0 1 14 0c0 4.8-7 11-7 11Z"/><circle cx="12" cy="10" r="2.5"/></svg><span><small>Adresse</small>Cité Garidi 01, C7 &amp; C8, Bt F3, N° 05<br>Kouba, Alger — Algérie<br><span class="open" id="openNow">Dim – Jeu · 9 h – 17 h</span></span></li>
+        </ul>
+        <div class="socials">
+          <a href="https://www.linkedin.com/company/island-petroleumdz" target="_blank" rel="noopener" aria-label="LinkedIn"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9h3v11H4zM5.5 4a1.8 1.8 0 1 1 0 3.6 1.8 1.8 0 0 1 0-3.6ZM10 9h3v1.6c.5-.9 1.7-1.9 3.5-1.9 3 0 3.5 2 3.5 4.6V20h-3v-5.8c0-1.4 0-3-1.9-3s-2.1 1.5-2.1 2.9V20h-3z"/></svg></a>
+          <a href="https://www.facebook.com/sarl.Island.petroleum" target="_blank" rel="noopener" aria-label="Facebook"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 8h3V4h-3a4 4 0 0 0-4 4v3H7v4h3v6h4v-6h3l1-4h-4V8.5c0-.3.2-.5.5-.5Z"/></svg></a>
+          <a href="https://www.instagram.com/islandpetroleumdz/" target="_blank" rel="noopener" aria-label="Instagram"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="4" width="16" height="16" rx="5" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="12" r="3.5" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="17" cy="7" r="1.2"/></svg></a>
+          <a class="dl" href="https://island-petroleum.dz/wp-content/uploads/2026/07/PROFIL-IP_FR_2025.pdf" target="_blank" rel="noopener">Catalogue 2025 (PDF) ↗</a>
+        </div>
+      </div>
+
+      <form class="form reveal" id="form" novalidate>
+        <div class="steps" aria-hidden="true"><span class="on">1</span><i></i><span>2</span></div>
+        <fieldset class="fs on" data-step="1">
+          <legend>Votre projet</legend>
+          <p class="f-lbl">Secteur</p>
+          <div class="chips chips-one" id="fSector">
+            <button type="button" aria-pressed="false">Oil &amp; Gas</button><button type="button" aria-pressed="false">Industrie</button><button type="button" aria-pressed="false">Énergie</button><button type="button" aria-pressed="false">Hydraulique</button>
+          </div>
+          <p class="f-lbl">Travaux concernés <small>(plusieurs choix possibles)</small></p>
+          <div class="chips" id="fWorks">
+            <button type="button" aria-pressed="false">Pose de canalisations</button><button type="button" aria-pressed="false">Préfabrication de tuyauterie</button><button type="button" aria-pressed="false">Montage d'équipements</button><button type="button" aria-pressed="false">Bacs de stockage</button><button type="button" aria-pressed="false">Charpente métallique</button><button type="button" aria-pressed="false">Sablage &amp; peinture</button><button type="button" aria-pressed="false">Électricité &amp; instrumentation</button><button type="button" aria-pressed="false">Maintenance</button>
+          </div>
+          <div class="row">
+            <label>Localisation du chantier<input name="lieu" placeholder="Wilaya, site…" autocomplete="off"></label>
+            <label>Démarrage souhaité
+              <select name="delai"><option value="">Choisir…</option><option>Dès que possible</option><option>Sous 3 mois</option><option>Sous 6 mois</option><option>Plus tard / à l'étude</option></select>
+            </label>
+          </div>
+          <label>Description<textarea name="message" rows="4" placeholder="Nature et volume des travaux, contraintes, documents disponibles…"></textarea></label>
+          <p class="form-error" id="err1" role="alert" hidden>Choisissez au moins un secteur ou un type de travaux.</p>
+          <div class="f-acts"><span></span><button class="btn btn-orange" type="button" id="toStep2">Continuer →</button></div>
+        </fieldset>
+        <fieldset class="fs" data-step="2">
+          <legend>Vos coordonnées</legend>
+          <div class="row">
+            <label>Nom et prénom<input name="nom" autocomplete="name" required></label>
+            <label>Société<input name="societe" autocomplete="organization" required></label>
+          </div>
+          <div class="row">
+            <label>E-mail<input name="email" type="email" autocomplete="email" required></label>
+            <label>Téléphone<input name="tel" type="tel" autocomplete="tel"></label>
+          </div>
+          <div class="recap" id="recap"></div>
+          <p class="form-error" id="err2" role="alert" hidden>Renseignez votre nom, votre société et un e-mail valide.</p>
+          <div class="f-acts"><button class="back" type="button" id="toStep1">← Retour</button><button class="btn btn-orange" type="submit">Préparer ma demande</button></div>
+          <p class="form-note">L'envoi ouvre votre messagerie avec la demande pré-remplie, adressée à contact@island-petroleum.dz.</p>
+        </fieldset>
+        <div class="form-done" id="formDone" hidden>
+          <svg viewBox="0 0 52 52" aria-hidden="true"><circle cx="26" cy="26" r="24"/><path d="m15 27 7 7 15-15"/></svg>
+          <h3>Votre demande est prête</h3>
+          <p>Votre messagerie vient de s'ouvrir&nbsp;: il ne reste qu'à envoyer le message. Rien ne s'est ouvert&nbsp;? Écrivez à <a href="mailto:contact@island-petroleum.dz">contact@island-petroleum.dz</a>.</p>
+          <button class="btn btn-line" type="button" id="formReset">Nouvelle demande</button>
+        </div>
+      </form>
+    </div>
+  </section>
+
+</main>
+
+<footer class="ftr">
+  <div class="wrap">
+    <div class="ftr-top">
+      <a class="logo" href="#top" aria-label="Island Petroleum — accueil">
+        <svg class="logo-mark" aria-hidden="true"><use href="#ipMark"/></svg>
+        <span class="logo-txt"><b>Island Petroleum</b><small>La qualité : notre valeur et engagement</small></span>
+      </a>
+      <nav aria-label="Pied de page"><a href="#entreprise">Entreprise</a><a href="#expertises">Expertises</a><a href="#projets">Projets</a><a href="#moyens">Moyens</a><a href="#contact">Contact</a></nav>
+    </div>
+    <p class="ftr-b">© <span id="year">2026</span> Island Petroleum SARL — Kouba, Alger · Concept de refonte, projet non officiel</p>
+  </div>
+</footer>
+
+<!-- Project details -->
+<dialog class="pd" id="pd" aria-labelledby="pdTitle">
+  <div class="pd-in">
+    <button class="pd-close" type="button" id="pdClose" aria-label="Fermer"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg></button>
+    <div class="pd-gal">
+      <img id="pdImg" alt="">
+      <div class="pd-thumbs" id="pdThumbs"></div>
+    </div>
+    <div class="pd-body" id="pdBody"></div>
+  </div>
+</dialog>
+
+<a class="wa" href="https://wa.me/213661096666" target="_blank" rel="noopener" aria-label="Écrire sur WhatsApp"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3a9 9 0 0 0-7.8 13.5L3 21l4.6-1.2A9 9 0 1 0 12 3Zm4.6 12.6c-.2.6-1.2 1.1-1.7 1.2-.4 0-1 .1-3.1-.8-2.6-1.1-4.3-3.8-4.4-4-.1-.2-1-1.4-1-2.7s.7-1.9.9-2.2c.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.5l.8 1.9c.1.2.1.4 0 .6l-.3.5-.4.5c-.1.1-.3.3-.1.6.2.3.8 1.3 1.7 2.1 1.2 1 2.1 1.4 2.4 1.5.3.1.5.1.6-.1l.9-1c.2-.3.4-.2.6-.1l1.8.9c.3.1.4.2.5.3 0 .2 0 .8-.2 1.4Z"/></svg></a>
+<button class="to-top" id="toTop" type="button" aria-label="Revenir en haut de la page"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 19V5m-6 6 6-6 6 6"/></svg></button>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script src="assets/site.js" defer></script>
+</body>
+</html>

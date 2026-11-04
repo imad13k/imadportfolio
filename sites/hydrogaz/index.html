@@ -1,0 +1,386 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Hydrogaz — Tubes PEHD · Groupe Cheurfa</title>
+<meta name="description" content="Hydrogaz, filiale du Groupe Cheurfa à El Eulma (Sétif), fabrique des tubes PEHD pour l'eau potable, l'assainissement et l'irrigation : Ø 20 à 110 mm, PN 10, 16 et 20, en couronnes de 50 et 100 m.">
+<meta name="theme-color" content="#0A2A4A">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="fonts/fonts.css">
+<link rel="stylesheet" href="assets/site.css">
+<script>
+  // The intro plays once per visit, never for visitors who reduce motion
+  (function () {
+    var seen = false;
+    try { seen = sessionStorage.getItem('hg-intro') === '1'; sessionStorage.setItem('hg-intro', '1'); } catch (e) {}
+    if (!seen && !matchMedia('(prefers-reduced-motion: reduce)').matches) document.documentElement.classList.add('intro');
+  })();
+</script>
+</head>
+<body>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <clipPath id="markClip"><circle cx="50" cy="50" r="48"/></clipPath>
+    <symbol id="mark" viewBox="0 0 100 100">
+      <g clip-path="url(#markClip)">
+        <rect width="100" height="100" fill="#0B57A4"/>
+        <polygon points="78,8 44,52 62,48 22,92 60,104 104,70 104,36" fill="#EE7D22"/>
+        <polygon points="84,4 37,55 56,50 16,96 71,41 51,45" fill="#fff"/>
+      </g>
+    </symbol>
+  </defs>
+</svg>
+
+<!-- Intro -->
+<div class="intro-screen" id="intro" aria-hidden="true">
+  <div class="intro-in">
+    <svg class="i-mark" viewBox="0 0 100 100">
+      <g clip-path="url(#markClip)">
+        <rect class="i-blue" width="100" height="100" fill="#0B57A4"/>
+        <polygon class="i-orange" points="78,8 44,52 62,48 22,92 60,104 104,70 104,36" fill="#EE7D22"/>
+        <polygon class="i-bolt" points="84,4 37,55 56,50 16,96 71,41 51,45" fill="#fff"/>
+      </g>
+      <circle class="i-ring" cx="50" cy="50" r="48" fill="none" stroke="#fff" stroke-width="2"/>
+    </svg>
+    <p class="i-word"><span class="i-h">HYDRO</span><span class="i-g">GAZ</span></p>
+    <p class="i-tag">Nous transportons l'énergie</p>
+    <svg class="i-pipe" viewBox="0 0 400 24" preserveAspectRatio="none"><rect x="0" y="4" width="400" height="16" rx="8" class="i-pipe-shell"/><rect x="4" y="9" width="392" height="6" rx="3" class="i-pipe-flow"/></svg>
+  </div>
+  <svg class="i-wave" viewBox="0 0 1440 320" preserveAspectRatio="none"><path d="M0 160C240 60 480 60 720 150S1200 260 1440 140V320H0Z" fill="#EE7D22"/><path d="M0 210C260 110 520 120 760 200S1220 290 1440 190V320H0Z" fill="#0B57A4"/><path d="M0 250C280 170 560 180 800 240S1240 310 1440 240V320H0Z" fill="#fff"/></svg>
+</div>
+
+<div class="progress" id="progress" aria-hidden="true"></div>
+
+<header class="hdr" id="hdr">
+  <div class="wrap">
+    <a class="logo" href="#top" aria-label="Hydrogaz — accueil">
+      <svg class="logo-mark" aria-hidden="true"><use href="#mark"/></svg>
+      <span class="logo-txt"><span class="wm"><b>HYDRO</b><i>GAZ</i></span><small>Groupe Cheurfa</small></span>
+    </a>
+    <nav class="nav" id="nav" aria-label="Navigation principale">
+      <a href="#produit">Le tube PEHD</a>
+      <a href="#gamme">Gamme</a>
+      <a href="#calcul">Calculateur</a>
+      <a href="#marquage">Marquage</a>
+      <a href="#usine">L'usine</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <button class="cart-btn" id="cartBtn" type="button" aria-label="Ma demande de devis, 0 ligne">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 4h6m-7 3h8a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2V9a2 2 0 0 1 2-2Zm1 5h6m-6 4h4"/></svg>
+      <span>Devis</span><em id="cartCount">0</em>
+    </button>
+    <button class="burger" id="burger" type="button" aria-label="Ouvrir le menu" aria-expanded="false" aria-controls="nav"><span></span><span></span><span></span></button>
+  </div>
+</header>
+
+<main id="top">
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="hero-bg" aria-hidden="true">
+      <svg class="flow" viewBox="0 0 1440 800" preserveAspectRatio="none">
+        <path class="flow-1" d="M-40 610C240 520 420 700 720 600S1200 470 1480 560"/>
+        <path class="flow-2" d="M-40 660C260 580 460 740 760 650S1220 530 1480 620"/>
+        <path class="flow-3" d="M-40 560C220 470 440 640 700 560S1180 420 1480 500"/>
+      </svg>
+    </div>
+    <div class="wrap hero-in">
+      <div class="hero-txt">
+        <p class="eyebrow"><span class="dot"></span>Hydrogaz · Groupe Cheurfa · El Eulma, Sétif</p>
+        <h1>Nous transportons <span class="grad">l'énergie</span>, l'eau et la confiance.</h1>
+        <p class="lead">Des tubes en polyéthylène haute densité pour l'eau potable, l'assainissement et l'irrigation&nbsp;: résistants à la pression et à la corrosion, faciles à poser, conçus pour durer plus de 50&nbsp;ans.</p>
+        <div class="hero-ctas">
+          <a class="btn btn-orange" href="#calcul">Calculer mon besoin</a>
+          <a class="btn btn-ghost" href="#gamme">Voir la gamme</a>
+        </div>
+        <ul class="chips">
+          <li><strong><b data-count="20">20</b>–<b data-count="110">110</b></strong><span>mm de diamètre</span></li>
+          <li><strong>PN 10 · 16 · 20</strong><span>bars de pression nominale</span></li>
+          <li><strong><b data-count="50">50</b>+</strong><span>ans de durée de vie</span></li>
+        </ul>
+      </div>
+      <figure class="hero-fig">
+        <div class="hero-photo"><img src="assets/usine.jpg" alt="Le siège Hydrogaz à El Eulma, façade à damier avec l'enseigne « Hydrogaz — Nous transportons l'énergie »" width="1600" height="760" fetchpriority="high"></div>
+        <img class="hero-coil" src="assets/tube-couronne.png" alt="Couronne de tube PEHD noir à filets bleus" width="407" height="723">
+        <figcaption class="hero-badge"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-7-6.2-7-11a7 7 0 0 1 14 0c0 4.8-7 11-7 11Z"/><circle cx="12" cy="10" r="2.5"/></svg><span><b>Zone industrielle</b>El Eulma — Sétif</span></figcaption>
+      </figure>
+    </div>
+    <svg class="hero-wave" viewBox="0 0 1440 120" preserveAspectRatio="none" aria-hidden="true"><path d="M0 60C240 0 480 0 720 50S1200 120 1440 40V120H0Z" fill="#EE7D22"/><path d="M0 85C260 30 520 30 760 75S1220 130 1440 70V120H0Z" fill="#0B57A4"/><path d="M0 100C280 60 560 60 800 95S1240 130 1440 95V120H0Z" fill="var(--paper)"/></svg>
+  </section>
+
+  <!-- Le produit -->
+  <section class="sec product" id="produit">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <p class="kicker">PEHD — Polyéthylène haute densité</p>
+        <h2>La performance au service de l'eau.</h2>
+        <p>Fabriqué à partir de matières premières de haute qualité, le tube PEHD Hydrogaz est la solution idéale pour vos réseaux hydrauliques. Conforme aux normes internationales, il garantit fiabilité, longévité et sécurité.</p>
+      </div>
+      <div class="benefits">
+        <article class="benefit reveal">
+          <div class="b-ico"><svg viewBox="0 0 48 48" aria-hidden="true"><circle cx="24" cy="24" r="16"/><path d="M24 24 33 15" class="needle"/><path d="M14 30h20"/></svg></div>
+          <h3>Pression &amp; corrosion</h3>
+          <p>Excellente résistance à la pression et à la corrosion, de PN&nbsp;10 à PN&nbsp;20.</p>
+        </article>
+        <article class="benefit reveal">
+          <div class="b-ico"><svg viewBox="0 0 48 48" aria-hidden="true"><path d="M6 30c8-16 14 8 22-6s10-4 14-4" class="wiggle"/><path d="M6 36h36"/></svg></div>
+          <h3>Flexible &amp; étanche</h3>
+          <p>Grande flexibilité et étanchéité parfaite, même en terrain difficile.</p>
+        </article>
+        <article class="benefit reveal">
+          <div class="b-ico"><svg viewBox="0 0 48 48" aria-hidden="true"><circle cx="24" cy="24" r="16"/><path d="M24 14v10l7 5" class="hand"/></svg></div>
+          <h3>Plus de 50 ans</h3>
+          <p>Une durée de vie supérieure à 50&nbsp;ans, sans maintenance lourde.</p>
+        </article>
+        <article class="benefit reveal">
+          <div class="b-ico"><svg viewBox="0 0 48 48" aria-hidden="true"><path d="M14 34h20l-3-14H17Z"/><path d="M20 20v-4a4 4 0 0 1 8 0v4" class="lift"/></svg></div>
+          <h3>Pose facile</h3>
+          <p>Léger et résistant aux chocs&nbsp;: le tube se manipule et se pose rapidement.</p>
+        </article>
+      </div>
+
+      <div class="uses">
+        <p class="uses-title reveal">Pour quels réseaux&nbsp;?</p>
+        <div class="uses-tabs reveal" role="tablist" aria-label="Applications">
+          <button role="tab" aria-selected="true" aria-controls="use-panel" data-use="0">Eau potable</button>
+          <button role="tab" aria-selected="false" aria-controls="use-panel" data-use="1">Assainissement</button>
+          <button role="tab" aria-selected="false" aria-controls="use-panel" data-use="2">Irrigation</button>
+        </div>
+        <div class="use-panel reveal" id="use-panel" role="tabpanel" aria-live="polite">
+          <svg class="use-ill" viewBox="0 0 320 160" aria-hidden="true">
+            <rect x="0" y="96" width="320" height="64" class="ground"/>
+            <rect x="0" y="112" width="320" height="18" rx="9" class="pipe"/>
+            <rect x="6" y="117" width="308" height="8" rx="4" class="pipe-water" id="useWater"/>
+            <g id="useScene"></g>
+          </svg>
+          <div>
+            <h3 id="useTitle">Eau potable</h3>
+            <p id="useText"></p>
+            <a class="link-arrow" href="#calcul" id="useLink">Choisir mon diamètre <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14m-6-6 6 6-6 6"/></svg></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Gamme: sélecteur interactif -->
+  <section class="sec range" id="gamme">
+    <div class="wrap">
+      <div class="sec-head sec-head-row reveal">
+        <div>
+          <p class="kicker kicker-light">La gamme</p>
+          <h2>Trouvez le bon tube en deux clics.</h2>
+        </div>
+        <p class="sec-side">Choisissez un diamètre et une pression nominale&nbsp;: la coupe du tube et ses caractéristiques se mettent à jour.</p>
+      </div>
+
+      <div class="picker reveal">
+        <div class="picker-controls">
+          <fieldset>
+            <legend>Diamètre extérieur (mm)</legend>
+            <div class="seg seg-d" id="segD"></div>
+          </fieldset>
+          <fieldset>
+            <legend>Pression nominale</legend>
+            <div class="seg seg-pn" id="segPN"></div>
+          </fieldset>
+          <dl class="readout">
+            <div><dt>Épaisseur</dt><dd><span id="rE">–</span> mm</dd></div>
+            <div><dt>Ø intérieur</dt><dd><span id="rDi">–</span> mm</dd></div>
+            <div><dt>SDR</dt><dd><span id="rSdr">–</span></dd></div>
+            <div><dt>Section de passage</dt><dd><span id="rS">–</span> cm²</dd></div>
+            <div><dt>Poids estimé</dt><dd><span id="rKg">–</span> kg/m</dd></div>
+            <div><dt>Conditionnement</dt><dd>Couronnes 50 / 100 m</dd></div>
+          </dl>
+          <p class="note">Poids calculé pour une densité de 0,96 g/cm³, à titre indicatif.</p>
+          <div class="picker-actions">
+            <button class="btn btn-orange" type="button" id="toCalc">Calculer les quantités</button>
+            <button class="btn btn-line" type="button" id="addPick">Ajouter au devis</button>
+          </div>
+        </div>
+        <div class="picker-visual">
+          <svg class="xsec" id="xsec" viewBox="-130 -130 260 260" role="img" aria-labelledby="xsecTitle">
+            <title id="xsecTitle">Coupe du tube sélectionné</title>
+            <circle class="xs-grid" r="122"/>
+            <circle class="xs-grid" r="61"/>
+            <path class="xs-grid" d="M-126 0H126M0-126V126"/>
+            <circle class="xs-wall" id="xsWall" r="100"/>
+            <circle class="xs-bore" id="xsBore" r="90"/>
+            <circle class="xs-stripe" id="xsStripe" r="95"/>
+            <g class="xs-flow" id="xsFlow"></g>
+          </svg>
+          <p class="xs-label"><span id="xsLabel">Ø 63 × 5,8</span><small>échelle relative au Ø 110</small></p>
+        </div>
+      </div>
+
+      <div class="table-wrap reveal">
+        <table class="spec" id="spec">
+          <caption>Épaisseur de paroi (mm) selon le diamètre et la pression nominale</caption>
+          <thead><tr><th scope="col">Ø (mm)</th><th scope="col">PN 10</th><th scope="col">PN 16</th><th scope="col">PN 20</th><th scope="col">Couronne (m)</th></tr></thead>
+          <tbody></tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- Calculateur -->
+  <section class="sec calc" id="calcul">
+    <div class="wrap calc-in">
+      <div class="reveal">
+        <p class="kicker">Calculateur de commande</p>
+        <h2>Combien de couronnes pour votre réseau&nbsp;?</h2>
+        <p class="lead-dark">Indiquez la longueur à poser&nbsp;: nous proposons la combinaison de couronnes de 100 et 50&nbsp;m qui limite les chutes, avec le poids à transporter.</p>
+        <ul class="calc-tips">
+          <li>Prévoyez une marge pour les coupes et les raccordements.</li>
+          <li>Ajoutez plusieurs lignes au devis pour un projet à plusieurs diamètres.</li>
+        </ul>
+      </div>
+      <form class="calc-card reveal" id="calcForm">
+        <div class="row">
+          <label>Diamètre
+            <select id="cD"></select>
+          </label>
+          <label>Pression
+            <select id="cPN"></select>
+          </label>
+        </div>
+        <label class="len">Longueur du réseau
+          <span class="len-row"><input type="range" id="cLenR" min="10" max="5000" step="10" value="850" aria-label="Longueur en mètres"><span class="len-num"><input type="number" id="cLen" min="1" max="100000" value="850" inputmode="numeric"> m</span></span>
+        </label>
+        <label class="margin">Marge de sécurité <output id="cMarginOut">5 %</output>
+          <input type="range" id="cMargin" min="0" max="20" step="1" value="5">
+        </label>
+        <div class="result" aria-live="polite">
+          <div class="coils" id="coils"></div>
+          <dl>
+            <div><dt>Couronnes de 100 m</dt><dd id="n100">0</dd></div>
+            <div><dt>Couronnes de 50 m</dt><dd id="n50">0</dd></div>
+            <div><dt>Longueur livrée</dt><dd><span id="lenOut">0</span> m</dd></div>
+            <div><dt>Chute estimée</dt><dd><span id="waste">0</span> m</dd></div>
+            <div class="big"><dt>Poids estimé</dt><dd><span id="weight">0</span> kg</dd></div>
+          </dl>
+        </div>
+        <button class="btn btn-orange" type="submit">Ajouter au devis</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- Marquage -->
+  <section class="sec marking" id="marquage">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <p class="kicker kicker-light">Lire un tube</p>
+        <h2>Tout est écrit sur le tube.</h2>
+        <p>Chaque tube porte un marquage continu qui permet d'en vérifier l'origine et l'usage. Survolez ou touchez chaque inscription de cet exemple.</p>
+      </div>
+      <div class="pipe3d reveal" id="pipe3d">
+        <div class="pipe-body">
+          <span class="pipe-line top"></span><span class="pipe-line bottom"></span>
+          <div class="pipe-text" id="pipeText"></div>
+        </div>
+        <div class="pipe-end"></div>
+      </div>
+      <div class="mark-info reveal" id="markInfo" aria-live="polite">
+        <span class="mi-num" id="miNum">01</span>
+        <div><h3 id="miTitle"></h3><p id="miText"></p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Usine -->
+  <section class="sec plant" id="usine">
+    <div class="wrap plant-in">
+      <div class="plant-media reveal">
+        <img class="pm-main" src="assets/usine.jpg" alt="Façade du siège Hydrogaz" width="1600" height="760" loading="lazy">
+        <img class="pm-a" src="assets/equipe.webp" alt="Ingénieures inspectant des composants en atelier" width="1000" height="1000" loading="lazy">
+        <img class="pm-b" src="assets/ingenieure.webp" alt="Ingénieure sur un site de production" width="1000" height="1000" loading="lazy">
+      </div>
+      <div class="reveal">
+        <p class="kicker">L'usine · Groupe Cheurfa</p>
+        <h2>Un industriel engagé, à El Eulma.</h2>
+        <p>Filiale du Groupe Cheurfa, Hydrogaz fabrique ses tubes dans la zone industrielle d'El Eulma, dans la wilaya de Sétif. Notre engagement&nbsp;: des solutions de production fiables, précises et de haute qualité.</p>
+        <ul class="pillars">
+          <li><span>01</span><div><h3>Installations modernes</h3><p>Des machines industrielles avancées et des systèmes automatisés.</p></div></li>
+          <li><span>02</span><div><h3>Une équipe d'ingénieurs</h3><p>Des professionnels qualifiés, à forte expertise technique.</p></div></li>
+          <li><span>03</span><div><h3>Des produits contrôlés</h3><p>Chaque produit est testé pour répondre aux normes du secteur.</p></div></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section class="sec contact" id="contact">
+    <div class="wrap contact-in">
+      <div class="reveal">
+        <p class="kicker kicker-light">Contact</p>
+        <h2>Parlons de votre réseau.</h2>
+        <p>Envoyez-nous votre demande&nbsp;: les lignes ajoutées depuis la gamme ou le calculateur sont jointes automatiquement.</p>
+        <ul class="coords">
+          <li><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg><span><a href="mailto:contact@groupe-cheurfa.com">contact@groupe-cheurfa.com</a><button class="copy" type="button" data-copy="contact@groupe-cheurfa.com">Copier</button></span></li>
+          <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-7-6.2-7-11a7 7 0 0 1 14 0c0 4.8-7 11-7 11Z"/><circle cx="12" cy="10" r="2.5"/></svg><span>Zone industrielle d'El Eulma<br>19600 Sétif — Algérie<br><a class="map-link" href="https://www.google.com/maps/search/?api=1&amp;query=Zone+industrielle+El+Eulma+S%C3%A9tif" target="_blank" rel="noopener">Ouvrir dans Google Maps ↗</a></span></li>
+        </ul>
+      </div>
+      <form class="form reveal" id="form" novalidate>
+        <h3>Demande de devis</h3>
+        <div class="quote" id="quote">
+          <p class="quote-empty" id="quoteEmpty">Aucune ligne pour l'instant. Ajoutez des tubes depuis la <a href="#gamme">gamme</a> ou le <a href="#calcul">calculateur</a>, ou décrivez simplement votre besoin.</p>
+          <ul id="quoteList"></ul>
+        </div>
+        <div class="row">
+          <label>Nom et prénom<input name="nom" autocomplete="name" required></label>
+          <label>Société<input name="societe" autocomplete="organization"></label>
+        </div>
+        <div class="row">
+          <label>Téléphone<input name="tel" type="tel" autocomplete="tel" required></label>
+          <label>E-mail<input name="email" type="email" autocomplete="email" required></label>
+        </div>
+        <label>Message<textarea name="message" rows="4" placeholder="Projet, lieu de livraison, délais…"></textarea></label>
+        <p class="form-error" id="formError" role="alert" hidden>Merci de renseigner votre nom, votre téléphone et un e-mail valide.</p>
+        <button class="btn btn-orange" type="submit">Envoyer la demande</button>
+        <p class="form-note">L'envoi ouvre votre messagerie avec la demande pré-remplie, adressée à contact@groupe-cheurfa.com.</p>
+        <div class="form-done" id="formDone" hidden>
+          <svg viewBox="0 0 52 52" aria-hidden="true"><circle cx="26" cy="26" r="24"/><path d="m15 27 7 7 15-15"/></svg>
+          <h3>Votre demande est prête</h3>
+          <p>Votre messagerie vient de s'ouvrir&nbsp;: il ne reste qu'à envoyer le message. Rien ne s'est ouvert&nbsp;? Écrivez-nous à <a href="mailto:contact@groupe-cheurfa.com">contact@groupe-cheurfa.com</a>.</p>
+          <button class="btn btn-line" type="button" id="formReset">Nouvelle demande</button>
+        </div>
+      </form>
+    </div>
+  </section>
+
+</main>
+
+<footer class="ftr">
+  <div class="wrap">
+    <a class="logo" href="#top" aria-label="Hydrogaz — accueil">
+      <svg class="logo-mark" aria-hidden="true"><use href="#mark"/></svg>
+      <span class="logo-txt"><span class="wm"><b>HYDRO</b><i>GAZ</i></span><small>Nous transportons l'énergie</small></span>
+    </a>
+    <p>Tubes PEHD pour l'eau potable, l'assainissement et l'irrigation.<br>Zone industrielle d'El Eulma, Sétif.</p>
+    <p class="ftr-copy">© <span id="year">2026</span> Hydrogaz — Groupe Cheurfa</p>
+  </div>
+</footer>
+
+<!-- Quote drawer -->
+<aside class="drawer" id="drawer" aria-label="Ma demande de devis" aria-hidden="true">
+  <div class="drawer-head">
+    <h3>Ma demande de devis</h3>
+    <button class="icon-btn" type="button" id="drawerClose" aria-label="Fermer"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg></button>
+  </div>
+  <ul class="drawer-list" id="drawerList"></ul>
+  <p class="drawer-empty" id="drawerEmpty">Votre demande est vide. Ajoutez des tubes depuis la gamme ou le calculateur.</p>
+  <div class="drawer-foot">
+    <p><span>Poids total estimé</span><b id="drawerKg">0 kg</b></p>
+    <a class="btn btn-orange" href="#contact" id="drawerGo">Finaliser la demande</a>
+  </div>
+</aside>
+<div class="scrim" id="scrim" hidden></div>
+
+<button class="to-top" id="toTop" type="button" aria-label="Revenir en haut de la page"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 19V5m-6 6 6-6 6 6"/></svg></button>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script src="assets/site.js" defer></script>
+</body>
+</html>

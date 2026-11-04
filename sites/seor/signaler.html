@@ -1,0 +1,221 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Signaler un incident — SEOR</title>
+<meta name="description" content="Signalez une fuite, une coupure ou un problème d'assainissement à SEOR en quelques étapes.">
+<link rel="stylesheet" href="fonts/fonts.css">
+<link rel="stylesheet" href="assets/site.css">
+<link rel="stylesheet" href="assets/pages.css">
+</head>
+<body>
+
+<header class="hdr" id="hdr">
+  <div class="wrap">
+    <a class="brand" href="index.html">
+      <span class="logo-badge"><img src="assets/logo-seor.png" alt="SEOR — accueil" width="180" height="72"></span>
+      <small class="brand-sub">Eau &amp; Assainissement<br>d'Oran</small>
+    </a>
+    <nav class="nav" id="nav">
+      <a href="index.html#cycle">Le cycle de l'eau</a>
+      <a href="index.html#chiffres">Chiffres</a>
+      <a href="signaler.html" aria-current="page">Signaler</a>
+      <a href="faq.html">FAQ</a>
+      <a href="index.html#contact">Contact</a>
+    </nav>
+    <a class="btn dark" href="index.html#espace">Espace client</a>
+    <button class="burger" id="burger" aria-label="Menu" aria-expanded="false"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
+  </div>
+</header>
+
+<main>
+  <section class="page-hero">
+    <div class="wrap">
+      <div class="crumbs"><a href="index.html">Accueil</a> / Signaler un incident</div>
+      <span class="eyebrow">Service d'intervention</span>
+      <h1>Signaler un incident en 2 minutes.</h1>
+      <p>Une fuite sur la voie publique, une coupure, un débordement d'égout&nbsp;? Décrivez le problème, localisez-le et nos équipes sont alertées.</p>
+    </div>
+  </section>
+
+  <div class="wrap report">
+    <form class="card" id="form" novalidate>
+      <div class="progress" aria-hidden="true"><span class="done"></span><span></span><span></span></div>
+
+      <div class="step on" data-step="1">
+        <h2 class="step-title">Quel est le problème&nbsp;?</h2>
+        <p class="step-sub">Choisissez la situation qui correspond le mieux.</p>
+        <div class="types" id="types" role="group" aria-label="Type d'incident"></div>
+      </div>
+
+      <div class="step" data-step="2">
+        <h2 class="step-title">Où se situe-t-il&nbsp;?</h2>
+        <p class="step-sub">Plus la localisation est précise, plus l'intervention est rapide.</p>
+        <div class="fields">
+          <label>Commune<select id="commune" required><option value="">Choisir une commune</option></select></label>
+          <label>Quartier<input id="quartier" placeholder="Ex. El Hamri"></label>
+          <label class="full">Adresse ou repère<input id="adresse" required placeholder="Rue, numéro, bâtiment ou repère proche"></label>
+          <div class="full geo">
+            <button type="button" class="btn ghost" id="geoBtn" style="padding:10px 16px;font-size:14px">📍 Utiliser ma position</button>
+            <span class="geo-out" id="geoOut"></span>
+          </div>
+        </div>
+      </div>
+
+      <div class="step" data-step="3">
+        <h2 class="step-title">Quelques détails</h2>
+        <p class="step-sub">Une photo aide beaucoup nos équipes à préparer l'intervention.</p>
+        <div class="fields">
+          <label class="full">Description<textarea id="desc" rows="4" required placeholder="Depuis quand, quelle intensité, risque pour la circulation…"></textarea></label>
+          <div class="full"><span style="font-weight:600;font-size:14px;color:var(--deep)">Niveau d'urgence</span>
+            <div class="urg" id="urg" style="margin-top:8px">
+              <button type="button" aria-pressed="false" data-v="Faible">Faible</button>
+              <button type="button" aria-pressed="true" data-v="Moyen">Moyen</button>
+              <button type="button" aria-pressed="false" data-v="Élevé">Élevé — danger</button>
+            </div>
+          </div>
+          <div class="full photo"><span class="photo-prev" id="prev">Aucune<br>photo</span><label style="flex:1">Photo (facultatif)<input type="file" id="photo" accept="image/*"></label></div>
+          <label>Votre nom (facultatif)<input id="nom" autocomplete="name"></label>
+          <label>Téléphone (facultatif)<input id="tel" type="tel" autocomplete="tel"></label>
+        </div>
+      </div>
+
+      <div class="step" data-step="4">
+        <div class="success">
+          <div class="tick"><svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 12l5 5L20 7"/></svg></div>
+          <h2 class="step-title">Signalement enregistré</h2>
+          <p class="step-sub" style="margin-bottom:0">Conservez votre numéro de suivi&nbsp;:</p>
+          <div class="ticket" id="ticket"></div>
+          <p class="step-sub" id="recap"></p>
+          <button type="button" class="btn" id="again">Faire un autre signalement</button>
+        </div>
+      </div>
+
+      <p class="msg-err" id="err" role="alert"></p>
+      <div class="nav-btns" id="navBtns">
+        <button type="button" class="btn ghost" id="prevBtn" style="visibility:hidden">← Retour</button>
+        <button type="button" class="btn dark" id="nextBtn">Continuer →</button>
+      </div>
+    </form>
+
+    <aside class="side">
+      <div class="card">
+        <h3>Mes signalements</h3>
+        <p>Retrouvez ici les signalements faits depuis cet appareil.</p>
+        <ul class="mine" id="mine"></ul>
+      </div>
+      <div class="card" style="background:var(--deep);color:#fff;border:0">
+        <h3 style="color:#fff">Danger immédiat&nbsp;?</h3>
+        <p style="color:#b8d6e1">En cas de risque pour les personnes (chaussée effondrée, inondation), éloignez-vous de la zone et contactez la protection civile.</p>
+      </div>
+      <p class="demo">Démonstration&nbsp;: les signalements sont enregistrés uniquement dans votre navigateur.</p>
+    </aside>
+  </div>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="ft-bottom" style="margin-top:0;border-top:0;padding-top:0"><span>© <span id="yr"></span> SEOR — Oran</span><span><a href="index.html">Accueil</a> · <a href="faq.html">FAQ</a> · Concept de refonte · projet non officiel</span></div>
+  </div>
+</footer>
+
+<script src="assets/common.js"></script>
+<script>
+(() => {
+  const $ = s => document.querySelector(s);
+  const KEY = 'seor-signalements';
+  const types = [
+    ['fuite', 'Fuite sur la voie publique', 'Eau qui s\'écoule d\'une conduite ou d\'une bouche', '<path d="M12 3s-6 7-6 11a6 6 0 0 0 12 0c0-4-6-11-6-11z"/>'],
+    ['coupure', 'Coupure d\'eau', 'Plus d\'eau au robinet sans avis préalable', '<path d="M4 12h6M14 12h6M12 4v4M12 16v4"/>'],
+    ['pression', 'Baisse de pression', 'Débit faible ou irrégulier', '<path d="M3 17a9 9 0 0 1 18 0M12 17l4-6"/>'],
+    ['qualite', 'Eau trouble ou odeur', 'Couleur, goût ou odeur inhabituels', '<path d="M8 3h8l-1 7a3 3 0 0 1-6 0zM12 13v8M8 21h8"/>'],
+    ['egout', 'Débordement d\'égout', 'Regard bouché ou eaux usées en surface', '<circle cx="12" cy="12" r="8"/><path d="M8 12h8M12 8v8"/>'],
+    ['compteur', 'Compteur endommagé', 'Compteur cassé, fuyard ou illisible', '<rect x="4" y="5" width="16" height="14" rx="2"/><path d="M8 12h3M13 12h3"/>'],
+  ];
+  const communes = ['Oran', 'Bir El Djir', 'Es Senia', 'Hassi Bounif', 'Sidi Chami', 'Arzew', 'Bethioua', 'Gdyel', 'Aïn El Turck', 'Mers El Kébir', 'El Ançor', 'Bousfer', 'Misserghin', 'Boutlélis', 'Aïn El Kerma', 'Oued Tlélat', 'Tafraoui', 'El Braya', 'El Kerma', 'Boufatis', 'Ben Freha', 'Hassi Ben Okba', 'Hassi Mefsoukh', 'Sidi Ben Yebka', 'Marsat El Hadjadj', 'Aïn El Bia'];
+  $('#types').innerHTML = types.map(([v, t, d, ic]) => `<button type="button" class="type" aria-pressed="false" data-v="${v}"><span class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">${ic}</svg></span><b>${t}</b><small>${d}</small></button>`).join('');
+  $('#commune').innerHTML += communes.sort((a, b) => a.localeCompare(b, 'fr')).map(c => `<option>${c}</option>`).join('');
+
+  const data = { type: '', urgence: 'Moyen', coords: '' };
+  let step = 1;
+  const steps = [...document.querySelectorAll('.step')], bars = [...document.querySelectorAll('.progress span')];
+  function go(n) {
+    step = n;
+    steps.forEach(s => s.classList.toggle('on', +s.dataset.step === n));
+    bars.forEach((b, i) => b.classList.toggle('done', i < Math.min(n, 3)));
+    $('#prevBtn').style.visibility = n > 1 && n < 4 ? 'visible' : 'hidden';
+    $('#navBtns').hidden = n === 4;
+    $('#nextBtn').textContent = n === 3 ? 'Envoyer le signalement' : 'Continuer →';
+    $('#err').textContent = '';
+    document.querySelector('.report').scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
+  function validate() {
+    document.querySelectorAll('.err').forEach(e => e.classList.remove('err'));
+    if (step === 1 && !data.type) return 'Choisissez un type d\'incident.';
+    if (step === 2) {
+      const miss = ['#commune', '#adresse'].filter(s => !$(s).value.trim());
+      miss.forEach(s => $(s).classList.add('err'));
+      if (miss.length) return 'Indiquez la commune et une adresse ou un repère.';
+    }
+    if (step === 3 && $('#desc').value.trim().length < 10) { $('#desc').classList.add('err'); return 'Décrivez le problème en quelques mots (10 caractères minimum).'; }
+    return '';
+  }
+  $('#types').onclick = e => {
+    const b = e.target.closest('.type'); if (!b) return;
+    document.querySelectorAll('.type').forEach(t => t.setAttribute('aria-pressed', t === b));
+    data.type = b.querySelector('b').textContent;
+  };
+  $('#urg').onclick = e => {
+    const b = e.target.closest('button'); if (!b) return;
+    document.querySelectorAll('#urg button').forEach(t => t.setAttribute('aria-pressed', t === b));
+    data.urgence = b.dataset.v;
+  };
+  $('#geoBtn').onclick = () => {
+    const out = $('#geoOut');
+    if (!navigator.geolocation) { out.textContent = 'La géolocalisation n\'est pas disponible.'; return; }
+    out.textContent = 'Localisation en cours…';
+    navigator.geolocation.getCurrentPosition(
+      p => { data.coords = `${p.coords.latitude.toFixed(5)}, ${p.coords.longitude.toFixed(5)}`; out.textContent = `Position ajoutée (${data.coords})`; },
+      () => { out.textContent = 'Position refusée ou indisponible — saisissez l\'adresse.'; },
+      { timeout: 10000 });
+  };
+  $('#photo').onchange = e => {
+    const f = e.target.files[0], prev = $('#prev');
+    if (!f) return;
+    const url = URL.createObjectURL(f);
+    prev.style.backgroundImage = `url("${url}")`; prev.textContent = '';
+  };
+
+  const load = () => { try { return JSON.parse(localStorage.getItem(KEY)) || []; } catch { return []; } };
+  const save = list => { try { localStorage.setItem(KEY, JSON.stringify(list.slice(0, 10))); } catch {} };
+  function renderMine() {
+    const list = load(), el = $('#mine');
+    el.innerHTML = list.length ? list.map(r => `<li><b>${r.id}</b><span>${r.type} — ${r.commune}</span><span class="st">● Reçu · ${new Date(r.date).toLocaleDateString('fr-FR')}</span></li>`).join('') : '<li class="mine-empty" style="border:0;padding:0">Aucun signalement pour le moment.</li>';
+  }
+  renderMine();
+
+  $('#nextBtn').onclick = () => {
+    const err = validate();
+    if (err) { $('#err').textContent = err; return; }
+    if (step < 3) return go(step + 1);
+    const d = new Date();
+    const id = `SEOR-${String(d.getFullYear()).slice(2)}${String(d.getMonth() + 1).padStart(2, '0')}${String(d.getDate()).padStart(2, '0')}-${Math.floor(1000 + Math.random() * 9000)}`;
+    const r = { id, type: data.type, commune: $('#commune').value, adresse: $('#adresse').value.trim(), urgence: data.urgence, date: d.toISOString() };
+    save([r, ...load()]); renderMine();
+    $('#ticket').textContent = id;
+    $('#recap').textContent = `${r.type} · ${r.adresse}, ${r.commune} · urgence ${r.urgence.toLowerCase()}`;
+    go(4);
+  };
+  $('#prevBtn').onclick = () => go(step - 1);
+  $('#again').onclick = () => {
+    $('#form').reset(); data.type = ''; data.coords = ''; data.urgence = 'Moyen';
+    document.querySelectorAll('.type').forEach(t => t.setAttribute('aria-pressed', false));
+    document.querySelectorAll('#urg button').forEach(t => t.setAttribute('aria-pressed', t.dataset.v === 'Moyen'));
+    $('#prev').style.backgroundImage = ''; $('#prev').innerHTML = 'Aucune<br>photo'; $('#geoOut').textContent = '';
+    go(1);
+  };
+})();
+</script>
+</body>
+</html>

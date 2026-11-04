@@ -1,0 +1,470 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Alcazar Tlemcen</title>
+<meta name="description" content="Hotel on the Lalla Setti plateau, Tlemcen, Algeria.">
+<link rel="stylesheet" href="fonts/fonts.css">
+<style>
+:root{
+  --sage:#596658; --sage-dark:#475246;
+  --sand:#ede8dc; --sand-alt:#dfd8cb; --ink:#1a1b1a;
+  --gold:#b08d57; --muted:#5d5f5a; --line:rgba(26,27,26,.15);
+  --serif:"Cinzel","Times New Roman",serif;
+  --sans:"Archivo",system-ui,sans-serif;
+  --img:#c9bfae;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--sand);color:var(--ink);font:400 16px/1.65 var(--sans)}
+a{color:inherit}
+img,svg{display:block;max-width:100%}
+.wrap{max-width:1180px;margin:0 auto;padding:0 24px}
+.eyebrow{font:500 11px/1.4 var(--sans);letter-spacing:3px;text-transform:uppercase}
+h1,h2,h3{font-family:var(--serif);font-weight:400;text-transform:uppercase}
+h2{font-size:clamp(20px,3vw,26px);letter-spacing:4px;line-height:1.35}
+.btn{display:inline-block;font:600 11px/1 var(--sans);letter-spacing:2.5px;text-transform:uppercase;text-decoration:none;padding:15px 26px;border:1px solid transparent;cursor:pointer;transition:background .2s,color .2s}
+.btn-dark{background:var(--ink);color:var(--sand)}
+.btn-dark:hover{background:var(--sage)}
+.btn-sage{background:var(--sage);color:var(--sand)}
+.btn-sage:hover{background:var(--sage-dark)}
+.btn-light{background:var(--sand);color:var(--ink)}
+.link{font:600 11px/1 var(--sans);letter-spacing:2.5px;text-transform:uppercase;text-decoration:none;padding-bottom:5px;border-bottom:1px solid currentColor}
+
+/* Header */
+header{position:sticky;top:0;z-index:50}
+.topbar{background:var(--sage);color:var(--sand)}
+.topbar .wrap{display:flex;align-items:center;justify-content:space-between;gap:20px;height:64px}
+.brand{display:flex;align-items:center;gap:12px;text-decoration:none}
+.brand-name{font:400 17px/1 var(--serif);letter-spacing:3px;white-space:nowrap}
+nav ul{display:flex;gap:18px;list-style:none;white-space:nowrap}
+nav a{font:600 11px/1 var(--sans);letter-spacing:1px;text-transform:uppercase;text-decoration:none;opacity:.92}
+nav a:hover{opacity:1;text-decoration:underline;text-underline-offset:6px}
+.langs{display:flex;gap:14px;font:600 10px/1 var(--sans);letter-spacing:2px}
+.langs a{text-decoration:none;opacity:.75}
+.langs a.on{opacity:1;border-bottom:1px solid}
+.menu-btn{display:none;background:none;border:0;color:var(--sand);cursor:pointer}
+.booking{background:var(--sand);border-bottom:1px solid var(--line)}
+.booking form{display:grid;grid-template-columns:1fr 1fr auto;gap:20px;align-items:end;padding:10px 24px 12px}
+.booking label{display:block;font:500 10px/1 var(--sans);letter-spacing:2px;text-transform:uppercase;margin-bottom:6px;color:var(--muted)}
+.booking input,.booking select{width:100%;max-width:260px;height:38px;border:0;background:var(--sand-alt);padding:0 12px;font:400 14px var(--sans);color:var(--ink)}
+
+/* Hero */
+.hero{position:relative;min-height:calc(100vh - 140px);min-height:560px;background:var(--ink);color:var(--sand);overflow:hidden;display:flex;align-items:flex-end}
+.hero-art{position:absolute;inset:0}
+.hero-art svg{width:100%;height:100%}
+.hero::after{content:"";position:absolute;inset:0;background:linear-gradient(to top,rgba(26,27,26,.85),rgba(26,27,26,.1) 55%)}
+.hero-inner{position:relative;z-index:1;padding:0 24px 70px;max-width:1180px;margin:0 auto;width:100%}
+.hero h1{font-size:clamp(28px,5vw,46px);letter-spacing:6px;margin:12px 0 18px}
+.hero-links{display:flex;gap:24px;margin-top:20px;flex-wrap:wrap}
+.scroll-cue{position:absolute;left:50%;bottom:18px;transform:translateX(-50%);z-index:1;font:500 9px var(--sans);letter-spacing:3px;text-align:center}
+.scroll-cue::before{content:"";display:block;width:1px;height:32px;background:var(--sand);margin:0 auto 8px;opacity:.6}
+
+/* Sections */
+.section{padding:90px 0}
+.alt{background:var(--sand-alt)}
+.center{text-align:center}
+.intro{max-width:760px;margin:0 auto;text-align:center}
+.intro p{margin:18px 0;color:#2c2d2b}
+.intro h2{margin:20px 0 30px}
+.mark{margin:0 auto;width:26px;color:var(--gold)}
+.story{display:grid;grid-template-columns:1fr 1.4fr;gap:60px;align-items:center}
+.story p{margin-top:14px}
+
+/* Rooms */
+.rooms-head{text-align:center;max-width:680px;margin:0 auto 46px}
+.rooms-head p{margin-top:16px}
+.rooms{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.room{background:var(--sand);display:flex;flex-direction:column;text-align:center}
+.room .ph{aspect-ratio:4/3}
+.room-body{padding:20px 18px 24px;display:flex;flex-direction:column;align-items:center;gap:12px;flex:1}
+.room .eyebrow{color:var(--gold)}
+.room h3{font-size:14px;letter-spacing:2.5px}
+.room ul{list-style:none;display:flex;flex-wrap:wrap;justify-content:center;gap:4px 16px;font-size:13px;color:var(--muted)}
+.room .actions{margin-top:auto;display:flex;flex-direction:column;align-items:center;gap:16px;padding-top:8px}
+
+/* Placeholder imagery */
+.ph{background:var(--img);position:relative;overflow:hidden}
+.ph svg{position:absolute;inset:0;width:100%;height:100%}
+
+/* Splits */
+.split{display:grid;grid-template-columns:1fr 1fr;min-height:560px}
+.split .ph{min-height:320px}
+.split-text{background:var(--sand-alt);padding:60px clamp(24px,5vw,60px)}
+.split-text h2{margin-bottom:20px}
+.sites{margin-top:28px}
+.sites div{padding:16px 0;border-top:1px solid var(--line)}
+.sites strong{display:block;font:600 11px/1.4 var(--sans);letter-spacing:2px;text-transform:uppercase;margin-bottom:4px}
+.sites p{font-size:14px;color:#3a3b38}
+
+/* Loyalty banner */
+.banner{position:relative;color:var(--sand);background:var(--sage-dark);padding:110px 0;overflow:hidden}
+.banner .ph{position:absolute;inset:0;background:transparent}
+.banner .wrap{position:relative}
+.banner h2{font-size:clamp(24px,4vw,34px);margin:12px 0 14px}
+.banner .row{display:flex;gap:22px;align-items:center;margin:26px 0 12px;flex-wrap:wrap}
+.banner small{opacity:.8}
+.apps{display:flex;gap:12px;margin-top:30px;align-items:center;flex-wrap:wrap}
+.apps .btn{border-color:rgba(237,232,220,.5);color:var(--sand)}
+
+/* Getting here */
+.facts{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--line);margin:34px 0}
+.facts div{background:var(--sand);padding:22px}
+.facts span{display:block;font-size:12px;color:var(--muted);letter-spacing:1px;text-transform:uppercase}
+.facts strong{font:400 22px/1.3 var(--serif)}
+.map{aspect-ratio:16/7;margin-top:10px}
+
+/* Book direct */
+.direct{background:var(--sage);color:var(--sand);text-align:center;padding:80px 0}
+.direct p{max-width:600px;margin:16px auto 28px}
+
+/* FAQ */
+.faq{max-width:820px;margin:40px auto 0}
+details{border-top:1px solid var(--line)}
+details:last-child{border-bottom:1px solid var(--line)}
+summary{list-style:none;cursor:pointer;padding:20px 40px 20px 0;position:relative;font-weight:500}
+summary::-webkit-details-marker{display:none}
+summary::after{content:"+";position:absolute;right:6px;top:16px;font:300 22px var(--sans);color:var(--gold)}
+details[open] summary::after{content:"–"}
+details p{padding:0 0 22px;color:#3a3b38}
+
+/* Contact */
+.contact{display:grid;grid-template-columns:1fr 1.2fr;gap:60px}
+.contact-info p{margin:14px 0}
+.contact-info a{text-decoration:none;border-bottom:1px solid var(--line)}
+.contact form{display:grid;gap:18px}
+.contact label{font:500 10px var(--sans);letter-spacing:2px;text-transform:uppercase;color:var(--muted)}
+.contact input,.contact textarea{width:100%;border:0;border-bottom:1px solid var(--ink);background:transparent;padding:10px 0;font:400 15px var(--sans);color:var(--ink)}
+.contact textarea{min-height:120px;resize:vertical}
+.hp{position:absolute;left:-9999px}
+.note{font-size:12px;color:var(--muted)}
+.sent{display:none;padding:14px;background:var(--sand-alt)}
+
+footer{background:var(--ink);color:var(--sand);padding:60px 0 30px;font-size:14px}
+.foot{display:grid;grid-template-columns:2fr 1fr 1fr;gap:40px}
+footer h4{font:500 11px var(--sans);letter-spacing:2.5px;text-transform:uppercase;margin-bottom:12px;color:var(--gold)}
+footer ul{list-style:none}
+footer li{margin:6px 0}
+footer a{text-decoration:none;opacity:.85}
+.copy{margin-top:40px;padding-top:20px;border-top:1px solid rgba(237,232,220,.15);font-size:12px;opacity:.6}
+
+@media (max-width:1100px){
+  .langs{margin-left:auto}
+  nav{display:none}
+  nav.open{display:block;position:absolute;top:64px;left:0;right:0;background:var(--sage);padding:10px 24px 20px}
+  nav.open ul{flex-direction:column;gap:14px}
+  .menu-btn{display:block}
+  .rooms{grid-template-columns:repeat(2,1fr)}
+  .facts{grid-template-columns:repeat(2,1fr)}
+}
+@media (max-width:720px){
+  .booking form{grid-template-columns:1fr 1fr;gap:10px;padding:8px 16px}
+  .booking form .btn{grid-column:1/-1}
+  .booking input,.booking select{max-width:none}
+  .wrap{padding:0 16px}
+  .hero-inner{padding:0 16px 70px}
+  .story,.split,.contact,.foot{grid-template-columns:1fr}
+  .split .ph{order:-1}
+  .rooms{grid-template-columns:1fr}
+  .section{padding:64px 0}
+  .langs{display:none}
+}
+</style>
+</head>
+<body>
+
+<!-- Reusable arch artwork, standing in for photography -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <pattern id="tile" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M20 2 L38 20 L20 38 L2 20Z" fill="none" stroke="rgba(255,255,255,.12)" stroke-width="1"/>
+      <circle cx="20" cy="20" r="3" fill="rgba(255,255,255,.1)"/>
+    </pattern>
+    <symbol id="arch" viewBox="0 0 100 140">
+      <path d="M8 140 V62 C8 36 24 22 34 16 C40 12 46 6 50 0 C54 6 60 12 66 16 C76 22 92 36 92 62 V140Z"/>
+    </symbol>
+    <symbol id="logo" viewBox="0 0 32 32">
+      <path d="M4 30 L16 3 L28 30" fill="none" stroke="currentColor" stroke-width="1.6"/>
+      <path d="M10 30 V22 C10 17 13 15 16 12 C19 15 22 17 22 22 V30" fill="none" stroke="currentColor" stroke-width="1.6"/>
+    </symbol>
+  </defs>
+</svg>
+
+<header>
+  <div class="topbar">
+    <div class="wrap">
+      <a class="brand" href="#top" aria-label="Alcazar Tlemcen home">
+        <svg width="30" height="30" style="color:var(--gold)"><use href="#logo"/></svg>
+        <span class="brand-name">ALCAZAR TLEMCEN</span>
+      </a>
+      <nav id="nav">
+        <ul>
+          <li><a href="#hotel">The Hotel</a></li>
+          <li><a href="#rooms">Accommodation</a></li>
+          <li><a href="#faq">Dining</a></li>
+          <li><a href="#faq">Banqueting</a></li>
+          <li><a href="#faq">Spa</a></li>
+          <li><a href="#direct">Offers</a></li>
+          <li><a href="#loyalty">Loyalty</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+      <div class="langs"><a href="#">FR</a><a href="#" class="on">EN</a><a href="#">AR</a></div>
+      <button class="menu-btn" aria-label="Menu" onclick="document.getElementById('nav').classList.toggle('open')">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 7h18M3 12h18M3 17h18"/></svg>
+      </button>
+    </div>
+  </div>
+  <div class="booking">
+    <form class="wrap" onsubmit="event.preventDefault();location.hash='direct'">
+      <div><label for="dates">Arrival — Departure</label><input id="dates" type="date" aria-label="Arrival date"></div>
+      <div><label for="guests">Guests</label>
+        <select id="guests"><option>1 adult</option><option selected>2 adults</option><option>2 adults, 1 child</option><option>3 adults</option><option>4 adults</option></select></div>
+      <button class="btn btn-sage" type="submit">Check availability</button>
+    </form>
+  </div>
+</header>
+
+<main id="top">
+  <section class="hero">
+    <div class="hero-art" aria-hidden="true">
+      <svg viewBox="0 0 1200 700" preserveAspectRatio="xMidYMid slice">
+        <defs>
+          <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#3f6f9e"/><stop offset="1" stop-color="#a9c3d6"/></linearGradient>
+          <mask id="archmask"><rect width="1200" height="700" fill="white"/><use href="#arch" x="380" y="40" width="440" height="700" fill="black"/></mask>
+        </defs>
+        <rect width="1200" height="700" fill="url(#sky)"/>
+        <g fill="#e2d6bf">
+          <rect x="560" y="210" width="200" height="490"/><rect x="460" y="300" width="120" height="400" fill="#d4c5a9"/>
+          <rect x="740" y="250" width="130" height="450" fill="#cbbb9d"/>
+        </g>
+        <g fill="#8b3a35" opacity=".8">
+          <rect x="590" y="250" width="22" height="40"/><rect x="630" y="250" width="22" height="40"/><rect x="670" y="250" width="22" height="40"/><rect x="710" y="250" width="22" height="40"/>
+          <rect x="590" y="330" width="22" height="40"/><rect x="630" y="330" width="22" height="40"/><rect x="670" y="330" width="22" height="40"/><rect x="710" y="330" width="22" height="40"/>
+          <rect x="590" y="410" width="22" height="40"/><rect x="630" y="410" width="22" height="40"/><rect x="670" y="410" width="22" height="40"/><rect x="710" y="410" width="22" height="40"/>
+          <rect x="485" y="340" width="20" height="36"/><rect x="525" y="340" width="20" height="36"/><rect x="485" y="420" width="20" height="36"/><rect x="525" y="420" width="20" height="36"/>
+          <rect x="770" y="300" width="20" height="36"/><rect x="815" y="300" width="20" height="36"/><rect x="770" y="380" width="20" height="36"/><rect x="815" y="380" width="20" height="36"/>
+        </g>
+        <rect width="1200" height="700" fill="#3b2f25" mask="url(#archmask)"/>
+        <rect width="1200" height="700" fill="url(#tile)" mask="url(#archmask)"/>
+      </svg>
+    </div>
+    <div class="hero-inner">
+      <p class="eyebrow">Alcazar Hotel</p>
+      <h1>Tlemcen, Algeria</h1>
+      <p class="eyebrow">Lalla Setti Plateau, Tlemcen, Algeria</p>
+      <div class="hero-links">
+        <a class="link" href="tel:+21343401111">+213 (0) 43 40 11 11</a>
+        <a class="link" href="https://maps.google.com/?q=Lalla+Setti+Tlemcen" target="_blank" rel="noopener">Directions</a>
+      </div>
+    </div>
+    <div class="scroll-cue">SCROLL TO DISCOVER</div>
+  </section>
+
+  <section class="section" id="hotel">
+    <div class="wrap intro">
+      <svg class="mark" width="26" height="26"><use href="#logo"/></svg>
+      <h2>807 metres up, looking over the capital of the western highlands</h2>
+      <p>In Tlemcen, you arrive through doorways: the carved gate of Sidi Boumediène, the walls of the Mechouar, and the arcades of the Great Mosque.</p>
+      <p>The hotel follows the same idea. Pointed bays line its façades, and its galleries rest on lobed arches, with one room opening into the next. The meeting rooms are named after the city's old names: Mechouar, Altava, Pomaria and Setti.</p>
+      <p>Alcazar means "the castle". It also sounds like Al Karaz, the cherry the region is known for.</p>
+      <p style="margin-top:34px"><a class="btn btn-dark" href="#rooms">Discover the hotel</a></p>
+    </div>
+  </section>
+
+  <section class="section alt">
+    <div class="wrap story">
+      <div><p class="eyebrow" style="color:var(--gold)">The Story</p><h2 style="margin-top:12px">From Renaissance to Alcazar</h2></div>
+      <div>
+        <p>The hotel opened in April 2011, when Tlemcen was Capital of Islamic Culture. It first flew the Renaissance flag and was Marriott International's first property in Algeria, with 204 Arab-Moorish rooms and suites on the Lalla Setti plateau.</p>
+        <p>In 2026 it reopened as Alcazar Tlemcen, managed by SIH.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section alt" id="rooms" style="padding-top:20px">
+    <div class="wrap">
+      <div class="rooms-head">
+        <h2>Rooms &amp; Suites</h2>
+        <p>There are 180 rooms and 24 suites. Every one has Alcazar bedding, a marble bathroom, air conditioning, a flat-screen TV, fast Wi-Fi, a minibar, a safe, a desk and a tea and coffee tray.</p>
+      </div>
+      <div class="rooms" id="roomGrid"></div>
+      <p class="center" style="margin-top:40px"><a class="link" href="#rooms">All rooms &amp; suites</a></p>
+    </div>
+  </section>
+
+  <section class="section" style="padding-bottom:0">
+    <h2 class="center" style="margin-bottom:40px">The Destination</h2>
+    <div class="split">
+      <div class="ph" aria-hidden="true">
+        <svg viewBox="0 0 600 600" preserveAspectRatio="xMidYMid slice">
+          <defs><linearGradient id="sky2" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#7fb2d9"/><stop offset="1" stop-color="#d9e4e6"/></linearGradient></defs>
+          <rect width="600" height="600" fill="url(#sky2)"/>
+          <path d="M0 380 Q150 340 300 370 T600 350 V600 H0Z" fill="#8c9a86"/>
+          <rect x="270" y="170" width="60" height="230" fill="#b98e5f"/>
+          <rect x="282" y="210" width="14" height="30" fill="#7a5a3a"/><rect x="304" y="210" width="14" height="30" fill="#7a5a3a"/>
+          <path d="M0 450 Q200 410 400 440 T600 430 V600 H0Z" fill="#5f6d58"/>
+        </svg>
+      </div>
+      <div class="split-text">
+        <h2>The Safeer Programme</h2>
+        <p>Instead of a classic concierge desk, the Safeer team gives you personal tips for exploring Tlemcen: monuments, craft workshops, quiet corners and cultural walks. About 60% of Algeria's Arab-Islamic heritage is in this city.</p>
+        <div class="sites" id="sites"></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="banner" id="loyalty">
+    <div class="ph" aria-hidden="true"><svg viewBox="0 0 1200 500" preserveAspectRatio="xMidYMid slice"><rect width="1200" height="500" fill="url(#tile)"/><use href="#arch" x="820" y="40" width="260" height="460" fill="rgba(237,232,220,.08)"/></svg></div>
+    <div class="wrap">
+      <p class="eyebrow">Loyalty Programme</p>
+      <h2>Join the programme</h2>
+      <p>Members get member rates and other exclusive benefits.</p>
+      <div class="row"><a class="btn btn-light" href="#contact">Join for free</a><a class="link" href="#contact">Sign in</a></div>
+      <small>Membership is free.</small>
+      <div class="apps"><span class="eyebrow">Also in the app</span><a class="btn" href="#">iOS</a><a class="btn" href="#">Android</a></div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap">
+      <p class="eyebrow" style="color:var(--gold)">Getting here</p>
+      <h2 style="margin:12px 0 10px">Reaching the Alcazar</h2>
+      <p>The hotel is on the Lalla Setti plateau, above the city: Lalla Setti plateau, Tlemcen, Algeria.</p>
+      <div class="facts">
+        <div><span>Tlemcen–Zenata airport</span><strong>25 km</strong></div>
+        <div><span>Oran</span><strong>140 km</strong></div>
+        <div><span>Check-in · check-out</span><strong>3 pm · 11 am</strong></div>
+        <div><span>Children</span><strong>Up to 17 years</strong></div>
+      </div>
+      <div class="ph map" aria-hidden="true">
+        <svg viewBox="0 0 1600 700" preserveAspectRatio="xMidYMid slice">
+          <rect width="1600" height="700" fill="#dcd4c3"/>
+          <g stroke="#c4b9a3" stroke-width="10" fill="none"><path d="M0 500 C400 420 700 560 1600 380"/><path d="M300 0 C380 300 520 500 600 700"/><path d="M1000 0 C980 260 1150 420 1300 700"/></g>
+          <path d="M520 220 Q800 140 1100 240 Q1000 360 760 340 Q600 330 520 220Z" fill="#b9c2ae"/>
+          <circle cx="800" cy="260" r="16" fill="var(--sage)"/><circle cx="800" cy="260" r="34" fill="none" stroke="var(--sage)" stroke-width="2"/>
+          <text x="840" y="268" font-family="Archivo,sans-serif" font-size="26" fill="#1a1b1a" letter-spacing="3">ALCAZAR TLEMCEN</text>
+        </svg>
+      </div>
+      <div class="hero-links" style="margin-top:28px">
+        <a class="btn btn-dark" href="https://maps.google.com/?q=Lalla+Setti+Tlemcen" target="_blank" rel="noopener">Directions</a>
+        <a class="btn btn-sage" href="tel:+21343401111">Call the hotel</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="direct" id="direct">
+    <div class="wrap">
+      <p class="eyebrow">Book direct</p>
+      <h2 style="margin-top:12px">Best price guaranteed</h2>
+      <p>When you book here, you book straight with the hotel. There's no middleman fee, you see real-time availability, and you get our lowest rate.</p>
+      <a class="btn btn-light" href="#top">Check availability</a>
+    </div>
+  </section>
+
+  <section class="section" id="faq">
+    <div class="wrap">
+      <h2 class="center">Frequently asked</h2>
+      <div class="faq" id="faqList"></div>
+    </div>
+  </section>
+
+  <section class="section alt" id="contact">
+    <div class="wrap contact">
+      <div class="contact-info">
+        <p class="eyebrow" style="color:var(--gold)">Contact</p>
+        <h2 style="margin-top:12px">Write to us</h2>
+        <p>Have a question, a special request or a trip to plan? Our team answers day and night.</p>
+        <p><a href="tel:+21343401111">+213 (0) 43 40 11 11</a></p>
+        <p><a href="#">WhatsApp</a></p>
+        <p><a href="mailto:reservation@alcazar-tlemcen.com">reservation@alcazar-tlemcen.com</a></p>
+        <p class="eyebrow" style="margin-top:30px">The Hotel</p>
+        <p>Lalla Setti plateau, Tlemcen, Algeria<br>Check-in from 3 pm · check-out by 11 am</p>
+      </div>
+      <form id="contactForm">
+        <div><label for="n">Name *</label><input id="n" required></div>
+        <div><label for="e">Email *</label><input id="e" type="email" required></div>
+        <div><label for="p">Phone · optional</label><input id="p" type="tel"></div>
+        <div><label for="m">Your message *</label><textarea id="m" required></textarea></div>
+        <input class="hp" tabindex="-1" autocomplete="off" aria-hidden="true">
+        <div><button class="btn btn-dark" type="submit">Send</button></div>
+        <p class="sent" id="sent">Thank you. Your message is ready to go. Connect this form to an email service to deliver it.</p>
+        <p class="note">We only use your details to answer your request. They are not stored on this site or shared with anyone else.</p>
+      </form>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="foot">
+      <div>
+        <a class="brand" href="#top"><svg width="30" height="30" style="color:var(--gold)"><use href="#logo"/></svg><span class="brand-name">ALCAZAR TLEMCEN</span></a>
+        <p style="margin-top:14px;opacity:.8">Lalla Setti plateau, Tlemcen, Algeria</p>
+      </div>
+      <div><h4>Hotel</h4><ul><li><a href="#hotel">The Hotel</a></li><li><a href="#rooms">Rooms &amp; Suites</a></li><li><a href="#loyalty">Loyalty</a></li><li><a href="#faq">FAQ</a></li></ul></div>
+      <div><h4>Contact</h4><ul><li><a href="tel:+21343401111">+213 (0) 43 40 11 11</a></li><li><a href="mailto:reservation@alcazar-tlemcen.com">Email us</a></li><li><a href="#contact">Contact form</a></li></ul></div>
+    </div>
+    <p class="copy">© 2026 Alcazar Tlemcen</p>
+  </div>
+</footer>
+
+<script>
+const rooms=[
+  ["Room","Deluxe Room · King Bed","About 32 m²","2 adults + 1 child","90 rooms","#c9b79c"],
+  ["Room","Deluxe Room · Two Beds","About 32 m²","2 adults + 1 child","90 rooms","#c4b29a"],
+  ["Suite","Diplomatic Suite","About 50 m²","2 to 3 guests","12 suites","#bda88c"],
+  ["Suite","Ambassador Suite","About 70 m²","2 to 3 guests","10 suites","#b49e82"],
+  ["Suite","Presidential Suite","Over 130 m²","4 guests","1 suite","#a98f73"],
+  ["Suite","Royal Suite","Over 170 m²","4 guests","1 suite","#9d8467"]
+];
+document.getElementById('roomGrid').innerHTML=rooms.map(([k,n,a,g,c,col])=>`
+  <article class="room">
+    <div class="ph" style="background:${col}" aria-hidden="true"><svg viewBox="0 0 400 300" preserveAspectRatio="xMidYMid slice">
+      <rect width="400" height="300" fill="url(#tile)"/>
+      <use href="#arch" x="150" y="40" width="100" height="140" fill="rgba(255,255,255,.35)"/>
+      <rect x="70" y="190" width="260" height="60" rx="4" fill="rgba(255,255,255,.75)"/>
+      <rect x="70" y="170" width="260" height="26" rx="4" fill="rgba(139,58,53,.55)"/>
+    </svg></div>
+    <div class="room-body">
+      <span class="eyebrow">${k}</span>
+      <h3>${n}</h3>
+      <ul><li>${a}</li><li>${g}</li><li>${c}</li></ul>
+      <div class="actions"><a class="link" href="#contact">Details</a><a class="btn btn-sage" href="#top">Check availability</a></div>
+    </div>
+  </article>`).join('');
+
+const sites=[
+  ["Mansourah","A Marinid city from the early 1300s. Its minaret still stands, half-built and 40 m tall, inside the old walls."],
+  ["Sidi Boumediène","A mosque, tomb and madrasa built around the city's patron saint. Its entrance is a masterpiece of Arab-Andalusian design."],
+  ["The Great Mosque","Founded in 1136 by the Almoravids. The Zianids added the minaret a century later. The prayer hall has 72 columns."],
+  ["El Mechouar","The palace and fortress of the Zianid sultans, in the centre of town. The hotel's ballroom is named after it."],
+  ["Lalla Setti","The plateau the hotel stands on: a lookout point among olive groves, with the whole city spread out below."],
+  ["Beni Add Caves","In Aïn Fezza, about an hour away by car. One of the largest cave systems in North Africa."]
+];
+document.getElementById('sites').innerHTML=sites.map(([t,d])=>`<div><strong>${t}</strong><p>${d}</p></div>`).join('');
+
+const faqs=[
+  ["Where is Alcazar Tlemcen?","On the Lalla Setti plateau, 807 m above sea level, overlooking Tlemcen and the western highlands."],
+  ["How far is Tlemcen–Zenata airport?","About 25 km from the hotel."],
+  ["What are the check-in and check-out times?","Check-in is from 3 pm. Check-out is by 11 am."],
+  ["How many rooms does the hotel have?","204 in total: 180 rooms and 24 suites."],
+  ["Is there a hammam?","Contact the team for the spa's current facilities and opening hours."],
+  ["Where is breakfast served?","Contact the team for current breakfast details."],
+  ["How many restaurants and bars are there?","Contact the team for the current list of restaurants and bars."],
+  ["Does the hotel host weddings?","Yes, the banqueting team handles celebrations. Write to us to plan yours."],
+  ["What meeting rooms are available?","The meeting rooms are named Mechouar, Altava, Pomaria and Setti. Mechouar is the ballroom."],
+  ["Is there a swimming pool?","Contact the team for current details."],
+  ["Is the hotel suitable for children?","Yes. Children up to 17 are welcome, and deluxe rooms sleep 2 adults and 1 child."],
+  ["How can I reach the hotel?","By road from Tlemcen–Zenata airport (25 km) or from Oran (140 km). Use the Directions button to open a map."],
+  ["How do I get the best rate?","Book directly on this site for the best-price guarantee."],
+  ["Is Alcazar Tlemcen the former Renaissance Tlemcen Hotel?","Yes. It opened as the Renaissance in 2011 and became Alcazar Tlemcen, managed by SIH, in 2026."]
+];
+document.getElementById('faqList').innerHTML=faqs.map(([q,a],i)=>`<details${i?'':' open'}><summary>${q}</summary><p>${a}</p></details>`).join('');
+
+document.getElementById('contactForm').addEventListener('submit',e=>{e.preventDefault();document.getElementById('sent').style.display='block';e.target.reset();});
+document.querySelectorAll('#nav a').forEach(a=>a.addEventListener('click',()=>document.getElementById('nav').classList.remove('open')));
+</script>
+</body>
+</html>

@@ -1,0 +1,167 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Facultés et instituts — Université de Tlemcen</title>
+<meta name="description" content="Les 8 facultés et l'institut de l'Université de Tlemcen, avec leurs contacts, et un outil pour trouver la formation qui vous correspond.">
+<link rel="stylesheet" href="fonts/fonts.css">
+<link rel="stylesheet" href="assets/site.css">
+<style>
+.tools{display:flex;flex-wrap:wrap;gap:12px;align-items:center;margin-bottom:14px}
+.count{font:500 12px var(--mono);text-transform:uppercase;letter-spacing:.08em;color:var(--muted);margin:16px 0}
+.dir{display:grid;grid-template-columns:repeat(auto-fill,minmax(330px,1fr));gap:14px}
+.card{background:var(--paper);border:1px solid var(--line);border-radius:24px;padding:24px;display:flex;flex-direction:column;gap:12px;scroll-margin-top:120px;transition:box-shadow .4s,border-color .3s,transform .4s var(--ease);animation:cIn .45s var(--ease) both}
+@keyframes cIn{from{opacity:0;transform:translateY(10px)}}
+.card:hover{transform:translateY(-4px);box-shadow:0 30px 60px -40px rgba(13,74,55,.55)}
+.card.hl{border-color:var(--gold);box-shadow:0 0 0 4px rgba(201,162,39,.25)}
+.card .top{display:flex;justify-content:space-between;align-items:center;gap:10px}
+.card .mono{font:500 12px var(--mono);color:var(--leaf);text-transform:uppercase;letter-spacing:.08em}
+.card .dom{font-size:12px;font-weight:700;background:var(--sand);padding:4px 10px;border-radius:99px}
+.card h3{font:400 28px/1.05 var(--serif);color:var(--emerald)}
+.card p{margin:0;color:var(--muted)}
+.card .kw{display:flex;flex-wrap:wrap;gap:6px}
+.card .kw span{font-size:12px;border:1px solid var(--line);border-radius:99px;padding:3px 9px;color:var(--muted)}
+.card .acts{display:flex;flex-wrap:wrap;gap:8px;margin-top:auto;padding-top:8px}
+.card .acts a,.card .acts button{all:unset;cursor:pointer;font:600 13px var(--sans);padding:9px 13px;border-radius:99px;border:1.5px solid var(--line);transition:.25s}
+.card .acts a:hover,.card .acts button:hover{border-color:var(--emerald)}
+.card .acts .pri{background:var(--emerald);color:#fff;border-color:var(--emerald)}
+.card .acts .pri:hover{background:var(--leaf)}
+
+/* orientation */
+.orient{background:var(--emerald);color:#fff;border-radius:36px;padding:clamp(24px,4vw,56px);display:grid;grid-template-columns:.9fr 1.1fr;gap:clamp(24px,4vw,56px);scroll-margin-top:110px}
+.orient .kicker{color:var(--gold-2)}
+.orient h2{font-size:clamp(36px,4.4vw,62px);margin:14px 0 16px}
+.orient h2 em{color:var(--gold-2)}
+.orient > div > p{color:#cfe0d6}
+.ints{display:flex;flex-wrap:wrap;gap:8px;margin-top:20px}
+.int{all:unset;cursor:pointer;padding:10px 16px;border-radius:99px;font-weight:600;font-size:14px;background:rgba(255,255,255,.08);border:1.5px solid rgba(255,255,255,.14);transition:.25s}
+.int:hover{border-color:var(--gold-2)}
+.int[aria-pressed="true"]{background:var(--gold);color:var(--emerald-2);border-color:var(--gold)}
+.int:focus-visible{outline:2px solid var(--gold-2)}
+.results{background:var(--emerald-2);border-radius:24px;padding:clamp(18px,2.6vw,28px);min-height:300px}
+.results h3{font:500 12px var(--mono);text-transform:uppercase;letter-spacing:.1em;color:#a9c4b6;margin-bottom:14px}
+.match{display:grid;grid-template-columns:1fr auto;gap:6px 14px;padding:14px 0;border-bottom:1px solid rgba(255,255,255,.08);animation:cIn .4s var(--ease) both}
+.match b{font-size:16px}
+.match a{color:var(--gold-2);font-weight:600;font-size:14px;white-space:nowrap}
+.match .bar{grid-column:1/-1;height:6px;border-radius:99px;background:rgba(255,255,255,.08);overflow:hidden}
+.match .bar i{display:block;height:100%;border-radius:inherit;background:linear-gradient(90deg,var(--gold),var(--gold-2));transition:width .9s var(--ease)}
+.hint{color:#a9c4b6;padding:30px 0;text-align:center}
+@media (max-width:900px){ .orient{grid-template-columns:1fr} }
+.card{border-radius:10px;border-top:4px solid var(--dc,var(--emerald))}
+.card .top{justify-content:flex-start;gap:12px}
+.card .top .dom{margin-left:auto}
+.card .mono{color:var(--dc,var(--leaf));font-weight:700;letter-spacing:.12em}
+.card h3{font:600 28px/1.05 var(--serif);color:var(--ink)}
+.card .acts a,.card .acts button{border-radius:6px}
+.card .acts .pri{background:var(--dc,var(--emerald));border-color:var(--dc,var(--emerald))}
+.orient,.results{border-radius:10px}
+.orient{border-bottom:6px solid var(--gold)}
+.int{border-radius:6px}
+</style>
+</head>
+<body data-page="fac">
+<div id="site-header"></div>
+
+<main id="main">
+  <section class="phero">
+    <svg class="pattern" viewBox="0 0 100 100" aria-hidden="true"><g fill="none" stroke="#fff" stroke-width=".6"><path d="M50 2 L98 50 L50 98 L2 50Z"/><path d="M50 14 L86 50 L50 86 L14 50Z"/><circle cx="50" cy="50" r="22"/><path d="M50 28 L72 50 L50 72 L28 50Z"/></g></svg>
+    <div class="wrap">
+      <div class="crumbs"><a href="index.html">Accueil</a> / Facultés et instituts</div>
+      <span class="kicker">Formation</span>
+      <h1>Huit facultés, <em>un institut.</em></h1>
+      <p>Retrouvez chaque faculté, son domaine et ses contacts, ou laissez-vous guider vers la formation qui correspond à vos centres d'intérêt.</p>
+    </div>
+  </section>
+
+  <div class="wrap" style="padding-top:clamp(40px,6vw,72px)">
+    <section class="orient reveal" id="orientation">
+      <div>
+        <span class="kicker">M'orienter</span>
+        <h2>Qu'est-ce qui vous <em>passionne&nbsp;?</em></h2>
+        <p>Choisissez un ou plusieurs centres d'intérêt&nbsp;: nous vous proposons les facultés les plus proches de votre profil.</p>
+        <div class="ints" id="ints"></div>
+      </div>
+      <div class="results" aria-live="polite"><h3>Facultés suggérées</h3><div id="matches"></div></div>
+    </section>
+
+    <section style="padding-top:clamp(56px,7vw,96px)">
+      <div class="head reveal"><div><span class="kicker">Annuaire</span><h2>Toutes les <em>facultés.</em></h2></div></div>
+      <div class="tools">
+        <div class="field-search"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M21 21l-5-5"/></svg><input id="q" type="search" placeholder="Nom, domaine ou discipline (ex. pharmacie, droit, anglais)" aria-label="Rechercher une faculté"></div>
+      </div>
+      <div class="chips" id="doms" role="group" aria-label="Filtrer par domaine"></div>
+      <p class="count" id="count"></p>
+      <div class="dir" id="dir"></div>
+    </section>
+  </div>
+</main>
+
+<div id="site-footer"></div>
+<script src="assets/data.js"></script>
+<script src="assets/common.js"></script>
+<script>
+(() => {
+  const $ = s => document.querySelector(s);
+  const F = UT.faculties;
+  const norm = s => String(s).toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '');
+  const doms = ['Tous', ...new Set(F.map(f => f.domain))];
+  let dom = 'Tous';
+
+  function renderDoms() { $('#doms').innerHTML = doms.map(d => `<button class="chip" aria-pressed="${d === dom}" data-d="${d}">${d}<span>${d === 'Tous' ? F.length : F.filter(f => f.domain === d).length}</span></button>`).join(''); }
+  function render() {
+    const q = norm($('#q').value.trim());
+    const list = F.filter(f => (dom === 'Tous' || f.domain === dom) && (!q || norm(`${f.n} ${f.short} ${f.domain} ${f.d} ${f.tags.join(' ')}`).includes(q)));
+    $('#count').textContent = `${list.length} résultat${list.length > 1 ? 's' : ''}`;
+    $('#dir').innerHTML = list.length ? list.map((f, i) => { const dc = utDisc(f.domain); return `<article class="card ${dc.cls}" id="${f.id}" style="animation-delay:${i * 40}ms">
+        <div class="top">${dc.icon}<span class="mono">${f.short}</span><span class="dom">${f.domain}</span></div>
+        <h3>${f.n}</h3><p>${f.d}</p>
+        <div class="kw">${f.tags.slice(0, 5).map(t => `<span>${t}</span>`).join('')}</div>
+        <div class="acts"><a class="pri" href="${f.url}" target="_blank" rel="noopener">Site de la faculté ↗</a><a href="tel:+213${f.tel.replace(/\s/g, '').slice(1)}">☎ ${f.tel}</a><button data-copy="${f.tel}" aria-label="Copier le numéro">Copier</button></div>
+      </article>`; }).join('') : '<div class="empty">Aucune faculté ne correspond. Essayez un autre mot-clé.</div>';
+    highlight();
+  }
+  function highlight() {
+    const id = location.hash.slice(1); if (!id) return;
+    const el = document.getElementById(id); if (!el || !el.classList.contains('card')) return;
+    el.classList.add('hl'); el.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    setTimeout(() => el.classList.remove('hl'), 2600);
+  }
+  $('#doms').onclick = e => { const b = e.target.closest('.chip'); if (!b) return; dom = b.dataset.d; renderDoms(); render(); };
+  $('#q').oninput = render;
+  $('#dir').onclick = async e => {
+    const b = e.target.closest('[data-copy]'); if (!b) return;
+    try { await navigator.clipboard.writeText(b.dataset.copy); utToast('Numéro copié : ' + b.dataset.copy); } catch { utToast(b.dataset.copy); }
+  };
+  addEventListener('hashchange', highlight);
+  renderDoms(); render();
+
+  // orientation helper: score faculties by matching interests
+  const INTS = [
+    ['Mathématiques', ['mathématiques', 'physique']], ['Informatique', ['informatique', 'électronique']], ['Ingénierie', ['ingénieur', 'génie', 'mécanique', 'énergie', 'technique']],
+    ['Santé', ['santé', 'médecine', 'pharmacie', 'dentaire']], ['Biologie', ['biologie', 'nature', 'agronomie']], ['Environnement', ['environnement', 'géologie', 'énergie', 'nature']],
+    ['Langues', ['langues', 'anglais', 'français', 'traduction', 'littérature']], ['Droit', ['droit', 'juridique', 'politique']], ['Économie', ['économie', 'finance', 'commerce']],
+    ['Gestion et entreprise', ['gestion', 'management', 'entreprise', 'professionnel']], ['Histoire et société', ['histoire', 'sociologie', 'humaines']], ['Psychologie et éducation', ['psychologie', 'éducation']],
+  ];
+  const picked = new Set();
+  $('#ints').innerHTML = INTS.map(([n]) => `<button class="int" aria-pressed="false" data-i="${n}">${n}</button>`).join('');
+  function matches() {
+    if (!picked.size) { $('#matches').innerHTML = '<p class="hint">Sélectionnez au moins un centre d\'intérêt pour voir vos suggestions.</p>'; return; }
+    const kws = [...picked].flatMap(p => INTS.find(x => x[0] === p)[1]);
+    const scored = F.map(f => ({ f, s: kws.filter(k => f.tags.includes(k)).length })).filter(x => x.s > 0).sort((a, b) => b.s - a.s);
+    const max = scored[0]?.s || 1;
+    $('#matches').innerHTML = scored.length ? scored.slice(0, 4).map((x, i) => `<div class="match" style="animation-delay:${i * 70}ms"><b>${x.f.n}</b><a href="#${x.f.id}">Voir la fiche →</a><span class="bar"><i style="width:0" data-w="${Math.round(x.s / max * 100)}"></i></span></div>`).join('')
+      : '<p class="hint">Aucune correspondance directe — explorez l\'annuaire ci-dessous.</p>';
+    requestAnimationFrame(() => setTimeout(() => document.querySelectorAll('.match .bar i').forEach(i => i.style.width = i.dataset.w + '%'), 30));
+  }
+  $('#ints').onclick = e => {
+    const b = e.target.closest('.int'); if (!b) return;
+    const on = b.getAttribute('aria-pressed') !== 'true';
+    b.setAttribute('aria-pressed', on); on ? picked.add(b.dataset.i) : picked.delete(b.dataset.i);
+    matches();
+  };
+  matches();
+})();
+</script>
+</body>
+</html>

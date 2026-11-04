@@ -1,0 +1,368 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>EGSA Oran — Aéroport d'Oran Ahmed Ben Bella</title>
+<meta name="description" content="EGSA Oran gère l'aéroport d'Oran Ahmed Ben Bella et 10 autres aéroports de l'ouest et du sud-ouest algérien.">
+<link rel="stylesheet" href="fonts/fonts.css">
+<link rel="stylesheet" href="assets/site.css">
+</head>
+<body>
+
+<header class="hdr" id="hdr">
+  <div class="wrap">
+    <a class="logo" href="#">
+      <span class="logo-badge"><img src="assets/logo-egsa.jpg" alt="EGSA Oran — مطارات وهران" width="401" height="191"></span>
+      <span class="logo-txt"><b>EGSA Oran</b><small>Aéroport Ahmed Ben Bella</small></span>
+    </a>
+    <nav class="nav" id="nav">
+      <a href="planifier.html">Planifier</a>
+      <a href="#services">Services</a>
+      <a href="aeroports.html">Nos aéroports</a>
+      <a href="#chiffres">Chiffres</a>
+      <a href="#histoire">L'établissement</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <div class="lang"><a class="on" href="#">FR</a><a href="#">EN</a><a href="#" lang="ar">ع</a></div>
+    <button class="burger" id="burger" aria-label="Menu" aria-expanded="false"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
+  </div>
+</header>
+
+<main>
+  <section class="hero">
+    <div class="sky"><div class="stars"></div></div>
+    <svg class="plane" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" style="transform:rotate(90deg)"><path d="M21 16v-2l-8-5V3.5a1.5 1.5 0 0 0-3 0V9l-8 5v2l8-2.5V19l-2 1.5V22l3.5-1 3.5 1v-1.5L13 19v-5.5z"/></svg>
+    <div class="wrap hero-inner">
+      <span class="tag">ORN · DAOO · Oran, Algérie</span>
+      <h1>Bienvenue à <em>Oran.</em></h1>
+      <p>Deux terminaux, 37 destinations et plus de 2,2 millions de voyageurs par an&nbsp;: l'aéroport Ahmed Ben Bella est la porte d'entrée de l'ouest algérien.</p>
+      <div class="hero-ctas">
+        <a class="btn" href="planifier.html">Préparer mon voyage <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg></a>
+        <a class="btn line" href="#reseau">Découvrir nos 11 aéroports</a>
+      </div>
+
+      <div class="board" aria-label="Le réseau EGSA Oran">
+        <div class="board-h"><span>✈ Réseau EGSA Oran · Passagers 2024</span><span class="clock mono" id="clock">--:--</span></div>
+        <div class="board-cols"><span>Code</span><span>Aéroport</span><span class="c3">International</span><span class="c4">National</span><span>Trafic</span></div>
+        <div id="board"></div>
+        <p class="board-note">Trafic passagers janvier – décembre 2024, source EGSA Oran. Les horaires des vols en temps réel sont disponibles auprès des compagnies.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="quick" id="voyager">
+    <div class="wrap qgrid">
+      <a class="q reveal" href="planifier.html"><span class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 10h18M8 2v4M16 2v4"/></svg></span><span><b>Planifier mon vol</b><span>Horaire de départ et checklist</span></span></a>
+      <a class="q reveal" href="#services"><span class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="M9 17V7h4a3 3 0 0 1 0 6H9"/></svg></span><span><b>Parking à étage</b><span>Couvert et sécurisé</span></span></a>
+      <a class="q reveal" href="#guide"><span class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="6" y="7" width="12" height="13" rx="2"/><path d="M9 7V4h6v3M10 11v5M14 11v5"/></svg></span><span><b>Bagages</b><span>Franchises et objets interdits</span></span></a>
+      <a class="q reveal" href="#contact"><span class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></span><span><b>Assistance</b><span>Passagers à mobilité réduite</span></span></a>
+    </div>
+  </section>
+
+  <section class="sec" id="chiffres">
+    <div class="wrap">
+      <div class="head reveal">
+        <div><span class="tag">Chiffres clés</span><h2>Une année dans nos aéroports.</h2></div>
+        <p>Le trafic cumulé des onze aéroports gérés par EGSA Oran, de janvier à décembre 2024.</p>
+      </div>
+      <div class="nums reveal">
+        <div class="num hl"><b data-n="3268295">0</b><span>passagers</span><svg viewBox="0 0 24 24" fill="#fff"><circle cx="12" cy="7" r="4"/><path d="M4 22a8 8 0 0 1 16 0z"/></svg></div>
+        <div class="num"><b data-n="36666">0</b><span>mouvements d'avions</span></div>
+        <div class="num"><b data-n="37">0</b><span>destinations depuis Oran</span></div>
+        <div class="num"><b data-n="1158" data-suffix=" t">0</b><span>de fret traité</span></div>
+      </div>
+      <div class="split">
+        <div class="donut-card reveal">
+          <svg class="donut" viewBox="0 0 160 160" aria-label="Répartition du trafic à Oran">
+            <circle cx="80" cy="80" r="60" stroke="#eef0f6"/>
+            <circle id="dInt" cx="80" cy="80" r="60" stroke="#2f6bff" stroke-dasharray="0 377" transform="rotate(-90 80 80)" stroke-linecap="round"/>
+            <circle id="dNat" cx="80" cy="80" r="60" stroke="#ffd23f" stroke-dasharray="0 377" transform="rotate(-90 80 80)" stroke-linecap="round"/>
+            <text x="80" y="76" text-anchor="middle" font-family="Space Grotesk" font-weight="700" font-size="22" fill="#0a0f1e">2,2 M</text>
+            <text x="80" y="96" text-anchor="middle" font-family="JetBrains Mono" font-size="9" fill="#59617a">ORAN 2024</text>
+          </svg>
+          <div class="legend">
+            <div><i style="background:#2f6bff"></i><span><b>1 470 228</b><br>passagers internationaux</span></div>
+            <div><i style="background:#ffd23f"></i><span><b>732 836</b><br>passagers nationaux</span></div>
+          </div>
+        </div>
+        <div class="rank reveal">
+          <h3>Les aéroports les plus fréquentés</h3>
+          <div id="rank"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec dark" id="reseau">
+    <div class="wrap">
+      <div class="head reveal">
+        <div><span class="tag">Notre réseau</span><h2>Onze aéroports, du littoral au Sahara.</h2></div>
+        <p>De la Méditerranée jusqu'à Bordj Badji Mokhtar, EGSA Oran gère les plateformes du nord-ouest et du sud-ouest algérien. Sélectionnez un aéroport.</p>
+      </div>
+      <div class="net">
+        <div class="map reveal"><svg id="map" viewBox="0 0 500 520" role="img" aria-label="Carte des aéroports EGSA Oran"></svg></div>
+        <div class="reveal">
+          <div class="info" id="info" aria-live="polite"></div>
+          <div class="chips" id="chips"></div>
+          <a class="btn" href="aeroports.html" style="margin-top:18px">Annuaire et comparateur →</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec" id="services">
+    <div class="wrap">
+      <div class="head reveal">
+        <div><span class="tag">Services</span><h2>Tout pour voyager l'esprit léger.</h2></div>
+        <p>Restauration, boutiques, salons et parking&nbsp;: les services de l'aéroport d'Oran avant et après votre vol.</p>
+      </div>
+      <div class="svc">
+        <div class="sv big reveal"><span class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="M9 17V7h4a3 3 0 0 1 0 6H9"/></svg></span><div><h3>Parking à étage</h3><p>Un parking couvert à quelques pas des terminaux, pour un départ sans stress.</p></div></div>
+        <div class="sv reveal"><span class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12.5a10 10 0 0 1 14 0M8.5 16a5 5 0 0 1 7 0M12 19.5h.01"/></svg></span><div><h3>Wi-Fi gratuit</h3><p>Connexion offerte dans les terminaux.</p></div></div>
+        <div class="sv reveal"><span class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 10h16v9H4zM8 10V7a4 4 0 0 1 8 0v3"/></svg></span><div><h3>Salons</h3><p>Des salons VIP pour patienter au calme.</p></div></div>
+        <div class="sv reveal"><span class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2v8a3 3 0 0 0 6 0V2M9 2v20M18 2c-2 2-3 5-3 8h3v12"/></svg></span><div><h3>Restaurants &amp; cafés</h3><p>Pour un repas ou une pause avant l'embarquement.</p></div></div>
+        <div class="sv reveal"><span class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 8h14l-1 13H6zM9 8V6a3 3 0 0 1 6 0v2"/></svg></span><div><h3>Boutiques &amp; duty free</h3><p>Souvenirs, presse et achats hors taxes.</p></div></div>
+        <div class="sv reveal"><span class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M15 9.5c-.5-1-1.6-1.5-3-1.5-1.7 0-3 .9-3 2s1.3 1.7 3 2 3 .9 3 2-1.3 2-3 2c-1.4 0-2.5-.5-3-1.5M12 6v2M12 16v2"/></svg></span><div><h3>Bureau de change</h3><p>Changez vos devises dès votre arrivée.</p></div></div>
+        <div class="sv reveal"><span class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 17h14l-1.5-6h-11zM7 17v3M17 17v3M8 11l1.5-4h5L16 11"/></svg></span><div><h3>Location de voitures</h3><p>Des agences présentes dans le hall des arrivées.</p></div></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec" id="guide" style="padding-top:0">
+    <div class="wrap guide">
+      <div class="boarding reveal" aria-hidden="true">
+        <div class="bp-top"><span class="tag">Carte d'embarquement</span><span class="mono" style="color:var(--muted);font-size:12px">GUIDE</span></div>
+        <div class="bp-route"><div><b>ORN</b><small>ORAN</small></div><svg width="40" height="40" viewBox="0 0 24 24" fill="currentColor" style="transform:rotate(90deg)"><path d="M21 16v-2l-8-5V3.5a1.5 1.5 0 0 0-3 0V9l-8 5v2l8-2.5V19l-2 1.5V22l3.5-1 3.5 1v-1.5L13 19v-5.5z"/></svg><div style="text-align:right"><b>✦✦✦</b><small>VOTRE DESTINATION</small></div></div>
+        <div class="bp-tear"></div>
+        <div class="bp-steps">
+          <div><span class="t">J-1</span><p>Vérifiez vos documents de voyage et les règles bagages de votre compagnie.</p></div>
+          <div><span class="t">Arrivée</span><p>Présentez-vous en avance, surtout pour un vol international.</p></div>
+          <div><span class="t">Comptoir</span><p>Enregistrez-vous et déposez vos bagages en soute.</p></div>
+          <div><span class="t">Sûreté</span><p>Contrôle de sûreté, puis police aux frontières pour l'international.</p></div>
+          <div><span class="t">Porte</span><p>Rejoignez votre porte d'embarquement. Bon voyage&nbsp;!</p></div>
+        </div>
+      </div>
+      <div>
+        <div class="head reveal" style="margin-bottom:24px"><div><span class="tag">Guide du voyageur</span><h2>Bien préparer son vol.</h2></div></div>
+        <div class="acc reveal">
+          <details open><summary>Documents de voyage <span class="pm">+</span></summary><div class="body">Munissez-vous d'une pièce d'identité valide pour les vols nationaux, et d'un passeport — accompagné d'un visa si votre destination l'exige — pour les vols internationaux. Vérifiez les conditions d'entrée auprès de votre compagnie avant le départ.</div></details>
+          <details><summary>Bagages <span class="pm">+</span></summary><div class="body">Les franchises bagages (poids, dimensions, nombre de pièces) sont fixées par chaque compagnie aérienne. Étiquetez vos bagages et gardez vos objets de valeur et médicaments en cabine.</div></details>
+          <details><summary>Mesures de sûreté <span class="pm">+</span></summary><div class="body">Tous les passagers et bagages cabine passent par le contrôle de sûreté. Préparez-vous à présenter séparément&nbsp;:<ul><li>vos appareils électroniques (ordinateurs, tablettes)&nbsp;;</li><li>vos liquides, en petits contenants regroupés dans un sac transparent&nbsp;;</li><li>vos vestes, ceintures et objets métalliques.</li></ul></div></details>
+          <details><summary>Articles interdits à bord <span class="pm">+</span></summary><div class="body">Objets tranchants, armes et répliques, substances inflammables ou explosives sont interdits en cabine. En cas de doute, renseignez-vous auprès de votre compagnie avant de faire vos bagages.</div></details>
+          <details><summary>Enfants non accompagnés <span class="pm">+</span></summary><div class="body">Les enfants voyageant seuls sont pris en charge par la compagnie aérienne. Le service doit être réservé à l'avance, avec les documents et autorisations demandés.</div></details>
+          <details><summary>Passagers à mobilité réduite <span class="pm">+</span></summary><div class="body">Une assistance peut vous accompagner du comptoir d'enregistrement jusqu'à l'avion. Signalez votre besoin à votre compagnie au moment de la réservation.</div></details>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec dark" id="histoire">
+    <div class="wrap">
+      <div class="head reveal">
+        <div><span class="tag">L'établissement</span><h2>Au service du ciel de l'ouest depuis 1962.</h2></div>
+        <p>EGSA Oran est un Établissement Public à caractère Industriel et Commercial (EPIC) placé sous la tutelle du ministère des Transports. Il aménage, exploite et développe les aéroports qui lui sont confiés.</p>
+      </div>
+      <div class="tl reveal">
+        <span class="tl-line"></span>
+        <div class="ev"><b>1962</b><h3>OGSA</h3><p>Au lendemain de l'indépendance, la gestion est confiée à l'Organisation de gestion et sécurité aéronautique.</p></div>
+        <div class="ev"><b>1968</b><h3>ONAM</h3><p>L'Organisme national de l'aviation militaire reprend la gestion.</p></div>
+        <div class="ev"><b>1969</b><h3>ENEMA</h3><p>L'Établissement national d'exploitation météorologique et aéronautique prend le relais.</p></div>
+        <div class="ev"><b>1983</b><h3>DCA</h3><p>La Direction centrale des aérogares, dernière étape avant EGSA.</p></div>
+        <div class="ev"><b>1987</b><h3>Création d'EGSA Oran</h3><p>Décret n° 87-174 du 11 août 1987.</p></div>
+        <div class="ev"><b>1991</b><h3>Statut d'EPIC</h3><p>Décret exécutif n° 91-150 du 18 mai 1991.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec" id="contact">
+    <div class="wrap contact">
+      <div class="c-card c-main reveal">
+        <span class="tag">Contact</span>
+        <h2>Une question avant votre vol&nbsp;?</h2>
+        <p>Nos équipes vous répondent. Pour toute question sur une réservation ou un bagage, contactez directement votre compagnie aérienne.</p>
+      </div>
+      <div class="c-card c-list reveal">
+        <div><span>Adresse</span><b>Es Senia, Oran, Algérie</b></div>
+        <div><span>Téléphone</span><a href="tel:+21341591032">041 59 10 32</a></div>
+        <div><span>Direction générale</span><a href="mailto:direction.generale@egsaoran.com">direction.generale@egsaoran.com</a></div>
+        <div><span>Communication</span><a href="mailto:charge.communication@egsaoran.com">charge.communication@egsaoran.com</a></div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="ft">
+      <a class="logo" href="#"><span class="logo-badge lg"><img src="assets/logo-egsa.jpg" alt="EGSA Oran" width="401" height="191"></span><span><b style="color:#fff">EGSA Oran</b><small>Établissement de Gestion de Services Aéroportuaires</small></span></a>
+      <nav><a href="planifier.html">Planifier</a><a href="#services">Services</a><a href="aeroports.html">Aéroports</a><a href="#chiffres">Chiffres</a><a href="#contact">Contact</a></nav>
+    </div>
+    <div class="ft-b"><span>© <span id="yr"></span> EGSA Oran</span><span>Concept de refonte · projet non officiel</span></div>
+  </div>
+</footer>
+
+<script src="assets/algeria.js"></script>
+<script>
+(() => {
+  const $ = s => document.querySelector(s);
+  const fmt = n => n.toLocaleString('fr-FR').replace(/ /g, ' ');
+  const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  $('#yr').textContent = new Date().getFullYear();
+
+  addEventListener('scroll', () => $('#hdr').classList.toggle('sc', scrollY > 20), { passive: true });
+  const nav = $('#nav'), burger = $('#burger');
+  burger.onclick = () => { const o = nav.classList.toggle('open'); burger.setAttribute('aria-expanded', o); };
+  nav.onclick = e => { if (e.target.closest('a')) { nav.classList.remove('open'); burger.setAttribute('aria-expanded', false); } };
+
+  const tick = () => $('#clock').textContent = new Intl.DateTimeFormat('fr-FR', { hour: '2-digit', minute: '2-digit', timeZone: 'Africa/Algiers' }).format(new Date()) + ' ORN';
+  tick(); setInterval(tick, 15000);
+
+  // airports — 2024 passengers (EGSA Oran), approximate coordinates
+  const A = [
+    { c: 'ORN', n: 'Oran', full: 'Oran Ahmed Ben Bella', i: 1470228, d: 732836, lat: 35.62, lon: -0.62 },
+    { c: 'AZR', n: 'Adrar', full: 'Adrar Touat Cheikh Sidi Mohamed Belkebir', i: 13296, d: 274649, lat: 27.84, lon: -0.19 },
+    { c: 'TLM', n: 'Tlemcen', full: 'Tlemcen Messali El Hadj', i: 211092, d: 43836, lat: 35.02, lon: -1.46 },
+    { c: 'TIN', n: 'Tindouf', full: 'Tindouf Commandant Ferradj', i: 4414, d: 206589, lat: 27.70, lon: -8.17 },
+    { c: 'CBH', n: 'Béchar', full: 'Béchar Boudghene Ben Ali Lotfi', i: 2384, d: 139733, lat: 31.65, lon: -2.27 },
+    { c: 'BMW', n: 'Bordj Badji Mokhtar', full: 'Bordj Badji Mokhtar', i: 0, d: 88092, lat: 21.38, lon: 0.92 },
+    { c: 'TMX', n: 'Timimoun', full: 'Timimoun', i: 0, d: 63493, lat: 29.24, lon: 0.28 },
+    { c: 'EBH', n: 'El Bayadh', full: 'El Bayadh', i: 0, d: 9948, lat: 33.72, lon: 1.09 },
+    { c: 'MZW', n: 'Mécheria', full: 'Mécheria (Naâma)', i: 0, d: 7347, lat: 33.54, lon: -0.24 },
+    { c: 'TID', n: 'Tiaret', full: 'Tiaret Abdelhafid Boussouf', i: 0, d: 355, lat: 35.34, lon: 1.46 },
+    { c: 'MUW', n: 'Mascara', full: 'Mascara Ghriss', i: 0, d: 0, lat: 35.21, lon: 0.15, below: true },
+  ].map(a => ({ ...a, t: a.i + a.d }));
+
+  // departure board with split-flap letters
+  const pad = (s, n) => (s.toUpperCase().normalize('NFD').replace(/[̀-ͯ]/g, '') + ' '.repeat(n)).slice(0, n);
+  const flap = (s, cls = '') => `<span class="flap ${cls}">${[...s].map(ch => `<i>${ch === ' ' ? '&nbsp;' : ch}</i>`).join('')}</span>`;
+  const rows = A.filter(a => a.t > 0).slice(0, 6);
+  $('#board').innerHTML = rows.map(a => `<div class="board-row" data-c="${a.c}">
+      ${flap(a.c, 'y')}${flap(pad(a.n, 12))}
+      <span class="c3 mono">${fmt(a.i)}</span><span class="c4 mono">${fmt(a.d)}</span>
+      <span class="st ${a.i > a.d ? 'int' : 'nat'}">${fmt(a.t)}</span></div>`).join('');
+  const CH = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ ';
+  function scramble(row) {
+    row.querySelectorAll('.flap i').forEach((el, k) => {
+      const final = el.textContent; let n = 4 + Math.floor(Math.random() * 6);
+      const iv = setInterval(() => {
+        el.classList.remove('flip'); void el.offsetWidth; el.classList.add('flip');
+        el.textContent = n-- > 0 ? CH[Math.floor(Math.random() * CH.length)] : final;
+        if (n < 0) clearInterval(iv);
+      }, 70 + k * 4);
+    });
+  }
+  if (!reduced) {
+    document.querySelectorAll('.board-row').forEach((r, i) => setTimeout(() => scramble(r), 300 + i * 180));
+    setInterval(() => { const r = document.querySelectorAll('.board-row'); scramble(r[Math.floor(Math.random() * r.length)]); }, 3500);
+  }
+
+  // ranking bars
+  const top = [...A].sort((a, b) => b.t - a.t).slice(0, 6);
+  $('#rank').innerHTML = top.map(a => `<div class="rk"><span>${a.n}</span><span class="t"><i data-w="${(a.t / top[0].t * 100).toFixed(1)}"></i></span><span class="v">${fmt(a.t)}</span></div>`).join('');
+
+  // network map: Algeria outline + airports, projected from lon/lat into a 500×520 viewBox
+  const X = lon => 20 + (lon + 8.9) * 21.5, Y = lat => 34 + (37.3 - lat) * 24.4;
+  const hub = A[0], svg = $('#map');
+  const r1 = n => Math.round(n * 10) / 10;
+  const outline = 'M' + (window.DZ_OUTLINE || []).map(([lon, lat]) => `${r1(X(lon))} ${r1(Y(lat))}`).join('L') + 'Z';
+  // label placement around each airport: [dx, dy, anchor]
+  const LBL = { ORN: [-12, -8, 'end'], TLM: [-12, 4, 'end'], MUW: [0, 19, 'middle'], TID: [12, 4, 'start'], EBH: [12, 4, 'start'], MZW: [-12, 4, 'end'],
+    CBH: [-12, 4, 'end'], TIN: [0, 20, 'middle'], AZR: [-12, 4, 'end'], TMX: [12, 4, 'start'], BMW: [12, 4, 'start'] };
+  const near = [['MAROC', -6.2, 31.2], ['TUNISIE', 10.1, 34.6], ['LIBYE', 11.6, 27.2], ['MALI', -2.5, 19.6], ['NIGER', 8.6, 19.6], ['MAURITANIE', -7.6, 23.6]];
+  let html = `<defs>
+      <pattern id="dots" width="9" height="9" patternUnits="userSpaceOnUse"><circle cx="1.5" cy="1.5" r="1" fill="#8fb0ff" opacity=".22"/></pattern>
+      <clipPath id="dzClip"><path d="${outline}"/></clipPath>
+      <linearGradient id="sea" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#2f6bff" stop-opacity=".22"/><stop offset="1" stop-color="#2f6bff" stop-opacity="0"/></linearGradient>
+    </defs>
+    <rect x="0" y="0" width="500" height="90" fill="url(#sea)"/>
+    <g opacity=".06" stroke="#fff" vector-effect="non-scaling-stroke">`;
+  for (let x = 20; x <= 480; x += 30) html += `<line x1="${x}" y1="0" x2="${x}" y2="520"/>`;
+  for (let y = 10; y <= 520; y += 30) html += `<line x1="0" y1="${y}" x2="500" y2="${y}"/>`;
+  html += `</g>
+    ${near.map(([n, lon, lat]) => `<text class="nb" x="${r1(X(lon))}" y="${r1(Y(lat))}" text-anchor="middle">${n}</text>`).join('')}
+    <path class="dz" d="${outline}"/>
+    <rect width="500" height="520" fill="url(#dots)" clip-path="url(#dzClip)"/>
+    <path class="dz-zone" d="M${X(-8.9)} 0H${X(3.2)}V520H${X(-8.9)}Z" clip-path="url(#dzClip)"/>
+    <text class="country" x="${X(6.8)}" y="${Y(27.5)}" text-anchor="middle">ALGÉRIE</text>
+    <text class="sea-lbl" x="${X(4)}" y="${Y(37.9)}" text-anchor="middle">MER MÉDITERRANÉE</text>
+    <g class="cap"><circle cx="${X(3.06)}" cy="${Y(36.75)}" r="3"/><text x="${X(3.06) + 7}" y="${Y(36.75) + 3}">Alger</text></g>`;
+  A.slice(1).forEach(a => {
+    const x1 = X(hub.lon), y1 = Y(hub.lat), x2 = X(a.lon), y2 = Y(a.lat);
+    html += `<path class="route" d="M${r1(x1)} ${r1(y1)} Q ${r1((x1 + x2) / 2 + 18)} ${r1((y1 + y2) / 2)} ${r1(x2)} ${r1(y2)}"/>`;
+  });
+  A.forEach((a, k) => {
+    const x = r1(X(a.lon)), y = r1(Y(a.lat)), [dx, dy, anchor] = LBL[a.c] || [12, 4, 'start'];
+    html += `<g class="ap${k === 0 ? ' hub on' : ''}" data-k="${k}" tabindex="0" role="button" aria-label="${a.full}">
+      <circle class="p" cx="${x}" cy="${y}" style="animation-delay:${k * .2}s"/><circle class="c" cx="${x}" cy="${y}"/>
+      <text x="${x}" y="${y}" style="--dx:${dx};--dy:${dy}" text-anchor="${anchor}">${a.c}</text></g>`;
+  });
+  svg.innerHTML = html;
+
+  // zoom between the whole country and the north-west, where most airports are
+  const VIEWS = { all: [0, 0, 500, 520], nw: [128, 28, 170, 177] };
+  let vb = [...VIEWS.all], vbAnim;
+  function applyVB() {
+    svg.setAttribute('viewBox', vb.map(n => n.toFixed(2)).join(' '));
+    const z = vb[2] / 500;                       // scale factor so labels and dots keep their on-screen size
+    svg.style.setProperty('--z', z);
+    svg.querySelectorAll('.ap text').forEach(t => {
+      t.setAttribute('dx', (+t.style.getPropertyValue('--dx')) * z);
+      t.setAttribute('dy', (+t.style.getPropertyValue('--dy')) * z);
+    });
+  }
+  function zoomTo(name) {
+    const from = [...vb], to = VIEWS[name], t0 = performance.now(), dur = reduced ? 0 : 900;
+    cancelAnimationFrame(vbAnim);
+    document.querySelectorAll('.map-ctrl button').forEach(b => b.setAttribute('aria-pressed', b.dataset.v === name));
+    (function step(t) {
+      const p = dur ? Math.min(1, (t - t0) / dur) : 1, e = 1 - Math.pow(1 - p, 4);
+      vb = from.map((v, i) => v + (to[i] - v) * e); applyVB();
+      if (p < 1) vbAnim = requestAnimationFrame(step);
+    })(t0);
+  }
+  const ctrl = document.createElement('div');
+  ctrl.className = 'map-ctrl';
+  ctrl.innerHTML = '<button type="button" data-v="all" aria-pressed="true">Algérie</button><button type="button" data-v="nw" aria-pressed="false">Zoom Nord-Ouest</button>';
+  svg.parentElement.append(ctrl);
+  ctrl.onclick = e => { const b = e.target.closest('button'); if (b) zoomTo(b.dataset.v); };
+  applyVB();
+
+  function select(k) {
+    const a = A[k];
+    if (a.lat < 32.4 && vb[2] < 400) zoomTo('all');   // southern airport while zoomed in: show the whole country
+    svg.querySelectorAll('.ap').forEach(g => g.classList.toggle('on', +g.dataset.k === k));
+    document.querySelectorAll('.chip').forEach(c => c.setAttribute('aria-pressed', +c.dataset.k === k));
+    $('#info').innerHTML = `<div class="code">${a.c}</div><h3>${a.full}</h3><dl>
+      <div><dt>Passagers 2024</dt><dd>${fmt(a.t)}</dd></div>
+      <div><dt>Part du réseau</dt><dd>${(a.t / 3268295 * 100).toFixed(1).replace('.', ',')} %</dd></div>
+      <div><dt>International</dt><dd>${fmt(a.i)}</dd></div>
+      <div><dt>National</dt><dd>${fmt(a.d)}</dd></div></dl>`;
+  }
+  $('#chips').innerHTML = A.map((a, k) => `<button class="chip" data-k="${k}" aria-pressed="${k === 0}">${a.c} · ${a.n}</button>`).join('');
+  $('#chips').onclick = e => { const c = e.target.closest('.chip'); if (c) select(+c.dataset.k); };
+  svg.addEventListener('click', e => { const g = e.target.closest('.ap'); if (g) select(+g.dataset.k); });
+  svg.addEventListener('keydown', e => { const g = e.target.closest('.ap'); if (g && (e.key === 'Enter' || e.key === ' ')) { e.preventDefault(); select(+g.dataset.k); } });
+  select(0);
+
+  // reveal, counters, bars, donut
+  const io = new IntersectionObserver(es => es.forEach(e => {
+    if (!e.isIntersecting) return;
+    e.target.classList.add('in'); io.unobserve(e.target);
+    e.target.querySelectorAll('[data-n]').forEach(el => {
+      const n = +el.dataset.n, suf = el.dataset.suffix || '', t0 = performance.now();
+      (function f(t) { const p = Math.min(1, (t - t0) / 1600); el.textContent = fmt(Math.round(n * (1 - Math.pow(1 - p, 4)))) + suf; if (p < 1) requestAnimationFrame(f); })(t0);
+    });
+    e.target.querySelectorAll('[data-w]').forEach(i => i.style.width = i.dataset.w + '%');
+    if (e.target.querySelector('#dInt')) {
+      const C = 2 * Math.PI * 60, tot = 1470228 + 732836, a = C * 1470228 / tot, b = C - a;
+      $('#dInt').style.transition = $('#dNat').style.transition = 'stroke-dasharray 1.6s cubic-bezier(.16,1,.3,1)';
+      $('#dInt').setAttribute('stroke-dasharray', `${a - 4} ${C}`);
+      $('#dNat').setAttribute('stroke-dasharray', `0 ${a} ${b - 4} ${C}`);
+    }
+  }), { threshold: .15 });
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+})();
+</script>
+</body>
+</html>

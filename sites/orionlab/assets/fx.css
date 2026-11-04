@@ -1,0 +1,33 @@
+/* Motion layer — colours come from --fx-a / --fx-b / --fx-ink set in site.css */
+.fx-progress{position:fixed;left:0;top:0;right:0;height:3px;z-index:120;transform-origin:0 50%;transform:scaleX(0);background:linear-gradient(90deg,var(--fx-a),var(--fx-b));pointer-events:none}
+
+[data-split] .w{display:inline-block;overflow:hidden;vertical-align:top;padding-bottom:.1em;margin-bottom:-.1em}
+[data-split] .w > span{display:inline-block;transform:translateY(105%);animation:fxWord 1s var(--ease) forwards}
+@keyframes fxWord{to{transform:none}}
+
+.fx-clip{clip-path:inset(14% 10% 14% 10% round 22px);transform:scale(1.04);transition:clip-path 1.3s var(--ease),transform 1.6s var(--ease)}
+.fx-clip.fx-in{clip-path:inset(0 0 0 0 round 22px);transform:none}
+
+.fx-tilting{transition:transform .15s linear!important;will-change:transform;position:relative}
+.fx-tilting::after{content:"";position:absolute;inset:0;border-radius:inherit;pointer-events:none;background:radial-gradient(260px circle at var(--gx) var(--gy),rgba(255,255,255,.22),transparent 60%)}
+.btn{transition:transform .35s var(--ease),background .3s,box-shadow .3s}
+
+.fx-glow{position:relative;isolation:isolate}
+.fx-glow::before{content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;opacity:0;transition:opacity .5s;background:radial-gradient(520px circle at var(--mx,50%) var(--my,50%),color-mix(in srgb,var(--fx-a) 22%,transparent),transparent 65%)}
+.fx-glow:hover::before{opacity:1}
+
+.fx-wipe{position:fixed;inset:0;z-index:400;pointer-events:none;background:var(--fx-ink);transform:translateY(100%)}
+.fx-wipe.fx-enter{transform:none;transition:transform .5s cubic-bezier(.7,0,.3,1)}
+.fx-wipe.fx-cover{transform:none}
+.fx-wipe.fx-leave{transform:translateY(-100%);transition:transform .7s cubic-bezier(.7,0,.3,1) .05s}
+
+
+/* while the opening intro plays, hold everything behind it */
+.fx-hold body{overflow:hidden}
+.fx-hold [data-split] .w > span,.fx-hold .rise,.fx-hold .hero-bg img,.fx-hold .hero-img img{animation-play-state:paused}
+
+@media (prefers-reduced-motion:reduce){
+  [data-split] .w > span{transform:none}
+  .fx-clip{clip-path:none;transform:none}
+}
+.reveal:not(.in) [data-split] .w > span{animation-play-state:paused}
