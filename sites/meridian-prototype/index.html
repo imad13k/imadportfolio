@@ -1,0 +1,172 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Meridian — Prototype</title>
+<meta name="description" content="Live world news from 17 international publishers, placed on an interactive map by country and topic.">
+<meta name="theme-color" content="#0B1116">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="fonts/fonts.css">
+<link rel="stylesheet" href="assets/app.css">
+<link rel="stylesheet" href="assets/prototype.css">
+</head>
+<body>
+
+<header class="top">
+  <a class="brand" href="#" id="home" aria-label="Meridian — clear selection">
+    <svg viewBox="0 0 32 32" aria-hidden="true"><circle cx="16" cy="16" r="13"/><ellipse cx="16" cy="16" rx="5.5" ry="13"/><path d="M3 16h26"/></svg>
+    <b>Meridian</b>
+  </a>
+  <button class="live" id="liveBtn" type="button" aria-haspopup="dialog">
+    <span class="dot" id="liveDot"></span><b id="liveWord">Connecting</b><span id="liveInfo" class="live-info"></span>
+  </button>
+  <label class="search">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-4-4"/></svg>
+    <input id="q" type="search" placeholder="Search headlines" aria-label="Search headlines" autocomplete="off">
+    <kbd>/</kbd>
+  </label>
+  <div class="seg" id="range" role="group" aria-label="Time range">
+    <button type="button" data-h="6">6h</button><button type="button" data-h="24">24h</button><button type="button" data-h="72">3d</button><button type="button" data-h="168">7d</button>
+  </div>
+  <time class="clock" id="clock" aria-label="Coordinated Universal Time"></time>
+</header>
+
+<main class="layout">
+  <div class="mapcol">
+  <section class="mapwrap" id="mapwrap" aria-label="World map of news activity">
+    <svg id="map" role="group" aria-label="Interactive world map. Countries are shaded by the number of stories."></svg>
+
+    <div class="board" id="board">
+      <h2><button type="button" id="boardToggle" aria-expanded="true" aria-controls="boardList"><span>Most reported</span> <span id="boardRange"></span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></button></h2>
+      <ol id="boardList"></ol>
+    </div>
+
+    <div class="tools" role="group" aria-label="Map controls">
+      <div class="seg seg-v" id="mode" role="group" aria-label="Map view">
+        <button type="button" data-m="flat">Map</button><button type="button" data-m="globe">Globe</button>
+      </div>
+      <div class="story-tools">
+        <button class="tool story-btn" type="button" id="storyBtn"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 5v14l11-7z"/></svg>Stories <span id="storyN"></span></button>
+        <button class="tool" type="button" id="storyAuto" aria-pressed="false" title="Play new conflict reports automatically when you are not using the page">Auto</button>
+      </div>
+      <button class="tool" type="button" id="links" aria-pressed="true" title="Show links between countries named in the same headline">Links</button>
+      <div class="zoom"><button class="tool" type="button" id="zIn" aria-label="Zoom in">+</button><button class="tool" type="button" id="zOut" aria-label="Zoom out">−</button></div>
+      <button class="tool" type="button" id="zReset" title="Reset view">Reset</button>
+    </div>
+
+    <div class="legend" aria-hidden="true">
+      <span>1</span><i id="legendBar"></i><span id="legendMax"></span><em>stories</em>
+    </div>
+    <div class="tip" id="tip" role="status"></div>
+    <svg class="story-lines" aria-hidden="true"><path id="storyLine"/></svg>
+    <article class="story-card" id="storyCard" hidden aria-live="polite"></article>
+    <div class="story-bar" id="storyBar" hidden role="group" aria-label="Story mode">
+      <span class="sb-title"><i aria-hidden="true"></i><b id="storyKind">Story</b><span id="storyCount"></span></span>
+      <span class="sb-prog"><i id="storyProg"></i></span>
+      <button type="button" id="storyPrev" aria-label="Previous report"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m15 6-6 6 6 6"/></svg></button>
+      <button type="button" id="storyPause" aria-pressed="false" aria-label="Pause"><svg class="i-pause" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6v12M15 6v12"/></svg><svg class="i-play" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></button>
+      <button type="button" id="storyNext" aria-label="Next report"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9 6 6 6-6 6"/></svg></button>
+      <button type="button" id="storyClose" aria-label="Close story mode"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg></button>
+    </div>
+    <div class="empty-map" id="mapMsg" hidden></div>
+  </section>
+
+  <section class="markets" aria-label="Markets">
+    <header class="mk-head">
+      <h2>Markets</h2>
+      <div class="seg" id="mkView" role="group" aria-label="Market view">
+        <button type="button" data-v="commodities">Gold &amp; oil</button><button type="button" data-v="companies">Companies</button>
+      </div>
+      <div class="seg" id="mkRange" role="group" aria-label="Chart range">
+        <button type="button" data-r="1d">1D</button><button type="button" data-r="5d">5D</button><button type="button" data-r="1mo">1M</button>
+      </div>
+      <span class="mk-hint">Echo: click a chart to see what the world was reporting at that moment</span>
+      <p class="mk-note" id="mkNote"></p>
+    </header>
+    <div class="mk-cards" id="mkCards"></div>
+    <div class="stk-wrap" id="stkWrap" hidden>
+      <div class="stk-bar"><div class="stk-sectors" id="stkSectors" role="group" aria-label="Sector"></div><p class="stk-note" id="stkNote"></p></div>
+      <div class="stk-list" id="stkList"></div>
+    </div>
+  </section>
+  </div>
+
+  <aside class="side" id="side" aria-label="News">
+    <section class="tv" aria-label="Live TV channels">
+      <div class="tv-bar"><h2>Live TV</h2><div class="tv-chips" id="tvChips"></div><button class="tv-all" id="tvWall" type="button" aria-haspopup="dialog">All 5</button></div>
+      <div class="tv-player" id="tvPlayer" hidden></div>
+    </section>
+    <section class="brief" id="brief" aria-label="Live brief" hidden></section>
+    <div id="panel"></div>
+    <div class="filters">
+      <div class="chips" id="topics" role="group" aria-label="Filter by topic"></div>
+      <div class="filter-row">
+        <label class="sel"><span class="sr">Source</span><select id="source"><option value="">All sources</option></select></label>
+        <button class="watch-filter" id="watchOnly" type="button" aria-pressed="false">★ Watchlist <span id="watchN"></span></button>
+        <button class="watch-filter" id="majorOnly" type="button" aria-pressed="false" hidden title="Stories the local model rated major">Major</button>
+      </div>
+    </div>
+    <button class="newpill" id="newPill" type="button" hidden></button>
+    <div class="feed" id="feed"></div>
+    <p class="sr" id="announce" role="status" aria-live="polite"></p>
+  </aside>
+</main>
+
+<footer class="ticker" aria-label="Latest headlines">
+  <span class="tk-label">Latest</span>
+  <div class="tk-view"><div class="tk-track" id="ticker"></div></div>
+</footer>
+
+<dialog class="about" id="about" aria-labelledby="aboutTitle">
+  <button class="x" type="button" id="aboutClose" aria-label="Close"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg></button>
+  <h2 id="aboutTitle">Sources and method</h2>
+  <p>Meridian checks the public feeds of the publishers below every 20 seconds, or less often where a publisher asks for that, and sends new stories to this page as soon as they are found. A story can only appear after its publisher adds it to the feed. Headlines and short summaries belong to them, and every story links to the original article.</p>
+  <ul class="feeds" id="feedList"></ul>
+  <h3>Local AI</h3>
+  <p id="aiStatus"></p>
+  <ul class="notes">
+    <li><b>The model doesn't fetch news.</b> Meridian's server fetches the feeds, then the model reads each new story on this computer. Nothing is sent to an outside AI service.</li>
+    <li><b>It sets country, topic and importance</b>, and writes the Live brief from the current headlines. It can be wrong, so check the linked article before relying on it.</li>
+  </ul>
+  <h3>Echo</h3>
+  <ul class="notes">
+    <li><b>Echo shows what was reported around a price move</b>, from an hour before it began to when it ended. Rings on the charts mark the largest moves.</li>
+    <li><b>Timing is not proof of cause.</b> Stories can overlap with a move by chance, and the real reason may not be in these feeds.</li>
+  </ul>
+  <h3>Story mode</h3>
+  <ul class="notes">
+    <li><b>Stories replays recent conflict reports on the globe</b>: missiles, drones, strikes, attacks and military activity, sorted from each headline's words.</li>
+    <li><b>The animations are illustrations.</b> Feeds name a country, not an exact place, a launch site or a route, so nothing on the globe is a real track.</li>
+    <li><b>Auto</b> plays new reports by themselves, only when you have not touched the page for a little while.</li>
+  </ul>
+  <h3>Market prices</h3>
+  <ul class="notes">
+    <li><b>Companies</b> shows large listed companies in seven sectors, from the same delayed source. A tile shows how many headlines name the company; click it to read them.</li>
+    <li><b>The gold, WTI and Brent charts are futures prices</b> from Yahoo Finance, which runs behind the exchanges. The current delay is shown above the charts.</li>
+    <li><b>Gold spot</b> comes from gold-api.com and is usually under a minute or two old; its age is shown on the card. It differs a little from the futures price.</li>
+    <li>Prices are for information only and not for trading.</li>
+  </ul>
+  <h3>How to read the map</h3>
+  <ul class="notes">
+    <li><b>Shading counts coverage, not danger.</b> A dark red country is one these outlets are writing about a lot, which also reflects where they are based.</li>
+    <li><b>Country and topic tags are automatic</b>, matched from names and keywords in the text. Most are right, and some will be wrong.</li>
+    <li><b>The same story from several outlets counts once</b>, grouped when their headlines closely match.</li>
+    <li><b>Links</b> join countries named in the same headline. They show that two countries were mentioned together, not how they relate.</li>
+    <li><b>Borders</b> come from Natural Earth and don't imply a position on any disputed territory.</li>
+  </ul>
+</dialog>
+
+<dialog class="wall" id="wall" aria-labelledby="wallTitle">
+  <div class="wall-head"><h2 id="wallTitle">Live TV</h2><span>All muted. Use a player's own controls for sound.</span>
+    <button class="x" type="button" id="wallClose" aria-label="Close"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg></button></div>
+  <div class="wall-grid" id="wallGrid"></div>
+</dialog>
+
+<script src="data/snapshot.js"></script>
+<script src="assets/prototype.js"></script>
+<script src="vendor/d3.min.js"></script>
+<script src="vendor/topojson-client.min.js"></script>
+<script src="assets/app.js"></script>
+</body>
+</html>
