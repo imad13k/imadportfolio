@@ -55,6 +55,23 @@
     return src ? `<iframe src="${esc(safeUrl(src))}" loading="lazy" tabindex="-1" aria-hidden="true" scrolling="no"></iframe>` : '';
   }
 
+  const statusBadge = p => p.status ? `<span class="pstatus mono"><i aria-hidden="true"></i>${esc(p.status)}</span>` : '';
+  function card(p, i, system = false) {
+    return `
+      <a class="pcard reveal${i === 0 ? ' wide' : ''}${system ? ' system' : ''}" style="transition-delay:${(i % 2) * 80}ms" href="#/work/${encodeURIComponent(p.id)}" data-cursor="Voir">
+        <div class="pcard-media proj-media">${media(p)}
+          <span class="pcard-num mono">${String(i + 1).padStart(2, '0')}</span>${statusBadge(p)}
+          ${p.logo ? `<span class="pcard-logo" style="${p.logoBg ? `background:${esc(p.logoBg)}` : ''}"><img src="${esc(safeUrl(p.logo))}" alt="Logo ${esc(p.client || p.title)}" loading="lazy"></span>` : ''}
+        </div>
+        <div class="pcard-body">
+          <div class="pcard-top"><span class="mono">${esc(p.category)}</span><span class="mono">${esc(p.year)}</span></div>
+          <h3>${esc(p.title)}</h3>
+          <p>${esc(p.summary)}</p>
+          <div class="pcard-foot"><ul class="tags">${(p.tags || []).slice(0, 3).map(t => `<li>${esc(t)}</li>`).join('')}</ul><span class="pcard-go" aria-hidden="true">→</span></div>
+        </div>
+      </a>`;
+  }
+
   function render(c) {
     content = c;
     const pr = c.profile || {};
@@ -77,23 +94,18 @@
     $('#talk').innerHTML = talk.repeat(4);
 
     // projects
-    projects = (c.projects || []).filter(p => p.visible !== false);
-    $('#workCount').textContent = `(${String(projects.length).padStart(2, '0')})`;
-    $('#projects').innerHTML = projects.length ? projects.map((p, i) => `
-      <a class="pcard reveal${i === 0 ? ' wide' : ''}" style="transition-delay:${(i % 2) * 80}ms" href="#/work/${encodeURIComponent(p.id)}" data-cursor="Voir">
-        <div class="pcard-media proj-media">${media(p)}
-          <span class="pcard-num mono">${String(i + 1).padStart(2, '0')}</span>
-          ${p.logo ? `<span class="pcard-logo" style="${p.logoBg ? `background:${esc(p.logoBg)}` : ''}"><img src="${esc(safeUrl(p.logo))}" alt="Logo ${esc(p.client || p.title)}" loading="lazy"></span>` : ''}
-        </div>
-        <div class="pcard-body">
-          <div class="pcard-top"><span class="mono">${esc(p.category)}</span><span class="mono">${esc(p.year)}</span></div>
-          <h3>${esc(p.title)}</h3>
-          <p>${esc(p.summary)}</p>
-          <div class="pcard-foot"><ul class="tags">${(p.tags || []).slice(0, 3).map(t => `<li>${esc(t)}</li>`).join('')}</ul><span class="pcard-go" aria-hidden="true">→</span></div>
-        </div>
-      </a>`).join('') : '<p class="wrap">Aucun projet pour le moment.</p>';
+    // websites first, then tools & systems in their own section; the case study browses them in that order
+    const visible = (c.projects || []).filter(p => p.visible !== false);
+    const sites = visible.filter(p => p.kind !== 'system');
+    const systems = visible.filter(p => p.kind === 'system');
+    projects = [...sites, ...systems];
+    $('#workCount').textContent = `(${String(sites.length).padStart(2, '0')})`;
+    $('#sysCount').textContent = `(${String(systems.length).padStart(2, '0')})`;
+    $('#systems').hidden = !systems.length;
+    $('#systemsGrid').innerHTML = systems.map((p, i) => card(p, i, true)).join('');
+    $('#projects').innerHTML = sites.length ? sites.map((p, i) => card(p, i)).join('') : '<p class="wrap">Aucun projet pour le moment.</p>';
     $$('.proj-media').forEach(m => ro.observe(m));
-    $('#projectList').innerHTML = projects.map((p, i) => `
+    $('#projectList').innerHTML = sites.map((p, i) => `
       <a class="irow" href="#/work/${encodeURIComponent(p.id)}" data-cover="${esc(safeUrl(p.cover || ''))}" data-cursor="Voir">
         <span class="n">${String(i + 1).padStart(2, '0')}</span><h3>${esc(p.title)}</h3>
         <span class="c">${esc(p.category)}</span><span class="y">${esc(p.year)}</span><span class="ar">→</span>
@@ -288,7 +300,7 @@
   function openCase(p) {
     const i = projects.indexOf(p), next = projects[(i + 1) % projects.length];
     $('#caseIndex').textContent = `${String(i + 1).padStart(2, '0')} / ${String(projects.length).padStart(2, '0')}`;
-    $('#caseMeta').textContent = [p.category, p.year].filter(Boolean).join(' — ');
+    $('#caseMeta').innerHTML = statusBadge(p) + esc([p.category, p.year].filter(Boolean).join(' — '));
     $('#caseTitle').textContent = p.title;
     $('#caseSummary').textContent = p.summary || '';
     const live = p.external || p.link;
