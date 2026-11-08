@@ -284,3 +284,127 @@ main{overflow-x:clip}
   .s{stroke-dashoffset:0}.intro-word{opacity:1}
   .slide-img{transform:none!important}
 }
+
+/* ===================== Enhancements ===================== */
+
+/* Reading progress */
+.progress-bar{position:fixed;left:0;top:0;z-index:150;height:3px;width:100%;background:var(--orange);transform-origin:left;transform:scaleX(0);pointer-events:none}
+
+/* Header steps aside while reading, returns when scrolling up */
+.hdr{transition:background .35s,box-shadow .35s,transform .45s var(--ease)}
+.hdr.away{transform:translateY(-100%)}
+
+/* Toast */
+.toast{position:fixed;left:50%;bottom:26px;z-index:160;transform:translate(-50%,20px);opacity:0;pointer-events:none;background:var(--ink);color:#fff;font-size:15px;padding:12px 18px;border-radius:12px;box-shadow:0 14px 30px -14px rgba(0,0,0,.5);transition:opacity .3s,transform .35s var(--ease);max-width:calc(100vw - 32px)}
+.toast.show{opacity:1;transform:translate(-50%,0)}
+.toast::before{content:"";display:inline-block;width:8px;height:8px;border-radius:50%;background:var(--orange);margin-right:10px;vertical-align:middle}
+
+/* Language switch: a short fade instead of a jump */
+body.lang-fade main,body.lang-fade .hdr-in{animation:langFade .45s ease}
+@keyframes langFade{0%{opacity:1}35%{opacity:.25}100%{opacity:1}}
+
+/* Headings rise word by word */
+.js .split.reveal{opacity:1;transform:none}
+.split .w{display:inline-block;overflow:hidden;vertical-align:top;padding-bottom:.1em;margin-bottom:-.1em}
+.split .w>span{display:inline-block;transform:translateY(105%);transition:transform .9s var(--ease);transition-delay:calc(var(--i) * .045s)}
+.split.in .w>span{transform:none}
+
+/* Slideshow: orange sweep between slides, gentle parallax */
+.wipe{position:absolute;inset:0;z-index:4;pointer-events:none;background:var(--orange);transform:scaleX(0);transform-origin:left}
+.wipe.go{animation:wipe .9s cubic-bezier(.7,0,.3,1)}
+@keyframes wipe{0%{transform:scaleX(0);transform-origin:left}45%{transform:scaleX(1);transform-origin:left}55%{transform:scaleX(1);transform-origin:right}100%{transform:scaleX(0);transform-origin:right}}
+.slide-text{transition:translate .6s var(--ease)}
+.slide.is-active .slide-img{translate:var(--px,0) var(--py,0)}
+.slide-img{transition:transform 7.5s linear,translate .8s var(--ease)}
+
+/* Ribbon of expertises */
+.ribbon{background:var(--orange);color:var(--ink);overflow:hidden;padding:20px 0;white-space:nowrap;position:relative;z-index:1}
+.ribbon-track{display:inline-flex;animation:ribbon 38s linear infinite}
+.ribbon:hover .ribbon-track{animation-play-state:paused}
+.ribbon-track>span{display:inline-flex;align-items:center;font-size:clamp(20px,2.4vw,30px);font-weight:400;letter-spacing:-.01em}
+.ribbon-track>span::after{content:"";width:10px;height:10px;margin:0 34px;border-radius:50%;background:var(--ink)}
+@keyframes ribbon{to{transform:translateX(-50%)}}
+
+/* Services: tilt and a direct request */
+.svc{transform-style:preserve-3d;will-change:transform}
+.svc.tilting{transition:transform .12s linear,box-shadow .45s}
+.svc-cta{margin-top:auto;align-self:flex-start;display:inline-flex;align-items:center;gap:10px;padding:10px 4px 2px;color:var(--ink);font-weight:500;font-size:15.5px;text-decoration:none;border-bottom:2px solid var(--orange)}
+.svc-cta svg{width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round;transition:transform .25s var(--ease)}
+.svc-cta:hover svg{transform:translateX(4px)}
+.svc-body{flex:1}
+
+/* Approach: the symbol draws one stroke per step */
+.approach-stage{margin-top:34px;position:relative;aspect-ratio:1;max-width:400px;border-radius:28px;background:radial-gradient(circle at 50% 45%,#fff 0,var(--soft) 70%);display:grid;place-items:center;border:1px solid var(--line)}
+.approach-symbol{width:62%;overflow:visible}
+.approach-symbol .track{stroke:var(--line)}
+.approach-symbol .p{stroke-dasharray:1;stroke-dashoffset:1;transition:stroke-dashoffset 1s var(--ease)}
+.approach-symbol .sunc{transform-box:fill-box;transform-origin:center;transform:scale(0);transition:transform .9s cubic-bezier(.3,1.5,.5,1) .2s}
+.approach-symbol[data-step="1"] .p1,.approach-symbol[data-step="2"] .p1,.approach-symbol[data-step="3"] .p1,.approach-symbol[data-step="4"] .p1,
+.approach-symbol[data-step="2"] .p2,.approach-symbol[data-step="3"] .p2,.approach-symbol[data-step="4"] .p2,
+.approach-symbol[data-step="3"] .p3,.approach-symbol[data-step="4"] .p3,
+.approach-symbol[data-step="4"] .p4{stroke-dashoffset:0}
+.approach-symbol[data-step="4"] .sunc{transform:scale(1)}
+.stage-label{position:absolute;left:22px;bottom:16px;font-size:14px;letter-spacing:.12em;color:var(--grey-3);font-variant-numeric:tabular-nums}
+.stage-label b{color:var(--ink);font-weight:500}
+.step{transition:opacity .5s}
+.steps.engaged .step:not(.lit){opacity:.45}
+
+/* Contact: copy buttons */
+.coords li{position:relative}
+.coords a{padding-right:64px}
+.copy{position:absolute;right:12px;top:50%;transform:translateY(-50%);width:40px;height:40px;border-radius:12px;border:1px solid var(--line);background:#fff;color:var(--grey);cursor:pointer;display:grid;place-items:center;transition:background .2s,border-color .2s,color .2s}
+.copy:hover{background:var(--orange);border-color:var(--orange);color:var(--ink)}
+.copy svg{width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+
+/* Form: choice chips, counter, confirmation */
+.chips{border:0;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:8px}
+.chips legend{font-size:14px;font-weight:400;color:var(--grey);margin-bottom:8px;padding:0}
+.chip{position:relative;cursor:pointer}
+.chip input{position:absolute;opacity:0;inset:0;margin:0;cursor:pointer}
+.chip>span{display:inline-block;padding:9px 15px;border-radius:999px;border:1px solid var(--line);background:#fff;font-size:14.5px;font-weight:400;color:var(--grey);transition:background .2s,border-color .2s,color .2s,transform .2s var(--ease)}
+.chip:hover>span{border-color:var(--orange-2)}
+.chip input:checked+span{background:var(--grey);border-color:var(--grey);color:#fff}
+.chip input:focus-visible+span{outline:2px solid var(--orange-d);outline-offset:2px}
+.chip input:active+span{transform:scale(.96)}
+.lab-row{display:flex;justify-content:space-between;gap:10px}
+.counter{font-size:12.5px;color:var(--grey-3);font-variant-numeric:tabular-nums}
+.counter.near{color:var(--orange-d)}
+.form{position:relative}
+.form.flash{animation:formFlash 1.2s var(--ease)}
+@keyframes formFlash{0%,100%{box-shadow:0 0 0 0 rgba(255,181,73,0)}30%{box-shadow:0 0 0 6px rgba(255,181,73,.45)}}
+.form-done{position:absolute;inset:0;z-index:2;background:var(--soft);border-radius:24px;padding:clamp(24px,4vw,40px);display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;gap:14px}
+.form-done[hidden]{display:none}
+.form-done svg{width:64px;height:64px;fill:none;stroke-width:3;stroke-linecap:round;stroke-linejoin:round}
+.form-done circle{stroke:var(--orange);stroke-dasharray:151;stroke-dashoffset:151;animation:dash .8s var(--ease) forwards}
+.form-done path{stroke:var(--grey);stroke-dasharray:36;stroke-dashoffset:36;animation:dash .5s var(--ease) .55s forwards}
+.form-done h3{font-size:26px;font-weight:400;color:var(--ink)}
+.form-done p{max-width:420px}
+.done-actions{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin-top:6px}
+.btn-line{background:#fff;color:var(--ink);border:1px solid var(--line);padding:14px 22px}
+.btn-line:hover{border-color:var(--orange)}
+@keyframes dash{to{stroke-dashoffset:0}}
+
+/* Back to top fills as you read */
+.to-top .ring{position:absolute;inset:-4px;width:56px;height:56px;transform:rotate(-90deg)}
+.to-top .ring circle{fill:none;stroke-width:3}
+.to-top .ring-bg{stroke:rgba(47,50,51,.12)}
+.to-top .ring-fg{stroke:var(--ink);stroke-dasharray:1;stroke-dashoffset:var(--read,1)}
+
+/* Magnetic buttons */
+.magnetic{transition:transform .25s var(--ease),background .25s,color .25s,box-shadow .25s}
+
+@media (max-width:1000px){
+  .approach-stage{max-width:320px}
+}
+@media (max-width:600px){
+  .ribbon{padding:14px 0}
+  .ribbon-track>span::after{margin:0 22px;width:8px;height:8px}
+  .approach-stage{max-width:260px;margin-left:auto;margin-right:auto}
+  .chip>span{font-size:14px;padding:8px 13px}
+  .done-actions .btn{flex:1;justify-content:center}
+}
+@media (prefers-reduced-motion:reduce){
+  .split .w>span{transform:none}
+  .approach-symbol .p{stroke-dashoffset:0}.approach-symbol .sunc{transform:none}
+  .ribbon-track{animation:none}
+}

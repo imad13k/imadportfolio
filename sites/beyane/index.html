@@ -73,6 +73,8 @@
 </div>
 
 <a class="skip" href="#main"><span lang="en">Skip to content</span><span lang="fr">Aller au contenu</span></a>
+<div class="progress-bar" id="progress" aria-hidden="true"></div>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
 
 <header class="hdr" id="hdr">
   <div class="wrap hdr-in">
@@ -99,6 +101,7 @@
 
   <!-- Slideshow -->
   <section class="hero" id="top" aria-roledescription="carousel" aria-label="Beyane">
+    <div class="wipe" id="wipe" aria-hidden="true"></div>
     <div class="slides" id="slides" aria-live="off">
       <article class="slide is-active" aria-roledescription="slide" aria-label="1 / 4">
         <img class="slide-img" src="assets/img/slide-strategy-1920.webp" srcset="assets/img/slide-strategy-960.webp 960w, assets/img/slide-strategy-1920.webp 1920w" sizes="100vw" width="1920" height="1080" alt="" fetchpriority="high">
@@ -158,6 +161,18 @@
     <a class="scroll-hint" href="#about"><span class="sr"><span lang="en">Scroll down</span><span lang="fr">Défiler</span></span></a>
   </section>
 
+  <!-- Moving ribbon of the expertises -->
+  <div class="ribbon" aria-hidden="true">
+    <div class="ribbon-track" id="ribbon">
+      <span><span lang="en">Strategy</span><span lang="fr">Stratégie</span></span>
+      <span><span lang="en">Corporate Communication</span><span lang="fr">Communication corporate</span></span>
+      <span><span lang="en">Corporate Branding</span><span lang="fr">Image de marque</span></span>
+      <span>Personal Branding</span>
+      <span>Ideation</span>
+      <span><span lang="en">Data · Statement · Proof</span><span lang="fr">Data · Communiqué · Preuve</span></span>
+    </div>
+  </div>
+
   <!-- About -->
   <section class="sec about" id="about">
     <div class="wrap about-grid">
@@ -199,6 +214,7 @@
               <li><span lang="en">Internal communication</span><span lang="fr">Communication interne</span></li>
               <li><span lang="en">Crisis communication</span><span lang="fr">Communication de crise</span></li>
             </ul>
+            <a class="svc-cta" href="#contact" data-service="communication"><span lang="en">Request this service</span><span lang="fr">Demander ce service</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h13M13 6l6 6-6 6"/></svg></a>
           </div>
         </article>
         <article class="svc reveal">
@@ -212,6 +228,7 @@
               <li><span lang="en">Naming and tagline</span><span lang="fr">Nom et signature</span></li>
               <li><span lang="en">Brand roll-out</span><span lang="fr">Déploiement de la marque</span></li>
             </ul>
+            <a class="svc-cta" href="#contact" data-service="branding"><span lang="en">Request this service</span><span lang="fr">Demander ce service</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h13M13 6l6 6-6 6"/></svg></a>
           </div>
         </article>
         <article class="svc reveal">
@@ -225,6 +242,7 @@
               <li><span lang="en">Speaking and media preparation</span><span lang="fr">Préparation aux prises de parole et aux médias</span></li>
               <li><span lang="en">Thought-leadership content</span><span lang="fr">Contenus d'expertise</span></li>
             </ul>
+            <a class="svc-cta" href="#contact" data-service="personal"><span lang="en">Request this service</span><span lang="fr">Demander ce service</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h13M13 6l6 6-6 6"/></svg></a>
           </div>
         </article>
       </div>
@@ -238,7 +256,19 @@
         <p class="kicker reveal"><span lang="en">Our approach</span><span lang="fr">Notre méthode</span></p>
         <h2 class="reveal"><span lang="en">Four paths, <em>one direction.</em></span><span lang="fr">Quatre chemins, <em>une direction.</em></span></h2>
         <p class="reveal"><span lang="en">Like the four strokes of our symbol, each project follows four steps around one centre: your goal.</span><span lang="fr">Comme les quatre traits de notre symbole, chaque projet suit quatre étapes autour d'un même centre : votre objectif.</span></p>
-        <figure class="approach-media reveal"><img src="assets/img/approach-whiteboard-1200.webp" srcset="assets/img/approach-whiteboard-700.webp 700w, assets/img/approach-whiteboard-1200.webp 1200w" sizes="(max-width: 900px) 100vw, 40vw" width="1200" height="800" alt="Two consultants working on ideas at a whiteboard" loading="lazy" decoding="async"></figure>
+        <div class="approach-stage reveal" aria-hidden="true">
+          <svg class="approach-symbol" id="approachSymbol" viewBox="622 242 698 698" data-step="0">
+            <g fill="none" stroke-width="55" stroke-linecap="round">
+              <path class="track" d="M673 280H1004A331 331 0 0 1 1225 365M758 390A331 331 0 0 0 673 611V944M783 857A331 331 0 0 0 1004 942H1335M1335 280V611A331 331 0 0 1 1250 832"/>
+              <path class="p p1" pathLength="1" stroke="#FFB549" d="M673 280H1004A331 331 0 0 1 1225 365"/>
+              <path class="p p2" pathLength="1" stroke="#54585A" d="M758 390A331 331 0 0 0 673 611V944"/>
+              <path class="p p3" pathLength="1" stroke="#FFB549" d="M783 857A331 331 0 0 0 1004 942H1335"/>
+              <path class="p p4" pathLength="1" stroke="#54585A" d="M1335 280V611A331 331 0 0 1 1250 832"/>
+            </g>
+            <circle class="sunc" cx="1004" cy="611" r="205" fill="#FFB549"/>
+          </svg>
+          <p class="stage-label"><b id="stageNum">01</b> / 04</p>
+        </div>
       </div>
       <ol class="steps" id="steps">
         <li class="step reveal"><span class="step-dot" aria-hidden="true"></span><span class="step-num">01</span><h3><span lang="en">Listen</span><span lang="fr">Écouter</span></h3><p><span lang="en">We understand your context, your audiences and what you want to achieve.</span><span lang="fr">Nous comprenons votre contexte, vos publics et ce que vous voulez accomplir.</span></p></li>
@@ -267,8 +297,8 @@
         <h2 class="reveal"><span lang="en">Want to work with us <em>now?</em></span><span lang="fr">Envie de travailler avec nous <em>dès maintenant ?</em></span></h2>
         <p class="reveal"><span lang="en">Tell us about your project and we will get back to you.</span><span lang="fr">Parlez-nous de votre projet, nous reviendrons vers vous.</span></p>
         <ul class="coords">
-          <li class="reveal"><a href="tel:+213560320056"><span class="ic" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2"/></svg></span><span><small><span lang="en">Phone</span><span lang="fr">Téléphone</span></small>+213 560 32 00 56</span></a></li>
-          <li class="reveal"><a href="mailto:contact@beyane-dz.com"><span class="ic" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg></span><span><small>E-mail</small>contact@beyane-dz.com</span></a></li>
+          <li class="reveal"><a href="tel:+213560320056"><span class="ic" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2"/></svg></span><span><small><span lang="en">Phone</span><span lang="fr">Téléphone</span></small>+213 560 32 00 56</span></a><button class="copy" type="button" data-copy="+213 560 32 00 56"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="8" y="8" width="12" height="12" rx="2"/><path d="M16 8V6a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h2"/></svg><span class="sr"><span lang="en">Copy the phone number</span><span lang="fr">Copier le numéro</span></span></button></li>
+          <li class="reveal"><a href="mailto:contact@beyane-dz.com"><span class="ic" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg></span><span><small>E-mail</small>contact@beyane-dz.com</span></a><button class="copy" type="button" data-copy="contact@beyane-dz.com"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="8" y="8" width="12" height="12" rx="2"/><path d="M16 8V6a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h2"/></svg><span class="sr"><span lang="en">Copy the e-mail address</span><span lang="fr">Copier l'adresse e-mail</span></span></button></li>
           <li class="reveal"><a href="https://www.linkedin.com/search/results/companies/?keywords=Beyane" target="_blank" rel="noopener" data-linkedin><span class="ic" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="M8 10v7M8 7v.01M12 17v-4a2 2 0 0 1 4 0v4M12 10v7"/></svg></span><span><small>LinkedIn</small>Beyane</span></a></li>
         </ul>
       </div>
@@ -282,18 +312,32 @@
           <label><span>E-mail *</span><input name="email" type="email" autocomplete="email" required></label>
           <label><span><span lang="en">Phone</span><span lang="fr">Téléphone</span></span><input name="phone" type="tel" autocomplete="tel"></label>
         </div>
-        <label><span><span lang="en">I'm interested in</span><span lang="fr">Je suis intéressé(e) par</span></span>
-          <select name="service">
-            <option value="Corporate Communication" data-fr="Communication corporate">Corporate Communication</option>
-            <option value="Corporate Branding" data-fr="Image de marque d'entreprise">Corporate Branding</option>
-            <option value="Personal Branding for Executives" data-fr="Personal branding pour dirigeants">Personal Branding for Executives</option>
-            <option value="Other" data-fr="Autre">Other</option>
-          </select>
-        </label>
-        <label><span><span lang="en">Your project</span><span lang="fr">Votre projet</span> *</span><textarea name="message" rows="5" required></textarea></label>
+        <fieldset class="chips" id="serviceChips">
+          <legend><span lang="en">I'm interested in</span><span lang="fr">Je suis intéressé(e) par</span></legend>
+          <label class="chip"><input type="radio" name="service" value="communication" checked><span><span lang="en">Corporate Communication</span><span lang="fr">Communication corporate</span></span></label>
+          <label class="chip"><input type="radio" name="service" value="branding"><span><span lang="en">Corporate Branding</span><span lang="fr">Image de marque</span></span></label>
+          <label class="chip"><input type="radio" name="service" value="personal"><span>Personal Branding</span></label>
+          <label class="chip"><input type="radio" name="service" value="other"><span><span lang="en">Something else</span><span lang="fr">Autre chose</span></span></label>
+        </fieldset>
+        <fieldset class="chips">
+          <legend><span lang="en">When would you like to start?</span><span lang="fr">Quand souhaitez-vous commencer ?</span></legend>
+          <label class="chip"><input type="radio" name="when" value="asap"><span><span lang="en">As soon as possible</span><span lang="fr">Dès que possible</span></span></label>
+          <label class="chip"><input type="radio" name="when" value="soon"><span><span lang="en">Within 3 months</span><span lang="fr">D'ici 3 mois</span></span></label>
+          <label class="chip"><input type="radio" name="when" value="exploring"><span><span lang="en">Just exploring</span><span lang="fr">Je me renseigne</span></span></label>
+        </fieldset>
+        <label><span class="lab-row"><span><span lang="en">Your project</span><span lang="fr">Votre projet</span> *</span><span class="counter" id="counter" aria-hidden="true">0 / 1500</span></span><textarea name="message" rows="5" maxlength="1500" required></textarea></label>
         <p class="form-error" id="formError" role="alert" hidden><span lang="en">Please fill in your name, a valid e-mail and your project.</span><span lang="fr">Merci d'indiquer votre nom, un e-mail valide et votre projet.</span></p>
         <button class="btn btn-dark" type="submit"><span lang="en">Email us</span><span lang="fr">Écrivez-nous</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h13M13 6l6 6-6 6"/></svg></button>
         <p class="form-note"><span lang="en">This opens your e-mail app with your message ready to send to contact@beyane-dz.com.</span><span lang="fr">Votre messagerie s'ouvre avec le message prêt à être envoyé à contact@beyane-dz.com.</span></p>
+        <div class="form-done" id="formDone" hidden tabindex="-1">
+          <svg viewBox="0 0 52 52" aria-hidden="true"><circle cx="26" cy="26" r="24"/><path d="m15 27 7 7 15-15"/></svg>
+          <h3><span lang="en">Your message is ready</span><span lang="fr">Votre message est prêt</span></h3>
+          <p><span lang="en">Your e-mail app has opened with your message: just press send. Nothing opened? Copy it and write to contact@beyane-dz.com.</span><span lang="fr">Votre messagerie s'est ouverte avec votre message : il ne reste qu'à l'envoyer. Rien ne s'est ouvert ? Copiez-le et écrivez à contact@beyane-dz.com.</span></p>
+          <div class="done-actions">
+            <button class="btn btn-dark" type="button" id="copyMsg"><span lang="en">Copy my message</span><span lang="fr">Copier mon message</span></button>
+            <button class="btn btn-line" type="button" id="newMsg"><span lang="en">New message</span><span lang="fr">Nouveau message</span></button>
+          </div>
+        </div>
       </form>
     </div>
   </section>
@@ -320,7 +364,7 @@
   <p class="ftr-copy">© <span id="year">2026</span> Beyane — Consulting &amp; Ideation</p>
 </footer>
 
-<button class="to-top" id="toTop" type="button"><span class="sr"><span lang="en">Back to top</span><span lang="fr">Retour en haut</span></span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 19V5M6 11l6-6 6 6"/></svg></button>
+<button class="to-top" id="toTop" type="button"><span class="sr"><span lang="en">Back to top</span><span lang="fr">Retour en haut</span></span><svg class="ring" viewBox="0 0 48 48" aria-hidden="true"><circle class="ring-bg" cx="24" cy="24" r="21"/><circle class="ring-fg" id="ring" cx="24" cy="24" r="21" pathLength="1"/></svg><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 19V5M6 11l6-6 6 6"/></svg></button>
 
 <script src="assets/site.js" defer></script>
 </body>
