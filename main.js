@@ -94,11 +94,15 @@
     $('#talk').innerHTML = talk.repeat(4);
 
     // projects
-    // websites first, then tools & systems in their own section; the case study browses them in that order
+    // websites first, then the German-market concepts, then tools & systems in their own section; the case study browses them in that order
     const visible = (c.projects || []).filter(p => p.visible !== false);
-    const sites = visible.filter(p => p.kind !== 'system');
+    const sites = visible.filter(p => p.kind !== 'system' && p.kind !== 'germany');
+    const germany = visible.filter(p => p.kind === 'germany');
     const systems = visible.filter(p => p.kind === 'system');
-    projects = [...sites, ...systems];
+    projects = [...sites, ...germany, ...systems];
+    $('#deCount').textContent = `(${String(germany.length).padStart(2, '0')})`;
+    $('#germany').hidden = !germany.length;
+    $('#germanyGrid').innerHTML = germany.map((p, i) => card(p, i)).join('');
     $('#workCount').textContent = `(${String(sites.length).padStart(2, '0')})`;
     $('#sysCount').textContent = `(${String(systems.length).padStart(2, '0')})`;
     $('#systems').hidden = !systems.length;

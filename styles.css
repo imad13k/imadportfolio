@@ -492,3 +492,9 @@ em{font-family:var(--serif);font-style:italic;font-weight:400}
 .pcard.system{border-color:color-mix(in srgb,var(--accent) 35%,var(--line))}
 #systems .pgrid{margin-top:clamp(28px,4vw,48px)}
 @media (prefers-reduced-motion:reduce){.pstatus i{animation:none}}
+
+/* German-market section */
+#germany .pgrid{margin-top:clamp(28px,4vw,48px)}
+.de-head .de-cta{margin-top:22px}
+.de-flag{display:inline-flex;flex-direction:column;width:18px;height:12px;border-radius:2px;overflow:hidden;vertical-align:-1px;margin-left:8px;box-shadow:0 0 0 1px var(--line)}
+.de-flag i{flex:1}.de-flag i:nth-child(1){background:#000}.de-flag i:nth-child(2){background:#dd0000}.de-flag i:nth-child(3){background:#ffce00}
