@@ -7,9 +7,26 @@
 <meta name="description" content="Recherchez, filtrez et comparez les onze aéroports gérés par EGSA Oran, avec leur trafic passagers 2024.">
 <link rel="stylesheet" href="fonts/fonts.css">
 <link rel="stylesheet" href="assets/site.css">
+<link rel="stylesheet" href="assets/intro.css">
+<script src="assets/intro-head.js"></script>
 <link rel="stylesheet" href="assets/pages.css">
 </head>
 <body>
+<div class="intro" id="intro" aria-hidden="true">
+  <div class="i-stars"></div>
+  <div class="i-glow"></div>
+  <div class="i-runway"></div>
+  <div class="i-trail"></div>
+  <svg class="i-plane" viewBox="0 0 24 24" fill="currentColor"><path d="M21 16v-2l-8-5V3.5a1.5 1.5 0 0 0-3 0V9l-8 5v2l8-2.5V19l-2 1.5V22l3.5-1 3.5 1v-1.5L13 19v-5.5z"/></svg>
+  <div class="i-board">
+    <span class="i-logo"><img src="assets/logo-egsa.jpg" alt="" width="401" height="191"></span>
+    <span class="i-code"><b>ORN</b> · DAOO · ORAN</span>
+    <div class="flaps" data-text="BIENVENUE"></div>
+    <div class="flaps" data-text="À ORAN"></div>
+    <span class="i-status"><i></i>EMBARQUEMENT</span>
+  </div>
+  <span class="i-skip">CLIQUEZ POUR PASSER</span>
+</div>
 
 <header class="hdr" id="hdr">
   <div class="wrap">
@@ -130,5 +147,6 @@
   render();
 })();
 </script>
+<script src="assets/intro.js"></script>
 </body>
 </html>
